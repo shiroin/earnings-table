@@ -1,24 +1,335 @@
 ﻿name,domain,status,source,url,file_or_error
-リクルートHD,recruit-holdings.com,ok,existing,,
-LINEヤフー,lycorp.co.jp,ok,existing,,
-エムスリー,corporate.m3.com,ok,existing,,
-楽天グループ,corp.rakuten.co.jp,ok,existing,,
-MonotaRO,www.monotaro.com,ok,existing,,
-ZOZO,corp.zozo.com,ok,existing,,
-サイバーエージェント,cyberagent.co.jp,ok,existing,,
-メルカリ,about.mercari.com,ok,existing,,
-カカクコム,kakaku.com,ok,existing,,
-GMOインターネットグループ,group.gmo,ok,existing,,
-DeNA,dena.com,ok,existing,,
-MIXI,mixi.co.jp,ok,existing,,
-Apple,apple.com,ok,existing,,
-Microsoft,microsoft.com,ok,existing,,
-Google,abc.xyz,ok,existing,,
-Amazon,amazon.com,ok,existing,,
-Tesla,tesla.com,ok,existing,,
-Meta,meta.com,ok,existing,,
-サムスン電子,samsung.com,ok,existing,,
-SKハイニックス,skhynix.com,ok,指定,https://upload.wikimedia.org/wikipedia/commons/2/24/SK_Hynix.svg,SKハイニックス.svg
+NVIDIA,nvidia.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a4/NVIDIA_logo.svg,NVIDIA.svg
+AMD,amd.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg,AMD.svg
+Broadcom,broadcom.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/58/Broadcom_logo_%282016-present%29.svg,Broadcom.svg
+Intel,intc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/85/Intel_logo_2023.svg,Intel.svg
 TSMC,tsmc.com,ok,existing,,
-鴻海精密工業,honhai.com,ok,existing,,
 SMIC,smics.com,ok,existing,,
+Cambricon,cambricon.com,ok,site,https://cambricon.com/statics/zhang/images/header-logo.png,Cambricon.png
+Arm Holdings,arm.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7a/Arm_logo_2025.svg,Arm_Holdings.svg
+Cerebras Systems,cerebras.ai,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/15/Cerebras_logo.svg,Cerebras_Systems.svg
+SK hynix,skhynix.com,ok,existing,,
+Samsung Electronics,samsung.com,ok,existing,,
+Micron,micron.com,ok,site,https://www.micron.com/content/dam/micron/global/favicon/apple-icon-57x57.png,Micron.png
+キオクシアホールディングス,kioxia-holdings.com,ok,site,https://www.kioxia-holdings.com/etc.clientlibs/kioxia-libs/clientlibs/kioxia/resources/component/kioxia_logo.svg,キオクシアホールディングス.svg
+Sandisk,sandisk.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5f/SanDisk_2024_logo.svg,Sandisk.svg
+南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
+CXMT,https://www.cxmt.com,ok,site,https://www.cxmt.com/statics/shuwon//assets/img/svg/logo-w.svg,CXMT.svg
+Seagate Technology,seagate.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7f/Seagate_logo.svg,Seagate_Technology.svg
+Western Didital,wdc.com,ok,site,https://www.westerndigital.com/content/dam/store/en-us/assets/brand/wd/wd-header-main-logo.svg,Western_Didital.svg
+Dell Technologies,delltechnologies.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/56/Dell_Technologies_logo.svg,Dell_Technologies.svg
+Hewlett Packard Enterprise,hpe.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d2/Hewlett_Packard_Enterprise_logo_2025_expanded.svg,Hewlett_Packard_Enterprise.svg
+Super Micro Computer,https://www.supermicro.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1d/Super_Micro_Computer_Logo.svg,Super_Micro_Computer.svg
+Lenovo,lenovo.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/01/Lenovo_logo_%282015_onwards%29_2.svg,Lenovo.svg
+華為,https://www.huawei.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/db/Huawei_wordmark_2019.svg,華為.svg
+鴻海精密工業,foxconn.com,ok,existing,,
+Cisco Systems,cisco.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg,Cisco_Systems.svg
+Celestica,celestica.com,ok,site,https://www.celestica.com/static/images/logo_celestica_pos.svg,Celestica.svg
+Arista Networks,arista.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/99/Arista-networks-logo.svg,Arista_Networks.svg
+Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
+Zhongji Innolight,zj-innolight.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f0/Zhongji_Innolight.png,Zhongji_Innolight.png
+Amphenol,amphenol.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo_Amphenol.svg,Amphenol.svg
+Corning,corning.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://corning.com&size=256"
+Credo Technology,credosemi.com,ok,site,https://credosemi.com/wp-content/uploads/cropped-credo-logo-no-tagline-rgb-1-180x180.png,Credo_Technology.png
+Lumentum,lumentum.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e2/Lumentum_logo_dark_2015.svg,Lumentum.svg
+Marvell,marvell.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/83/Marvell_Logo.svg,Marvell.svg
+Coherent,coherent.com,ok,site,https://www.coherent.com/content/dam/coherent/site/en/images/icons/favicons/apple-icon-57x57.png,Coherent.png
+Ciena,ciena.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=ciena.com,Ciena.png
+POET Technologies,poet-technologies.com,ok,site,https://cdn.prod.website-files.com/672933631b7b783bf9d0fe72/672933631b7b783bf9d10210_Mitsubishi_Electric_logo%20logo.svg,POET_Technologies.svg
+フジクラ,fujikura.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/12/Fujikura.svg,フジクラ.svg
+古河電気工業,furukawaelectric.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ca/Furukawadenko_syasyo.jpg,古河電気工業.jpg
+住友電気工業,sumitomoelectric.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f4/Sumitomo_Electric_Industries_logo.svg,住友電気工業.svg
+精工技研,seikoh-giken.co.jp,ok,site,https://seikoh-giken.co.jp/img/cmn/header_logo.png,精工技研.png
+santec Holdings,santec.com,ok,site,https://www.santec.com/dcms_media/image/common_logo01.png,santec_Holdings.png
+OpenAI,https://openai.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/af/OpenAI_logo_2025_%28wordmark%29.svg,OpenAI.svg
+Anthropic,https://www.anthropic.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg,Anthropic.svg
+DeepSeek,https://deepseek.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ec/DeepSeek_logo.svg,DeepSeek.svg
+Mistral AI,https://mistral.ai/fr,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg,Mistral_AI.svg
+Moonshot AI,https://www.moonshot.ai/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.moonshot.ai,Moonshot_AI.png
+ソフトバンクグループ,group.softbank,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a7/SoftBank_Group_logo.svg,ソフトバンクグループ.svg
+Microsoft,microsoft.com,ok,existing,,
+Alphabet,abc.xyz,ok,existing,,
+Amazon,aboutamazon.com,ok,existing,,
+Meta Platforms,atmeta.com,ok,existing,,
+Oracle,oracle.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg,Oracle.svg
+CoreWeave,coreweave.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/25/CoreWeave_logo.svg,CoreWeave.svg
+Nebius Group,nebius.com,ok,site,https://nebius.com/logo.svg,Nebius_Group.svg
+ASML,asml.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6c/ASML_Holding_N.V._logo.svg,ASML.svg
+東京エレクトロン,tel.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/53/Tokyo_Electron_logo.svg,東京エレクトロン.svg
+アドバンテスト,advantest.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a0/ADVANTEST_company_logos.svg,アドバンテスト.svg
+ディスコ,disco.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ce/Discogs_logo_black.svg,ディスコ.svg
+レーザーテック,lasertec.co.jp,ok,site,https://www.lasertec.co.jp/app-files/img/hdr_logo01.png,レーザーテック.png
+SCREENホールディングス,screen.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f3/Dainippon-Screen-01.jpg,SCREENホールディングス.jpg
+Applied Materials,appliedmaterials.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/03/Applied_Materials_Logo.svg,Applied_Materials.svg
+Lam Research,lamresearch.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/68/Lam-Research-Logo.svg,Lam_Research.svg
+KLA,kla.com,ok,site(inline svg),https://kla.com,KLA.svg
+KOKUSAI ELECTRIC,kokusai-electric.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ef/Kokusai_electric_logo.svg,KOKUSAI_ELECTRIC.svg
+ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
+村田製作所,murata.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2a/Logo_muRata.svg,村田製作所.svg
+イビデン,ibiden.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/76/Ibiden_company_logo.svg,イビデン.svg
+メイコー,meiko-elec.com,ok,site,https://www.meiko-elec.com/img/logo.png?v1757298683215,メイコー.png
+JX金属,jx-nmm.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ef/JX_GROUP_logo.svg,JX金属.svg
+レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
+日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
+信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
+SUMCO,sumcosi.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6b/Sumco_Logo.svg,SUMCO.svg
+味の素,ajinomoto.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/72/Ajinomoto_global_logo.svg,味の素.svg
+TOTO,jp.toto.com,ok,site,https://jp.toto.com/pictures/default.png,TOTO.png
+IREN,iren.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/49/Iren_Logo.svg,IREN.svg
+Vertiv,vertiv.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d9/Vertiv_logo.svg,Vertiv.svg
+Bloom Energy,bloomenergy.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/88/Bloom_Energy_logo.svg,Bloom_Energy.svg
+Vistra Corp.,vistracorp.com,ok,site,https://cdn-ilbfedf.nitrocdn.com/cCNHxjYMANxnjJnUBmcCqmSHlJrNjtdQ/assets/images/optimized/rev-0c0e8b9/vistracorp.com/wp-content/uploads/2026/08/Newsweek_US-CharitableCompanies_2026_Logo_Basic-copy.png,Vistra_Corp..png
+SBエナジー,https://www.sbenergy.co.jp/en/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.sbenergy.co.jp,SBエナジー.jpg
+日立製作所,hitachi.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/85/Hitachi_2025_logo.svg,日立製作所.svg
+パナソニック,holdings.panasonic,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/54/Panasonic_Group_logo.svg,パナソニック.svg
+GE Vernova,gevernova.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/65/GE_Vernova_logo.svg,GE_Vernova.svg
+Eaton,eaton.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=eaton.com,Eaton.jpg
+Salesforce,salesforce.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg,Salesforce.svg
+Adobe,adobe.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/90/Adobe_Corporate_wordmark.svg,Adobe.svg
+ServiceNow,servicenow.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/57/ServiceNow_logo.svg,ServiceNow.svg
+Snowflake,snowflake.com,ok,site,https://www.snowflake.com/content/experience-fragments/snowflake-site/language-masters/ja/site/footer/master/_jcr_content/root/container_573483281_/container_112062425/flexible_column_cont/flexible_column_content_container_1/container/container/image.coreimg.svg/1747882370694/nav-icon-snowflake-bug.svg,Snowflake.svg
+Datadog,datadoghq.com,ok,site,"https://corp.dd-static.net/img/dd_logo_n_70x75.png?ch=Width,DPR&fit=max&auto=format&w=70&h=75",Datadog.png
+Cloudflare,cloudflare.net,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4b/Cloudflare_Logo.svg,Cloudflare.svg
+Akamai Technologies,ir.akamai.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2f/Akamai-2025.svg,Akamai_Technologies.svg
+MongoDB,mongodb.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg,MongoDB.svg
+Palantir,palantir.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/13/Palantir_Technologies_logo.svg,Palantir.svg
+Workday,workday.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/80/Workday_logo.svg,Workday.svg
+HubSpot,hubspot.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg,HubSpot.svg
+Zoom Video Communications,zoom.us,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7b/Zoom_Communications_Logo.svg,Zoom_Video_Communications.svg
+Twilio,twilio.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7e/Twilio-logo-red.svg,Twilio.svg
+Okta,okta.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/83/Okta_logo_%282023%29.svg,Okta.svg
+CrowdStrike,crowdstrike.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4f/CrowdStrike_logo.svg,CrowdStrike.svg
+Palo Alto Networks,paloaltonetworks.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/de/PaloAltoNetworks_2020_Logo.svg,Palo_Alto_Networks.svg
+Zscaler,zscaler.com,ok,site,https://www.zscaler.com:443/_next/image?url=https%3A%2F%2Fcms.zscaler.com%2Fsites%2Fdefault%2Ffiles%2Fcustomers%2Flogo%2Fair-asia%25402x.png.png&w=768&q=75,Zscaler.webp
+Intuit,intuit.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/57/Intuit_logo_2022.svg,Intuit.svg
+Autodesk,autodesk.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/41/Autodesk_Logo_2021.svg,Autodesk.svg
+Cadence Design Systems,cadence.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/48/Cadence-Logo.svg,Cadence_Design_Systems.svg
+Synopsys,synopsys.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6c/Synopsys_Logo.svg,Synopsys.svg
+GitLab,gitlab.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/34/GitLab_logo_light-on-dark.svg,GitLab.svg
+UiPath,uipath.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2c/UiPath_2025_logo.svg,UiPath.svg
+Atlassian,atlassian.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4d/Atlassian-logo.svg,Atlassian.svg
+Shopify,shopify.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg,Shopify.svg
+Figma,figma.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3c/Figma_Series_Logo.jpg,Figma.jpg
+Elastic,elastic.co,ok,site,https://elastic-global-nav-assets.s3.us-west-2.amazonaws.com/logo-docusign.svg,Elastic.svg
+Veeva Systems,veeva.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e0/Veeva_Systems_Logo.svg,Veeva_Systems.svg
+Samsara,samsara.com,ok,site,https://images.ctfassets.net/bx9krvy0u3sx/2TMXJRvKXRmviQAXBLgBiq/182eb7e04be312b434c810cdd32fe5e8/DHL-logo.png,Samsara.png
+monday.com,monday.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c6/Monday_logo.svg,monday.svg
+オービック,obic.co.jp,ok,site,https://obic.co.jp/app-files/img/cmn_logo01.png,オービック.png
+オービックビジネスコンサルタント,corp.obc.co.jp,ok,site,https://corp.obc.co.jp/hubfs/obc/v1/images/common/header/logo.svg,オービックビジネスコンサルタント.svg
+Sansan,corp-sansan.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=corp-sansan.com,Sansan.png
+ラクス,rakus.co.jp,ok,site,https://www.rakus.co.jp/assets/img/common/logo-rakuraku-cloud.svg,ラクス.svg
+マネーフォワード,corp.moneyforward.com,ok,site,https://corp.moneyforward.com/assets/common/img/logo.png,マネーフォワード.png
+サイボウズ,cybozu.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4b/Cybozu_logo.svg,サイボウズ.svg
+freee,corp.freee.co.jp,ok,site,https://corp.freee.co.jp/img/common/img-site-logo_202107.gif,freee.gif
+HENNGE,hennge.com,ok,site,https://hennge.com/global/wp-content/plugins/my-snow-monkey/assets/images/common/logo.svg,HENNGE.svg
+プレイド,plaid.co.jp,ok,site,https://plaid.co.jp/assets/images/site-wide/plaid-logo_red.svg,プレイド.svg
+プラスアルファ・コンサルティング,pa-consul.co.jp,ok,site,https://www.pa-consul.co.jp/as/img/common/logo_customer.svg,プラスアルファ・コンサルティング.svg
+スマレジ,corp.smaregi.jp,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=corp.smaregi.jp,スマレジ.png
+Appier,appier.com,ok,site,https://www.appier.com/hubfs/Appier%20Website%20Images/Logos/appier-logo.svg,Appier.svg
+弁護士ドットコム,bengo4.com,ok,site,https://www.bengo4.com/img/common/logo-bengo4-tagline.svg,弁護士ドットコム.svg
+LayerX,https://layerx.co.jp/,ok,site,https://layerx.co.jp/wp-content/themes/layerx/assets/images/logo.svg,LayerX.svg
+SmartHR,https://smarthr.co.jp/,ok,site(inline svg),https://smarthr.co.jp/,SmartHR.svg
+LegalOn Technologies,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+Databricks,http://databricks.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/63/Databricks_Logo.png,Databricks.png
+CADDi,https://www.caddigolf.app,ok,site,https://www.caddigolf.app/caddi-favicon.svg,CADDi.svg
+MercadoLibre,https://www.mercadolibre.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/60/Mercado_Libre_wordmark_%28Spanish_version%29.svg,MercadoLibre.svg
+Sea Limited,sea.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/56/Sea_Group_logo.svg,Sea_Limited.svg
+Coupang,aboutcoupang.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/ff/Coupang_logo.svg,Coupang.svg
+eBay,ebayinc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg,eBay.svg
+DoorDash,doordash.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg,DoorDash.svg
+Chewy,chewy.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ce/Chewy_Pet_Food_Logo.png,Chewy.png
+Wayfair,wayfair.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/34/Wayfair_2024_logo.svg,Wayfair.svg
+MonotaRO,corp.monotaro.com,ok,existing,,
+Alibaba,alibabagroup.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/03/Alibaba_zh_logo.svg,Alibaba.svg
+PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
+JD.com,jd.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=jd.com,JD.png
+Meituan,meituan.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9b/Meituan_Logo.png,Meituan.png
+楽天グループ,corp.rakuten.co.jp,ok,existing,,
+メルカリ,about.mercari.com,ok,existing,,
+ZOZO,corp.zozo.com,ok,existing,,
+ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
+SHEIN,sheingroup.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c5/Shein_Logo_2017.svg,SHEIN.svg
+Booking Holdings,bookingholdings.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ea/Logo_of_Booking_Holdings_Inc%2C%28lock_up%2C_stacked_with_Brands%2C_full_color%29.PNG,Booking_Holdings.png
+Airbnb,airbnb.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg,Airbnb.svg
+Expedia,expediagroup.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3b/Expedia_Logo_2023.svg,Expedia.svg
+Trip.com,trip.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4c/Tripcom_logo19.png,Trip.png
+Reddit,redditinc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2f/Reddit_wordmark.svg,Reddit.svg
+Duolingo,duolingo.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5c/Duolingo_logo_%282019%29.svg,Duolingo.svg
+Pinterest,pinterestinc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ed/Pinterest_Logo_3.svg,Pinterest.svg
+Snap,snap.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=snap.com,Snap.png
+ByteDance,https://bytedance.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/07/ByteDance_logo_English.svg,ByteDance.svg
+DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
+百度,baidu.com,ok,site,https://www.baidu.com/img/flexible/logo/pc/index.png,百度.png
+LINEヤフー,lycorp.co.jp,ok,existing,,
+サイバーエージェント,cyberagent.co.jp,ok,existing,,
+AppLovin,applovin.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/94/AppLovin-Logo.gif,AppLovin.gif
+GMOインターネットグループ,group.gmo,ok,existing,,
+Netflix,netflix.net,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg,Netflix.svg
+Disney,thewaltdisneycompany.com,ok,site,https://thewaltdisneycompany.com/app/uploads/2026/09/DDA_SolidBlueBG_Logo-768x432.png,Disney.png
+Spotify,spotify.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bd/2024_Spotify_Logo.svg,Spotify.svg
+快手,kuaishou.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=kuaishou.com,快手.png
+Bilibili,bilibili.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=bilibili.com,Bilibili.jpg
+U-NEXT HOLDINGS,unext-hd.co.jp,ok,site,https://unext-hd.co.jp/images/common/logo.svg,U-NEXT_HOLDINGS.svg
+Roblox,roblox.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4b/Roblox_Logo_2022.svg,Roblox.svg
+任天堂,nintendo.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0d/Nintendo.svg,任天堂.svg
+ソニーグループ,sony.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/33/Sony_Group_logo.svg,ソニーグループ.svg
+コナミグループ,konami.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/ab/Konami_4th_logo_1.svg,コナミグループ.svg
+ネクソン,nexon.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f1/Nexon.svg,ネクソン.svg
+カプコン,capcom.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ef/Capcom_logo.svg,カプコン.svg
+バンダイナムコホールディングス,bandainamco.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/55/Bandai_Namco_logo_%282022%29.svg,バンダイナムコホールディングス.svg
+ディー・エヌ・エー,dena.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5a/DeNA_Co_logo.svg,ディー・エヌ・エー.svg
+コーエーテクモ,koeitecmo.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d1/Koei_Tecmo_Holdings_logo.svg,コーエーテクモ.svg
+MIXI,mixi.co.jp,ok,existing,,
+Tencent,tencent.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6a/Tencent_logo_2017.svg,Tencent.svg
+POP MART,popmart.com.cn,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/29/Pop_Mart_logo.svg,POP_MART.svg
+サンリオ,sanrio.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/85/%E3%82%B5%E3%83%B3%E3%83%AA%E3%82%AA_%E3%83%AD%E3%82%B4.png,サンリオ.png
+東宝,toho.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6b/Toho_Logo.svg,東宝.svg
+東映アニメーション,corp.toei-anim.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/09/Toei_Animation_Logo.png,東映アニメーション.png
+KADOKAWA,group.kadokawa.co.jp,ok,site,https://group.kadokawa.co.jp/themes/group.kadokawa/assets/images/logo_kadokawa_0001.png,KADOKAWA.png
+円谷フィールズホールディングス,tsuburaya-fields.co.jp,ok,site,https://www.tsuburaya-fields.co.jp/newscms/wp-content/themes/tsuburaya/assets/img/common/logo.svg,円谷フィールズホールディングス.svg
+ポケモン,https://vn.portal-pokemon.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg,ポケモン.svg
+ANYCOLOR,anycolor.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bd/AnyColor_logo.svg,ANYCOLOR.svg
+カバー,cover-corp.com,ok,site,https://cover-corp.com/common/logo.svg,カバー.svg
+ラウンドワン,round1-group.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f4/Round1_logo.png,ラウンドワン.png
+オリエンタルランド,olc.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4f/Oriental_Land_logo.svg,オリエンタルランド.svg
+GENDA,genda.jp,ok,site(inline svg),https://genda.jp,GENDA.svg
+Apple,apple.com,ok,existing,,
+LVMH,lvmh.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/76/LVMH_wordmark.svg,LVMH.svg
+Hermès,finance.hermes.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c9/Hermes_wordmark.svg,Hermès.svg
+セイコーグループ,seiko.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2c/Seiko_logo.svg,セイコーグループ.svg
+Ferrari,ferrari.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9b/Ferrari_wordmark.svg,Ferrari.svg
+貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
+Nike,nike.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg,Nike.svg
+アシックス,corp.asics.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg,アシックス.svg
+Lululemon,lululemon.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/22/Lululemon_Athletica_logo.svg,Lululemon.svg
+Monster Beverage,monsterbevcorp.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=monsterbevcorp.com,Monster_Beverage.png
+HUMAN MADE,https://humanmade.co.jp/,ok,site,https://humanmade.co.jp/assets/img/home/humanmade_logo.svg,HUMAN_MADE.svg
+MTG,https://content.luanti.org/packages/Luanti/minetest_game/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c7/Minetest_Header_Logo.png,MTG.png
+Walmart,stock.walmart.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5b/Walmart_logo_%282025%29.svg,Walmart.svg
+名創優品,miniso.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0d/Miniso_2023.svg,名創優品.svg
+ファーストリテイリング,fastretailing.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f8/FAST_RETAILING_logo.svg,ファーストリテイリング.svg
+パン・パシフィック・インターナショナルホールディングス,ppih.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b5/PPIH_logo.svg,パン・パシフィック・インターナショナルホールディングス.svg
+ニトリホールディングス,nitorihd.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bd/NITORI_Logo.svg,ニトリホールディングス.svg
+良品計画,ryohin-keikaku.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/60/MUJI_logo.svg,良品計画.svg
+トライアル・ホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+McDonald's,mcdonalds.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ca/McDonald%27s_with_slogan_2020.svg,McDonald's.svg
+Starbucks,starbucks.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5e/Starbucks_coffee_wordmark.png,Starbucks.png
+Domino's Pizza,dominos.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/64/Domino%27s_2025.svg,Domino's_Pizza.svg
+Luckin Coffee,luckincoffee.com,ok,site,https://web.luckincdn.com/default/assets/logo2-9d412147.svg,Luckin_Coffee.svg
+FOOD & LIFE COMPANIES,food-and-life.co.jp,ok,site,https://food-and-life.co.jp/wp-content/themes/food-and-life/assets/img/common/logo.svg,FOOD_&_LIFE_COMPANIES.svg
+日本マクドナルドホールディングス,mcd-holdings.co.jp,ok,site,https://www.mcd-holdings.co.jp:443/content/dam/web/mcd-holdings/images/common/logo.jpg,日本マクドナルドホールディングス.jpg
+サイゼリヤ,saizeriya.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://saizeriya.co.jp&size=256"
+ギフトホールディングス,gift-group.co.jp,ok,site,https://assets.gift-group.co.jp/common/63ef06eda31e987b139e0684_logo_gift_red.svg,ギフトホールディングス.svg
+Visa,visa.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5c/Visa_Inc._logo_%282021%E2%80%93present%29.svg,Visa.svg
+Mastercard,mastercard.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg,Mastercard.svg
+American Express,americanexpress.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg,American_Express.svg
+PayPal,pypl.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c6/PayPal_2024.svg,PayPal.svg
+Block,block.xyz,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d3/Block-lockup_black.svg,Block.svg
+Adyen,adyen.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a2/Adyen_Corporate_Logo.svg,Adyen.svg
+Nu Holdings,nu.com,ok,site,https://www.datocms-assets.com/162099/1787926138-logo-miami-svg.svg?quality=60,Nu_Holdings.svg
+Wise,owners.wise.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e1/Wise_logo_light-on-dark.png,Wise.png
+SoFi Technologies,sofi.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/16/SoFi_logo.svg,SoFi_Technologies.svg
+Affirm,affirm.com,ok,site,https://images.ctfassets.net/4rc1asww3mw7/12w7jdl0M43WqtLY7eFx3U/d70a2b87ecac8188f884d7c62d88a3b9/affirm-icon.png,Affirm.png
+Klarna,klarna.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9a/Klarna_Logo_black.svg,Klarna.svg
+Toast,toasttab.com,ok,site,https://d2a0efs422ycyj.cloudfront.net/main/1793208765316/public/svg/img-toast-logo.svg,Toast.svg
+PayPay,paypay.ne.jp,ok,site,https://image.paypay.ne.jp/page/common/images/ico_logo_paypay.svg,PayPay.svg
+GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
+Revolut,https://www.revolut.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/73/Revolut_logo.svg,Revolut.svg
+Stripe,https://stripe.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg,Stripe.svg
+富途控股,futuholdings.com,ok,site,https://static.futunn.com/futuholdings/logo/futulogo_white_new.svg?v=20190705,富途控股.svg
+Coinbase,coinbase.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase.svg,Coinbase.svg
+Robinhood,robinhood.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/da/Robinhood_%28company%29_logo.svg,Robinhood.svg
+SBIホールディングス,sbigroup.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6a/SBI_Holdings_logo.svg,SBIホールディングス.svg
+Berkshire Hathaway,berkshirehathaway.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6e/Berkshire-Hathaway-Logo.svg,Berkshire_Hathaway.svg
+光通信,hikari.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c4/Hikarilogo.jpg,光通信.jpg
+三菱UFJフィナンシャルグループ,mufg.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b2/Mitsubishi_UFJ_Financial_Group.svg,三菱UFJフィナンシャルグループ.svg
+三井住友フィナンシャルグループ,smfg.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d3/SMFG_logo_2018.svg,三井住友フィナンシャルグループ.svg
+みずほフィナンシャルグループ,mizuho-fg.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e9/Mizuho_logo.svg,みずほフィナンシャルグループ.svg
+楽天銀行,rakuten-bank.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/83/Rakuten_Bank_logo.svg,楽天銀行.svg
+ファナック,fanuc.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bb/Fanuc_logo.svg,ファナック.svg
+キーエンス,keyence.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/99/Keyence.svg,キーエンス.svg
+SMC,http://www.smcworld.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/42/Logo_SMC_Corporation.svg,SMC.svg
+安川電機,yaskawa.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7b/Yaskawa_logo.svg,安川電機.svg
+三菱電機,mitsubishielectric.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/10/Mitsubishi_Electric_logo.svg,三菱電機.svg
+THK,thk.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/60/THK_tv_logo.svg,THK.svg
+ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
+Intuitive Surgical,isrg.intuitive.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/01/Intuitive_Surgical_logo.svg,Intuitive_Surgical.svg
+Unitree Robotics,unitree.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/fc/Unitree.svg,Unitree_Robotics.svg
+三菱重工業,mhi.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f1/Mitsubishi_heavyindustries_mhi_logo.svg,三菱重工業.svg
+IHI,ihi.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2c/IHI.svg,IHI.svg
+川崎重工,khi.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f9/Kawasaki_Heavy_Industries_Logo.svg,川崎重工.svg
+テラドローン,terra-drone.net,ok,site,https://terra-drone.net/wp-content/themes/terra-drone-ja/assets/images/logo.svg,テラドローン.svg
+Anduril Industries,https://www.anduril.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/77/Anduril_Industries_Logo.svg,Anduril_Industries.svg
+SpaceX,spacex.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2e/SpaceX_logo_black.svg,SpaceX.svg
+Rocket Lab,rocketlabcorp.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/cc/Rocket_Lab_logo.svg,Rocket_Lab.svg
+ispace,ispace-inc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/ba/Ispace_Inc._logo.svg,ispace.svg
+アストロスケールホールディングス,astroscale.com,ok,site,https://images.ctfassets.net/k5fy2axdrsqr/47gVTTJJAwRuA7ey1ITSYt/b4376389bf2ec91975b1de60139fa7d7/Astroscale-246.jpg.png?q=80&fm=webp&w=1920,アストロスケールホールディングス.webp
+QPSホールディングス,qpshd.com,ok,site,https://qpshd.com/wordpress/wp-content/themes/qpsholdings/assets/images/_common/logo-header.png,QPSホールディングス.png
+Synspective,synspective.com,ok,site,https://www.synspective.com:443/files_thumbnail/co/news/synspective-logo-white-key-visual-1024x576.png/500.png,Synspective.png
+アクセルスペースホールディングス,axelspacehd.com,ok,site,https://www.axelspacehd.com/wordpress/wp-content/themes/axelspace_holdings/img/logo_white.png,アクセルスペースホールディングス.png
+スカパーJSATホールディングス,skyperfectjsat.space,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8a/Sky_Perfect_JSAT_logo.svg,スカパーJSATホールディングス.svg
+三井海洋開発,modec.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/41/MODEC.svg,三井海洋開発.svg
+Tesla,tesla.com,ok,existing,,
+BYD,byd-electronics.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/99/BYD_Company%2C_Ltd._-_Logo.svg,BYD.svg
+吉利汽車,geelyauto.com.hk,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bc/Geely_Auto_2023.svg,吉利汽車.svg
+小鵬汽車,xiaopeng.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ca/XPeng_logo.svg,小鵬汽車.svg
+NIO,nio.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=nio.com,NIO.png
+CATL,catl.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5e/Contemporary_Amperex_Technology_%282024%29_logo.jpg,CATL.jpg
+Xiaomi,mi.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/ae/Xiaomi_logo_%282021-%29.svg,Xiaomi.svg
+Uber,uber.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/58/Uber_logo_2018.svg,Uber.svg
+Grab,grab.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f6/Grab_Logo.svg,Grab.svg
+DiDi Global,didiglobal.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=didiglobal.com,DiDi_Global.png
+GO,goinc.jp,ok,site,https://goinc.jp/_nuxt/img/b4c0dff.svg,GO.svg
+LUUP,https://luup.sc/en/lp-en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0e/Luup_logo.svg,LUUP.svg
+ティアフォー,tier4.co.jp,ok,site,https://tier4.co.jp/hubfs/files/images/logo.svg,ティアフォー.svg
+パーク24,park24.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/07/Times_brand_logo.svg,パーク24.svg
+ネクステージ,nextage.jp,ok,site,https://cdn.nextage.jp/nx-img/global/nextage_logo.svg,ネクステージ.svg
+プレミアグループ,premium-group.co.jp,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=premium-group.co.jp,プレミアグループ.png
+Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
+Accenture,accenture.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg,Accenture.svg
+ベイカレント,http://www.baycurrent.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ea/Logo_BayCurrent_Consulting.png,ベイカレント.png
+ノースサンド,northsand.co.jp,ok,site,https://northsand.co.jp/wp-content/themes/vis/assets/common/img/logo.svg,ノースサンド.svg
+シンプレクス・ホールディングス,simplex.holdings,ok,site,https://www.simplex.holdings:443/assets/img/business/group/logo_simplex.png,シンプレクス・ホールディングス.png
+SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
+Finatextホールディングス,finatext.com,ok,site,https://storage.googleapis.com/production-os-assets/assets/61811602-c50f-4c81-a2eb-27a07c59e4c0,Finatextホールディングス.png
+ABEJA,abejainc.com,ok,site,https://static.wixstatic.com/ficons/22a46b_ebbb2f4ec6b54d8c864ff2e518ca5887%7Emv2.ico,ABEJA.ico
+エクサウィザーズ,exawizards.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=exawizards.com,エクサウィザーズ.png
+PKSHA Technology,pkshatech.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=pkshatech.com,PKSHA_Technology.png
+Sakana AI,https://sakana.ai/,ok,site,https://sakana.ai/sakana-logo-hero-640.webp,Sakana_AI.webp
+Preferred Networks,https://www.preferred.jp/,ok,site,https://www.preferred.jp/images/common/logo.svg,Preferred_Networks.svg
+Eli Lilly,lilly.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2b/Eli_Lilly_and_Company.svg,Eli_Lilly.svg
+Novo Nordisk,novonordisk.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=novonordisk.com,Novo_Nordisk.png
+エムスリー,m3.com,ok,existing,,
+JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
+メドレー,medley.jp,ok,site,https://www.medley.jp/assets/img/logo/medley_corp.svg,メドレー.svg
+エス・エム・エス,bm-sms.co.jp,ok,site,https://www.bm-sms.co.jp/wp-content/themes/sms-corp/images/SMS-logo_RGB.png,エス・エム・エス.png
+三菱商事,mitsubishicorp.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/69/Mitsubishi-Corporation-Logo.svg,三菱商事.svg
+三井物産,mitsui.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/85/Mitsui_Bussan_logo.svg,三井物産.svg
+伊藤忠商事,itochu.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a9/Itochu-Logo.svg,伊藤忠商事.svg
+住友商事,sumitomocorp.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/77/Sumitomo_Sh%C5%8Dji_logo.svg,住友商事.svg
+丸紅,marubeni.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/31/Marubeni_Logo.svg,丸紅.svg
+三井不動産,mitsuifudosan.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/ac/Mitsui_Fudosan_logo_%282024%29.svg,三井不動産.svg
+三菱地所,mec.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5a/Mitsubishi_logo.svg,三菱地所.svg
+住友不動産,sumitomo-rd.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b6/Sumitomo_Realty_and_Development_logo.svg,住友不動産.svg
+オープンハウス,openhouse-group.co.jp,ok,site,https://openhouse-group.co.jp/assets/img/common/logo.svg,オープンハウス.svg
+ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
+日本M&Aセンターホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+M&Aキャピタルパートナーズ,ma-cp.com,ok,site,https://www.ma-cp.com:443/assets/images/common/c_logo.svg,M&Aキャピタルパートナーズ.svg
+ストライク,strike.co.jp,ok,site,https://strike.co.jp/assets/images/common/logo_jpn.svg?v=20251202,ストライク.svg
+クオンツ総研ホールディングス,quants-souken.co.jp,ok,site,https://s3-ap-northeast-1.amazonaws.com/cdn.ma-site.com/statics/front2019/hd_blue_logo_v2.png,クオンツ総研ホールディングス.png
+リクルートホールディングス,recruit-holdings.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/82/Recruit_Holdings_logo.svg,リクルートホールディングス.svg
+ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
+タイミー,corp.timee.co.jp,ok,site,https://corp.timee.co.jp/img/common/h1_logo.svg,タイミー.svg
+星野リゾート,https://hoshinoresorts.com/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/08/Logo_Hoshino_resorts.jpg,星野リゾート.jpg
+アパホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+NOT A HOTEL,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+BuySell Technologies,buysell-technologies.com,ok,site,https://buysell-technologies.com/wp-content/themes/buysell-technologies/assets/images/common/header_logo.svg,BuySell_Technologies.svg
+AlbaLink,albalink.co.jp,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=albalink.co.jp,AlbaLink.png
+技術承継機構,ngt-g.com,ok,site,https://ngt-g.com/wp-content/uploads/2024/12/logo.png?1793267806,技術承継機構.png
+パワーエックス,power-x.jp,ok,site,https://power-x.jp/apple-icon.png?apple-icon.31hof3xp6shc9.png,パワーエックス.png
+グローバル・セキュリティ・エキスパート,gsx.co.jp,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=gsx.co.jp,グローバル・セキュリティ・エキスパート.png
+note,note.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/Note.com_Logo.png,note.png
+TKP,tkp.jp,ok,site,https://www.tkp.jp/assets/img/logo.webp,TKP.webp
+クラシル,kurashiru.co.jp,ok,site,https://kurashiru.co.jp/apple-touch-icon.png,クラシル.png
+SUMIグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+DMM,https://journals.biologists.com/dmm,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=journals.biologists.com,DMM.png
