@@ -510,7 +510,7 @@ function autoTitle(){
   if($("#title").dataset.touched) return;
   if($("#mode").value==="seg"){
     const r = state.rows.find(x=>x.key===$("#segCo").value);
-    $("#title").value = r ? `${r.企業} セグメント別業績（${r.期}）` : "セグメント別業績"; return;
+    $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${r.期}）` : "セグメント別業績"; return;
   }
   $("#title").value = "注目企業の決算";
 }
@@ -546,6 +546,17 @@ window.__render = (rows, opts={}) => {
   if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
   if(opts.accent){ $("#palette").value="custom"; $("#cAccent").value = opts.accent; }
   $("#mode").value = "table";
+  renderPreview();
+  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+};
+/* セグメント表を render.py から作る入口 */
+window.__renderSeg = async (key, opts={}) => {
+  if(!state.masters.length){ const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json(); state.masters = m.companies||[]; }
+  const c = state.masters.find(x => [x.ticker, x.name, x.ja].includes(key)); if(!c) throw new Error("マスターに見つかりません: "+key);
+  const r = rowFromMaster(c, opts.period); r.社名表示 = false; state.rows = [r];
+  $("#mode").value = "seg"; fillSegCo(); $("#segCo").value = r.key; $("#segProfit").checked = !!opts.profit;
+  if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
+  $("#title").dataset.touched = opts.title ? "1" : ""; if(opts.title) $("#title").value = opts.title; else autoTitle();
   renderPreview();
   return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
 };

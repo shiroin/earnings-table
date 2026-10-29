@@ -3,6 +3,7 @@
 Webアプリと同じ見た目の決算比較表PNGを、コマンドラインで作る（毎朝の自動まとめ用）
 
   python3 render.py 決算.csv -o 決算.png --title "米国企業の決算（10月28日発表）" --period below
+  python3 render.py --seg NVDA -o NVDA_seg.png [--seg-period FY2027Q2] [--seg-profit]   # セグメント表（企業マスターから）
 
 CSVの列（スプレッドシート「決算データ」と同じ名前）:
   企業, 期, 単位, 売上高, 売上高前年比, 営業利益, 営業利益前年比, 営業利益率(空欄=自動), 時価総額
@@ -17,9 +18,12 @@ KEYS = ["企業", "社名表示", "期", "単位", "売上高", "売上高前年
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("csv")
+    ap.add_argument("csv", nargs="?")
+    ap.add_argument("--seg", help="セグメント表を作る企業（ティッカー・英語名・日本名）")
+    ap.add_argument("--seg-period", help="期（例 FY2027Q2）。省略で最新")
+    ap.add_argument("--seg-profit", action="store_true", help="セグメント利益も入れる")
     ap.add_argument("-o", "--out", required=True)
-    ap.add_argument("--title", default="注目企業の決算")
+    ap.add_argument("--title", default=None)
     ap.add_argument("--period", choices=["corner", "below", "none"], default="corner", help="期の表示: corner=ロゴの右上 / below=ロゴの下")
     ap.add_argument("--minus", default="△")
     ap.add_argument("--palette", default="teal", help="配色: teal / green / wine / charcoal / purple / ocean")
@@ -27,8 +31,12 @@ def main():
     ap.add_argument("--accent", help="営業利益率の色（例 #EE7E1A）")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
-    with open(a.csv, encoding="utf-8-sig", newline="") as f:
+    rows = []
+    if a.csv:
+      with open(a.csv, encoding="utf-8-sig", newline="") as f:
         rows = [{k: (r.get(k) or "").strip() for k in KEYS} for r in csv.DictReader(f) if (r.get("企業") or "").strip()]
+    elif not a.seg:
+        ap.error("CSV か --seg を指定してください")
     for r in rows:  # 社名表示: ○ / 1 / TRUE などで表示
         r["社名表示"] = bool(re.match(r"^(○|〇|◯|1|true|yes|はい|y|on|表示)$", r["社名表示"], re.I))
 
@@ -43,7 +51,10 @@ def main():
             page = b.new_page(viewport={"width": 4000, "height": 1200}, device_scale_factor=a.scale)
             page.goto(f"http://127.0.0.1:{srv.server_port}/index.html?headless=1")
             page.wait_for_function("window.__ready === true")
-            page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title, "period": a.period, "minus": a.minus, "palette": a.palette, "head": a.head, "accent": a.accent}])
+            if a.seg:
+                page.evaluate("([k,o]) => window.__renderSeg(k,o)", [a.seg, {"period": a.seg_period, "profit": a.seg_profit, "palette": a.palette, "title": a.title}])
+            else:
+                page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "palette": a.palette, "head": a.head, "accent": a.accent}])
             page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
             b.close()
