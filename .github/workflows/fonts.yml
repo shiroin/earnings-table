@@ -1,0 +1,57 @@
+name: フォント取得
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install fonttools brotli
+      - name: Google Fonts（OFL）から取得してサブセット化
+        run: |
+          set -e
+          mkdir -p src fonts
+          G=https://raw.githubusercontent.com/google/fonts/main/ofl
+          dl(){ curl -fsSL -o "src/$2" "$G/$1"; }
+          dl "zenkakugothicnew/ZenKakuGothicNew-Medium.ttf" zkg-500.ttf
+          dl "zenkakugothicnew/ZenKakuGothicNew-Bold.ttf"   zkg-700.ttf
+          dl "bizudpgothic/BIZUDPGothic-Regular.ttf"        biz-400.ttf
+          dl "bizudpgothic/BIZUDPGothic-Bold.ttf"           biz-700.ttf
+          dl "mplus1/MPLUS1%5Bwght%5D.ttf"                  mplus1-var.ttf
+          dl "outfit/Outfit%5Bwght%5D.ttf"                  outfit-var.ttf
+          dl "barlow/Barlow-Medium.ttf"                     barlow-500.ttf
+          dl "barlow/Barlow-SemiBold.ttf"                   barlow-600.ttf
+          dl "archivo/Archivo%5Bwdth,wght%5D.ttf"           archivo-var.ttf
+          python - <<'PY'
+          # 日本語: JIS第1・第2水準（cp932で表せる文字）＋記号
+          chars = set()
+          for b1 in range(0x81, 0xF0):
+              for b2 in range(0x40, 0xFD):
+                  try: chars.add(bytes([b1, b2]).decode("cp932"))
+                  except Exception: pass
+          chars |= {chr(c) for c in range(0x20, 0x7F)} | set("〜～−–—△▲％＋（）・、。「」")
+          open("ja.txt", "w", encoding="utf-8").write("".join(sorted(chars)))
+          open("latin.txt", "w", encoding="utf-8").write("".join(chr(c) for c in range(0x20, 0x7F)) + "△▲−–—％＋")
+          PY
+          for f in zkg-500 zkg-700 biz-400 biz-700 mplus1-var; do
+            pyftsubset src/$f.ttf --text-file=ja.txt --flavor=woff2 --layout-features='*' --output-file=fonts/$f.woff2
+          done
+          for f in outfit-var barlow-500 barlow-600 archivo-var; do
+            pyftsubset src/$f.ttf --text-file=latin.txt --flavor=woff2 --layout-features='*' --output-file=fonts/$f.woff2
+          done
+          curl -fsSL -o fonts/OFL-ZenKakuGothicNew.txt "$G/zenkakugothicnew/OFL.txt"
+          curl -fsSL -o fonts/OFL-BIZUDPGothic.txt "$G/bizudpgothic/OFL.txt"
+          curl -fsSL -o fonts/OFL-MPLUS1.txt "$G/mplus1/OFL.txt"
+          curl -fsSL -o fonts/OFL-Outfit.txt "$G/outfit/OFL.txt"
+          curl -fsSL -o fonts/OFL-Barlow.txt "$G/barlow/OFL.txt"
+          curl -fsSL -o fonts/OFL-Archivo.txt "$G/archivo/OFL.txt"
+          ls -la fonts
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add fonts
+          git diff --cached --quiet || (git commit -m "フォントを追加（Google Fonts / SIL OFL）" && git push)
