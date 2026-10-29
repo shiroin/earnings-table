@@ -197,7 +197,7 @@ input[type=url]{flex:1}
         <label class="fxonly">為替レート</label>
         <div class="fxonly" id="fxBox" style="display:grid;grid-template-columns:auto 1fr;gap:4px 8px;font-size:12px"></div>
         <label for="align">金額の揃え</label>
-        <select id="align"><option value="left">左揃え</option><option value="right">右揃え</option></select>
+        <select id="align"><option value="auto">自動（通貨がそろえば右、混在なら左）</option><option value="left">左揃え</option><option value="right">右揃え</option></select>
         <label for="minus">マイナス記号</label>
         <select id="minus"><option value="△">△</option><option value="-">-</option></select>
       </div>
@@ -464,6 +464,18 @@ function compCell(r, pmode){
   return pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
        : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
 }
+/* 表示される通貨（億・兆などの桁は無視）が1種類なら右揃え */
+function shownCurrency(u){ const m = String(u||"").match(/^(?:百万|10億|十億|億|兆)?(.+)$/); return m ? m[1] : u; }
+function alignLeft(){
+  const a = $("#align").value; if(a!=="auto") return a==="left";
+  const yen = $("#cur").value==="jpy";
+  const curs = new Set(state.rows.map(r=>{
+    const u = r.単位 || $("#unit").value;
+    if(yen){ const su = splitUnit(u); if(su?.code && fxRate(su.code)) return "円"; }
+    return shownCurrency(u);
+  }));
+  return curs.size > 1;
+}
 function tableHTML(){
   const m = $("#minus").value, pmode = $("#period").value;
   const yen = $("#cur").value==="jpy";
@@ -486,7 +498,7 @@ function tableHTML(){
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
   return `<h3>${esc($("#title").value)}</h3>
-    <table class="et ${$("#align").value==="left"?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${yen && usedCurrencies().length ? `<div class="fxnote">※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・営業利益率は現地通貨ベース</div>` : ""}`;
+    <table class="et ${alignLeft()?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${yen && usedCurrencies().length ? `<div class="fxnote">※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・営業利益率は現地通貨ベース</div>` : ""}`;
 }
 
 /* ---------- セグメント表 ---------- */
@@ -620,7 +632,7 @@ window.__renderSeg = async (key, opts={}) => {
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"left"; $("#cur").value=o.cur||"local"; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();

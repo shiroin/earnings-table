@@ -28,7 +28,7 @@ def main():
     ap.add_argument("--minus", default="△")
     ap.add_argument("--yen", action="store_true", help="金額を日本円に換算（為替は config.json の fx、--fx で上書き）")
     ap.add_argument("--fx", help='為替の上書き（例: USD=157.9,KRW=0.108）')
-    ap.add_argument("--align", choices=["left", "right"], default="left", help="売上高・営業利益・時価総額の揃え")
+    ap.add_argument("--align", choices=["auto", "left", "right"], default="auto", help="売上高・営業利益・時価総額の揃え（auto: 通貨がそろえば右、混在なら左）")
     ap.add_argument("--palette", default="teal", help="配色: teal / green / wine / charcoal / purple / ocean")
     ap.add_argument("--head", help="見出しの色（例 #1F6E75）。指定すると配色より優先")
     ap.add_argument("--accent", help="営業利益率の色（例 #EE7E1A）")
