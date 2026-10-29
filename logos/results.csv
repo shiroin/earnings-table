@@ -5,7 +5,7 @@ Broadcom,broadcom.com,ok,existing,,
 Intel,intc.com,ok,existing,,
 TSMC,tsmc.com,ok,existing,,
 SMIC,smics.com,ok,existing,,
-Cambricon,cambricon.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f9/Cambricon_Technologies.svg,Cambricon.svg
+Cambricon,cambricon.com,ok,existing,,
 Arm Holdings,arm.com,ok,existing,,
 Cerebras Systems,cerebras.ai,ok,existing,,
 SK hynix,skhynix.com,ok,existing,,
@@ -13,8 +13,8 @@ Samsung Electronics,samsung.com,ok,existing,,
 Micron,micron.com,ok,existing,,
 キオクシアホールディングス,kioxia-holdings.com,ok,existing,,
 Sandisk,sandisk.com,ok,existing,,
-南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
-CXMT,https://www.cxmt.com,ok,site,https://www.cxmt.com/statics/shuwon//assets/img/svg/logo-w.svg,CXMT.svg
+南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
+CXMT,,none,指定でロゴなし,,
 Seagate Technology,seagate.com,ok,existing,,
 Western Didital,wdc.com,ok,existing,,
 Dell Technologies,delltechnologies.com,ok,existing,,
@@ -26,20 +26,20 @@ Lenovo,lenovo.com,ok,existing,,
 Cisco Systems,cisco.com,ok,existing,,
 Celestica,celestica.com,ok,existing,,
 Arista Networks,arista.com,ok,existing,,
-Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
+Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
 Zhongji Innolight,zj-innolight.com,ok,existing,,
 Amphenol,amphenol.com,ok,existing,,
-Corning,corning.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=corning.com,Corning.jpg
+Corning,corning.com,ok,existing,,
 Credo Technology,credosemi.com,ok,existing,,
 Lumentum,lumentum.com,ok,existing,,
 Marvell,marvell.com,ok,existing,,
 Coherent,coherent.com,ok,existing,,
 Ciena,ciena.com,ok,existing,,
-POET Technologies,poet-technologies.com,ok,site,https://cdn.prod.website-files.com/672933631b7b783bf9d0fe72/672933631b7b783bf9d10210_Mitsubishi_Electric_logo%20logo.svg,POET_Technologies.svg
+POET Technologies,poet-technologies.com,none,指定でロゴなし,,
 フジクラ,fujikura.co.jp,ok,existing,,
 古河電気工業,furukawaelectric.com,ok,existing,,
 住友電気工業,sumitomoelectric.com,ok,existing,,
-精工技研,seikoh-giken.co.jp,ok,site,https://seikoh-giken.co.jp/img/cmn/header_logo.png,精工技研.png
+精工技研,seikoh-giken.co.jp,none,指定でロゴなし,,
 santec Holdings,santec.com,ok,existing,,
 OpenAI,,ok,existing,,
 Anthropic,,ok,existing,,
@@ -58,32 +58,32 @@ ASML,asml.com,ok,existing,,
 東京エレクトロン,tel.co.jp,ok,existing,,
 アドバンテスト,advantest.com,ok,existing,,
 ディスコ,disco.co.jp,ok,existing,,
-レーザーテック,lasertec.co.jp,ok,site,https://www.lasertec.co.jp/app-files/img/hdr_logo01.png,レーザーテック.png
+レーザーテック,lasertec.co.jp,none,指定でロゴなし,,
 SCREENホールディングス,screen.co.jp,ok,existing,,
 Applied Materials,appliedmaterials.com,ok,existing,,
 Lam Research,lamresearch.com,ok,existing,,
 KLA,kla.com,ok,existing,,
 KOKUSAI ELECTRIC,kokusai-electric.com,ok,existing,,
-ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
+ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
 村田製作所,murata.com,ok,existing,,
 イビデン,ibiden.co.jp,ok,existing,,
 メイコー,meiko-elec.com,ok,existing,,
 JX金属,jx-nmm.com,ok,existing,,
-レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
-日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
-信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
+レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
+日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
+信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
 SUMCO,sumcosi.com,ok,existing,,
 味の素,ajinomoto.co.jp,ok,existing,,
 TOTO,jp.toto.com,ok,existing,,
 IREN,iren.com,ok,existing,,
 Vertiv,vertiv.com,ok,existing,,
 Bloom Energy,bloomenergy.com,ok,existing,,
-Vistra Corp.,vistracorp.com,ok,site,https://cdn-ilbfedf.nitrocdn.com/cCNHxjYMANxnjJnUBmcCqmSHlJrNjtdQ/assets/images/optimized/rev-0c0e8b9/vistracorp.com/wp-content/uploads/2026/08/Newsweek_US-CharitableCompanies_2026_Logo_Basic-copy.png,Vistra_Corp..png
-SBエナジー,https://www.sbenergy.co.jp/en/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.sbenergy.co.jp,SBエナジー.jpg
+Vistra Corp.,vistracorp.com,none,指定でロゴなし,,
+SBエナジー,,none,指定でロゴなし,,
 日立製作所,hitachi.com,ok,existing,,
 パナソニック,holdings.panasonic,ok,existing,,
 GE Vernova,gevernova.com,ok,existing,,
-Eaton,eaton.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=eaton.com,Eaton.jpg
+Eaton,eaton.com,none,指定でロゴなし,,
 Salesforce,salesforce.com,ok,existing,,
 Adobe,adobe.com,ok,existing,,
 ServiceNow,servicenow.com,ok,existing,,
@@ -100,7 +100,7 @@ Twilio,twilio.com,ok,existing,,
 Okta,okta.com,ok,existing,,
 CrowdStrike,crowdstrike.com,ok,existing,,
 Palo Alto Networks,paloaltonetworks.com,ok,existing,,
-Zscaler,zscaler.com,ok,site,https://www.zscaler.com:443/_next/image?url=https%3A%2F%2Fcms.zscaler.com%2Fsites%2Fdefault%2Ffiles%2Fcustomers%2Flogo%2Fair-asia%25402x.png.png&w=768&q=75,Zscaler.webp
+Zscaler,zscaler.com,none,指定でロゴなし,,
 Intuit,intuit.com,ok,existing,,
 Autodesk,autodesk.com,ok,existing,,
 Cadence Design Systems,cadence.com,ok,existing,,
@@ -110,9 +110,9 @@ UiPath,uipath.com,ok,existing,,
 Atlassian,atlassian.com,ok,existing,,
 Shopify,shopify.com,ok,existing,,
 Figma,figma.com,ok,existing,,
-Elastic,elastic.co,ok,site,https://elastic-global-nav-assets.s3.us-west-2.amazonaws.com/logo-docusign.svg,Elastic.svg
+Elastic,elastic.co,none,指定でロゴなし,,
 Veeva Systems,veeva.com,ok,existing,,
-Samsara,samsara.com,ok,site,https://images.ctfassets.net/bx9krvy0u3sx/2TMXJRvKXRmviQAXBLgBiq/182eb7e04be312b434c810cdd32fe5e8/DHL-logo.png,Samsara.png
+Samsara,samsara.com,none,指定でロゴなし,,
 monday.com,monday.com,ok,existing,,
 オービック,obic.co.jp,ok,existing,,
 オービックビジネスコンサルタント,corp.obc.co.jp,ok,existing,,
@@ -128,7 +128,7 @@ HENNGE,hennge.com,ok,existing,,
 Appier,appier.com,ok,existing,,
 弁護士ドットコム,bengo4.com,ok,existing,,
 LayerX,,ok,existing,,
-SmartHR,https://smarthr.co.jp/,ok,site(inline svg),https://smarthr.co.jp/,SmartHR.svg
+SmartHR,,none,指定でロゴなし,,
 LegalOn Technologies,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 Databricks,,ok,existing,,
 CADDi,,ok,existing,,
@@ -141,13 +141,13 @@ Chewy,chewy.com,ok,existing,,
 Wayfair,wayfair.com,ok,existing,,
 MonotaRO,corp.monotaro.com,ok,existing,,
 Alibaba,alibabagroup.com,ok,existing,,
-PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
+PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
 JD.com,jd.com,ok,existing,,
 Meituan,meituan.com,ok,existing,,
 楽天グループ,corp.rakuten.co.jp,ok,existing,,
 メルカリ,about.mercari.com,ok,existing,,
 ZOZO,corp.zozo.com,ok,existing,,
-ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
+ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
 SHEIN,sheingroup.com,ok,existing,,
 Booking Holdings,bookingholdings.com,ok,existing,,
 Airbnb,airbnb.com,ok,existing,,
@@ -158,14 +158,14 @@ Duolingo,duolingo.com,ok,existing,,
 Pinterest,pinterestinc.com,ok,existing,,
 Snap,snap.com,ok,existing,,
 ByteDance,,ok,existing,,
-DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
+DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
 百度,baidu.com,ok,existing,,
 LINEヤフー,lycorp.co.jp,ok,existing,,
 サイバーエージェント,cyberagent.co.jp,ok,existing,,
 AppLovin,applovin.com,ok,existing,,
 GMOインターネットグループ,group.gmo,ok,existing,,
 Netflix,netflix.net,ok,existing,,
-Disney,thewaltdisneycompany.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/44/The_Walt_Disney_Company_Logo.svg,Disney.svg
+Disney,thewaltdisneycompany.com,ok,existing,,
 Spotify,spotify.com,ok,existing,,
 快手,kuaishou.com,ok,existing,,
 Bilibili,bilibili.com,ok,existing,,
@@ -185,8 +185,8 @@ POP MART,popmart.com.cn,ok,existing,,
 サンリオ,sanrio.co.jp,ok,existing,,
 東宝,toho.co.jp,ok,existing,,
 東映アニメーション,corp.toei-anim.co.jp,ok,existing,,
-KADOKAWA,group.kadokawa.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/39/Kadokawa_logo.svg,KADOKAWA.svg
-円谷フィールズホールディングス,tsuburaya-fields.co.jp,ok,site,https://www.tsuburaya-fields.co.jp/newscms/wp-content/themes/tsuburaya/assets/img/common/logo.svg,円谷フィールズホールディングス.svg
+KADOKAWA,group.kadokawa.co.jp,ok,existing,,
+円谷フィールズホールディングス,tsuburaya-fields.co.jp,none,指定でロゴなし,,
 ポケモン,,ok,existing,,
 ANYCOLOR,anycolor.co.jp,ok,existing,,
 カバー,cover-corp.com,ok,existing,,
@@ -198,11 +198,11 @@ LVMH,lvmh.com,ok,existing,,
 Hermès,finance.hermes.com,ok,existing,,
 セイコーグループ,seiko.co.jp,ok,existing,,
 Ferrari,ferrari.com,ok,existing,,
-貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
+貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
 Nike,nike.com,ok,existing,,
 アシックス,corp.asics.com,ok,existing,,
 Lululemon,lululemon.com,ok,existing,,
-Monster Beverage,monsterbevcorp.com,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=monsterbevcorp.com,Monster_Beverage.png
+Monster Beverage,monsterbevcorp.com,none,指定でロゴなし,,
 HUMAN MADE,,ok,existing,,
 MTG,,ok,existing,,
 Walmart,stock.walmart.com,ok,existing,,
@@ -215,7 +215,7 @@ Walmart,stock.walmart.com,ok,existing,,
 McDonald's,mcdonalds.com,ok,existing,,
 Starbucks,starbucks.com,ok,existing,,
 Domino's Pizza,dominos.com,ok,existing,,
-Luckin Coffee,luckincoffee.com,ok,site,https://web.luckincdn.com/default/assets/logo2-9d412147.svg,Luckin_Coffee.svg
+Luckin Coffee,luckincoffee.com,none,指定でロゴなし,,
 FOOD & LIFE COMPANIES,food-and-life.co.jp,ok,existing,,
 日本マクドナルドホールディングス,mcd-holdings.co.jp,ok,existing,,
 サイゼリヤ,saizeriya.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://saizeriya.co.jp&size=256"
@@ -226,17 +226,17 @@ American Express,americanexpress.com,ok,existing,,
 PayPal,pypl.com,ok,existing,,
 Block,block.xyz,ok,existing,,
 Adyen,adyen.com,ok,existing,,
-Nu Holdings,nu.com,ok,site,https://www.datocms-assets.com/162099/1787926138-logo-miami-svg.svg?quality=60,Nu_Holdings.svg
+Nu Holdings,nu.com,none,指定でロゴなし,,
 Wise,owners.wise.com,ok,existing,,
 SoFi Technologies,sofi.com,ok,existing,,
-Affirm,affirm.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/ff/Affirm_logo.svg,Affirm.svg
+Affirm,affirm.com,ok,existing,,
 Klarna,klarna.com,ok,existing,,
 Toast,toasttab.com,ok,existing,,
 PayPay,paypay.ne.jp,ok,existing,,
-GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
+GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
 Revolut,,ok,existing,,
 Stripe,,ok,existing,,
-富途控股,futuholdings.com,ok,site,https://static.futunn.com/futuholdings/logo/futulogo_white_new.svg?v=20190705,富途控股.svg
+富途控股,futuholdings.com,none,指定でロゴなし,,
 Coinbase,coinbase.com,ok,existing,,
 Robinhood,robinhood.com,ok,existing,,
 SBIホールディングス,sbigroup.co.jp,ok,existing,,
@@ -263,10 +263,10 @@ Anduril Industries,,ok,existing,,
 SpaceX,spacex.com,ok,existing,,
 Rocket Lab,rocketlabcorp.com,ok,existing,,
 ispace,ispace-inc.com,ok,existing,,
-アストロスケールホールディングス,astroscale.com,ok,site,https://images.ctfassets.net/k5fy2axdrsqr/47gVTTJJAwRuA7ey1ITSYt/b4376389bf2ec91975b1de60139fa7d7/Astroscale-246.jpg.png?q=80&fm=webp&w=1920,アストロスケールホールディングス.webp
-QPSホールディングス,qpshd.com,ok,site,https://qpshd.com/wordpress/wp-content/themes/qpsholdings/assets/images/_common/logo-header.png,QPSホールディングス.png
+アストロスケールホールディングス,astroscale.com,none,指定でロゴなし,,
+QPSホールディングス,qpshd.com,none,指定でロゴなし,,
 Synspective,synspective.com,ok,existing,,
-アクセルスペースホールディングス,axelspacehd.com,ok,site,https://www.axelspacehd.com/wordpress/wp-content/themes/axelspace_holdings/img/logo_white.png,アクセルスペースホールディングス.png
+アクセルスペースホールディングス,axelspacehd.com,none,指定でロゴなし,,
 スカパーJSATホールディングス,skyperfectjsat.space,ok,existing,,
 三井海洋開発,modec.com,ok,existing,,
 Tesla,tesla.com,ok,existing,,
@@ -279,18 +279,18 @@ Xiaomi,mi.com,ok,existing,,
 Uber,uber.com,ok,existing,,
 Grab,grab.com,ok,existing,,
 DiDi Global,didiglobal.com,ok,existing,,
-GO,goinc.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg,GO.svg
+GO,goinc.jp,none,指定でロゴなし,,
 LUUP,,ok,existing,,
 ティアフォー,tier4.co.jp,ok,existing,,
 パーク24,park24.co.jp,ok,existing,,
 ネクステージ,nextage.jp,ok,existing,,
 プレミアグループ,premium-group.co.jp,ok,existing,,
-Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
+Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
 Accenture,accenture.com,ok,existing,,
 ベイカレント,,ok,existing,,
 ノースサンド,northsand.co.jp,ok,existing,,
 シンプレクス・ホールディングス,simplex.holdings,ok,existing,,
-SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
+SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
 Finatextホールディングス,finatext.com,ok,existing,,
 ABEJA,abejainc.com,ok,existing,,
 エクサウィザーズ,exawizards.com,ok,existing,,
@@ -300,7 +300,7 @@ Preferred Networks,,ok,existing,,
 Eli Lilly,lilly.com,ok,existing,,
 Novo Nordisk,novonordisk.com,ok,existing,,
 エムスリー,m3.com,ok,existing,,
-JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
+JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
 メドレー,medley.jp,ok,existing,,
 エス・エム・エス,bm-sms.co.jp,ok,existing,,
 三菱商事,mitsubishicorp.com,ok,existing,,
@@ -312,13 +312,13 @@ JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://
 三菱地所,mec.co.jp,ok,existing,,
 住友不動産,sumitomo-rd.co.jp,ok,existing,,
 オープンハウス,openhouse-group.co.jp,ok,existing,,
-ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
+ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
 日本M&Aセンターホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 M&Aキャピタルパートナーズ,ma-cp.com,ok,existing,,
 ストライク,strike.co.jp,ok,existing,,
 クオンツ総研ホールディングス,quants-souken.co.jp,ok,existing,,
 リクルートホールディングス,recruit-holdings.com,ok,existing,,
-ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
+ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
 タイミー,corp.timee.co.jp,ok,existing,,
 星野リゾート,,ok,existing,,
 アパホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
