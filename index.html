@@ -79,6 +79,16 @@ input[type=url]{flex:1}
 @font-face{font-family:"Outfit";src:url(fonts/outfit-var.woff2) format("woff2");font-weight:100 900;font-display:block}
 @font-face{font-family:"Barlow";src:url(fonts/barlow-500.woff2) format("woff2");font-weight:500;font-display:block}
 @font-face{font-family:"Barlow";src:url(fonts/barlow-600.woff2) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"PlexJP";src:url(fonts/plexjp-500.woff2) format("woff2");font-weight:500;font-display:block}
+@font-face{font-family:"PlexJP";src:url(fonts/plexjp-700.woff2) format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"Shippori";src:url(fonts/shippori-600.woff2) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Shippori";src:url(fonts/shippori-800.woff2) format("woff2");font-weight:800;font-display:block}
+@font-face{font-family:"ZenMaru";src:url(fonts/zenmaru-500.woff2) format("woff2");font-weight:500;font-display:block}
+@font-face{font-family:"ZenMaru";src:url(fonts/zenmaru-700.woff2) format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"Fraunces";src:url(fonts/fraunces-var.woff2) format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"Nunito";src:url(fonts/nunito-var.woff2) format("woff2");font-weight:200 1000;font-display:block}
+@font-face{font-family:"SpaceGrotesk";src:url(fonts/spacegrotesk-var.woff2) format("woff2");font-weight:300 700;font-display:block}
+@font-face{font-family:"Anton";src:url(fonts/anton-400.woff2) format("woff2");font-weight:400;font-display:block}
 @font-face{font-family:"Archivo";src:url(fonts/archivo-var.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:block}
 
 #canvas{width:max-content;display:inline-block;padding:40px 44px 36px;background:var(--bg);color:var(--fg);font-family:var(--ja)}
@@ -99,6 +109,7 @@ input[type=url]{flex:1}
 .et td.yoy span{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
 .et td.yoy .pos{color:var(--pos)} .et td.yoy .neg{color:var(--neg)} .et td.yoy .na{color:var(--muted)}
 .et td.mg{font-size:40px;font-weight:700;color:var(--mg)}
+.et td.mg .bar{display:none}
 
 /* ① ナイト: 濃紺の地、色は増減と利益率だけ */
 #canvas[data-theme=night]{--bg:#101826;--fg:#F2F5F9;--muted:#8796A9;--unit:#AEB9C7;--rule:#223046;--th-fg:#8796A9;--th-bg:transparent;--pos:#3DDC97;--neg:#FF7A7A;--mg:#FFC24B;--ja:"ZKG",sans-serif;--num:"Outfit",sans-serif;--chip-bg:#FFFFFF;--chip-pad:10px 14px}
@@ -122,6 +133,56 @@ input[type=url]{flex:1}
 #canvas[data-theme=signal] .et td.mg{background:#FFF4CC;font-stretch:88%;font-weight:800}
 #canvas[data-theme=signal] .et th.mgh{background:#161616;color:#FFD23F}
 #canvas[data-theme=signal] .et tbody tr:last-child td{border-bottom:3px solid #161616}
+
+
+/* ④ フォレスト: 深緑の地にクリーム色の文字、利益率は金色 */
+#canvas[data-theme=forest]{--bg:#103B2F;--fg:#F4EFE3;--muted:#9CB9AC;--unit:#C7D5CD;--rule:#255446;--th-fg:#9CB9AC;--th-bg:transparent;--pos:#9AE6B4;--neg:#FFA392;--mg:#F2C76E;--ja:"PlexJP",sans-serif;--num:"PlexJP",sans-serif;--chip-bg:#F4EFE3;--chip-pad:10px 14px}
+#canvas[data-theme=forest] h3{font-weight:700}
+#canvas[data-theme=forest] .et thead th{border-bottom:1px solid #F2C76E}
+#canvas[data-theme=forest] .et td.amt b,#canvas[data-theme=forest] .et td.cap b{font-weight:700;font-size:44px}
+#canvas[data-theme=forest] .et td{border-bottom-style:dashed}
+
+/* ⑤ エディトリアル: 明朝の見出しと、ペン書きのような数字 */
+#canvas[data-theme=mincho]{--bg:#FFFFFF;--fg:#1D1D1F;--muted:#77736C;--unit:#4B4844;--rule:#D9D5CE;--th-fg:#1D1D1F;--th-bg:transparent;--pos:#2B6A4E;--neg:#B3261E;--mg:#1D1D1F;--ja:"Shippori",serif;--num:"Fraunces",serif;--th-w:600}
+#canvas[data-theme=mincho] h3{font-weight:800;font-size:48px;letter-spacing:.06em;text-align:center;margin-bottom:30px}
+#canvas[data-theme=mincho] .et thead th{border-top:4px double #1D1D1F;border-bottom:1px solid #1D1D1F;font-size:22px}
+#canvas[data-theme=mincho] .et td.amt b,#canvas[data-theme=mincho] .et td.cap b{font-weight:500;font-size:50px;font-variation-settings:"opsz" 72}
+#canvas[data-theme=mincho] .et td.yoy span{font-weight:500;font-style:normal}
+#canvas[data-theme=mincho] .et td.mg{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:10px}
+#canvas[data-theme=mincho] .et tbody tr:last-child td{border-bottom:4px double #1D1D1F}
+#canvas[data-theme=mincho] .et td.comp .lt{font-weight:800}
+
+/* ⑥ ポップ: 薄紫の地に、1社ずつ角丸のカード */
+#canvas[data-theme=pop]{--bg:#F1EEFF;--fg:#251F45;--muted:#7C76A3;--unit:#5C5689;--rule:transparent;--th-fg:#7C76A3;--th-bg:transparent;--pos:#0E9C88;--neg:#E5484D;--mg:#6A45F0;--ja:"ZenMaru",sans-serif;--num:"Nunito",sans-serif;--th-w:700}
+#canvas[data-theme=pop] h3{font-size:44px}
+#canvas[data-theme=pop] .et{border-spacing:0 14px;margin-top:-14px}
+#canvas[data-theme=pop] .et td{background:#FFFFFF;height:116px}
+#canvas[data-theme=pop] .et td:first-child{border-radius:22px 0 0 22px}
+#canvas[data-theme=pop] .et td:last-child{border-radius:0 22px 22px 0}
+#canvas[data-theme=pop] .et th{padding-bottom:2px}
+#canvas[data-theme=pop] .et td.amt b,#canvas[data-theme=pop] .et td.cap b{font-weight:800}
+#canvas[data-theme=pop] .et td.yoy span{font-weight:800}
+#canvas[data-theme=pop] .et td.mg{font-weight:900}
+
+/* ⑦ ブループリント: 青い方眼に白い線と文字 */
+#canvas[data-theme=blueprint]{--bg:#1C3FAA;--fg:#FFFFFF;--muted:#B9C7F2;--unit:#DCE4FB;--rule:rgba(255,255,255,.28);--th-fg:#DCE4FB;--th-bg:rgba(255,255,255,.08);--pos:#9FF5C9;--neg:#FFC0C0;--mg:#FFE36E;--ja:"ZKG",sans-serif;--num:"SpaceGrotesk",sans-serif;--chip-bg:#FFFFFF;--chip-pad:10px 14px;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:24px 24px}
+#canvas[data-theme=blueprint] .et{border:1px solid rgba(255,255,255,.5)}
+#canvas[data-theme=blueprint] .et td,#canvas[data-theme=blueprint] .et th{border-right:1px solid var(--rule)}
+#canvas[data-theme=blueprint] .et th{border-bottom:1px solid rgba(255,255,255,.5)}
+#canvas[data-theme=blueprint] .et td.amt b,#canvas[data-theme=blueprint] .et td.cap b{font-weight:600}
+#canvas[data-theme=blueprint] .et .per{font-family:var(--ja);font-weight:700;color:#DCE4FB}
+
+/* ⑧ モノクロ: 黒一色、極太の数字、利益率は棒で */
+#canvas[data-theme=mono]{--bg:#FFFFFF;--fg:#111111;--muted:#6B6B6B;--unit:#111111;--rule:#E2E2E2;--th-fg:#111111;--th-bg:transparent;--pos:#111111;--neg:#D3121F;--mg:#111111;--ja:"ZKG",sans-serif;--num:"Anton",sans-serif;--th-w:700}
+#canvas[data-theme=mono] h3{font-size:50px;letter-spacing:.01em}
+#canvas[data-theme=mono] .et thead th{border-bottom:6px solid #111111;font-size:20px}
+#canvas[data-theme=mono] .et td.amt b,#canvas[data-theme=mono] .et td.cap b{font-weight:400;font-size:58px;letter-spacing:.01em}
+#canvas[data-theme=mono] .et td.yoy span{font-weight:400;font-size:34px}
+#canvas[data-theme=mono] .et td.mg{font-weight:400;font-size:40px;min-width:200px}
+#canvas[data-theme=mono] .et td.mg .bar{display:block;height:10px;margin:10px 0 0 auto;background:#111111;max-width:100%}
+#canvas[data-theme=mono] .et td.mg .barbox{display:block;width:170px;margin-left:auto;background:#EFEFEF}
+#canvas[data-theme=mono] .et .per{font-family:var(--ja);font-weight:700;color:#111}
 
 @media (max-width:900px){
   .app{grid-template-columns:1fr}
@@ -180,7 +241,7 @@ input[type=url]{flex:1}
         <label for="unit">単位（手入力の初期値）</label>
         <select id="unit"><option>億円</option><option>億ドル</option><option>兆ウォン</option><option>億ウォン</option><option>億台湾ドル</option><option>億元</option><option>億香港ドル</option><option>百万円</option><option>百万ドル</option></select>
         <label for="theme">デザイン</label>
-        <select id="theme"><option value="night">ナイト（濃紺）</option><option value="slate">スレート（白・縞）</option><option value="signal">シグナル（黄色）</option></select>
+        <select id="theme"><option value="night">ナイト（濃紺）</option><option value="slate">スレート（白・縞）</option><option value="signal">シグナル（黄色）</option><option value="forest">フォレスト（深緑）</option><option value="mincho">エディトリアル（明朝）</option><option value="pop">ポップ（カード）</option><option value="blueprint">ブループリント（方眼）</option><option value="mono">モノクロ（極太・棒）</option></select>
         <label for="period">期の表示</label>
         <select id="period"><option value="corner">ロゴの上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
         <label for="minus">マイナス記号</label>
@@ -216,6 +277,11 @@ const FONT_FILES = {
   night:  [["ZKG","fonts/zkg-500.woff2","500"],["ZKG","fonts/zkg-700.woff2","700"],["Outfit","fonts/outfit-var.woff2","100 900"]],
   slate:  [["BIZ","fonts/biz-400.woff2","400"],["BIZ","fonts/biz-700.woff2","700"],["Barlow","fonts/barlow-500.woff2","500"],["Barlow","fonts/barlow-600.woff2","600"]],
   signal: [["MP1","fonts/mplus1-var.woff2","100 900"],["Archivo","fonts/archivo-var.woff2","100 900"]],
+  forest: [["PlexJP","fonts/plexjp-500.woff2","500"],["PlexJP","fonts/plexjp-700.woff2","700"]],
+  mincho: [["Shippori","fonts/shippori-600.woff2","600"],["Shippori","fonts/shippori-800.woff2","800"],["Fraunces","fonts/fraunces-var.woff2","100 900"]],
+  pop:    [["ZenMaru","fonts/zenmaru-500.woff2","500"],["ZenMaru","fonts/zenmaru-700.woff2","700"],["Nunito","fonts/nunito-var.woff2","200 1000"]],
+  blueprint: [["ZKG","fonts/zkg-500.woff2","500"],["ZKG","fonts/zkg-700.woff2","700"],["SpaceGrotesk","fonts/spacegrotesk-var.woff2","300 700"]],
+  mono:   [["ZKG","fonts/zkg-500.woff2","500"],["ZKG","fonts/zkg-700.woff2","700"],["Anton","fonts/anton-400.woff2","400"]],
 };
 const fontCache = {};
 async function fontCSS(theme){
@@ -416,7 +482,7 @@ function renderPreview(){
       <td class="yoy">${yo(ry)}</td>
       <td class="amt"><b>${fmtAmt(op,m)}</b><small>${op==null?"":unit}</small></td>
       <td class="yoy">${yo(oy)}</td>
-      <td class="mg">${fmtPct(mg,m,false)}</td>
+      <td class="mg">${fmtPct(mg,m,false)}<span class="barbox"><i class="bar" style="width:${mg==null?0:Math.max(0,Math.min(100,mg*2))}%"></i></span></td>
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
   $("#stage").innerHTML = `<div class="fit"><div id="canvas" data-theme="${theme}"><h3>${esc($("#title").value)}</h3>

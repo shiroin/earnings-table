@@ -22,7 +22,7 @@ def main():
     ap.add_argument("--title", default="注目企業の決算")
     ap.add_argument("--period", choices=["corner", "below", "none"], default="corner", help="期の表示: corner=ロゴの上 / below=ロゴの下")
     ap.add_argument("--minus", default="△")
-    ap.add_argument("--theme", choices=["night", "slate", "signal"], default="night")
+    ap.add_argument("--theme", default="night", help="night / slate / signal / forest / mincho / pop / blueprint / mono")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
     with open(a.csv, encoding="utf-8-sig", newline="") as f:
