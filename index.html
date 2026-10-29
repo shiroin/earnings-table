@@ -95,6 +95,9 @@ input[type=url]{flex:1}
 .et td.cap{border-left:1.5px dotted #555;text-align:right;font-family:var(--num);white-space:nowrap;min-width:200px}
 .et td.cap b{font-size:42px;font-weight:500}
 .et td.sep{border-left:1.5px solid #888}
+/* 金額を左揃えにする */
+.et.alignL td.amt,.et.alignL td.cap{text-align:left}
+.et.alignL td.amt{padding-left:26px}
 
 @media (max-width:900px){
   .app{grid-template-columns:1fr}
@@ -188,6 +191,8 @@ input[type=url]{flex:1}
         </div>
         <label for="period">期の表示</label>
         <select id="period"><option value="corner">ロゴの右上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
+        <label for="align">金額の揃え</label>
+        <select id="align"><option value="left">左揃え</option><option value="right">右揃え</option></select>
         <label for="minus">マイナス記号</label>
         <select id="minus"><option value="△">△</option><option value="-">-</option></select>
       </div>
@@ -443,7 +448,7 @@ function tableHTML(){
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
   return `<h3>${esc($("#title").value)}</h3>
-    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>`;
+    <table class="et ${$("#align").value==="left"?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>`;
 }
 
 /* ---------- セグメント表 ---------- */
@@ -517,7 +522,7 @@ function autoTitle(){
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
 $("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
-["#unit","#period","#minus","#segProfit"].forEach(s=>$(s).addEventListener("change", renderPreview));
+["#unit","#period","#minus","#segProfit","#align"].forEach(s=>$(s).addEventListener("change", renderPreview));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
@@ -534,7 +539,7 @@ $("#dlBtn").onclick = async ()=>{
 /* ---------- 保存・起動 ---------- */
 function saveState(){
   store.set("rows2", state.rows);
-  store.set("opts", { mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
+  store.set("opts", { align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
 }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
@@ -542,6 +547,7 @@ window.__render = (rows, opts={}) => {
   if(opts.title!=null){ $("#title").value = opts.title; $("#title").dataset.touched="1"; }
   if(opts.period) $("#period").value = opts.period;
   if(opts.minus) $("#minus").value = opts.minus;
+  if(opts.align) $("#align").value = opts.align;
   if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
   if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
   if(opts.accent){ $("#palette").value="custom"; $("#cAccent").value = opts.accent; }
@@ -567,7 +573,7 @@ window.__renderSeg = async (key, opts={}) => {
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"left"; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();

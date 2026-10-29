@@ -26,6 +26,7 @@ def main():
     ap.add_argument("--title", default=None)
     ap.add_argument("--period", choices=["corner", "below", "none"], default="corner", help="期の表示: corner=ロゴの右上 / below=ロゴの下")
     ap.add_argument("--minus", default="△")
+    ap.add_argument("--align", choices=["left", "right"], default="left", help="売上高・営業利益・時価総額の揃え")
     ap.add_argument("--palette", default="teal", help="配色: teal / green / wine / charcoal / purple / ocean")
     ap.add_argument("--head", help="見出しの色（例 #1F6E75）。指定すると配色より優先")
     ap.add_argument("--accent", help="営業利益率の色（例 #EE7E1A）")
@@ -54,7 +55,7 @@ def main():
             if a.seg:
                 page.evaluate("([k,o]) => window.__renderSeg(k,o)", [a.seg, {"period": a.seg_period, "profit": a.seg_profit, "palette": a.palette, "title": a.title}])
             else:
-                page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "palette": a.palette, "head": a.head, "accent": a.accent}])
+                page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "align": a.align, "palette": a.palette, "head": a.head, "accent": a.accent}])
             page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
             b.close()
