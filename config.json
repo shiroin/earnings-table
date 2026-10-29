@@ -4,5 +4,16 @@
   "sheetId": "1NMjMQ6JeUuRRyy4X7m79YCTnklUgkdE76407QYY5ahQ",
   "gid": "1060296635",
   "sheet": "global_company_watch_300"
+ },
+ "fx": {
+  "date": "2026-10-27",
+  "note": "為替は目安。Webアプリで変更可",
+  "USD": 157.9,
+  "KRW": 0.108,
+  "TWD": 4.89,
+  "CNY": 22.1,
+  "HKD": 20.3,
+  "EUR": 184.0,
+  "GBP": 210.0
  }
 }
