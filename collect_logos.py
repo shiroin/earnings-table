@@ -309,6 +309,10 @@ def main():
     report = []
     for i, (name, domain, spec, *_) in enumerate(companies, 1):
         print(f"[{i}/{len(companies)}] {name} ... ", end="", flush=True)
+        if spec.strip() in ("なし", "none", "-"):
+            print("skip (ロゴなし指定)")
+            report.append([name, domain, "none", "指定でロゴなし", "", ""])
+            continue
         if args.skip_existing and any((args.out / safe_filename(name)).with_suffix(e).exists()
                                       for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img")):
             print("skip (取得済み)")
@@ -334,6 +338,10 @@ def main():
         try: index.update(json.loads(oldp.read_text(encoding="utf-8")))
         except Exception: pass
     for name, _d, _s, *alias in companies:
+        if _s.strip() in ("なし", "none", "-"):
+            for k in [name, *[a for a in alias if a]]:
+                index.pop(k, None)
+            continue
         for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img"):
             f = (args.out / safe_filename(name)).with_suffix(e)
             if f.exists():
