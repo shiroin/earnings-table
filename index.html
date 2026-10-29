@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>決算比較表メーカー</title>
+<style>
+:root{
+  --ink:#1F2A3A; --muted:#6B7787; --line:#D5DBE3; --bg:#EEF1F5; --panel:#FFFFFF;
+  --head:#3F5A7E; --accent:#E8604C; --sel:#E6EDF6;
+  --ja:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  --num:"Avenir Next","Avenir","Helvetica Neue","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ja);font-size:14px;line-height:1.6}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--head);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:minmax(380px,460px) 1fr;min-height:100vh}
+.side{background:var(--panel);border-right:1px solid var(--line);padding:22px 22px 60px;overflow:auto;max-height:100vh;position:sticky;top:0}
+.main{padding:28px 32px 60px;overflow:auto}
+h1{font-size:20px;margin:0 0 4px;font-weight:700;letter-spacing:.02em}
+.lead{color:var(--muted);margin:0 0 22px;font-size:13px}
+
+.step{border-top:1px solid var(--line);padding:18px 0 6px}
+.step h2{font-size:15px;margin:0 0 10px;display:flex;align-items:baseline;gap:10px}
+.step h2 .n{font-family:var(--num);font-weight:600;color:var(--head);font-size:18px;min-width:16px}
+.hint{color:var(--muted);font-size:12px;margin:6px 0 0}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+input[type=text],input[type=url],select{border:1px solid var(--line);border-radius:6px;padding:7px 9px;background:#fff;min-width:0}
+input[type=url]{flex:1}
+.btn{border:1px solid var(--head);background:var(--head);color:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-weight:600;white-space:nowrap}
+.btn.ghost{background:#fff;color:var(--head)}
+.btn.small{padding:3px 9px;font-size:12px;font-weight:500}
+.btn:disabled{opacity:.45;cursor:default}
+.msg{font-size:12px;margin-top:8px}
+.msg.err{color:#B3261E}.msg.ok{color:#2E7D4F}
+
+/* 決算データ一覧 */
+.filters{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.list{border:1px solid var(--line);border-radius:8px;max-height:300px;overflow:auto}
+.list table{width:100%;border-collapse:collapse;font-size:13px}
+.list th{position:sticky;top:0;background:#F6F8FB;text-align:left;font-weight:600;color:var(--muted);font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.list td{padding:6px 8px;border-bottom:1px solid #EEF1F5;white-space:nowrap}
+.list tr.on td{background:var(--sel)}
+.list tr{cursor:pointer}
+.list .num{font-family:var(--num);text-align:right}
+.empty{padding:16px;color:var(--muted);font-size:13px}
+
+/* 編集 */
+.edit{display:flex;flex-direction:column;gap:10px}
+.card{border:1px solid var(--line);border-radius:8px;padding:10px 10px 8px;background:#FBFCFD}
+.card .top{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+.card .top input.name{flex:1;font-weight:600}
+.card .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 8px}
+.card label{display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px}
+.card label input{font-family:var(--num);font-size:13px;color:var(--ink);width:100%}
+.card .logo-row{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--muted)}
+.card .logo-row img{height:22px;max-width:90px;object-fit:contain}
+.icon{border:none;background:none;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:4px;font-size:15px;line-height:1}
+.icon:hover{background:#E9EDF2;color:var(--ink)}
+
+.settings{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center}
+.settings label{font-size:12px;color:var(--muted)}
+
+/* プレビュー */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.bar .t{color:var(--muted);font-size:13px}
+.stage{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;overflow:hidden}
+.fit{transform-origin:top left}
+.placeholder{color:var(--muted);padding:80px 20px;text-align:center}
+
+/* 出力する表（PNGになる部分） */
+#canvas{background:#fff;padding:28px 24px 30px;display:inline-block;font-family:var(--ja);color:#111}
+#canvas h3{text-align:center;font-weight:600;font-size:40px;letter-spacing:1px;margin:0 0 22px;line-height:1.3}
+.et{border-collapse:collapse;border:2.5px solid #222}
+.et th{background:var(--head);color:#fff;font-weight:500;font-size:26px;line-height:1.25;padding:18px 16px;border-left:1.5px dotted #fff;white-space:nowrap}
+.et th:first-child{border-left:none}
+.et th small{font-size:21px}
+.et td{border-top:1.5px dotted #555;height:136px;padding:8px 18px;vertical-align:middle}
+.et td.comp{width:300px;border-right:1.5px dotted #555;text-align:center;position:relative}
+.et td.comp.corner{padding-top:34px}
+.et td.comp img{display:block;margin:0 auto;height:64px;max-width:250px;object-fit:contain}
+.et td.comp .lt{font-weight:700;font-size:28px}
+.et .pc{position:absolute;top:8px;right:14px;font-family:var(--num);font-size:26px}
+.et .pb{font-size:27px;margin-top:8px;font-weight:500}
+.et td.amt{text-align:right;font-family:var(--num);white-space:nowrap;min-width:230px}
+.et td.amt b{font-size:46px;font-weight:500;letter-spacing:.5px}
+.et td.amt small,.et td.cap small{font-size:26px;font-weight:500}
+.et td.yoy{text-align:right;font-family:var(--num);font-size:34px;white-space:nowrap;min-width:170px;border-left:1.5px dotted #bbb}
+.et td.mg{color:var(--accent);font-family:var(--num);font-size:40px;text-align:right;white-space:nowrap;min-width:170px}
+.et td.cap{border-left:1.5px dotted #555;text-align:right;font-family:var(--num);white-space:nowrap;min-width:200px}
+.et td.cap b{font-size:42px;font-weight:500}
+.et td.sep{border-left:1.5px solid #888}
+
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line)}
+  .main{padding:18px 12px 40px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <h1>決算比較表メーカー</h1>
+    <p class="lead">スプレッドシートの決算データから、ロゴ入りの比較表画像を作ります。</p>
+
+    <section class="step">
+      <h2><span class="n">1</span>スプレッドシートを読み込む</h2>
+      <div class="row">
+        <input type="url" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/…" aria-label="スプレッドシートのURL">
+        <button class="btn" id="loadBtn">読み込む</button>
+      </div>
+      <p class="hint">共有設定を「リンクを知っている全員（閲覧者）」にしたシートのURL。シートを直したら、もう一度「読み込む」を押してください。</p>
+      <div class="msg" id="loadMsg" role="status"></div>
+      <p class="hint" id="sheetLinks" hidden>
+        <a id="openSheet" target="_blank" rel="noopener">スプレッドシートを開く</a>（ウォッチリストの変更・数字の修正はここで）
+      </p>
+    </section>
+
+    <section class="step">
+      <h2><span class="n">2</span>表に入れる企業を選ぶ</h2>
+      <div class="filters">
+        <select id="fDate" aria-label="発表日"></select>
+        <select id="fMarket" aria-label="市場">
+          <option value="">日本・米国</option><option value="JP">日本</option><option value="US">米国</option>
+        </select>
+        <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
+        <button class="btn ghost small" id="selNone">選択を外す</button>
+      </div>
+      <div class="list" id="list"><div class="empty">スプレッドシートを読み込むと、ここに決算データが並びます。</div></div>
+    </section>
+
+    <section class="step">
+      <h2><span class="n">3</span>数字を確認・入力する</h2>
+      <div class="edit" id="edit"></div>
+      <div class="row" style="margin-top:10px">
+        <input type="text" id="newName" list="wl" placeholder="企業名" aria-label="手入力で追加する企業名">
+        <datalist id="wl"></datalist>
+        <datalist id="units"><option value="億円"><option value="億ドル"><option value="百万円"><option value="百万ドル"></datalist>
+        <button class="btn ghost" id="addBtn">手入力で追加</button>
+      </div>
+      <p class="hint">ここでの修正は画像にだけ反映され、スプレッドシートは変わりません。営業利益率は空欄なら自動で計算します。</p>
+    </section>
+
+    <section class="step">
+      <h2><span class="n">4</span>見た目を整える</h2>
+      <div class="settings">
+        <label for="title">タイトル</label><input type="text" id="title">
+        <label for="unit">単位（手入力の初期値）</label>
+        <select id="unit"><option>億円</option><option>億ドル</option><option>百万円</option><option>百万ドル</option></select>
+        <label for="period">期の表示</label>
+        <select id="period"><option value="corner">ロゴの右上（3Q）</option><option value="below">ロゴの下（第1四半期）</option><option value="none">表示しない</option></select>
+        <label for="minus">マイナス記号</label>
+        <select id="minus"><option value="△">△</option><option value="-">-</option></select>
+      </div>
+    </section>
+  </aside>
+
+  <main class="main">
+    <div class="bar">
+      <span class="t" id="count">企業が選ばれていません</span>
+      <button class="btn" id="dlBtn" disabled>PNGをダウンロード</button>
+    </div>
+    <div class="stage" id="stage"><div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div></div>
+  </main>
+</div>
+
+<script type="module">
+/* 表を PNG にする（外部ライブラリなし: スタイルをインライン化して SVG foreignObject 経由で canvas に描く） */
+async function toDataURL(src){
+  if(src.startsWith("data:")) return src;
+  const b = await (await fetch(src)).blob();
+  return await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(b); });
+}
+function inlineStyles(src, dst){
+  if(src.nodeType!==1) return;
+  const cs = getComputedStyle(src);
+  let css = ""; for(const p of cs) css += `${p}:${cs.getPropertyValue(p)};`;
+  dst.setAttribute("style", css);
+  for(let i=0;i<src.childNodes.length;i++) inlineStyles(src.childNodes[i], dst.childNodes[i]);
+}
+async function toPng(node, { pixelRatio=2, backgroundColor="#fff" }={}){
+  const w = node.offsetWidth, h = node.offsetHeight;
+  const clone = node.cloneNode(true);
+  inlineStyles(node, clone);
+  clone.style.margin = "0";
+  await Promise.all([...clone.querySelectorAll("img")].map(async im=>{ im.setAttribute("src", await toDataURL(im.getAttribute("src"))); }));
+  const xml = new XMLSerializer().serializeToString(clone);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject x="0" y="0" width="100%" height="100%">${xml}</foreignObject></svg>`;
+  const img = new Image();
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  await img.decode();
+  const c = document.createElement("canvas");
+  c.width = Math.ceil(w*pixelRatio); c.height = Math.ceil(h*pixelRatio);
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = backgroundColor; ctx.fillRect(0,0,c.width,c.height);
+  ctx.scale(pixelRatio, pixelRatio); ctx.drawImage(img, 0, 0);
+  return c.toDataURL("image/png");
+}
+
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try{ return JSON.parse(localStorage.getItem("et:"+k)); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem("et:"+k, JSON.stringify(v)); }catch{} },
+};
+const state = { data: [], watch: [], logos: {}, rows: [], uploaded: {} };
+
+/* ---------- 読み込み ---------- */
+function sheetId(url){ const m = String(url).match(/\/spreadsheets\/d\/([a-zA-Z0-9_-]{20,})/); return m ? m[1] : (/^[a-zA-Z0-9_-]{30,}$/.test(url) ? url : null); }
+function parseCSV(text){
+  const rows=[]; let row=[], cur="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c=='"'){ if(text[i+1]=='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else if(c=='"') q=true;
+    else if(c==','){ row.push(cur); cur=""; }
+    else if(c=='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; }
+    else if(c!='\r') cur+=c;
+  }
+  if(cur!=="" || row.length){ row.push(cur); rows.push(row); }
+  const head = (rows.shift()||[]).map(h=>h.trim());
+  return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]??"").trim()])));
+}
+async function fetchSheet(id, name){
+  const u = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}`;
+  const r = await fetch(u);
+  if(!r.ok) throw new Error(`「${name}」シートを読めませんでした（${r.status}）`);
+  const t = await r.text();
+  if(/^\s*</.test(t)) throw new Error("シートが共有されていません。共有設定を「リンクを知っている全員」にしてください");
+  return parseCSV(t);
+}
+async function loadLogos(){
+  try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
+}
+async function load(){
+  const url = $("#sheetUrl").value.trim(), id = sheetId(url), msg = $("#loadMsg");
+  if(!id){ msg.className="msg err"; msg.textContent="スプレッドシートのURLを入れてください。"; return; }
+  msg.className="msg"; msg.textContent="読み込み中…"; $("#loadBtn").disabled = true;
+  try{
+    const [data, watch] = await Promise.all([fetchSheet(id,"決算データ"), fetchSheet(id,"ウォッチリスト").catch(()=>[])]);
+    state.data = data.map(normDate); state.watch = watch;
+    store.set("sheet", url);
+    const p = new URLSearchParams(location.search); p.set("sheet", id); history.replaceState(null,"","?"+p);
+    $("#openSheet").href = `https://docs.google.com/spreadsheets/d/${id}/edit`; $("#sheetLinks").hidden = false;
+    $("#wl").innerHTML = watch.map(w=>`<option value="${esc(w["企業"])}">`).join("");
+    msg.className="msg ok"; msg.textContent=`決算データ ${data.length}件・ウォッチリスト ${watch.length}社を読み込みました。`;
+    fillDates(); renderList();
+  }catch(e){ msg.className="msg err"; msg.textContent=e.message; }
+  finally{ $("#loadBtn").disabled = false; }
+}
+function normDate(r){
+  const d = (r["発表日"]||"").replace(/\//g,"-").replace(/-(\d)(?=-|$)/g,"-0$1");
+  return {...r, 発表日: d};
+}
+
+/* ---------- 一覧（手順2） ---------- */
+function fillDates(){
+  const ds = [...new Set(state.data.map(r=>r["発表日"]).filter(Boolean))].sort().reverse();
+  $("#fDate").innerHTML = `<option value="">すべての日付</option>` + ds.map(d=>`<option>${d}</option>`).join("");
+  if(ds[0]) $("#fDate").value = ds[0];
+}
+const visible = () => state.data.filter(r=>(!$("#fDate").value || r["発表日"]===$("#fDate").value) && (!$("#fMarket").value || r["市場"]===$("#fMarket").value));
+const keyOf = r => [r["発表日"],r["企業"],r["期"]].join("|");
+function renderList(){
+  const rows = visible();
+  if(!state.data.length){ return; }
+  if(!rows.length){ $("#list").innerHTML = `<div class="empty">この条件の決算データはありません。</div>`; return; }
+  const on = new Set(state.rows.filter(r=>r.key).map(r=>r.key));
+  $("#list").innerHTML = `<table><thead><tr><th></th><th>発表日</th><th>企業</th><th>期</th><th style="text-align:right">売上高</th><th style="text-align:right">営業利益</th></tr></thead><tbody>${
+    rows.map(r=>{ const k=keyOf(r); return `<tr data-k="${esc(k)}" class="${on.has(k)?"on":""}">
+      <td><input type="checkbox" ${on.has(k)?"checked":""} aria-label="${esc(r["企業"])}を表に入れる"></td>
+      <td>${esc(r["発表日"].slice(5))}</td><td>${esc(r["企業"])}</td><td>${esc(r["期"])}</td>
+      <td class="num">${esc(r["売上高"])}</td><td class="num">${esc(r["営業利益"])}</td></tr>`; }).join("")
+  }</tbody></table>`;
+}
+function toggle(k, force){
+  const i = state.rows.findIndex(r=>r.key===k);
+  const want = force ?? (i<0);
+  if(want && i<0){
+    const r = state.data.find(d=>keyOf(d)===k); if(!r) return;
+    state.rows.push({ key:k, 企業:r["企業"], 単位:r["単位"]||$("#unit").value, 期:r["期"], 売上高:r["売上高"], 売上高前年比:r["売上高前年比"], 営業利益:r["営業利益"], 営業利益前年比:r["営業利益前年比"], 営業利益率:r["営業利益率"], 時価総額:r["時価総額"] });
+  } else if(!want && i>=0) state.rows.splice(i,1);
+}
+$("#list").addEventListener("click", e=>{
+  const tr = e.target.closest("tr[data-k]"); if(!tr) return;
+  toggle(tr.dataset.k); autoTitle(); renderList(); renderEdit(); renderPreview();
+});
+$("#selAll").onclick = ()=>{ visible().forEach(r=>toggle(keyOf(r),true)); autoTitle(); renderList(); renderEdit(); renderPreview(); };
+$("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
+$("#fDate").onchange = $("#fMarket").onchange = renderList;
+
+/* ---------- 編集（手順3） ---------- */
+const FIELDS = [["単位","単位"],["期","期"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
+function renderEdit(){
+  $("#edit").innerHTML = state.rows.map((r,i)=>`
+    <div class="card" data-i="${i}">
+      <div class="top">
+        <input type="text" class="name" data-f="企業" value="${esc(r.企業)}" aria-label="企業名">
+        <button class="icon" data-act="up" title="上へ" aria-label="上へ">↑</button>
+        <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
+        <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
+      </div>
+      <div class="grid">${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["期","時価総額","単位"].includes(f)?"text":"decimal"}" data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="logo-row">${logoSrc(r.企業)?`<img src="${logoSrc(r.企業)}" alt="">`:"ロゴなし"}
+        <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label></div>
+    </div>`).join("");
+}
+$("#edit").addEventListener("input", e=>{
+  const f = e.target.dataset.f; if(!f) return;
+  const i = +e.target.closest(".card").dataset.i; state.rows[i][f] = e.target.value; renderPreview();
+});
+$("#edit").addEventListener("change", e=>{
+  if(e.target.matches("[data-f=企業]")) renderEdit();
+  if(!e.target.matches("[data-logo]")) return;
+  const i = +e.target.closest(".card").dataset.i, file = e.target.files[0]; if(!file) return;
+  const fr = new FileReader(); fr.onload = ()=>{ state.uploaded[state.rows[i].企業] = fr.result; renderEdit(); renderPreview(); }; fr.readAsDataURL(file);
+});
+$("#edit").addEventListener("click", e=>{
+  const act = e.target.dataset.act; if(!act) return;
+  const i = +e.target.closest(".card").dataset.i, R = state.rows;
+  if(act==="del") R.splice(i,1);
+  if(act==="up" && i>0) [R[i-1],R[i]]=[R[i],R[i-1]];
+  if(act==="down" && i<R.length-1) [R[i+1],R[i]]=[R[i],R[i+1]];
+  renderList(); renderEdit(); renderPreview();
+});
+$("#addBtn").onclick = ()=>{
+  const n = $("#newName").value.trim(); if(!n){ $("#newName").focus(); return; }
+  state.rows.push({ key:null, 企業:n, 単位:$("#unit").value, 期:"", 売上高:"", 売上高前年比:"", 営業利益:"", 営業利益前年比:"", 営業利益率:"", 時価総額:"" });
+  $("#newName").value=""; renderEdit(); renderPreview();
+  $("#edit").lastElementChild?.querySelector("[data-f=売上高]")?.focus();
+};
+
+/* ---------- 表（プレビュー） ---------- */
+const safe = n => n.replace(/[\\/:*?"<>|\s]+/g,"_").replace(/^_+|_+$/g,"");
+const logoSrc = n => state.uploaded[n] || (state.logos[n] ? "logos/"+state.logos[n] : (state.logos[safe(n)] ? "logos/"+state.logos[safe(n)] : null));
+const num = v => { if(v==null) return null; const t=String(v).replace(/[,%％\s]/g,"").replace(/[△▲−]/g,"-"); if(t===""||t==="-") return null; const x=+t; return isNaN(x)?null:x; };
+function fmtAmt(v,m){ if(v==null) return "-"; const a=Math.abs(v); const s = a>=100||Number.isInteger(a) ? Math.round(a).toLocaleString("en-US") : a.toLocaleString("en-US",{maximumFractionDigits:1}); return (v<0?m:"")+s; }
+function fmtPct(v,m,plus=true){ if(v==null) return "-"; return (v<0?m:(plus&&v>0?"+":""))+Math.abs(v).toFixed(1)+"%"; }
+function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+function renderPreview(){
+  saveState();
+  const R = state.rows, m = $("#minus").value, pmode = $("#period").value;
+  $("#count").textContent = R.length ? `${R.length}社を表にしています` : "企業が選ばれていません";
+  $("#dlBtn").disabled = !R.length;
+  if(!R.length){ $("#stage").innerHTML = `<div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div>`; return; }
+  const body = R.map(r=>{
+    const src = logoSrc(r.企業), per = esc(r.期||"");
+    const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">` : `<div class="lt">${esc(r.企業)}</div>`;
+    const comp = pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
+               : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
+    const unit = esc(r.単位 || $("#unit").value);
+    const rev=num(r.売上高), op=num(r.営業利益), ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
+    const mg = num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
+    const cap = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/);
+    return `<tr>${comp}
+      <td class="amt"><b>${fmtAmt(rev,m)}</b><small>${rev==null?"":unit}</small></td>
+      <td class="yoy">${fmtPct(ry,m)}</td>
+      <td class="amt sep"><b>${fmtAmt(op,m)}</b><small>${op==null?"":unit}</small></td>
+      <td class="yoy">${fmtPct(oy,m)}</td>
+      <td class="mg">${fmtPct(mg,m,false)}</td>
+      <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
+  }).join("");
+  $("#stage").innerHTML = `<div class="fit"><div id="canvas"><h3>${esc($("#title").value)}</h3>
+    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table></div></div>`;
+  fit();
+}
+function fit(){
+  const f = document.querySelector(".fit"), c = $("#canvas"); if(!f||!c) return;
+  const avail = $("#stage").clientWidth - 36, k = Math.min(1, avail / c.offsetWidth);
+  f.style.transform = `scale(${k})`; f.style.width = c.offsetWidth+"px"; f.style.height = (c.offsetHeight*k)+"px";
+}
+addEventListener("resize", fit);
+function autoTitle(){
+  if($("#title").dataset.touched) return;
+  const ds = [...new Set(state.rows.map(r=>r.key?.split("|")[0]).filter(Boolean))];
+  const mk = [...new Set(state.rows.map(r=>state.data.find(d=>keyOf(d)===r.key)?.["市場"]).filter(Boolean))];
+  const who = mk.length===1 ? (mk[0]==="US"?"米国企業":"注目企業") : "注目企業";
+  const when = ds.length===1 ? `（${+ds[0].slice(5,7)}月${+ds[0].slice(8,10)}日発表）` : "";
+  $("#title").value = `${who}の決算${when}`;
+}
+$("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
+["#unit","#period","#minus"].forEach(s=>$(s).addEventListener("change", renderPreview));
+
+/* ---------- PNG ---------- */
+$("#dlBtn").onclick = async ()=>{
+  const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
+  try{
+    const node = $("#canvas");
+    const url = await toPng(node, { pixelRatio: 2, backgroundColor: "#fff" });
+    const a = document.createElement("a"); a.href = url;
+    a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
+    btn.textContent = "ダウンロードしました";
+  }catch(e){ btn.textContent = "画像にできませんでした。もう一度押してください"; console.error(e); }
+  setTimeout(()=>{ btn.textContent = "PNGをダウンロード"; btn.disabled = !state.rows.length; }, 1800);
+};
+
+/* ---------- 状態の保存・起動 ---------- */
+function saveState(){ store.set("rows", state.rows); store.set("opts", { title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value }); }
+/* 自動まとめ（render.py）から呼ぶ入口 */
+window.__render = (rows, opts={}) => {
+  state.rows = rows;
+  if(opts.title!=null){ $("#title").value = opts.title; $("#title").dataset.touched="1"; }
+  if(opts.period) $("#period").value = opts.period;
+  if(opts.minus) $("#minus").value = opts.minus;
+  renderPreview();
+  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+};
+(async function init(){
+  await loadLogos();
+  if(new URLSearchParams(location.search).has("headless")){ window.__ready = true; return; }
+  const o = store.get("opts"); if(o){ $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; }
+  if(!$("#title").value) $("#title").value = "注目企業の決算";
+  state.rows = store.get("rows") || [];
+  renderEdit(); renderPreview();
+  const qs = new URLSearchParams(location.search).get("sheet");
+  let def = null; try{ const c = await (await fetch("config.json",{cache:"no-cache"})).json(); def = c.sheetId; }catch{}
+  const url = qs ? `https://docs.google.com/spreadsheets/d/${qs}/edit` : (store.get("sheet") || (def ? `https://docs.google.com/spreadsheets/d/${def}/edit` : ""));
+  if(url){ $("#sheetUrl").value = url; load(); }
+})();
+$("#loadBtn").onclick = load;
+$("#sheetUrl").addEventListener("keydown", e=>{ if(e.key==="Enter") load(); });
+</script>
+</body>
+</html>

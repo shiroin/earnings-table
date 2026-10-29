@@ -1,0 +1,31 @@
+name: ロゴ取得
+on:
+  schedule:
+    - cron: "0 20 * * *"   # 毎日 日本時間 5:00（ウォッチリストの追加分を取得）
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "取得済みのロゴも取り直す"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+jobs:
+  logos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests beautifulsoup4
+      - name: スプレッドシートのウォッチリストからロゴを取得
+        run: |
+          SID=$(python -c "import json;print(json.load(open('config.json'))['sheetId'])")
+          if [ "${{ inputs.force }}" = "true" ]; then python collect_logos.py "sheet:$SID" -o logos
+          else python collect_logos.py "sheet:$SID" -o logos --skip-existing; fi
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add logos
+          git diff --cached --quiet || (git commit -m "ロゴを更新" && git push)
