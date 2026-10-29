@@ -120,6 +120,9 @@ PER2 = re.compile(r"(?:Q|第)\s*([1-4])(?:四半期)?\s*[-_/. ]?\s*(?:FYE?|CY)?\
 
 def parse_period(p):
     t = str(p or "").strip()
+    mf = re.search(r"FYE?\s*'?(\d{4}|\d{2})\s*/\s*\d{1,2}\s*[-_ ]?\s*(?:Q\s*([1-4])|([1-4])\s*Q)", t, re.I)   # FY27/2 1Q（2月期）
+    if mf:
+        fy = int(mf.group(1)); return (fy + 2000 if fy < 100 else fy), int(mf.group(2) or mf.group(3))
     m0 = re.fullmatch(r"([1-4])\s*Q\s*'?(\d{4}|\d{2})", t, re.I)          # 2Q26
     if m0:
         fy = int(m0.group(2)); return (fy + 2000 if fy < 100 else fy), int(m0.group(1))
@@ -202,7 +205,7 @@ def enrich(w, m):
 
     return {
         "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
-        "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"],
+        "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"],
         "currency": cur, "unit": unit, "note": m.get("note"),
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
@@ -256,7 +259,7 @@ def main():
     for i, w in enumerate(watch, 1):
         key = w["ticker"] or w["name"]
         base = {"ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
-                "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "periods": []}
+                "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "periods": []}
         if not w["master_id"]:
             companies.append(base); continue
         try:

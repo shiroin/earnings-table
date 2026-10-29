@@ -102,56 +102,75 @@ input[type=url]{flex:1}
   .main{padding:18px 12px 40px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* 企業一覧 */
+.search{flex:1;min-width:140px}
+.list tr.nomaster td{color:#9AA3AE}
+.list .sub{color:var(--muted);font-size:11px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px}
+.tab[aria-selected=true]{background:var(--head);border-color:var(--head);color:#fff}
+.card select.per{font-family:var(--num);font-size:13px;width:100%}
+.src{font-size:11px;color:var(--muted);margin-left:auto}
+/* セグメント表 */
+.et.seg td.sname{text-align:left;font-size:30px;font-weight:600;min-width:330px;border-right:1.5px dotted #555;height:110px;white-space:nowrap}
+.et.seg td.sname i{display:inline-block;width:18px;height:18px;border-radius:4px;margin-right:12px;vertical-align:middle}
+.et.seg td{height:110px}
+.et.seg td.share{color:#444;font-family:var(--num);font-size:34px;text-align:right;min-width:150px;border-left:1.5px dotted #bbb}
+.et.seg tr.total td{font-weight:700;border-top:2px solid #333}
+#canvas .ttl{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 0 22px}
+#canvas .ttl img{height:58px;max-width:240px;object-fit:contain}
+#canvas .ttl h3{margin:0}
+#canvas .note{font-size:20px;color:#555;margin-top:12px;text-align:right}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
     <h1>決算比較表メーカー</h1>
-    <p class="lead">スプレッドシートの決算データから、ロゴ入りの比較表画像を作ります。</p>
+    <p class="lead">企業マスターの最新四半期から、ロゴ入りの比較表とセグメント表を作ります。</p>
 
     <section class="step">
-      <h2><span class="n">1</span>スプレッドシートを読み込む</h2>
-      <div class="row">
-        <input type="url" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/…" aria-label="スプレッドシートのURL">
-        <button class="btn" id="loadBtn">読み込む</button>
+      <h2><span class="n">1</span>企業を選ぶ</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-src="master" aria-selected="true">企業マスター</button>
+        <button class="tab" role="tab" data-src="digest" aria-selected="false">毎朝の自動まとめ</button>
       </div>
-      <p class="hint">共有設定を「リンクを知っている全員（閲覧者）」にしたシートのURL。シートを直したら、もう一度「読み込む」を押してください。</p>
-      <div class="msg" id="loadMsg" role="status"></div>
-      <p class="hint" id="sheetLinks" hidden>
-        <a id="openSheet" target="_blank" rel="noopener">スプレッドシートを開く</a>（ウォッチリストの変更・数字の修正はここで）
-      </p>
-    </section>
-
-    <section class="step">
-      <h2><span class="n">2</span>表に入れる企業を選ぶ</h2>
       <div class="filters">
-        <select id="fDate" aria-label="発表日"></select>
-        <select id="fMarket" aria-label="市場"><option value="">すべての市場</option></select>
-        <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
-        <button class="btn ghost small" id="selNone">選択を外す</button>
+        <input type="text" class="search" id="q" placeholder="社名・ティッカーで検索" aria-label="社名・ティッカーで検索">
+        <select id="fCountry" aria-label="本拠地"></select>
+        <select id="fCat" aria-label="業種"></select>
+        <select id="fSort" aria-label="並び順">
+          <option value="date">決算日が新しい順</option><option value="no">ウォッチリスト順</option><option value="name">社名順</option>
+        </select>
       </div>
-      <div class="list" id="list"><div class="empty">スプレッドシートを読み込むと、ここに決算データが並びます。</div></div>
+      <div class="list" id="list"><div class="empty">読み込み中…</div></div>
+      <p class="hint" id="dataInfo"></p>
     </section>
 
     <section class="step">
-      <h2><span class="n">3</span>数字を確認・入力する</h2>
+      <h2><span class="n">2</span>数字を確認・入力する</h2>
       <div class="edit" id="edit"></div>
       <div class="row" style="margin-top:10px">
-        <input type="text" id="newName" list="wl" placeholder="企業名" aria-label="手入力で追加する企業名">
-        <datalist id="wl"></datalist>
-        <datalist id="units"><option value="億円"><option value="億ドル"><option value="兆ウォン"><option value="億ウォン"><option value="億台湾ドル"><option value="億元"><option value="億香港ドル"><option value="百万円"><option value="百万ドル"></datalist>
+        <input type="text" id="newName" placeholder="企業名" aria-label="手入力で追加する企業名">
         <button class="btn ghost" id="addBtn">手入力で追加</button>
       </div>
-      <p class="hint">ここでの修正は画像にだけ反映され、スプレッドシートは変わりません。営業利益率は空欄なら自動で計算します。</p>
+      <p class="hint">期を切り替えると、その四半期の数字に入れ替わります。ここでの修正は画像にだけ反映され、マスターは変わりません。営業利益率は空欄なら自動で計算します。</p>
+      <datalist id="units"><option value="億円"><option value="億ドル"><option value="兆ウォン"><option value="億ウォン"><option value="億台湾ドル"><option value="億元"><option value="億香港ドル"><option value="億ユーロ"><option value="百万円"><option value="百万ドル"></datalist>
     </section>
 
     <section class="step">
-      <h2><span class="n">4</span>見た目を整える</h2>
+      <h2><span class="n">3</span>表の種類と見た目</h2>
       <div class="settings">
+        <label for="mode">表の種類</label>
+        <select id="mode"><option value="table">決算比較表</option><option value="seg">セグメント表（1社）</option></select>
+        <label for="segCo" class="segonly">セグメント表の企業</label>
+        <select id="segCo" class="segonly"></select>
+        <label class="segonly">セグメント利益</label>
+        <label class="segonly" style="flex-direction:row;display:flex;align-items:center;gap:6px;color:var(--ink)"><input type="checkbox" id="segProfit">セグメント利益も入れる</label>
         <label for="title">タイトル</label><input type="text" id="title">
         <label for="unit">単位（手入力の初期値）</label>
-        <select id="unit"><option>億円</option><option>億ドル</option><option>兆ウォン</option><option>億ウォン</option><option>億台湾ドル</option><option>億元</option><option>億香港ドル</option><option>百万円</option><option>百万ドル</option></select>
+        <select id="unit"><option>億円</option><option>億ドル</option><option>兆ウォン</option><option>億ウォン</option><option>億台湾ドル</option><option>億元</option><option>億香港ドル</option><option>億ユーロ</option><option>百万円</option><option>百万ドル</option></select>
         <label for="palette">配色</label>
         <select id="palette">
           <option value="teal">ティール × オレンジ</option>
@@ -168,7 +187,7 @@ input[type=url]{flex:1}
           <label class="clr">営業利益率 <input type="color" id="cAccent"></label>
         </div>
         <label for="period">期の表示</label>
-        <select id="period"><option value="corner">ロゴの右上（3Q）</option><option value="below">ロゴの下（第1四半期）</option><option value="none">表示しない</option></select>
+        <select id="period"><option value="corner">ロゴの右上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
         <label for="minus">マイナス記号</label>
         <select id="minus"><option value="△">△</option><option value="-">-</option></select>
       </div>
@@ -183,7 +202,6 @@ input[type=url]{flex:1}
     <div class="stage" id="stage"><div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div></div>
   </main>
 </div>
-
 <script type="module">
 /* 表を PNG にする（外部ライブラリなし: スタイルをインライン化して SVG foreignObject 経由で canvas に描く） */
 async function toDataURL(src){
@@ -217,132 +235,161 @@ async function toPng(node, { pixelRatio=2, backgroundColor="#fff" }={}){
   return c.toDataURL("image/png");
 }
 
+
 const $ = s => document.querySelector(s);
 const store = {
   get(k){ try{ return JSON.parse(localStorage.getItem("et:"+k)); }catch{ return null; } },
   set(k,v){ try{ localStorage.setItem("et:"+k, JSON.stringify(v)); }catch{} },
 };
-const state = { data: [], watch: [], logos: {}, rows: [], uploaded: {} };
+const state = { masters: [], digest: [], logos: {}, rows: [], uploaded: {}, src: "master", cfg: {} };
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const truthy = v => v===true || /^(○|〇|◯|1|true|yes|はい|y|on|表示)$/i.test(String(v??"").trim());
+const num = v => { if(v==null) return null; if(typeof v==="number") return v; const t=String(v).replace(/[,%％\s]/g,"").replace(/[△▲−]/g,"-"); if(t===""||t==="-") return null; const x=+t; return isNaN(x)?null:x; };
+const safe = n => String(n).replace(/[\\/:*?"<>|\s]+/g,"_").replace(/^_+|_+$/g,"");
 
-/* ---------- 読み込み ---------- */
-function sheetId(url){ const m = String(url).match(/\/spreadsheets\/d\/([a-zA-Z0-9_-]{20,})/); return m ? m[1] : (/^[a-zA-Z0-9_-]{30,}$/.test(url) ? url : null); }
+/* ---------- データ読み込み ---------- */
 function parseCSV(text){
   const rows=[]; let row=[], cur="", q=false;
   for(let i=0;i<text.length;i++){
     const c=text[i];
     if(q){ if(c=='"'){ if(text[i+1]=='"'){cur+='"';i++;} else q=false; } else cur+=c; }
-    else if(c=='"') q=true;
-    else if(c==','){ row.push(cur); cur=""; }
-    else if(c=='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; }
-    else if(c!='\r') cur+=c;
+    else if(c=='"') q=true; else if(c==','){ row.push(cur); cur=""; }
+    else if(c=='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(c!='\r') cur+=c;
   }
   if(cur!=="" || row.length){ row.push(cur); rows.push(row); }
   const head = (rows.shift()||[]).map(h=>h.trim());
   return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]??"").trim()])));
 }
-async function fetchSheet(id, name){
-  const u = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}`;
-  const r = await fetch(u);
-  if(!r.ok) throw new Error(`「${name}」シートを読めませんでした（${r.status}）`);
-  const t = await r.text();
-  if(/^\s*</.test(t)) throw new Error("シートが共有されていません。共有設定を「リンクを知っている全員」にしてください");
-  return parseCSV(t);
-}
-async function loadLogos(){
+async function loadAll(){
+  try{ state.cfg = await (await fetch("config.json",{cache:"no-cache"})).json(); }catch{}
   try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
-}
-async function load(){
-  const url = $("#sheetUrl").value.trim(), id = sheetId(url), msg = $("#loadMsg");
-  if(!id){ msg.className="msg err"; msg.textContent="スプレッドシートのURLを入れてください。"; return; }
-  msg.className="msg"; msg.textContent="読み込み中…"; $("#loadBtn").disabled = true;
   try{
-    const [data, watch] = await Promise.all([fetchSheet(id,"決算データ"), fetchSheet(id,"ウォッチリスト").catch(()=>[])]);
-    state.data = data.map(normDate); state.watch = watch;
-    store.set("sheet", url);
-    const p = new URLSearchParams(location.search); p.set("sheet", id); history.replaceState(null,"","?"+p);
-    $("#openSheet").href = `https://docs.google.com/spreadsheets/d/${id}/edit`; $("#sheetLinks").hidden = false;
-    $("#wl").innerHTML = watch.map(w=>`<option value="${esc(w["企業"])}">`).join("");
-    msg.className="msg ok"; msg.textContent=`決算データ ${data.length}件・ウォッチリスト ${watch.length}社を読み込みました。`;
-    fillMarkets(); fillDates(); renderList();
-  }catch(e){ msg.className="msg err"; msg.textContent=e.message; }
-  finally{ $("#loadBtn").disabled = false; }
-}
-function normDate(r){
-  const d = (r["発表日"]||"").replace(/\//g,"-").replace(/-(\d)(?=-|$)/g,"-0$1");
-  return {...r, 発表日: d};
+    const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json();
+    state.masters = m.companies||[];
+    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。マスターを更新すると2時間以内に反映されます。`;
+  }catch{ $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。"; }
+  const sid = state.cfg.sheetId;
+  if(sid){
+    try{
+      const r = await fetch(`https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent("決算データ")}`);
+      if(r.ok){ const t = await r.text(); if(!/^\s*</.test(t)) state.digest = parseCSV(t).map(d=>({...d, 発表日:(d["発表日"]||"").replace(/\//g,"-")})); }
+    }catch{}
+  }
+  fillFilters(); renderList();
 }
 
-/* ---------- 一覧（手順2） ---------- */
-const MARKETS = { JP:"日本", US:"米国", KR:"韓国", TW:"台湾", CN:"中国" };
-function fillMarkets(){
-  const ms = [...new Set([...state.data, ...state.watch].map(r=>r["市場"]).filter(Boolean))];
-  const order = Object.keys(MARKETS); ms.sort((a,b)=>(order.indexOf(a)+99*(order.indexOf(a)<0))-(order.indexOf(b)+99*(order.indexOf(b)<0)));
-  const cur = $("#fMarket").value;
-  $("#fMarket").innerHTML = `<option value="">すべての市場</option>` + ms.map(m=>`<option value="${esc(m)}">${esc(MARKETS[m]||m)}</option>`).join("");
-  $("#fMarket").value = ms.includes(cur) ? cur : "";
+/* ---------- 期の扱い ---------- */
+function parsePeriod(p){
+  const t = String(p||"").trim(); let m;
+  if((m = t.match(/FYE?\s*'?(\d{4}|\d{2})\s*\/\s*\d{1,2}\s*[-_ ]?\s*(?:Q\s*([1-4])|([1-4])\s*Q)/i))) return [fy4(m[1]), +(m[2]||m[3])];
+  if((m = t.match(/^([1-4])\s*Q\s*'?(\d{4}|\d{2})$/i))) return [fy4(m[2]), +m[1]];
+  if(!/^(Q|第)/i.test(t) && (m = t.match(/(?:FYE?|CY)?\s*'?(\d{4}|\d{2})\s*[-_/. ]?\s*(?:年度?)?\s*(?:Q|第)\s*([1-4])/i))) return [fy4(m[1]), +m[2]];
+  if((m = t.match(/(?:Q|第)\s*([1-4])(?:四半期)?\s*[-_/. ]?\s*(?:FYE?|CY)?\s*'?(\d{4}|\d{2})/i))) return [fy4(m[2]), +m[1]];
+  if((m = t.match(/(\d{4}|\d{2})\s*[-_/. ]?\s*([1-4])\s*Q/i))) return [fy4(m[1]), +m[2]];
+  return [null,null];
 }
-function fillDates(){
-  const ds = [...new Set(state.data.map(r=>r["発表日"]).filter(Boolean))].sort().reverse();
-  $("#fDate").innerHTML = `<option value="">すべての日付</option>` + ds.map(d=>`<option>${d}</option>`).join("");
-  if(ds[0]) $("#fDate").value = ds[0];
+const fy4 = y => { y=+y; return y<100 ? y+2000 : y; };
+const yoyOf = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000)/10;
+
+/* ---------- 一覧 ---------- */
+const masterOf = r => state.masters.find(c => (r.ticker && c.ticker===r.ticker) || c.ja===r.企業 || c.name===r.企業);
+function fillFilters(){
+  const opt = (arr, all) => `<option value="">${all}</option>` + [...new Set(arr.filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
+  $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
+  $("#fCat").innerHTML = opt(state.masters.map(c=>c.cat1), "すべての業種");
 }
-const visible = () => state.data.filter(r=>(!$("#fDate").value || r["発表日"]===$("#fDate").value) && (!$("#fMarket").value || r["市場"]===$("#fMarket").value));
-const keyOf = r => [r["発表日"],r["企業"],r["期"]].join("|");
+function listItems(){
+  const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
+  let items;
+  if(state.src==="master"){
+    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) &&
+      (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
+      .map(c => ({ key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:c.periods?.at(-1)?.label||"", date:c.date||"", has:!!c.periods?.length }));
+  } else {
+    items = state.digest.filter(d => (!q || String(d["企業"]).toLowerCase().includes(q)))
+      .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:d["期"], date:d["発表日"], has:true }));
+  }
+  if(sort==="date") items.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  if(sort==="name") items.sort((a,b)=>String(a.name).localeCompare(String(b.name),"ja"));
+  return items;
+}
 function renderList(){
-  const rows = visible();
-  if(!state.data.length){ return; }
-  if(!rows.length){ $("#list").innerHTML = `<div class="empty">この条件の決算データはありません。</div>`; return; }
-  const on = new Set(state.rows.filter(r=>r.key).map(r=>r.key));
-  $("#list").innerHTML = `<table><thead><tr><th></th><th>発表日</th><th>企業</th><th>期</th><th style="text-align:right">売上高</th><th style="text-align:right">営業利益</th></tr></thead><tbody>${
-    rows.map(r=>{ const k=keyOf(r); return `<tr data-k="${esc(k)}" class="${on.has(k)?"on":""}">
-      <td><input type="checkbox" ${on.has(k)?"checked":""} aria-label="${esc(r["企業"])}を表に入れる"></td>
-      <td>${esc(r["発表日"].slice(5))}</td><td>${esc(r["企業"])}</td><td>${esc(r["期"])}</td>
-      <td class="num">${esc(r["売上高"])}</td><td class="num">${esc(r["営業利益"])}</td></tr>`; }).join("")
+  const items = listItems(), on = new Set(state.rows.map(r=>r.key).filter(Boolean));
+  if(!items.length){ $("#list").innerHTML = `<div class="empty">${state.src==="digest"?"毎朝の自動まとめのデータはまだありません。":"該当する企業がありません。"}</div>`; return; }
+  $("#list").innerHTML = `<table><thead><tr><th></th><th>企業</th><th>最新期</th><th>決算日</th></tr></thead><tbody>${
+    items.slice(0,400).map(it=>`<tr data-k="${esc(it.key)}" class="${on.has(it.key)?"on":""} ${it.has?"":"nomaster"}">
+      <td><input type="checkbox" ${on.has(it.key)?"checked":""} aria-label="${esc(it.name)}を表に入れる"></td>
+      <td>${esc(it.name)} <span class="sub">${esc(it.sub||"")}</span></td>
+      <td>${esc(it.has?it.per:"マスターなし")}</td><td>${esc(String(it.date).slice(0,10))}</td></tr>`).join("")
   }</tbody></table>`;
 }
-function toggle(k, force){
-  const i = state.rows.findIndex(r=>r.key===k);
-  const want = force ?? (i<0);
-  if(want && i<0){
-    const r = state.data.find(d=>keyOf(d)===k); if(!r) return;
-    const w = state.watch.find(x=>x["企業"]===r["企業"]);
-    state.rows.push({ key:k, 社名表示: truthy(w?.["社名表示"]), 企業:r["企業"], 単位:r["単位"]||$("#unit").value, 期:r["期"], 売上高:r["売上高"], 売上高前年比:r["売上高前年比"], 営業利益:r["営業利益"], 営業利益前年比:r["営業利益前年比"], 営業利益率:r["営業利益率"], 時価総額:r["時価総額"] });
-  } else if(!want && i>=0) state.rows.splice(i,1);
+function rowFromMaster(c, period){
+  const ps = c.periods||[]; const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
+  const dg = state.digest.find(d => (d["企業"]===c.ja || d["企業"]===c.name) && p.label && String(d["期"]).includes(p.label));
+  return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
+    period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
+    売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
+    時価総額: dg?.["時価総額"] || "" };
+}
+function rowFromDigest(d){
+  const c = masterOf({企業:d["企業"]});
+  return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
+    period:"", 期:d["期"], 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
+    営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] };
 }
 $("#list").addEventListener("click", e=>{
   const tr = e.target.closest("tr[data-k]"); if(!tr) return;
-  toggle(tr.dataset.k); autoTitle(); renderList(); renderEdit(); renderPreview();
+  const k = tr.dataset.k, i = state.rows.findIndex(r=>r.key===k);
+  if(i>=0) state.rows.splice(i,1);
+  else {
+    const it = listItems().find(x=>x.key===k); if(!it) return;
+    state.rows.push(it.c ? rowFromMaster(it.c) : rowFromDigest(it.d));
+  }
+  autoTitle(); renderList(); renderEdit(); renderPreview();
 });
-$("#selAll").onclick = ()=>{ visible().forEach(r=>toggle(keyOf(r),true)); autoTitle(); renderList(); renderEdit(); renderPreview(); };
-$("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
-$("#fDate").onchange = $("#fMarket").onchange = renderList;
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  state.src = t.dataset.src; document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x===t));
+  renderList();
+});
+["#q","#fCountry","#fCat","#fSort"].forEach(s=>$(s).addEventListener("input", renderList));
 
-/* ---------- 編集（手順3） ---------- */
-const FIELDS = [["単位","単位"],["期","期"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
+/* ---------- 編集 ---------- */
+const FIELDS = [["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
 function renderEdit(){
-  $("#edit").innerHTML = state.rows.map((r,i)=>`
-    <div class="card" data-i="${i}">
+  $("#edit").innerHTML = state.rows.map((r,i)=>{
+    const c = r.key?.startsWith("m|") ? masterOf(r) : null;
+    const perSel = c?.periods?.length
+      ? `<label>期<select class="per" data-per>${c.periods.slice().reverse().map(p=>`<option value="${esc(p.period)}" ${p.period===r.period?"selected":""}>${esc(p.label)}（${esc(p.period)}）</option>`).join("")}</select></label>`
+      : `<label>期<input type="text" data-f="期" value="${esc(r.期??"")}"></label>`;
+    return `<div class="card" data-i="${i}">
       <div class="top">
         <input type="text" class="name" data-f="企業" value="${esc(r.企業)}" aria-label="企業名">
         <button class="icon" data-act="up" title="上へ" aria-label="上へ">↑</button>
         <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
         <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
       </div>
-      <div class="grid">${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["期","時価総額","単位"].includes(f)?"text":"decimal"}" data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
-      <div class="logo-row">${logoSrc(r.企業)?`<img src="${logoSrc(r.企業)}" alt="">`:"ロゴなし"}
+      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位"].includes(f)?"text":"decimal"}" data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
-        <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label></div>
-    </div>`).join("");
+        <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
+        <span class="src">${c?"マスター":r.key?"自動まとめ":"手入力"}</span></div>
+    </div>`; }).join("");
+  fillSegCo();
 }
 $("#edit").addEventListener("input", e=>{
   const f = e.target.dataset.f; if(!f) return;
-  const i = +e.target.closest(".card").dataset.i; state.rows[i][f] = e.target.value; renderPreview();
+  state.rows[+e.target.closest(".card").dataset.i][f] = e.target.value; renderPreview();
 });
 $("#edit").addEventListener("change", e=>{
-  if(e.target.matches("[data-name]")){ state.rows[+e.target.closest(".card").dataset.i].社名表示 = e.target.checked; renderPreview(); return; }
+  const card = e.target.closest(".card"); if(!card) return; const i = +card.dataset.i;
+  if(e.target.matches("[data-per]")){
+    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 };
+    Object.assign(r, rowFromMaster(c, e.target.value), keep); renderEdit(); renderPreview(); return;
+  }
+  if(e.target.matches("[data-name]")){ state.rows[i].社名表示 = e.target.checked; renderPreview(); return; }
   if(e.target.matches("[data-f=企業]")) renderEdit();
   if(!e.target.matches("[data-logo]")) return;
-  const i = +e.target.closest(".card").dataset.i, file = e.target.files[0]; if(!file) return;
+  const file = e.target.files[0]; if(!file) return;
   const fr = new FileReader(); fr.onload = ()=>{ state.uploaded[state.rows[i].企業] = fr.result; renderEdit(); renderPreview(); }; fr.readAsDataURL(file);
 });
 $("#edit").addEventListener("click", e=>{
@@ -355,36 +402,39 @@ $("#edit").addEventListener("click", e=>{
 });
 $("#addBtn").onclick = ()=>{
   const n = $("#newName").value.trim(); if(!n){ $("#newName").focus(); return; }
-  state.rows.push({ key:null, 企業:n, 単位:$("#unit").value, 期:"", 売上高:"", 売上高前年比:"", 営業利益:"", 営業利益前年比:"", 営業利益率:"", 時価総額:"" });
+  state.rows.push({ key:null, 企業:n, 社名表示:false, 単位:$("#unit").value, 期:"", 売上高:"", 売上高前年比:"", 営業利益:"", 営業利益前年比:"", 営業利益率:"", 時価総額:"" });
   $("#newName").value=""; renderEdit(); renderPreview();
-  $("#edit").lastElementChild?.querySelector("[data-f=売上高]")?.focus();
 };
 
-/* ---------- 表（プレビュー） ---------- */
-const truthy = v => /^(○|〇|◯|1|true|yes|はい|y|on|表示)$/i.test(String(v??"").trim());
-const safe = n => n.replace(/[\\/:*?"<>|\s]+/g,"_").replace(/^_+|_+$/g,"");
-const logoSrc = n => state.uploaded[n] || (state.logos[n] ? "logos/"+state.logos[n] : (state.logos[safe(n)] ? "logos/"+state.logos[safe(n)] : null));
-const num = v => { if(v==null) return null; const t=String(v).replace(/[,%％\s]/g,"").replace(/[△▲−]/g,"-"); if(t===""||t==="-") return null; const x=+t; return isNaN(x)?null:x; };
-function fmtAmt(v,m){ if(v==null) return "-"; const a=Math.abs(v); const s = a>=100||Number.isInteger(a) ? Math.round(a).toLocaleString("en-US") : a.toLocaleString("en-US",{maximumFractionDigits:1}); return (v<0?m:"")+s; }
+/* ---------- 表 ---------- */
+function logoSrc(r){
+  if(state.uploaded[r.企業]) return state.uploaded[r.企業];
+  for(const k of [r.企業, ...(r.logoKeys||[])].filter(Boolean)){
+    const f = state.logos[k] || state.logos[safe(k)]; if(f) return "logos/"+f;
+  }
+  return null;
+}
+function fmtAmt(v,m){ if(v==null) return "-"; const a=Math.abs(v); const s = a>=100||Number.isInteger(a) ? Math.round(a).toLocaleString("en-US") : a.toLocaleString("en-US",{maximumFractionDigits: a<10?2:1}); return (v<0?m:"")+s; }
 function fmtPct(v,m,plus=true){ if(v==null) return "-"; return (v<0?m:(plus&&v>0?"+":""))+Math.abs(v).toFixed(1)+"%"; }
-function esc(s){ return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const PALETTES = { teal:["#1F6E75","#EE7E1A"], green:["#2F6B4F","#C73E5A"], wine:["#6B2B3E","#2B78B8"], charcoal:["#33383D","#D49A00"], purple:["#4B3C8E","#14988A"], ocean:["#0D6CA0","#E59A0C"] };
+function applyPalette(){ const p = PALETTES[$("#palette").value]; if(p){ $("#cHead").value=p[0]; $("#cAccent").value=p[1]; } }
+$("#palette").addEventListener("change", ()=>{ applyPalette(); renderPreview(); });
+["#cHead","#cAccent"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#palette").value="custom"; renderPreview(); }));
 
-function renderPreview(){
-  saveState();
-  const R = state.rows, m = $("#minus").value, pmode = $("#period").value;
-  $("#count").textContent = R.length ? `${R.length}社を表にしています` : "企業が選ばれていません";
-  $("#dlBtn").disabled = !R.length;
-  if(!R.length){ $("#stage").innerHTML = `<div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div>`; return; }
-  const body = R.map(r=>{
-    const src = logoSrc(r.企業), per = esc(r.期||"");
-    const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">${r.社名表示?`<div class="nm">${esc(r.企業)}</div>`:""}` : `<div class="lt">${esc(r.企業)}</div>`;
-    const comp = pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
-               : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
+function compCell(r, pmode){
+  const src = logoSrc(r), per = esc(r.期||"");
+  const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">${r.社名表示?`<div class="nm">${esc(r.企業)}</div>`:""}` : `<div class="lt">${esc(r.企業)}</div>`;
+  return pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
+       : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
+}
+function tableHTML(){
+  const m = $("#minus").value, pmode = $("#period").value;
+  const body = state.rows.map(r=>{
     const unit = esc(r.単位 || $("#unit").value);
     const rev=num(r.売上高), op=num(r.営業利益), ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
     const mg = num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
     const cap = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/);
-    return `<tr>${comp}
+    return `<tr>${compCell(r,pmode)}
       <td class="amt"><b>${fmtAmt(rev,m)}</b><small>${rev==null?"":unit}</small></td>
       <td class="yoy">${fmtPct(ry,m)}</td>
       <td class="amt sep"><b>${fmtAmt(op,m)}</b><small>${op==null?"":unit}</small></td>
@@ -392,79 +442,126 @@ function renderPreview(){
       <td class="mg">${fmtPct(mg,m,false)}</td>
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
-  $("#stage").innerHTML = `<div class="fit"><div id="canvas" style="--head:${$("#cHead").value};--accent:${$("#cAccent").value}"><h3>${esc($("#title").value)}</h3>
-    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table></div></div>`;
+  return `<h3>${esc($("#title").value)}</h3>
+    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>`;
+}
+
+/* ---------- セグメント表 ---------- */
+function segRowsFor(c){ return state.rows.filter(r=>r.key?.startsWith("m|") && masterOf(r)?.seg_revenue); }
+function fillSegCo(){
+  const cand = segRowsFor(), cur = $("#segCo").value;
+  $("#segCo").innerHTML = cand.length ? cand.map(r=>`<option value="${esc(r.key)}">${esc(r.企業)}（${esc(r.期)}）</option>`).join("") : `<option value="">セグメントのある企業が選ばれていません</option>`;
+  if(cand.some(r=>r.key===cur)) $("#segCo").value = cur;
+}
+function segData(r){
+  const c = masterOf(r); if(!c?.seg_revenue) return null;
+  const find = (blk, per) => blk?.rows.find(x=>x.period===per);
+  const [fy,q] = parsePeriod(r.period);
+  const prevOf = blk => blk?.rows.find(x=>{ const [f2,q2]=parsePeriod(x.period); return f2===fy-1 && q2===q; });
+  const R = find(c.seg_revenue, r.period), Rp = prevOf(c.seg_revenue);
+  const P = find(c.seg_profit, r.period), Pp = prevOf(c.seg_profit);
+  if(!R) return { c, rows:[] };
+  const cols = c.seg_revenue.columns.filter(k => R[k]!=null);
+  const total = cols.reduce((s,k)=>s+(R[k]||0),0);
+  const rows = cols.map(k=>({
+    name: c.segments?.[k]?.label || k, color: c.segments?.[k]?.color || null,
+    rev: R[k], revYoy: yoyOf(R[k], Rp?.[k]), share: total ? R[k]/total*100 : null,
+    op: P?.[k] ?? null, opYoy: yoyOf(P?.[k], Pp?.[k]), mg: (P?.[k]!=null && R[k]) ? P[k]/R[k]*100 : null,
+  }));
+  return { c, rows, total, hasProfit: !!P && cols.some(k=>P[k]!=null) };
+}
+function segHTML(){
+  const r = state.rows.find(x=>x.key===$("#segCo").value); if(!r) return null;
+  const d = segData(r); if(!d) return null;
+  const m = $("#minus").value, unit = esc(r.単位), withP = $("#segProfit").checked && d.hasProfit;
+  const src = logoSrc(r);
+  const body = d.rows.map(s=>`<tr>
+      <td class="sname">${s.color?`<i style="background:${esc(s.color)}"></i>`:""}${esc(s.name)}</td>
+      <td class="amt"><b>${fmtAmt(s.rev,m)}</b><small>${unit}</small></td>
+      <td class="yoy">${fmtPct(s.revYoy,m)}</td>
+      <td class="share">${s.share==null?"-":s.share.toFixed(1)+"%"}</td>
+      ${withP?`<td class="amt sep"><b>${fmtAmt(s.op,m)}</b><small>${s.op==null?"":unit}</small></td><td class="yoy">${fmtPct(s.opYoy,m)}</td><td class="mg">${fmtPct(s.mg,m,false)}</td>`:""}
+    </tr>`).join("");
+  const head = `<th>セグメント</th><th>売上高</th><th>前年<br>同期比</th><th>構成比</th>${withP?"<th>セグメント<br>利益</th><th>前年<br>同期比</th><th>利益率</th>":""}`;
+  return `<div class="ttl">${src?`<img src="${src}" alt="">`:""}<h3>${esc($("#title").value)}</h3></div>
+    <table class="et seg"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td class="sname">この期のセグメントデータがありません</td></tr>`}</tbody></table>
+    <div class="note">${esc(r.期)}（${esc(r.period)}）　単位: ${unit}${d.c.note?`　${esc(d.c.note)}`:""}</div>`;
+}
+
+/* ---------- プレビュー ---------- */
+function renderPreview(){
+  saveState();
+  const mode = $("#mode").value;
+  document.querySelectorAll(".segonly").forEach(e=>e.style.display = mode==="seg" ? "" : "none");
+  $("#count").textContent = state.rows.length ? `${state.rows.length}社を選んでいます` : "企業が選ばれていません";
+  const inner = mode==="seg" ? segHTML() : (state.rows.length ? tableHTML() : null);
+  $("#dlBtn").disabled = !inner;
+  if(!inner){ $("#stage").innerHTML = `<div class="placeholder">${mode==="seg"?"セグメント表は、企業マスターから選んだ企業（セグメントのデータがある会社）で作れます。":"左で企業を選ぶか、手入力で追加すると、ここに表ができます。"}</div>`; return; }
+  $("#stage").innerHTML = `<div class="fit"><div id="canvas" style="--head:${$("#cHead").value};--accent:${$("#cAccent").value}">${inner}</div></div>`;
   fit();
 }
 function fit(){
   const f = document.querySelector(".fit"), c = $("#canvas"); if(!f||!c) return;
-  const avail = $("#stage").clientWidth - 36, k = Math.min(1, avail / c.offsetWidth);
+  const k = Math.min(1, ($("#stage").clientWidth - 36) / c.offsetWidth);
   f.style.transform = `scale(${k})`; f.style.height = (c.offsetHeight*k)+"px";
 }
 addEventListener("resize", fit);
-const PALETTES = {
-  teal:["#1F6E75","#EE7E1A"], green:["#2F6B4F","#C73E5A"], wine:["#6B2B3E","#2B78B8"],
-  charcoal:["#33383D","#D49A00"], purple:["#4B3C8E","#14988A"], ocean:["#0D6CA0","#E59A0C"],
-};
-function applyPalette(){
-  const p = PALETTES[$("#palette").value]; if(!p) return;
-  $("#cHead").value = p[0]; $("#cAccent").value = p[1];
-}
-$("#palette").addEventListener("change", ()=>{ applyPalette(); renderPreview(); });
-["#cHead","#cAccent"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#palette").value="custom"; renderPreview(); }));
 function autoTitle(){
   if($("#title").dataset.touched) return;
-  const ds = [...new Set(state.rows.map(r=>r.key?.split("|")[0]).filter(Boolean))];
-  const mk = [...new Set(state.rows.map(r=>state.data.find(d=>keyOf(d)===r.key)?.["市場"]).filter(Boolean))];
-  const who = mk.length===1 && mk[0]!=="JP" && MARKETS[mk[0]] ? `${MARKETS[mk[0]]}企業` : "注目企業";
-  const when = ds.length===1 ? `（${+ds[0].slice(5,7)}月${+ds[0].slice(8,10)}日発表）` : "";
-  $("#title").value = `${who}の決算${when}`;
+  if($("#mode").value==="seg"){
+    const r = state.rows.find(x=>x.key===$("#segCo").value);
+    $("#title").value = r ? `${r.企業} セグメント別業績（${r.期}）` : "セグメント別業績"; return;
+  }
+  $("#title").value = "注目企業の決算";
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
-["#unit","#period","#minus"].forEach(s=>$(s).addEventListener("change", renderPreview));
+$("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
+$("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
+["#unit","#period","#minus","#segProfit"].forEach(s=>$(s).addEventListener("change", renderPreview));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
   const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
   try{
-    const node = $("#canvas");
-    const url = await toPng(node, { pixelRatio: 2, backgroundColor: "#fff" });
+    const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: "#fff" });
     const a = document.createElement("a"); a.href = url;
     a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
     btn.textContent = "ダウンロードしました";
   }catch(e){ btn.textContent = "画像にできませんでした。もう一度押してください"; console.error(e); }
-  setTimeout(()=>{ btn.textContent = "PNGをダウンロード"; btn.disabled = !state.rows.length; }, 1800);
+  setTimeout(()=>{ btn.textContent = "PNGをダウンロード"; btn.disabled = false; }, 1800);
 };
 
-/* ---------- 状態の保存・起動 ---------- */
-function saveState(){ store.set("rows", state.rows); store.set("opts", { palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value }); }
+/* ---------- 保存・起動 ---------- */
+function saveState(){
+  store.set("rows2", state.rows);
+  store.set("opts", { mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
+}
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
-  state.rows = rows;
+  state.rows = rows.map(r=>({ ...r, logoKeys:[r.企業] }));
   if(opts.title!=null){ $("#title").value = opts.title; $("#title").dataset.touched="1"; }
   if(opts.period) $("#period").value = opts.period;
   if(opts.minus) $("#minus").value = opts.minus;
   if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
   if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
   if(opts.accent){ $("#palette").value="custom"; $("#cAccent").value = opts.accent; }
+  $("#mode").value = "table";
   renderPreview();
   return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
 };
 (async function init(){
-  await loadLogos();
-  if(new URLSearchParams(location.search).has("headless")){ window.__ready = true; return; }
   $("#palette").value="teal"; applyPalette();
-  const o = store.get("opts"); if(o){ $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; }
+  if(new URLSearchParams(location.search).has("headless")){
+    try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
+    window.__ready = true; return;
+  }
+  const o = store.get("opts");
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
-  state.rows = store.get("rows") || [];
+  state.rows = store.get("rows2") || [];
+  await loadAll();
   renderEdit(); renderPreview();
-  const qs = new URLSearchParams(location.search).get("sheet");
-  let def = null; try{ const c = await (await fetch("config.json",{cache:"no-cache"})).json(); def = c.sheetId; }catch{}
-  const url = qs ? `https://docs.google.com/spreadsheets/d/${qs}/edit` : (store.get("sheet") || (def ? `https://docs.google.com/spreadsheets/d/${def}/edit` : ""));
-  if(url){ $("#sheetUrl").value = url; load(); }
 })();
-$("#loadBtn").onclick = load;
-$("#sheetUrl").addEventListener("keydown", e=>{ if(e.key==="Enter") load(); });
 </script>
 </body>
 </html>

@@ -245,7 +245,27 @@ def collect_one(name: str, domain: str, out: Path, spec: str = ""):
     raise RuntimeError("; ".join(errors) or "Wikidataで見つからず、ドメイン指定もありません")
 
 
+def read_masters(path):
+    """data/masters.json の企業 → (英語名, ドメイン, ロゴ指定)。指定は logos/overrides.csv（企業,ロゴ指定）"""
+    import json
+    from urllib.parse import urlparse as _u
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    ov = {}
+    ovp = Path(path).resolve().parent.parent / "logos" / "overrides.csv"
+    if ovp.exists():
+        for r in csv.DictReader(ovp.read_text(encoding="utf-8-sig").splitlines()):
+            ov[r["企業"].strip()] = r["ロゴ指定"].strip()
+    out = []
+    for c in data["companies"]:
+        host = _u(c.get("ir") or "").netloc
+        host = re.sub(r"^(ir|investor|investors|corporate|global|www)\.", "", host) if host else ""
+        out.append((c["name"], host, ov.get(c["name"]) or ov.get(c.get("ja", "")) or "", c.get("ja", ""), c.get("ticker", "")))
+    return out
+
+
 def read_input(path):
+    if str(path).endswith("masters.json"):
+        return read_masters(path)
     if str(path).startswith("sheet:"):  # sheet:<スプレッドシートID>  → ウォッチリストシートをCSVで取得
         sid = str(path)[6:]
         r = SESSION.get(f"https://docs.google.com/spreadsheets/d/{sid}/gviz/tq",
@@ -269,7 +289,7 @@ def read_input(path):
     else:
         ni, di, si = 0, (1 if max(len(r) for r in rows) > 1 else None), None
     cell = lambda r, i: r[i].strip() if i is not None and len(r) > i else ""
-    return [(r[ni].strip(), cell(r, di), cell(r, si)) for r in rows if len(r) > ni and r[ni].strip()]
+    return [(r[ni].strip(), cell(r, di), cell(r, si), "", "") for r in rows if len(r) > ni and r[ni].strip()]
 
 
 def main():
@@ -282,7 +302,7 @@ def main():
     companies = read_input(args.input)
     args.out.mkdir(parents=True, exist_ok=True)
     report = []
-    for i, (name, domain, spec) in enumerate(companies, 1):
+    for i, (name, domain, spec, *_) in enumerate(companies, 1):
         print(f"[{i}/{len(companies)}] {name} ... ", end="", flush=True)
         if args.skip_existing and any((args.out / safe_filename(name)).with_suffix(e).exists()
                                       for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img")):
@@ -304,11 +324,16 @@ def main():
     # 企業名 → ファイル名 の対応表（Webアプリが使う）
     import json
     index = {}
-    for name, *_ in companies:
+    oldp = args.out / "index.json"
+    if oldp.exists():
+        try: index.update(json.loads(oldp.read_text(encoding="utf-8")))
+        except Exception: pass
+    for name, _d, _s, *alias in companies:
         for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img"):
             f = (args.out / safe_filename(name)).with_suffix(e)
             if f.exists():
-                index[name] = f.name
+                for k in [name, *[a for a in alias if a]]:
+                    index[k] = f.name
                 break
     (args.out / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8")
     ok = sum(1 for r in report if r[2] == "ok")
