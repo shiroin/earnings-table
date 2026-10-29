@@ -1,0 +1,3 @@
+en SK_Hynix.svg ['File:Commons-logo.svg', 'File:Hynix-Logo.svg', 'File:Hynix HYMD564M646A6-JAA 512MB DDR 333MHZ CL2.5-2769.jpg', 'File:Hyundai logo (english).svg', 'File:SK Hynix.svg', 'File:SK Hynix - H5TC4G83MFR-8390.jpg', 'File:SK logo.svg']
+ko SK_Hynix.svg ['파일:Commons-logo.svg', '파일:SK Hynix.svg', '파일:SK logo.svg']
+ja SK_Hynix.svg ['ファイル:Commons-logo.svg', 'ファイル:SK Hynix.svg', 'ファイル:SK logo.svg']
