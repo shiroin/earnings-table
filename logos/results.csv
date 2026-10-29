@@ -17,8 +17,8 @@ Google,abc.xyz,ok,existing,,
 Amazon,amazon.com,ok,existing,,
 Tesla,tesla.com,ok,existing,,
 Meta,meta.com,ok,existing,,
-サムスン電子,samsung.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b4/Samsung_wordmark.svg,サムスン電子.svg
-SKハイニックス,skhynix.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f2/Hynix-Logo.svg,SKハイニックス.svg
-TSMC,tsmc.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/df/TSMC_wordmark.svg,TSMC.svg
-鴻海精密工業,honhai.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1a/Foxconn_Logo.svg,鴻海精密工業.svg
-SMIC,smics.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b0/SMIC_logo.svg,SMIC.svg
+サムスン電子,samsung.com,ok,existing,,
+SKハイニックス,skhynix.com,ok,指定,https://upload.wikimedia.org/wikipedia/commons/2/24/SK_Hynix.svg,SKハイニックス.svg
+TSMC,tsmc.com,ok,existing,,
+鴻海精密工業,honhai.com,ok,existing,,
+SMIC,smics.com,ok,existing,,
