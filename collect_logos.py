@@ -74,12 +74,17 @@ def wikidata_lookup(name: str):
             ents = r.json().get("entities", {})
         except Exception:
             continue
-        for qid in ids:  # 検索順位を保ったまま、ロゴかサイトを持つ最初の候補を採用
+        # ロゴ（P154）を持つ候補を優先。なければサイトだけでも
+        best_site = None
+        for qid in ids:
             claims = ents.get(qid, {}).get("claims", {})
             logo = _claim_value(claims, "P154")
             site = _claim_value(claims, "P856")
-            if logo or site:
+            if logo:
                 return logo, site
+            best_site = best_site or site
+        if best_site:
+            return None, best_site
     return None, None
 
 
