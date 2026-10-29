@@ -1,0 +1,59 @@
+name: フォント取得（追加分）
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fonts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install fonttools brotli requests
+      - name: 取得・サブセット化
+        run: |
+          python - <<'PY'
+          import re, subprocess, requests, pathlib
+          out = pathlib.Path("fonts"); src = pathlib.Path("src"); src.mkdir(exist_ok=True)
+          API = "https://api.github.com/repos/google/fonts/contents/ofl/"
+          RAW = "https://raw.githubusercontent.com/google/fonts/main/ofl/"
+          # (フォルダ, ファイル名の正規表現, 出力名, 日本語か)
+          SPEC = [
+            ("ibmplexsansjp", r"-Medium\.ttf$", "plexjp-500", True),
+            ("ibmplexsansjp", r"-Bold\.ttf$", "plexjp-700", True),
+            ("shipporimincho", r"-SemiBold\.ttf$", "shippori-600", True),
+            ("shipporimincho", r"-ExtraBold\.ttf$", "shippori-800", True),
+            ("zenmarugothic", r"-Medium\.ttf$", "zenmaru-500", True),
+            ("zenmarugothic", r"-Bold\.ttf$", "zenmaru-700", True),
+            ("fraunces", r"^Fraunces\[.*\]\.ttf$", "fraunces-var", False),
+            ("nunito", r"^Nunito\[wght\]\.ttf$", "nunito-var", False),
+            ("spacegrotesk", r"SpaceGrotesk\[wght\]\.ttf$", "spacegrotesk-var", False),
+            ("anton", r"Anton-Regular\.ttf$", "anton-400", False),
+          ]
+          chars = set()
+          for b1 in range(0x81, 0xF0):
+              for b2 in range(0x40, 0xFD):
+                  try: chars.add(bytes([b1, b2]).decode("cp932"))
+                  except Exception: pass
+          base = {chr(c) for c in range(0x20, 0x7F)} | set("〜～−–—△▲▼％＋（）・、。「」")
+          pathlib.Path("ja.txt").write_text("".join(sorted(chars | base)), encoding="utf-8")
+          pathlib.Path("latin.txt").write_text("".join(sorted(base)), encoding="utf-8")
+          lic = set()
+          for folder, pat, name, ja in SPEC:
+              files = [f["name"] for f in requests.get(API + folder, timeout=30).json() if isinstance(f, dict)]
+              m = [f for f in files if re.search(pat, f)]
+              print(folder, "->", m[:1], "| all:", [f for f in files if f.endswith(".ttf")][:8])
+              if not m: continue
+              p = src / m[0]; p.write_bytes(requests.get(RAW + folder + "/" + m[0], timeout=60).content)
+              subprocess.run(["pyftsubset", str(p), "--text-file=" + ("ja.txt" if ja else "latin.txt"),
+                              "--flavor=woff2", "--layout-features=*", f"--output-file=fonts/{name}.woff2"], check=True)
+              if folder not in lic and "OFL.txt" in files:
+                  (out / f"OFL-{folder}.txt").write_bytes(requests.get(RAW + folder + "/OFL.txt", timeout=30).content); lic.add(folder)
+          PY
+          ls -la fonts
+      - name: コミット
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add fonts
+          git diff --cached --quiet || (git commit -m "フォントを追加（Google Fonts / SIL OFL）" && git push)
