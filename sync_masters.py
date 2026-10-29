@@ -114,15 +114,29 @@ def scale_for(display_unit, currency):
     return 100, "億" + cur
 
 
-PER = re.compile(r"FY\s*(\d{2,4})\s*[-_ ]?\s*Q\s*([1-4])", re.I)
+PER1 = re.compile(r"(?:FYE?|CY)?\s*'?(\d{4}|\d{2})\s*[-_/. ]?\s*(?:年度?)?\s*(?:Q|第)\s*([1-4])", re.I)   # FY2027Q2 / 2026Q3 / FYE27Q1 / 2026年Q2
+PER2 = re.compile(r"(?:Q|第)\s*([1-4])(?:四半期)?\s*[-_/. ]?\s*(?:FYE?|CY)?\s*'?(\d{4}|\d{2})", re.I)   # Q2 FY2026 / 2Q26
 
 
 def parse_period(p):
-    m = PER.search(p or "")
-    if not m:
-        return None, None
-    fy = int(m.group(1)); fy = fy + 2000 if fy < 100 else fy
-    return fy, int(m.group(2))
+    t = str(p or "").strip()
+    m0 = re.fullmatch(r"([1-4])\s*Q\s*'?(\d{4}|\d{2})", t, re.I)          # 2Q26
+    if m0:
+        fy = int(m0.group(2)); return (fy + 2000 if fy < 100 else fy), int(m0.group(1))
+    m = None if re.match(r"(?:Q|第)", t, re.I) else PER1.search(t)
+    if m:
+        fy, q = int(m.group(1)), int(m.group(2))
+    else:
+        m = PER2.search(t)
+        if not m:
+            m3 = re.search(r"(\d{4}|\d{2})\s*[-_/. ]?\s*([1-4])\s*Q", t, re.I)   # 2026 2Q / 26 3Q
+            if not m3:
+                return None, None
+            fy, q = int(m3.group(1)), int(m3.group(2))
+        else:
+            q, fy = int(m.group(1)), int(m.group(2))
+    fy = fy + 2000 if fy < 100 else fy
+    return fy, q
 
 
 def read_master(path_or_bytes):
@@ -197,6 +211,10 @@ def enrich(w, m):
 
 
 def download(fid, session):
+    # Googleスプレッドシート形式のマスターは xlsx に書き出して取得
+    r = session.get(f"https://docs.google.com/spreadsheets/d/{fid}/export", params={"format": "xlsx"}, timeout=60, headers=UA)
+    if r.ok and r.content[:2] == b"PK":
+        return r.content
     r = session.get("https://drive.google.com/uc", params={"export": "download", "id": fid}, timeout=60, headers=UA)
     r.raise_for_status()
     if r.content[:2] != b"PK":  # ウイルススキャン確認ページなど
