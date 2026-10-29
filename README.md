@@ -20,6 +20,10 @@ Googleスプレッドシートの決算データから、ロゴ入りの決算�
 
 毎朝の自動まとめ（別リポジトリ）が「決算データ」に追記します。
 
+## デザイン
+「見た目を整える」で3種類から選べます（ナイト／スレート／シグナル）。
+フォントは Zen Kaku Gothic New・BIZ UDPゴシック・M PLUS 1（日本語）、Outfit・Barlow・Archivo（数字）。いずれも SIL Open Font License（`fonts/` にライセンス同梱）。
+
 ## ロゴ
 `logos/` にあるロゴを企業名で自動表示します（`logos/index.json` が対応表）。
 GitHub Actions「ロゴ取得」が毎日、ウォッチリストに増えた企業のロゴを取得します。すぐ取りたいときは Actions タブから手動実行。

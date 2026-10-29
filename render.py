@@ -20,8 +20,9 @@ def main():
     ap.add_argument("csv")
     ap.add_argument("-o", "--out", required=True)
     ap.add_argument("--title", default="注目企業の決算")
-    ap.add_argument("--period", choices=["corner", "below", "none"], default="corner")
+    ap.add_argument("--period", choices=["corner", "below", "none"], default="corner", help="期の表示: corner=ロゴの上 / below=ロゴの下")
     ap.add_argument("--minus", default="△")
+    ap.add_argument("--theme", choices=["night", "slate", "signal"], default="night")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
     with open(a.csv, encoding="utf-8-sig", newline="") as f:
@@ -38,8 +39,9 @@ def main():
             page = b.new_page(viewport={"width": 4000, "height": 1200}, device_scale_factor=a.scale)
             page.goto(f"http://127.0.0.1:{srv.server_port}/index.html?headless=1")
             page.wait_for_function("window.__ready === true")
-            page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title, "period": a.period, "minus": a.minus}])
-            page.wait_for_timeout(300)
+            page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title, "period": a.period, "minus": a.minus, "theme": a.theme}])
+            page.evaluate("document.fonts.ready.then(()=>1)")
+            page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
             b.close()
     finally:

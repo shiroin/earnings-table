@@ -71,27 +71,57 @@ input[type=url]{flex:1}
 .placeholder{color:var(--muted);padding:80px 20px;text-align:center}
 
 /* 出力する表（PNGになる部分） */
-#canvas{background:#fff;padding:28px 24px 30px;display:inline-block;width:max-content;font-family:var(--ja);color:#111}
-#canvas h3{text-align:center;font-weight:600;font-size:40px;letter-spacing:1px;margin:0 0 22px;line-height:1.3}
-.et{border-collapse:collapse;border:2.5px solid #222}
-.et th{background:var(--head);color:#fff;font-weight:500;font-size:26px;line-height:1.25;padding:18px 16px;border-left:1.5px dotted #fff;white-space:nowrap}
-.et th:first-child{border-left:none}
-.et th small{font-size:21px}
-.et td{border-top:1.5px dotted #555;height:136px;padding:8px 18px;vertical-align:middle}
-.et td.comp{width:300px;min-width:300px;border-right:1.5px dotted #555;text-align:center;position:relative}
-.et td.comp.corner{padding-top:34px}
-.et td.comp img{display:block;margin:0 auto;height:64px;max-width:250px;object-fit:contain}
-.et td.comp .lt{font-weight:700;font-size:28px;line-height:1.3;word-break:keep-all;overflow-wrap:anywhere}
-.et .pc{position:absolute;top:8px;right:14px;font-family:var(--num);font-size:26px}
-.et .pb{font-size:27px;margin-top:8px;font-weight:500}
-.et td.amt{text-align:right;font-family:var(--num);white-space:nowrap;min-width:230px}
-.et td.amt b{font-size:46px;font-weight:500;letter-spacing:.5px}
-.et td.amt small,.et td.cap small{font-size:26px;font-weight:500}
-.et td.yoy{text-align:right;font-family:var(--num);font-size:34px;white-space:nowrap;min-width:170px;border-left:1.5px dotted #bbb}
-.et td.mg{color:var(--accent);font-family:var(--num);font-size:40px;text-align:right;white-space:nowrap;min-width:170px}
-.et td.cap{border-left:1.5px dotted #555;text-align:right;font-family:var(--num);white-space:nowrap;min-width:200px}
-.et td.cap b{font-size:42px;font-weight:500}
-.et td.sep{border-left:1.5px solid #888}
+@font-face{font-family:"ZKG";src:url(fonts/zkg-500.woff2) format("woff2");font-weight:500;font-display:block}
+@font-face{font-family:"ZKG";src:url(fonts/zkg-700.woff2) format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"BIZ";src:url(fonts/biz-400.woff2) format("woff2");font-weight:400;font-display:block}
+@font-face{font-family:"BIZ";src:url(fonts/biz-700.woff2) format("woff2");font-weight:700;font-display:block}
+@font-face{font-family:"MP1";src:url(fonts/mplus1-var.woff2) format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"Outfit";src:url(fonts/outfit-var.woff2) format("woff2");font-weight:100 900;font-display:block}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-500.woff2) format("woff2");font-weight:500;font-display:block}
+@font-face{font-family:"Barlow";src:url(fonts/barlow-600.woff2) format("woff2");font-weight:600;font-display:block}
+@font-face{font-family:"Archivo";src:url(fonts/archivo-var.woff2) format("woff2");font-weight:100 900;font-stretch:62% 125%;font-display:block}
+
+#canvas{width:max-content;display:inline-block;padding:40px 44px 36px;background:var(--bg);color:var(--fg);font-family:var(--ja)}
+#canvas h3{margin:0 0 26px;font-family:var(--ja);font-weight:700;font-size:42px;line-height:1.3;letter-spacing:.02em;text-align:left}
+.et{border-collapse:separate;border-spacing:0}
+.et th{font-family:var(--ja);font-weight:var(--th-w,500);font-size:21px;line-height:1.3;color:var(--th-fg);background:var(--th-bg);padding:14px 22px;text-align:right;white-space:nowrap;vertical-align:bottom}
+.et th:first-child{text-align:left}
+.et td{height:124px;padding:12px 22px;border-bottom:1px solid var(--rule);vertical-align:middle;white-space:nowrap}
+.et td.comp{min-width:300px;width:300px;position:relative}
+.et td.comp img{display:block;height:58px;max-width:230px;object-fit:contain;object-position:left center}
+.et td.comp .chip{display:inline-block;background:var(--chip-bg,transparent);border-radius:12px;padding:var(--chip-pad,0)}
+.et td.comp .lt{font-weight:700;font-size:28px;line-height:1.3;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.et .per{display:block;font-family:var(--num);font-size:20px;font-weight:500;color:var(--muted);margin-bottom:8px;letter-spacing:.03em}
+.et .per.b{margin:8px 0 0}
+.et td.amt,.et td.yoy,.et td.mg,.et td.cap{text-align:right;font-family:var(--num)}
+.et td.amt b,.et td.cap b{font-size:46px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.et td small{font-family:var(--ja);font-size:20px;font-weight:500;margin-left:4px;color:var(--unit)}
+.et td.yoy span{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums}
+.et td.yoy .pos{color:var(--pos)} .et td.yoy .neg{color:var(--neg)} .et td.yoy .na{color:var(--muted)}
+.et td.mg{font-size:40px;font-weight:700;color:var(--mg)}
+
+/* ① ナイト: 濃紺の地、色は増減と利益率だけ */
+#canvas[data-theme=night]{--bg:#101826;--fg:#F2F5F9;--muted:#8796A9;--unit:#AEB9C7;--rule:#223046;--th-fg:#8796A9;--th-bg:transparent;--pos:#3DDC97;--neg:#FF7A7A;--mg:#FFC24B;--ja:"ZKG",sans-serif;--num:"Outfit",sans-serif;--chip-bg:#FFFFFF;--chip-pad:10px 14px}
+#canvas[data-theme=night] .et thead th{border-bottom:2px solid #35486A}
+#canvas[data-theme=night] h3{color:#FFFFFF}
+
+/* ② スレート: 白地・太い上罫・縞・増減をタグで */
+#canvas[data-theme=slate]{--bg:#FFFFFF;--fg:#1C2430;--muted:#6B7480;--unit:#4A5360;--rule:#E3E7EC;--th-fg:#5C6571;--th-bg:transparent;--pos:#137A48;--neg:#B9372D;--mg:#0B8286;--ja:"BIZ",sans-serif;--num:"Barlow",sans-serif;--th-w:700}
+#canvas[data-theme=slate] .et thead th{border-top:5px solid #1C2430;border-bottom:1.5px solid #1C2430}
+#canvas[data-theme=slate] .et tbody tr:nth-child(even) td{background:#F4F6F8}
+#canvas[data-theme=slate] .et td.yoy span{display:inline-block;padding:6px 14px;border-radius:8px;font-size:28px}
+#canvas[data-theme=slate] .et td.yoy .pos{background:#E2F3E9} #canvas[data-theme=slate] .et td.yoy .neg{background:#FBE5E2}
+#canvas[data-theme=slate] .et tbody tr:last-child td{border-bottom:1.5px solid #1C2430}
+#canvas[data-theme=slate] .et .per{font-family:var(--ja);font-weight:700}
+
+/* ③ シグナル: 黄色の見出し帯と、利益率の列だけを塗る */
+#canvas[data-theme=signal]{--bg:#FFFFFF;--fg:#161616;--muted:#6E6E6E;--unit:#3C3C3C;--rule:#DCDCDC;--th-fg:#161616;--th-bg:#FFD23F;--pos:#0E7A3A;--neg:#D3263A;--mg:#161616;--ja:"MP1",sans-serif;--num:"Archivo",sans-serif;--th-w:800}
+#canvas[data-theme=signal] h3{font-weight:800;font-size:46px}
+#canvas[data-theme=signal] .et th:first-child{border-radius:10px 0 0 0} #canvas[data-theme=signal] .et th:last-child{border-radius:0 10px 0 0}
+#canvas[data-theme=signal] .et td.amt b,#canvas[data-theme=signal] .et td.cap b{font-stretch:88%;font-weight:700;font-size:48px}
+#canvas[data-theme=signal] .et td.mg{background:#FFF4CC;font-stretch:88%;font-weight:800}
+#canvas[data-theme=signal] .et th.mgh{background:#161616;color:#FFD23F}
+#canvas[data-theme=signal] .et tbody tr:last-child td{border-bottom:3px solid #161616}
 
 @media (max-width:900px){
   .app{grid-template-columns:1fr}
@@ -149,8 +179,10 @@ input[type=url]{flex:1}
         <label for="title">タイトル</label><input type="text" id="title">
         <label for="unit">単位（手入力の初期値）</label>
         <select id="unit"><option>億円</option><option>億ドル</option><option>兆ウォン</option><option>億ウォン</option><option>億台湾ドル</option><option>億元</option><option>億香港ドル</option><option>百万円</option><option>百万ドル</option></select>
+        <label for="theme">デザイン</label>
+        <select id="theme"><option value="night">ナイト（濃紺）</option><option value="slate">スレート（白・縞）</option><option value="signal">シグナル（黄色）</option></select>
         <label for="period">期の表示</label>
-        <select id="period"><option value="corner">ロゴの右上（3Q）</option><option value="below">ロゴの下（第1四半期）</option><option value="none">表示しない</option></select>
+        <select id="period"><option value="corner">ロゴの上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
         <label for="minus">マイナス記号</label>
         <select id="minus"><option value="△">△</option><option value="-">-</option></select>
       </div>
@@ -180,11 +212,26 @@ function inlineStyles(src, dst){
   dst.setAttribute("style", css);
   for(let i=0;i<src.childNodes.length;i++) inlineStyles(src.childNodes[i], dst.childNodes[i]);
 }
+const FONT_FILES = {
+  night:  [["ZKG","fonts/zkg-500.woff2","500"],["ZKG","fonts/zkg-700.woff2","700"],["Outfit","fonts/outfit-var.woff2","100 900"]],
+  slate:  [["BIZ","fonts/biz-400.woff2","400"],["BIZ","fonts/biz-700.woff2","700"],["Barlow","fonts/barlow-500.woff2","500"],["Barlow","fonts/barlow-600.woff2","600"]],
+  signal: [["MP1","fonts/mplus1-var.woff2","100 900"],["Archivo","fonts/archivo-var.woff2","100 900"]],
+};
+const fontCache = {};
+async function fontCSS(theme){
+  const parts = await Promise.all((FONT_FILES[theme]||[]).map(async ([fam,url,w])=>{
+    fontCache[url] ??= await toDataURL(url);
+    return `@font-face{font-family:"${fam}";src:url(${fontCache[url]}) format("woff2");font-weight:${w};${fam==="Archivo"?"font-stretch:62% 125%;":""}}`;
+  }));
+  return parts.join("");
+}
 async function toPng(node, { pixelRatio=2, backgroundColor="#fff" }={}){
+  await document.fonts.ready;
   const w = node.offsetWidth, h = node.offsetHeight;
   const clone = node.cloneNode(true);
   inlineStyles(node, clone);
   clone.style.margin = "0";
+  const st = document.createElement("style"); st.textContent = await fontCSS(node.dataset.theme); clone.prepend(st);
   await Promise.all([...clone.querySelectorAll("img")].map(async im=>{ im.setAttribute("src", await toDataURL(im.getAttribute("src"))); }));
   const xml = new XMLSerializer().serializeToString(clone);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject x="0" y="0" width="100%" height="100%">${xml}</foreignObject></svg>`;
@@ -353,26 +400,29 @@ function renderPreview(){
   $("#count").textContent = R.length ? `${R.length}社を表にしています` : "企業が選ばれていません";
   $("#dlBtn").disabled = !R.length;
   if(!R.length){ $("#stage").innerHTML = `<div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div>`; return; }
+  const theme = $("#theme").value;
   const body = R.map(r=>{
     const src = logoSrc(r.企業), per = esc(r.期||"");
-    const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">` : `<div class="lt">${esc(r.企業)}</div>`;
-    const comp = pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
-               : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
+    const logo = src ? `<span class="chip"><img src="${src}" alt="${esc(r.企業)}"></span>` : `<div class="lt">${esc(r.企業)}</div>`;
+    const comp = pmode==="corner" ? `<td class="comp">${per?`<span class="per">${per}</span>`:""}${logo}</td>`
+               : pmode==="below" ? `<td class="comp">${logo}${per?`<span class="per b">${per}</span>`:""}</td>` : `<td class="comp">${logo}</td>`;
     const unit = esc(r.単位 || $("#unit").value);
     const rev=num(r.売上高), op=num(r.営業利益), ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
     const mg = num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
     const cap = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/);
+    const yo = v => `<span class="${v==null?"na":v<0?"neg":"pos"}">${fmtPct(v,m)}</span>`;
     return `<tr>${comp}
       <td class="amt"><b>${fmtAmt(rev,m)}</b><small>${rev==null?"":unit}</small></td>
-      <td class="yoy">${fmtPct(ry,m)}</td>
-      <td class="amt sep"><b>${fmtAmt(op,m)}</b><small>${op==null?"":unit}</small></td>
-      <td class="yoy">${fmtPct(oy,m)}</td>
+      <td class="yoy">${yo(ry)}</td>
+      <td class="amt"><b>${fmtAmt(op,m)}</b><small>${op==null?"":unit}</small></td>
+      <td class="yoy">${yo(oy)}</td>
       <td class="mg">${fmtPct(mg,m,false)}</td>
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
-  $("#stage").innerHTML = `<div class="fit"><div id="canvas"><h3>${esc($("#title").value)}</h3>
-    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table></div></div>`;
+  $("#stage").innerHTML = `<div class="fit"><div id="canvas" data-theme="${theme}"><h3>${esc($("#title").value)}</h3>
+    <table class="et"><thead><tr><th>企業</th><th>売上高</th><th>前年同期比</th><th>営業利益</th><th>前年同期比</th><th class="mgh">営業利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table></div></div>`;
   fit();
+  document.fonts.ready.then(fit);
 }
 function fit(){
   const f = document.querySelector(".fit"), c = $("#canvas"); if(!f||!c) return;
@@ -389,14 +439,14 @@ function autoTitle(){
   $("#title").value = `${who}の決算${when}`;
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
-["#unit","#period","#minus"].forEach(s=>$(s).addEventListener("change", renderPreview));
+["#unit","#period","#minus","#theme"].forEach(s=>$(s).addEventListener("change", renderPreview));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
   const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
   try{
     const node = $("#canvas");
-    const url = await toPng(node, { pixelRatio: 2, backgroundColor: "#fff" });
+    const url = await toPng(node, { pixelRatio: 2, backgroundColor: getComputedStyle(node).backgroundColor });
     const a = document.createElement("a"); a.href = url;
     a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
     btn.textContent = "ダウンロードしました";
@@ -405,20 +455,21 @@ $("#dlBtn").onclick = async ()=>{
 };
 
 /* ---------- 状態の保存・起動 ---------- */
-function saveState(){ store.set("rows", state.rows); store.set("opts", { title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value }); }
+function saveState(){ store.set("rows", state.rows); store.set("opts", { theme:$("#theme").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value }); }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
   state.rows = rows;
   if(opts.title!=null){ $("#title").value = opts.title; $("#title").dataset.touched="1"; }
   if(opts.period) $("#period").value = opts.period;
   if(opts.minus) $("#minus").value = opts.minus;
+  if(opts.theme) $("#theme").value = opts.theme;
   renderPreview();
-  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+  return Promise.all([document.fonts.ready, ...[...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;}))]);
 };
 (async function init(){
   await loadLogos();
   if(new URLSearchParams(location.search).has("headless")){ window.__ready = true; return; }
-  const o = store.get("opts"); if(o){ $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; }
+  const o = store.get("opts"); if(o){ $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#theme").value=o.theme||"night"; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows") || [];
   renderEdit(); renderPreview();
