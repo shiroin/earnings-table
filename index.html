@@ -299,6 +299,17 @@ function parsePeriod(p){
   return [null,null];
 }
 const fy4 = y => { y=+y; return y<100 ? y+2000 : y; };
+/* 期の表記を「Q1〜Q4」にそろえる（第3四半期 / 3Q / FY27 1Q / 3Q（速報） → Q3 / Q3（速報）） */
+const ZEN = {"１":"1","２":"2","３":"3","４":"4","一":"1","二":"2","三":"3","四":"4"};
+function qLabel(p){
+  const t = String(p??"").trim(); if(!t) return t;
+  const n = t.replace(/[１-４]/g, c=>ZEN[c]);
+  const k = n.match(/第\s*([1-4一二三四])\s*四半期/);
+  const m = (k && [k[0], ZEN[k[1]]||k[1]]) || n.match(/(?:^|[^0-9])([1-4])\s*Q(?![0-9])/i) || n.match(/Q\s*([1-4])/i);
+  if(!m) return t;
+  const extra = (n.match(/[（(][^）)]*[）)]/)||[""])[0];
+  return "Q"+m[1]+extra;
+}
 const yoyOf = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000)/10;
 
 /* ---------- 一覧 ---------- */
@@ -317,7 +328,7 @@ function listItems(){
       .map(c => ({ key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:c.periods?.at(-1)?.label||"", date:c.date||"", has:!!c.periods?.length }));
   } else {
     items = state.digest.filter(d => (!q || String(d["企業"]).toLowerCase().includes(q)))
-      .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:d["期"], date:d["発表日"], has:true }));
+      .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:qLabel(d["期"]), date:d["発表日"], has:true }));
   }
   if(sort==="date") items.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   if(sort==="name") items.sort((a,b)=>String(a.name).localeCompare(String(b.name),"ja"));
@@ -344,7 +355,7 @@ function rowFromMaster(c, period){
 function rowFromDigest(d){
   const c = masterOf({企業:d["企業"]});
   return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
-    period:"", 期:d["期"], 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
+    period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
     営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] };
 }
 $("#list").addEventListener("click", e=>{
@@ -459,7 +470,7 @@ $("#palette").addEventListener("change", ()=>{ applyPalette(); renderPreview(); 
 ["#cHead","#cAccent"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#palette").value="custom"; renderPreview(); }));
 
 function compCell(r, pmode){
-  const src = logoSrc(r), per = esc(r.期||"");
+  const src = logoSrc(r), per = esc(qLabel(r.期));
   const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">${r.社名表示?`<div class="nm">${esc(r.企業)}</div>`:""}` : `<div class="lt">${esc(r.企業)}</div>`;
   return pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
        : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
@@ -505,7 +516,7 @@ function tableHTML(){
 function segRowsFor(c){ return state.rows.filter(r=>r.key?.startsWith("m|") && masterOf(r)?.seg_revenue); }
 function fillSegCo(){
   const cand = segRowsFor(), cur = $("#segCo").value;
-  $("#segCo").innerHTML = cand.length ? cand.map(r=>`<option value="${esc(r.key)}">${esc(r.企業)}（${esc(r.期)}）</option>`).join("") : `<option value="">セグメントのある企業が選ばれていません</option>`;
+  $("#segCo").innerHTML = cand.length ? cand.map(r=>`<option value="${esc(r.key)}">${esc(r.企業)}（${esc(qLabel(r.期))}）</option>`).join("") : `<option value="">セグメントのある企業が選ばれていません</option>`;
   if(cand.some(r=>r.key===cur)) $("#segCo").value = cur;
 }
 function segData(r){
@@ -540,7 +551,7 @@ function segHTML(){
   const head = `<th>セグメント</th><th>売上高</th><th>前年<br>同期比</th><th>構成比</th>${withP?"<th>セグメント<br>利益</th><th>前年<br>同期比</th><th>利益率</th>":""}`;
   return `<div class="ttl">${src?`<img src="${src}" alt="">`:""}<h3>${esc($("#title").value)}</h3></div>
     <table class="et seg"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td class="sname">この期のセグメントデータがありません</td></tr>`}</tbody></table>
-    <div class="note">${esc(r.期)}（${esc(r.period)}）　単位: ${unit}${d.c.note?`　${esc(d.c.note)}`:""}</div>`;
+    <div class="note">${esc(qLabel(r.期))}（${esc(r.period)}）　単位: ${unit}${d.c.note?`　${esc(d.c.note)}`:""}</div>`;
 }
 
 /* ---------- プレビュー ---------- */
@@ -571,7 +582,7 @@ function autoTitle(){
   if($("#title").dataset.touched) return;
   if($("#mode").value==="seg"){
     const r = state.rows.find(x=>x.key===$("#segCo").value);
-    $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${r.期}）` : "セグメント別業績"; return;
+    $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${qLabel(r.期)}）` : "セグメント別業績"; return;
   }
   $("#title").value = "注目企業の決算";
 }
