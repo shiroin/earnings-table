@@ -1,0 +1,2157 @@
+{
+"updated": "2026-10-31 10:33",
+"companies": {
+"NVDA": {
+"symbol": "NVDA",
+"value": 4941442065261.841,
+"currency": "USD",
+"text": "4.94兆ドル",
+"date": "2026-10-31"
+},
+"AMD": {
+"symbol": "AMD",
+"value": 824073381273.9261,
+"currency": "USD",
+"text": "8,241億ドル",
+"date": "2026-10-31"
+},
+"AVGO": {
+"symbol": "AVGO",
+"value": 1556585162280.1663,
+"currency": "USD",
+"text": "1.56兆ドル",
+"date": "2026-10-31"
+},
+"INTC": {
+"symbol": "INTC",
+"value": 349185611343.3838,
+"currency": "USD",
+"text": "3,492億ドル",
+"date": "2026-10-31"
+},
+"TSM": {
+"symbol": "TSM",
+"value": 2106382716224.27,
+"currency": "USD",
+"text": "2.11兆ドル",
+"date": "2026-10-31"
+},
+"HKG:0981": {
+"symbol": "0981.HK",
+"value": 368011170529.27264,
+"currency": "HKD",
+"text": "3,680億香港ドル",
+"date": "2026-10-31"
+},
+"SHA:688256": {
+"symbol": "688256.SS",
+"value": 553391527040.0,
+"currency": "CNY",
+"text": "5,534億元",
+"date": "2026-10-31"
+},
+"ARM": {
+"symbol": "ARM",
+"value": 219975666560.6392,
+"currency": "USD",
+"text": "2,200億ドル",
+"date": "2026-10-31"
+},
+"CBRS": {
+"symbol": "CBRS",
+"value": 25937242068.87879,
+"currency": "USD",
+"text": "259億ドル",
+"date": "2026-10-31"
+},
+"SKHY": {
+"symbol": "SKHY",
+"value": 1052189164084.8004,
+"currency": "USD",
+"text": "1.05兆ドル",
+"date": "2026-10-31"
+},
+"KRX:005930": {
+"symbol": "005930.KS",
+"value": 1465182610200000.0,
+"currency": "KRW",
+"text": "1,465兆ウォン",
+"date": "2026-10-31"
+},
+"MU": {
+"symbol": "MU",
+"value": 1001015361535.8252,
+"currency": "USD",
+"text": "1.00兆ドル",
+"date": "2026-10-31"
+},
+"285A": {
+"symbol": "285A.T",
+"value": 21523787542980.0,
+"currency": "JPY",
+"text": "21.5兆円",
+"date": "2026-10-31"
+},
+"SNDK": {
+"symbol": "SNDK",
+"value": 166335330249.063,
+"currency": "USD",
+"text": "1,663億ドル",
+"date": "2026-10-31"
+},
+"TPE:2408": {
+"symbol": "2408.TW",
+"value": 1568118581550.0,
+"currency": "TWD",
+"text": "1.57兆台湾ドル",
+"date": "2026-10-31"
+},
+"SHA:688825": {
+"symbol": "688825.SS",
+"value": 2837555289627.1426,
+"currency": "CNY",
+"text": "2.84兆元",
+"date": "2026-10-31"
+},
+"STX": {
+"symbol": "STX",
+"value": 148253403930.66406,
+"currency": "USD",
+"text": "1,483億ドル",
+"date": "2026-10-31"
+},
+"WDC": {
+"symbol": "WDC",
+"value": 137043486530.33899,
+"currency": "USD",
+"text": "1,370億ドル",
+"date": "2026-10-31"
+},
+"DELL": {
+"symbol": "DELL",
+"value": 269775342063.6139,
+"currency": "USD",
+"text": "2,698億ドル",
+"date": "2026-10-31"
+},
+"HPE": {
+"symbol": "HPE",
+"value": 73130034877.66505,
+"currency": "USD",
+"text": "731億ドル",
+"date": "2026-10-31"
+},
+"SMCI": {
+"symbol": "SMCI",
+"value": 21647009904.02481,
+"currency": "USD",
+"text": "216億ドル",
+"date": "2026-10-31"
+},
+"HKG:0992": {
+"symbol": "0992.HK",
+"value": 254295515691.0,
+"currency": "HKD",
+"text": "2,543億香港ドル",
+"date": "2026-10-31"
+},
+"TPE:2371": {
+"symbol": "2371.TW",
+"value": 57187283754.61731,
+"currency": "TWD",
+"text": "572億台湾ドル",
+"date": "2026-10-31"
+},
+"CSCO": {
+"symbol": "CSCO",
+"value": 412039762519.5042,
+"currency": "USD",
+"text": "4,120億ドル",
+"date": "2026-10-31"
+},
+"CLS": {
+"symbol": "CLS",
+"value": 33486468224.29492,
+"currency": "USD",
+"text": "335億ドル",
+"date": "2026-10-31"
+},
+"ANET": {
+"symbol": "ANET",
+"value": 212970394831.07043,
+"currency": "USD",
+"text": "2,130億ドル",
+"date": "2026-10-31"
+},
+"ALAB": {
+"symbol": "ALAB",
+"value": 44880598522.538086,
+"currency": "USD",
+"text": "449億ドル",
+"date": "2026-10-31"
+},
+"SHE:300308": {
+"symbol": "300308.SZ",
+"value": 646863256473.0,
+"currency": "CNY",
+"text": "6,469億元",
+"date": "2026-10-31"
+},
+"APH": {
+"symbol": "APH",
+"value": 195551183805.7338,
+"currency": "USD",
+"text": "1,956億ドル",
+"date": "2026-10-31"
+},
+"GLW": {
+"symbol": "GLW",
+"value": 106219368277.82996,
+"currency": "USD",
+"text": "1,062億ドル",
+"date": "2026-10-31"
+},
+"CRDO": {
+"symbol": "CRDO",
+"value": 28378861131.27072,
+"currency": "USD",
+"text": "284億ドル",
+"date": "2026-10-31"
+},
+"LITE": {
+"symbol": "LITE",
+"value": 76153008144.94775,
+"currency": "USD",
+"text": "762億ドル",
+"date": "2026-10-31"
+},
+"MRVL": {
+"symbol": "MRVL",
+"value": 176505580507.94235,
+"currency": "USD",
+"text": "1,765億ドル",
+"date": "2026-10-31"
+},
+"COHR": {
+"symbol": "COHR",
+"value": 41418564275.48694,
+"currency": "USD",
+"text": "414億ドル",
+"date": "2026-10-31"
+},
+"CIEN": {
+"symbol": "CIEN",
+"value": 45480830311.10611,
+"currency": "USD",
+"text": "455億ドル",
+"date": "2026-10-31"
+},
+"POET": {
+"symbol": "POET",
+"value": 899902024.5917892,
+"currency": "USD",
+"text": "9億ドル",
+"date": "2026-10-31"
+},
+"5803": {
+"symbol": "5803.T",
+"value": 6487034797998.0,
+"currency": "JPY",
+"text": "6.49兆円",
+"date": "2026-10-31"
+},
+"5801": {
+"symbol": "5801.T",
+"value": 1974011044312.0,
+"currency": "JPY",
+"text": "1.97兆円",
+"date": "2026-10-31"
+},
+"5802": {
+"symbol": "5802.T",
+"value": 5521829762640.0,
+"currency": "JPY",
+"text": "5.52兆円",
+"date": "2026-10-31"
+},
+"6834": {
+"symbol": "6834.T",
+"value": 273988656150.0,
+"currency": "JPY",
+"text": "2,740億円",
+"date": "2026-10-31"
+},
+"6777": {
+"symbol": "6777.T",
+"value": 206041857600.0,
+"currency": "JPY",
+"text": "2,060億円",
+"date": "2026-10-31"
+},
+"9984": {
+"symbol": "9984.T",
+"value": 25537440312109.0,
+"currency": "JPY",
+"text": "25.5兆円",
+"date": "2026-10-31"
+},
+"MSFT": {
+"symbol": "MSFT",
+"value": 3875804999200.3843,
+"currency": "USD",
+"text": "3.88兆ドル",
+"date": "2026-10-31"
+},
+"GOOGL": {
+"symbol": "GOOGL",
+"value": 3440352914978.0273,
+"currency": "USD",
+"text": "3.44兆ドル",
+"date": "2026-10-31"
+},
+"AMZN": {
+"symbol": "AMZN",
+"value": 2598423915985.1074,
+"currency": "USD",
+"text": "2.60兆ドル",
+"date": "2026-10-31"
+},
+"META": {
+"symbol": "META",
+"value": 1572426722610.5874,
+"currency": "USD",
+"text": "1.57兆ドル",
+"date": "2026-10-31"
+},
+"ORCL": {
+"symbol": "ORCL",
+"value": 396126249588.9856,
+"currency": "USD",
+"text": "3,961億ドル",
+"date": "2026-10-31"
+},
+"CRWV": {
+"symbol": "CRWV",
+"value": 30262812762.635353,
+"currency": "USD",
+"text": "303億ドル",
+"date": "2026-10-31"
+},
+"NBIS": {
+"symbol": "NBIS",
+"value": 41903763136.59274,
+"currency": "USD",
+"text": "419億ドル",
+"date": "2026-10-31"
+},
+"ASML": {
+"symbol": "ASML",
+"value": 603525651607.4128,
+"currency": "USD",
+"text": "6,035億ドル",
+"date": "2026-10-31"
+},
+"8035": {
+"symbol": "8035.T",
+"value": 21610901439920.0,
+"currency": "JPY",
+"text": "21.6兆円",
+"date": "2026-10-31"
+},
+"6857": {
+"symbol": "6857.T",
+"value": 25171148983260.0,
+"currency": "JPY",
+"text": "25.2兆円",
+"date": "2026-10-31"
+},
+"6146": {
+"symbol": "6146.T",
+"value": 5375457834500.0,
+"currency": "JPY",
+"text": "5.38兆円",
+"date": "2026-10-31"
+},
+"6920": {
+"symbol": "6920.T",
+"value": 3381939385500.0,
+"currency": "JPY",
+"text": "3.38兆円",
+"date": "2026-10-31"
+},
+"7735": {
+"symbol": "7735.T",
+"value": 2150874066250.0,
+"currency": "JPY",
+"text": "2.15兆円",
+"date": "2026-10-31"
+},
+"AMAT": {
+"symbol": "AMAT",
+"value": 309574423633.6294,
+"currency": "USD",
+"text": "3,096億ドル",
+"date": "2026-10-31"
+},
+"LRCX": {
+"symbol": "LRCX",
+"value": 299228079961.6288,
+"currency": "USD",
+"text": "2,992億ドル",
+"date": "2026-10-31"
+},
+"KLAC": {
+"symbol": "KLAC",
+"value": 206073579930.7965,
+"currency": "USD",
+"text": "2,061億ドル",
+"date": "2026-10-31"
+},
+"6525": {
+"symbol": "6525.T",
+"value": 1614782830474.0,
+"currency": "JPY",
+"text": "1.61兆円",
+"date": "2026-10-31"
+},
+"6323": {
+"symbol": "6323.T",
+"value": 641350574520.0,
+"currency": "JPY",
+"text": "6,414億円",
+"date": "2026-10-31"
+},
+"6981": {
+"symbol": "6981.T",
+"value": 11507403672732.0,
+"currency": "JPY",
+"text": "11.5兆円",
+"date": "2026-10-31"
+},
+"4062": {
+"symbol": "4062.T",
+"value": 4742793383068.0,
+"currency": "JPY",
+"text": "4.74兆円",
+"date": "2026-10-31"
+},
+"6787": {
+"symbol": "6787.T",
+"value": 438900775200.0,
+"currency": "JPY",
+"text": "4,389億円",
+"date": "2026-10-31"
+},
+"5016": {
+"symbol": "5016.T",
+"value": 2640572693100.0,
+"currency": "JPY",
+"text": "2.64兆円",
+"date": "2026-10-31"
+},
+"4004": {
+"symbol": "4004.T",
+"value": 2475676219500.0,
+"currency": "JPY",
+"text": "2.48兆円",
+"date": "2026-10-31"
+},
+"3110": {
+"symbol": "3110.T",
+"value": 512311051200.0,
+"currency": "JPY",
+"text": "5,123億円",
+"date": "2026-10-31"
+},
+"4063": {
+"symbol": "4063.T",
+"value": 10832661395588.0,
+"currency": "JPY",
+"text": "10.8兆円",
+"date": "2026-10-31"
+},
+"3436": {
+"symbol": "3436.T",
+"value": 811903566951.0,
+"currency": "JPY",
+"text": "8,119億円",
+"date": "2026-10-31"
+},
+"2802": {
+"symbol": "2802.T",
+"value": 4870675091286.0,
+"currency": "JPY",
+"text": "4.87兆円",
+"date": "2026-10-31"
+},
+"5332": {
+"symbol": "5332.T",
+"value": 944944047762.0,
+"currency": "JPY",
+"text": "9,449億円",
+"date": "2026-10-31"
+},
+"IREN": {
+"symbol": "IREN",
+"value": 9690494495.89563,
+"currency": "USD",
+"text": "97億ドル",
+"date": "2026-10-31"
+},
+"VRT": {
+"symbol": "VRT",
+"value": 89526547882.5,
+"currency": "USD",
+"text": "895億ドル",
+"date": "2026-10-31"
+},
+"BE": {
+"symbol": "BE",
+"value": 60044295836.74519,
+"currency": "USD",
+"text": "600億ドル",
+"date": "2026-10-31"
+},
+"VST": {
+"symbol": "VST",
+"value": 46441840293.306274,
+"currency": "USD",
+"text": "464億ドル",
+"date": "2026-10-31"
+},
+"6501": {
+"symbol": "6501.T",
+"value": 22704400872360.0,
+"currency": "JPY",
+"text": "22.7兆円",
+"date": "2026-10-31"
+},
+"6752": {
+"symbol": "6752.T",
+"value": 8284313970960.0,
+"currency": "JPY",
+"text": "8.28兆円",
+"date": "2026-10-31"
+},
+"GEV": {
+"symbol": "GEV",
+"value": 227058513317.0515,
+"currency": "USD",
+"text": "2,271億ドル",
+"date": "2026-10-31"
+},
+"ETN": {
+"symbol": "ETN",
+"value": 143696348474.1211,
+"currency": "USD",
+"text": "1,437億ドル",
+"date": "2026-10-31"
+},
+"CRM": {
+"symbol": "CRM",
+"value": 188606908493.042,
+"currency": "USD",
+"text": "1,886億ドル",
+"date": "2026-10-31"
+},
+"ADBE": {
+"symbol": "ADBE",
+"value": 97389514337.1582,
+"currency": "USD",
+"text": "974億ドル",
+"date": "2026-10-31"
+},
+"NOW": {
+"symbol": "NOW",
+"value": 109105837890.72418,
+"currency": "USD",
+"text": "1,091億ドル",
+"date": "2026-10-31"
+},
+"SNOW": {
+"symbol": "SNOW",
+"value": 107985019262.69531,
+"currency": "USD",
+"text": "1,080億ドル",
+"date": "2026-10-31"
+},
+"DDOG": {
+"symbol": "DDOG",
+"value": 84479582430.61401,
+"currency": "USD",
+"text": "845億ドル",
+"date": "2026-10-31"
+},
+"NET": {
+"symbol": "NET",
+"value": 99951580347.17621,
+"currency": "USD",
+"text": "1,000億ドル",
+"date": "2026-10-31"
+},
+"AKAM": {
+"symbol": "AKAM",
+"value": 13325404161.915314,
+"currency": "USD",
+"text": "133億ドル",
+"date": "2026-10-31"
+},
+"MDB": {
+"symbol": "MDB",
+"value": 28389252266.635468,
+"currency": "USD",
+"text": "284億ドル",
+"date": "2026-10-31"
+},
+"PLTR": {
+"symbol": "PLTR",
+"value": 442427098219.5105,
+"currency": "USD",
+"text": "4,424億ドル",
+"date": "2026-10-31"
+},
+"WDAY": {
+"symbol": "WDAY",
+"value": 47674621765.13672,
+"currency": "USD",
+"text": "477億ドル",
+"date": "2026-10-31"
+},
+"HUBS": {
+"symbol": "HUBS",
+"value": 11712074385.38269,
+"currency": "USD",
+"text": "117億ドル",
+"date": "2026-10-31"
+},
+"ZM": {
+"symbol": "ZM",
+"value": 27865344400.5,
+"currency": "USD",
+"text": "279億ドル",
+"date": "2026-10-31"
+},
+"TWLO": {
+"symbol": "TWLO",
+"value": 31487527169.13025,
+"currency": "USD",
+"text": "315億ドル",
+"date": "2026-10-31"
+},
+"OKTA": {
+"symbol": "OKTA",
+"value": 36404711007.04004,
+"currency": "USD",
+"text": "364億ドル",
+"date": "2026-10-31"
+},
+"CRWD": {
+"symbol": "CRWD",
+"value": 256423994982.53723,
+"currency": "USD",
+"text": "2,564億ドル",
+"date": "2026-10-31"
+},
+"PANW": {
+"symbol": "PANW",
+"value": 299443777391.13574,
+"currency": "USD",
+"text": "2,994億ドル",
+"date": "2026-10-31"
+},
+"ZS": {
+"symbol": "ZS",
+"value": 38779299123.90207,
+"currency": "USD",
+"text": "388億ドル",
+"date": "2026-10-31"
+},
+"INTU": {
+"symbol": "INTU",
+"value": 91151526261.35254,
+"currency": "USD",
+"text": "912億ドル",
+"date": "2026-10-31"
+},
+"ADSK": {
+"symbol": "ADSK",
+"value": 52168490127.56348,
+"currency": "USD",
+"text": "522億ドル",
+"date": "2026-10-31"
+},
+"CDNS": {
+"symbol": "CDNS",
+"value": 89966134329.22363,
+"currency": "USD",
+"text": "900億ドル",
+"date": "2026-10-31"
+},
+"SNPS": {
+"symbol": "SNPS",
+"value": 89611209228.88257,
+"currency": "USD",
+"text": "896億ドル",
+"date": "2026-10-31"
+},
+"GTLB": {
+"symbol": "GTLB",
+"value": 9012205375.423431,
+"currency": "USD",
+"text": "90億ドル",
+"date": "2026-10-31"
+},
+"PATH": {
+"symbol": "PATH",
+"value": 7155463527.003986,
+"currency": "USD",
+"text": "72億ドル",
+"date": "2026-10-31"
+},
+"TEAM": {
+"symbol": "TEAM",
+"value": 48531773920.80734,
+"currency": "USD",
+"text": "485億ドル",
+"date": "2026-10-31"
+},
+"SHOP": {
+"symbol": "SHOP",
+"value": 202633559760.93622,
+"currency": "USD",
+"text": "2,026億ドル",
+"date": "2026-10-31"
+},
+"FIG": {
+"symbol": "FIG",
+"value": 11539663417.222872,
+"currency": "USD",
+"text": "115億ドル",
+"date": "2026-10-31"
+},
+"ESTC": {
+"symbol": "ESTC",
+"value": 10213551590.236816,
+"currency": "USD",
+"text": "102億ドル",
+"date": "2026-10-31"
+},
+"VEEV": {
+"symbol": "VEEV",
+"value": 50670992312.501526,
+"currency": "USD",
+"text": "507億ドル",
+"date": "2026-10-31"
+},
+"IOT": {
+"symbol": "IOT",
+"value": 24636410963.917473,
+"currency": "USD",
+"text": "246億ドル",
+"date": "2026-10-31"
+},
+"MNDY": {
+"symbol": "MNDY",
+"value": 4041405711.8948135,
+"currency": "USD",
+"text": "40億ドル",
+"date": "2026-10-31"
+},
+"4684": {
+"symbol": "4684.T",
+"value": 2626769571921.0,
+"currency": "JPY",
+"text": "2.63兆円",
+"date": "2026-10-31"
+},
+"4733": {
+"symbol": "4733.T",
+"value": 745978423869.0,
+"currency": "JPY",
+"text": "7,460億円",
+"date": "2026-10-31"
+},
+"4443": {
+"symbol": "4443.T",
+"value": 273660212002.0,
+"currency": "JPY",
+"text": "2,737億円",
+"date": "2026-10-31"
+},
+"3923": {
+"symbol": "3923.T",
+"value": 393769587192.0,
+"currency": "JPY",
+"text": "3,938億円",
+"date": "2026-10-31"
+},
+"3994": {
+"symbol": "3994.T",
+"value": 380212856055.0,
+"currency": "JPY",
+"text": "3,802億円",
+"date": "2026-10-31"
+},
+"4776": {
+"symbol": "4776.T",
+"value": 132960726255.0,
+"currency": "JPY",
+"text": "1,330億円",
+"date": "2026-10-31"
+},
+"4478": {
+"symbol": "4478.T",
+"value": 272692531000.0,
+"currency": "JPY",
+"text": "2,727億円",
+"date": "2026-10-31"
+},
+"4475": {
+"symbol": "4475.T",
+"value": 67481939688.0,
+"currency": "JPY",
+"text": "675億円",
+"date": "2026-10-31"
+},
+"4165": {
+"symbol": "4165.T",
+"value": 30205216140.0,
+"currency": "JPY",
+"text": "302億円",
+"date": "2026-10-31"
+},
+"4071": {
+"symbol": "4071.T",
+"value": 94906620900.0,
+"currency": "JPY",
+"text": "949億円",
+"date": "2026-10-31"
+},
+"4431": {
+"symbol": "4431.T",
+"value": 73004105630.0,
+"currency": "JPY",
+"text": "730億円",
+"date": "2026-10-31"
+},
+"4180": {
+"symbol": "4180.T",
+"value": 147649590864.0,
+"currency": "JPY",
+"text": "1,476億円",
+"date": "2026-10-31"
+},
+"6027": {
+"symbol": "6027.T",
+"value": 107483036270.0,
+"currency": "JPY",
+"text": "1,075億円",
+"date": "2026-10-31"
+},
+"MELI": {
+"symbol": "MELI",
+"value": 82358477238.31787,
+"currency": "USD",
+"text": "824億ドル",
+"date": "2026-10-31"
+},
+"SE": {
+"symbol": "SE",
+"value": 45470849604.8719,
+"currency": "USD",
+"text": "455億ドル",
+"date": "2026-10-31"
+},
+"CPNG": {
+"symbol": "CPNG",
+"value": 25830242952.031113,
+"currency": "USD",
+"text": "258億ドル",
+"date": "2026-10-31"
+},
+"EBAY": {
+"symbol": "EBAY",
+"value": 54129799728.393555,
+"currency": "USD",
+"text": "541億ドル",
+"date": "2026-10-31"
+},
+"DASH": {
+"symbol": "DASH",
+"value": 77555591489.62411,
+"currency": "USD",
+"text": "776億ドル",
+"date": "2026-10-31"
+},
+"CHWY": {
+"symbol": "CHWY",
+"value": 8557031499.185387,
+"currency": "USD",
+"text": "86億ドル",
+"date": "2026-10-31"
+},
+"W": {
+"symbol": "W",
+"value": 15875969495.292053,
+"currency": "USD",
+"text": "159億ドル",
+"date": "2026-10-31"
+},
+"3064": {
+"symbol": "3064.T",
+"value": 1102648668810.0,
+"currency": "JPY",
+"text": "1.10兆円",
+"date": "2026-10-31"
+},
+"HKG:9988": {
+"symbol": "9988.HK",
+"value": 1931485231569.6604,
+"currency": "HKD",
+"text": "1.93兆香港ドル",
+"date": "2026-10-31"
+},
+"PDD": {
+"symbol": "PDD",
+"value": 111893196746.59225,
+"currency": "USD",
+"text": "1,119億ドル",
+"date": "2026-10-31"
+},
+"HKG:9618": {
+"symbol": "9618.HK",
+"value": 274256807254.15408,
+"currency": "HKD",
+"text": "2,743億香港ドル",
+"date": "2026-10-31"
+},
+"HKG:3690": {
+"symbol": "3690.HK",
+"value": 441903817781.7178,
+"currency": "HKD",
+"text": "4,419億香港ドル",
+"date": "2026-10-31"
+},
+"4755": {
+"symbol": "4755.T",
+"value": 1371377933259.0,
+"currency": "JPY",
+"text": "1.37兆円",
+"date": "2026-10-31"
+},
+"4385": {
+"symbol": "4385.T",
+"value": 583107000669.0,
+"currency": "JPY",
+"text": "5,831億円",
+"date": "2026-10-31"
+},
+"3092": {
+"symbol": "3092.T",
+"value": 1005948353773.0,
+"currency": "JPY",
+"text": "1.01兆円",
+"date": "2026-10-31"
+},
+"9962": {
+"symbol": "9962.T",
+"value": 1023497416525.0,
+"currency": "JPY",
+"text": "1.02兆円",
+"date": "2026-10-31"
+},
+"HKG:0625": {
+"symbol": "0625.HK",
+"value": 101191238748.0,
+"currency": "HKD",
+"text": "1,012億香港ドル",
+"date": "2026-10-31"
+},
+"BKNG": {
+"symbol": "BKNG",
+"value": 111301997133.8501,
+"currency": "USD",
+"text": "1,113億ドル",
+"date": "2026-10-31"
+},
+"ABNB": {
+"symbol": "ABNB",
+"value": 96921989904.12546,
+"currency": "USD",
+"text": "969億ドル",
+"date": "2026-10-31"
+},
+"EXPE": {
+"symbol": "EXPE",
+"value": 34317911597.542053,
+"currency": "USD",
+"text": "343億ドル",
+"date": "2026-10-31"
+},
+"TCOM": {
+"symbol": "TCOM",
+"value": 24930029835.06539,
+"currency": "USD",
+"text": "249億ドル",
+"date": "2026-10-31"
+},
+"RDDT": {
+"symbol": "RDDT",
+"value": 17648532508.162308,
+"currency": "USD",
+"text": "176億ドル",
+"date": "2026-10-31"
+},
+"DUOL": {
+"symbol": "DUOL",
+"value": 6131188095.400909,
+"currency": "USD",
+"text": "61億ドル",
+"date": "2026-10-31"
+},
+"PINS": {
+"symbol": "PINS",
+"value": 10963820548.37004,
+"currency": "USD",
+"text": "110億ドル",
+"date": "2026-10-31"
+},
+"SNAP": {
+"symbol": "SNAP",
+"value": 9030996040.136292,
+"currency": "USD",
+"text": "90億ドル",
+"date": "2026-10-31"
+},
+"DKNG": {
+"symbol": "DKNG",
+"value": 10380854067.927124,
+"currency": "USD",
+"text": "104億ドル",
+"date": "2026-10-31"
+},
+"BIDU": {
+"symbol": "BIDU",
+"value": 26013964137.957047,
+"currency": "USD",
+"text": "260億ドル",
+"date": "2026-10-31"
+},
+"4689": {
+"symbol": "4689.T",
+"value": 3451259897811.0,
+"currency": "JPY",
+"text": "3.45兆円",
+"date": "2026-10-31"
+},
+"4751": {
+"symbol": "4751.T",
+"value": 643762260478.5,
+"currency": "JPY",
+"text": "6,438億円",
+"date": "2026-10-31"
+},
+"APP": {
+"symbol": "APP",
+"value": 76762180548.5,
+"currency": "USD",
+"text": "768億ドル",
+"date": "2026-10-31"
+},
+"9449": {
+"symbol": "9449.T",
+"value": 302150403296.0,
+"currency": "JPY",
+"text": "3,022億円",
+"date": "2026-10-31"
+},
+"NFLX": {
+"symbol": "NFLX",
+"value": 258497382710.48126,
+"currency": "USD",
+"text": "2,585億ドル",
+"date": "2026-10-31"
+},
+"DIS": {
+"symbol": "DIS",
+"value": 191558649123.4242,
+"currency": "USD",
+"text": "1,916億ドル",
+"date": "2026-10-31"
+},
+"SPOT": {
+"symbol": "SPOT",
+"value": 122001891117.11456,
+"currency": "USD",
+"text": "1,220億ドル",
+"date": "2026-10-31"
+},
+"HKG:1024": {
+"symbol": "1024.HK",
+"value": 114042061735.4484,
+"currency": "HKD",
+"text": "1,140億香港ドル",
+"date": "2026-10-31"
+},
+"BILI": {
+"symbol": "BILI",
+"value": 5241141258.221115,
+"currency": "USD",
+"text": "52億ドル",
+"date": "2026-10-31"
+},
+"9418": {
+"symbol": "9418.T",
+"value": 326478587100.0,
+"currency": "JPY",
+"text": "3,265億円",
+"date": "2026-10-31"
+},
+"RBLX": {
+"symbol": "RBLX",
+"value": 30711022902.646297,
+"currency": "USD",
+"text": "307億ドル",
+"date": "2026-10-31"
+},
+"7974": {
+"symbol": "7974.T",
+"value": 9556165996245.0,
+"currency": "JPY",
+"text": "9.56兆円",
+"date": "2026-10-31"
+},
+"6758": {
+"symbol": "6758.T",
+"value": 23114110357176.0,
+"currency": "JPY",
+"text": "23.1兆円",
+"date": "2026-10-31"
+},
+"9766": {
+"symbol": "9766.T",
+"value": 3576657803955.0,
+"currency": "JPY",
+"text": "3.58兆円",
+"date": "2026-10-31"
+},
+"9697": {
+"symbol": "9697.T",
+"value": 1655377727028.0,
+"currency": "JPY",
+"text": "1.66兆円",
+"date": "2026-10-31"
+},
+"7832": {
+"symbol": "7832.T",
+"value": 3983523996193.0,
+"currency": "JPY",
+"text": "3.98兆円",
+"date": "2026-10-31"
+},
+"2432": {
+"symbol": "2432.T",
+"value": 236231539493.5,
+"currency": "JPY",
+"text": "2,362億円",
+"date": "2026-10-31"
+},
+"3635": {
+"symbol": "3635.T",
+"value": 574387054388.0,
+"currency": "JPY",
+"text": "5,744億円",
+"date": "2026-10-31"
+},
+"2121": {
+"symbol": "2121.T",
+"value": 248175514800.0,
+"currency": "JPY",
+"text": "2,482億円",
+"date": "2026-10-31"
+},
+"HKG:0700": {
+"symbol": "0700.HK",
+"value": 3454167530703.3633,
+"currency": "HKD",
+"text": "3.45兆香港ドル",
+"date": "2026-10-31"
+},
+"HKG:9992": {
+"symbol": "9992.HK",
+"value": 178355937329.33136,
+"currency": "HKD",
+"text": "1,784億香港ドル",
+"date": "2026-10-31"
+},
+"8136": {
+"symbol": "8136.T",
+"value": 1520387428164.0,
+"currency": "JPY",
+"text": "1.52兆円",
+"date": "2026-10-31"
+},
+"9602": {
+"symbol": "9602.T",
+"value": 1406368955544.0,
+"currency": "JPY",
+"text": "1.41兆円",
+"date": "2026-10-31"
+},
+"4816": {
+"symbol": "4816.T",
+"value": 619068302130.0,
+"currency": "JPY",
+"text": "6,191億円",
+"date": "2026-10-31"
+},
+"9468": {
+"symbol": "9468.T",
+"value": 536865643652.0,
+"currency": "JPY",
+"text": "5,369億円",
+"date": "2026-10-31"
+},
+"2767": {
+"symbol": "2767.T",
+"value": 152393985360.0,
+"currency": "JPY",
+"text": "1,524億円",
+"date": "2026-10-31"
+},
+"5032": {
+"symbol": "5032.T",
+"value": 188178158700.0,
+"currency": "JPY",
+"text": "1,882億円",
+"date": "2026-10-31"
+},
+"5253": {
+"symbol": "5253.T",
+"value": 97377272532.0,
+"currency": "JPY",
+"text": "974億円",
+"date": "2026-10-31"
+},
+"4680": {
+"symbol": "4680.T",
+"value": 336477021440.0,
+"currency": "JPY",
+"text": "3,365億円",
+"date": "2026-10-31"
+},
+"4661": {
+"symbol": "4661.T",
+"value": 5637345650172.0,
+"currency": "JPY",
+"text": "5.64兆円",
+"date": "2026-10-31"
+},
+"9166": {
+"symbol": "9166.T",
+"value": 110043126024.0,
+"currency": "JPY",
+"text": "1,100億円",
+"date": "2026-10-31"
+},
+"AAPL": {
+"symbol": "AAPL",
+"value": 5029592324660.645,
+"currency": "USD",
+"text": "5.03兆ドル",
+"date": "2026-10-31"
+},
+"EPA:MC": {
+"symbol": "MC.PA",
+"value": 190777542849.0,
+"currency": "EUR",
+"text": "1,908億ユーロ",
+"date": "2026-10-31"
+},
+"EPA:RMS": {
+"symbol": "RMS.PA",
+"value": 135475431338.0,
+"currency": "EUR",
+"text": "1,355億ユーロ",
+"date": "2026-10-31"
+},
+"8050": {
+"symbol": "8050.T",
+"value": 857214197370.0,
+"currency": "JPY",
+"text": "8,572億円",
+"date": "2026-10-31"
+},
+"RACE": {
+"symbol": "RACE",
+"value": 69404771182.34863,
+"currency": "USD",
+"text": "694億ドル",
+"date": "2026-10-31"
+},
+"SHA:600519": {
+"symbol": "600519.SS",
+"value": 1740176153711.1907,
+"currency": "CNY",
+"text": "1.74兆元",
+"date": "2026-10-31"
+},
+"NKE": {
+"symbol": "NKE",
+"value": 57436889697.74831,
+"currency": "USD",
+"text": "574億ドル",
+"date": "2026-10-31"
+},
+"7936": {
+"symbol": "7936.T",
+"value": 3409478582692.0,
+"currency": "JPY",
+"text": "3.41兆円",
+"date": "2026-10-31"
+},
+"LULU": {
+"symbol": "LULU",
+"value": 12421178491.209,
+"currency": "USD",
+"text": "124億ドル",
+"date": "2026-10-31"
+},
+"MNST": {
+"symbol": "MNST",
+"value": 92741510806.68758,
+"currency": "USD",
+"text": "927億ドル",
+"date": "2026-10-31"
+},
+"456A": {
+"symbol": "456A.T",
+"value": 194332600520.0,
+"currency": "JPY",
+"text": "1,943億円",
+"date": "2026-10-31"
+},
+"7806": {
+"symbol": "7806.T",
+"value": 348896855340.0,
+"currency": "JPY",
+"text": "3,489億円",
+"date": "2026-10-31"
+},
+"WMT": {
+"symbol": "WMT",
+"value": 979897015174.2205,
+"currency": "USD",
+"text": "9,799億ドル",
+"date": "2026-10-31"
+},
+"MNSO": {
+"symbol": "MNSO",
+"value": 2985928522.208107,
+"currency": "USD",
+"text": "30億ドル",
+"date": "2026-10-31"
+},
+"9983": {
+"symbol": "9983.T",
+"value": 23118799627100.0,
+"currency": "JPY",
+"text": "23.1兆円",
+"date": "2026-10-31"
+},
+"7532": {
+"symbol": "7532.T",
+"value": 2205148415228.1875,
+"currency": "JPY",
+"text": "2.21兆円",
+"date": "2026-10-31"
+},
+"9843": {
+"symbol": "9843.T",
+"value": 1922891005994.0,
+"currency": "JPY",
+"text": "1.92兆円",
+"date": "2026-10-31"
+},
+"7453": {
+"symbol": "7453.T",
+"value": 2567085620112.0,
+"currency": "JPY",
+"text": "2.57兆円",
+"date": "2026-10-31"
+},
+"141A": {
+"symbol": "141A.T",
+"value": 492972187180.0,
+"currency": "JPY",
+"text": "4,930億円",
+"date": "2026-10-31"
+},
+"MCD": {
+"symbol": "MCD",
+"value": 182656428526.4391,
+"currency": "USD",
+"text": "1,827億ドル",
+"date": "2026-10-31"
+},
+"SBUX": {
+"symbol": "SBUX",
+"value": 118183797912.59766,
+"currency": "USD",
+"text": "1,182億ドル",
+"date": "2026-10-31"
+},
+"DPZ": {
+"symbol": "DPZ",
+"value": 10319821446.665771,
+"currency": "USD",
+"text": "103億ドル",
+"date": "2026-10-31"
+},
+"LKNCY": {
+"symbol": "LKNCY",
+"value": 8852045852.842093,
+"currency": "USD",
+"text": "89億ドル",
+"date": "2026-10-31"
+},
+"3563": {
+"symbol": "3563.T",
+"value": 1321572165760.0,
+"currency": "JPY",
+"text": "1.32兆円",
+"date": "2026-10-31"
+},
+"2702": {
+"symbol": "2702.T",
+"value": 1155410694570.0,
+"currency": "JPY",
+"text": "1.16兆円",
+"date": "2026-10-31"
+},
+"7581": {
+"symbol": "7581.T",
+"value": 403345732110.0,
+"currency": "JPY",
+"text": "4,033億円",
+"date": "2026-10-31"
+},
+"9279": {
+"symbol": "9279.T",
+"value": 96199439392.0,
+"currency": "JPY",
+"text": "962億円",
+"date": "2026-10-31"
+},
+"V": {
+"symbol": "V",
+"value": 773002166911.1257,
+"currency": "USD",
+"text": "7,730億ドル",
+"date": "2026-10-31"
+},
+"MA": {
+"symbol": "MA",
+"value": 555819081000.7192,
+"currency": "USD",
+"text": "5,558億ドル",
+"date": "2026-10-31"
+},
+"AXP": {
+"symbol": "AXP",
+"value": 213979844641.44067,
+"currency": "USD",
+"text": "2,140億ドル",
+"date": "2026-10-31"
+},
+"PYPL": {
+"symbol": "PYPL",
+"value": 47355828174.74763,
+"currency": "USD",
+"text": "474億ドル",
+"date": "2026-10-31"
+},
+"XYZ": {
+"symbol": "XYZ",
+"value": 45792595633.392334,
+"currency": "USD",
+"text": "458億ドル",
+"date": "2026-10-31"
+},
+"ADYEN": {
+"symbol": "ADYEN.AS",
+"value": 26102485211.3,
+"currency": "EUR",
+"text": "261億ユーロ",
+"date": "2026-10-31"
+},
+"NU": {
+"symbol": "NU",
+"value": 56084293672.50467,
+"currency": "USD",
+"text": "561億ドル",
+"date": "2026-10-31"
+},
+"WSE": {
+"symbol": "WSE",
+"value": 10321581424.32264,
+"currency": "USD",
+"text": "103億ドル",
+"date": "2026-10-31"
+},
+"SOFI": {
+"symbol": "SOFI",
+"value": 21731306663.772156,
+"currency": "USD",
+"text": "217億ドル",
+"date": "2026-10-31"
+},
+"AFRM": {
+"symbol": "AFRM",
+"value": 24790340090.21118,
+"currency": "USD",
+"text": "248億ドル",
+"date": "2026-10-31"
+},
+"KLAR": {
+"symbol": "KLAR",
+"value": 5042828950.119043,
+"currency": "USD",
+"text": "50億ドル",
+"date": "2026-10-31"
+},
+"TOST": {
+"symbol": "TOST",
+"value": 18311040176.3916,
+"currency": "USD",
+"text": "183億ドル",
+"date": "2026-10-31"
+},
+"PAYP": {
+"symbol": "PAYP",
+"value": 9500318003.233276,
+"currency": "USD",
+"text": "95億ドル",
+"date": "2026-10-31"
+},
+"3769": {
+"symbol": "3769.T",
+"value": 650300534099.0,
+"currency": "JPY",
+"text": "6,503億円",
+"date": "2026-10-31"
+},
+"FUTU": {
+"symbol": "FUTU",
+"value": 13802146915.760376,
+"currency": "USD",
+"text": "138億ドル",
+"date": "2026-10-31"
+},
+"COIN": {
+"symbol": "COIN",
+"value": 37871150156.05394,
+"currency": "USD",
+"text": "379億ドル",
+"date": "2026-10-31"
+},
+"HOOD": {
+"symbol": "HOOD",
+"value": 76532751708.57309,
+"currency": "USD",
+"text": "765億ドル",
+"date": "2026-10-31"
+},
+"8473": {
+"symbol": "8473.T",
+"value": 1852881785118.0,
+"currency": "JPY",
+"text": "1.85兆円",
+"date": "2026-10-31"
+},
+"BRK": {
+"symbol": "BRK-B",
+"value": 1161313635241.691,
+"currency": "USD",
+"text": "1.16兆ドル",
+"date": "2026-10-31"
+},
+"9435": {
+"symbol": "9435.T",
+"value": 1636955222700.0,
+"currency": "JPY",
+"text": "1.64兆円",
+"date": "2026-10-31"
+},
+"8306": {
+"symbol": "8306.T",
+"value": 38798621120826.0,
+"currency": "JPY",
+"text": "38.8兆円",
+"date": "2026-10-31"
+},
+"8316": {
+"symbol": "8316.T",
+"value": 24311162149240.0,
+"currency": "JPY",
+"text": "24.3兆円",
+"date": "2026-10-31"
+},
+"8411": {
+"symbol": "8411.T",
+"value": 18709803683487.0,
+"currency": "JPY",
+"text": "18.7兆円",
+"date": "2026-10-31"
+},
+"5838": {
+"symbol": "5838.T",
+"value": 2399566459188.0,
+"currency": "JPY",
+"text": "2.40兆円",
+"date": "2026-10-31"
+},
+"6954": {
+"symbol": "6954.T",
+"value": 5275706792232.0,
+"currency": "JPY",
+"text": "5.28兆円",
+"date": "2026-10-31"
+},
+"6861": {
+"symbol": "6861.T",
+"value": 18916960608000.0,
+"currency": "JPY",
+"text": "18.9兆円",
+"date": "2026-10-31"
+},
+"6273": {
+"symbol": "6273.T",
+"value": 3974162528110.0,
+"currency": "JPY",
+"text": "3.97兆円",
+"date": "2026-10-31"
+},
+"6506": {
+"symbol": "6506.T",
+"value": 1035681885200.0,
+"currency": "JPY",
+"text": "1.04兆円",
+"date": "2026-10-31"
+},
+"6503": {
+"symbol": "6503.T",
+"value": 9495462000640.0,
+"currency": "JPY",
+"text": "9.50兆円",
+"date": "2026-10-31"
+},
+"6481": {
+"symbol": "6481.T",
+"value": 641846675508.0,
+"currency": "JPY",
+"text": "6,418億円",
+"date": "2026-10-31"
+},
+"6324": {
+"symbol": "6324.T",
+"value": 488764631607.0,
+"currency": "JPY",
+"text": "4,888億円",
+"date": "2026-10-31"
+},
+"ISRG": {
+"symbol": "ISRG",
+"value": 152619648646.36084,
+"currency": "USD",
+"text": "1,526億ドル",
+"date": "2026-10-31"
+},
+"SHA:688836": {
+"symbol": "688836.SS",
+"value": 261708646259.69116,
+"currency": "CNY",
+"text": "2,617億元",
+"date": "2026-10-31"
+},
+"7011": {
+"symbol": "7011.T",
+"value": 11468394477420.0,
+"currency": "JPY",
+"text": "11.5兆円",
+"date": "2026-10-31"
+},
+"7013": {
+"symbol": "7013.T",
+"value": 2470707373204.0,
+"currency": "JPY",
+"text": "2.47兆円",
+"date": "2026-10-31"
+},
+"7012": {
+"symbol": "7012.T",
+"value": 1846375874811.5,
+"currency": "JPY",
+"text": "1.85兆円",
+"date": "2026-10-31"
+},
+"278A": {
+"symbol": "278A.T",
+"value": 132256872000.0,
+"currency": "JPY",
+"text": "1,323億円",
+"date": "2026-10-31"
+},
+"SPCX": {
+"symbol": "SPCX",
+"value": 1829640919454.927,
+"currency": "USD",
+"text": "1.83兆ドル",
+"date": "2026-10-31"
+},
+"RKLB": {
+"symbol": "RKLB",
+"value": 34988983499.71089,
+"currency": "USD",
+"text": "350億ドル",
+"date": "2026-10-31"
+},
+"9348": {
+"symbol": "9348.T",
+"value": 54135244270.0,
+"currency": "JPY",
+"text": "541億円",
+"date": "2026-10-31"
+},
+"186A": {
+"symbol": "186A.T",
+"value": 159885588375.0,
+"currency": "JPY",
+"text": "1,599億円",
+"date": "2026-10-31"
+},
+"464A": {
+"symbol": "464A.T",
+"value": 77388851856.0,
+"currency": "JPY",
+"text": "774億円",
+"date": "2026-10-31"
+},
+"290A": {
+"symbol": "290A.T",
+"value": 180526952200.0,
+"currency": "JPY",
+"text": "1,805億円",
+"date": "2026-10-31"
+},
+"402A": {
+"symbol": "402A.T",
+"value": 15336952000.0,
+"currency": "JPY",
+"text": "153億円",
+"date": "2026-10-31"
+},
+"9412": {
+"symbol": "9412.T",
+"value": 512547963744.0,
+"currency": "JPY",
+"text": "5,125億円",
+"date": "2026-10-31"
+},
+"6269": {
+"symbol": "6269.T",
+"value": 544498719420.0,
+"currency": "JPY",
+"text": "5,445億円",
+"date": "2026-10-31"
+},
+"TSLA": {
+"symbol": "TSLA",
+"value": 1580341032820.71,
+"currency": "USD",
+"text": "1.58兆ドル",
+"date": "2026-10-31"
+},
+"HKG:1211": {
+"symbol": "1211.HK",
+"value": 622248733811.25,
+"currency": "HKD",
+"text": "6,222億香港ドル",
+"date": "2026-10-31"
+},
+"HKG:0175": {
+"symbol": "0175.HK",
+"value": 149276609868.275,
+"currency": "HKD",
+"text": "1,493億香港ドル",
+"date": "2026-10-31"
+},
+"XPEV": {
+"symbol": "XPEV",
+"value": 8660109602.656088,
+"currency": "USD",
+"text": "87億ドル",
+"date": "2026-10-31"
+},
+"NIO": {
+"symbol": "NIO",
+"value": 8043191236.203611,
+"currency": "USD",
+"text": "80億ドル",
+"date": "2026-10-31"
+},
+"SHE:300750": {
+"symbol": "300750.SZ",
+"value": 1077778988390.3728,
+"currency": "CNY",
+"text": "1.08兆元",
+"date": "2026-10-31"
+},
+"HKG:1810": {
+"symbol": "1810.HK",
+"value": 681435496793.2837,
+"currency": "HKD",
+"text": "6,814億香港ドル",
+"date": "2026-10-31"
+},
+"UBER": {
+"symbol": "UBER",
+"value": 133277047895.25,
+"currency": "USD",
+"text": "1,333億ドル",
+"date": "2026-10-31"
+},
+"GRAB": {
+"symbol": "GRAB",
+"value": 11087428576.070786,
+"currency": "USD",
+"text": "111億ドル",
+"date": "2026-10-31"
+},
+"DIDI": {
+"symbol": "DIDIY",
+"value": 13522548708.0,
+"currency": "USD",
+"text": "135億ドル",
+"date": "2026-10-31"
+},
+"581A": {
+"symbol": "581A.T",
+"value": 254411325000.0,
+"currency": "JPY",
+"text": "2,544億円",
+"date": "2026-10-31"
+},
+"593A": {
+"symbol": "593A.T",
+"value": 152648388270.0,
+"currency": "JPY",
+"text": "1,526億円",
+"date": "2026-10-31"
+},
+"4666": {
+"symbol": "4666.T",
+"value": 300999047421.0,
+"currency": "JPY",
+"text": "3,010億円",
+"date": "2026-10-31"
+},
+"3186": {
+"symbol": "3186.T",
+"value": 192452453290.0,
+"currency": "JPY",
+"text": "1,925億円",
+"date": "2026-10-31"
+},
+"7199": {
+"symbol": "7199.T",
+"value": 88048587290.0,
+"currency": "JPY",
+"text": "880億円",
+"date": "2026-10-31"
+},
+"ACN": {
+"symbol": "ACN",
+"value": 158027924252.16284,
+"currency": "USD",
+"text": "1,580億ドル",
+"date": "2026-10-31"
+},
+"6532": {
+"symbol": "6532.T",
+"value": 1738086213875.0,
+"currency": "JPY",
+"text": "1.74兆円",
+"date": "2026-10-31"
+},
+"446A": {
+"symbol": "446A.T",
+"value": 194580000000.0,
+"currency": "JPY",
+"text": "1,946億円",
+"date": "2026-10-31"
+},
+"4373": {
+"symbol": "4373.T",
+"value": 261833345400.0,
+"currency": "JPY",
+"text": "2,618億円",
+"date": "2026-10-31"
+},
+"3697": {
+"symbol": "3697.T",
+"value": 286788931176.0,
+"currency": "JPY",
+"text": "2,868億円",
+"date": "2026-10-31"
+},
+"4419": {
+"symbol": "4419.T",
+"value": 68142444266.0,
+"currency": "JPY",
+"text": "681億円",
+"date": "2026-10-31"
+},
+"5574": {
+"symbol": "5574.T",
+"value": 22058235240.0,
+"currency": "JPY",
+"text": "221億円",
+"date": "2026-10-31"
+},
+"4259": {
+"symbol": "4259.T",
+"value": 74807798815.0,
+"currency": "JPY",
+"text": "748億円",
+"date": "2026-10-31"
+},
+"3993": {
+"symbol": "3993.T",
+"value": 109798479735.0,
+"currency": "JPY",
+"text": "1,098億円",
+"date": "2026-10-31"
+},
+"LLY": {
+"symbol": "LLY",
+"value": 1262666746038.4678,
+"currency": "USD",
+"text": "1.26兆ドル",
+"date": "2026-10-31"
+},
+"NVO": {
+"symbol": "NVO",
+"value": 176427404960.0,
+"currency": "USD",
+"text": "1,764億ドル",
+"date": "2026-10-31"
+},
+"2413": {
+"symbol": "2413.T",
+"value": 1249935452100.0,
+"currency": "JPY",
+"text": "1.25兆円",
+"date": "2026-10-31"
+},
+"4483": {
+"symbol": "4483.T",
+"value": 241484640480.0,
+"currency": "JPY",
+"text": "2,415億円",
+"date": "2026-10-31"
+},
+"4480": {
+"symbol": "4480.T",
+"value": 72107029224.0,
+"currency": "JPY",
+"text": "721億円",
+"date": "2026-10-31"
+},
+"2175": {
+"symbol": "2175.T",
+"value": 212424202012.0,
+"currency": "JPY",
+"text": "2,124億円",
+"date": "2026-10-31"
+},
+"8058": {
+"symbol": "8058.T",
+"value": 17599245280235.0,
+"currency": "JPY",
+"text": "17.6兆円",
+"date": "2026-10-31"
+},
+"8031": {
+"symbol": "8031.T",
+"value": 14197674118796.0,
+"currency": "JPY",
+"text": "14.2兆円",
+"date": "2026-10-31"
+},
+"8001": {
+"symbol": "8001.T",
+"value": 16066151014617.0,
+"currency": "JPY",
+"text": "16.1兆円",
+"date": "2026-10-31"
+},
+"8053": {
+"symbol": "8053.T",
+"value": 7957824697872.0,
+"currency": "JPY",
+"text": "7.96兆円",
+"date": "2026-10-31"
+},
+"8002": {
+"symbol": "8002.T",
+"value": 7993668407448.0,
+"currency": "JPY",
+"text": "7.99兆円",
+"date": "2026-10-31"
+},
+"8801": {
+"symbol": "8801.T",
+"value": 4256558724729.0,
+"currency": "JPY",
+"text": "4.26兆円",
+"date": "2026-10-31"
+},
+"8802": {
+"symbol": "8802.T",
+"value": 4569334832316.0,
+"currency": "JPY",
+"text": "4.57兆円",
+"date": "2026-10-31"
+},
+"8830": {
+"symbol": "8830.T",
+"value": 3002676672575.0,
+"currency": "JPY",
+"text": "3.00兆円",
+"date": "2026-10-31"
+},
+"3288": {
+"symbol": "3288.T",
+"value": 847762509537.0,
+"currency": "JPY",
+"text": "8,478億円",
+"date": "2026-10-31"
+},
+"3003": {
+"symbol": "3003.T",
+"value": 1370192450980.5,
+"currency": "JPY",
+"text": "1.37兆円",
+"date": "2026-10-31"
+},
+"2127": {
+"symbol": "2127.T",
+"value": 196416997350.0,
+"currency": "JPY",
+"text": "1,964億円",
+"date": "2026-10-31"
+},
+"6080": {
+"symbol": "6080.T",
+"value": 133311143100.0,
+"currency": "JPY",
+"text": "1,333億円",
+"date": "2026-10-31"
+},
+"6196": {
+"symbol": "6196.T",
+"value": 81400508118.0,
+"currency": "JPY",
+"text": "814億円",
+"date": "2026-10-31"
+},
+"9552": {
+"symbol": "9552.T",
+"value": 51709332480.0,
+"currency": "JPY",
+"text": "517億円",
+"date": "2026-10-31"
+},
+"6098": {
+"symbol": "6098.T",
+"value": 26666297011200.0,
+"currency": "JPY",
+"text": "26.7兆円",
+"date": "2026-10-31"
+},
+"4194": {
+"symbol": "4194.T",
+"value": 387194579000.0,
+"currency": "JPY",
+"text": "3,872億円",
+"date": "2026-10-31"
+},
+"215A": {
+"symbol": "215A.T",
+"value": 148107658545.0,
+"currency": "JPY",
+"text": "1,481億円",
+"date": "2026-10-31"
+},
+"7685": {
+"symbol": "7685.T",
+"value": 159639209188.0,
+"currency": "JPY",
+"text": "1,596億円",
+"date": "2026-10-31"
+},
+"5537": {
+"symbol": "5537.T",
+"value": 27332521000.0,
+"currency": "JPY",
+"text": "273億円",
+"date": "2026-10-31"
+},
+"319A": {
+"symbol": "319A.T",
+"value": 204340544100.0,
+"currency": "JPY",
+"text": "2,043億円",
+"date": "2026-10-31"
+},
+"485A": {
+"symbol": "485A.T",
+"value": 230599921500.0,
+"currency": "JPY",
+"text": "2,306億円",
+"date": "2026-10-31"
+},
+"4417": {
+"symbol": "4417.T",
+"value": 124289383520.0,
+"currency": "JPY",
+"text": "1,243億円",
+"date": "2026-10-31"
+},
+"5243": {
+"symbol": "5243.T",
+"value": 55203009450.0,
+"currency": "JPY",
+"text": "552億円",
+"date": "2026-10-31"
+},
+"3479": {
+"symbol": "3479.T",
+"value": 70707499269.0,
+"currency": "JPY",
+"text": "707億円",
+"date": "2026-10-31"
+},
+"299A": {
+"symbol": "299A.T",
+"value": 46358421480.0,
+"currency": "JPY",
+"text": "464億円",
+"date": "2026-10-31"
+}
+},
+"errors": [
+"ネクソン（3659）: 'currency'"
+]
+}
