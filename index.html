@@ -144,9 +144,16 @@ input[type=url]{flex:1}
         <input type="text" class="search" id="q" placeholder="社名・ティッカーで検索" aria-label="社名・ティッカーで検索">
         <select id="fCountry" aria-label="本拠地"></select>
         <select id="fCat" aria-label="業種"></select>
+        <select id="fWhen" aria-label="期間">
+          <option value="">すべての期間</option><option value="24h">過去24時間</option><option value="3d">過去3日</option><option value="7d">過去7日</option>
+        </select>
         <select id="fSort" aria-label="並び順">
           <option value="date">決算日が新しい順</option><option value="no">ウォッチリスト順</option><option value="name">社名順</option>
         </select>
+      </div>
+      <div class="row" style="margin-bottom:8px;gap:6px">
+        <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
+        <button class="btn ghost small" id="selNone">選択を外す</button>
       </div>
       <div class="list" id="list"><div class="empty">読み込み中…</div></div>
       <p class="hint" id="dataInfo"></p>
@@ -319,15 +326,29 @@ function fillFilters(){
   $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
   $("#fCat").innerHTML = opt(state.masters.map(c=>c.cat1), "すべての業種");
 }
+/* 期間の判定: 記録日時（自動まとめが書く）があればそれ、なければ発表日（その日の15時と見なす） */
+function whenOf(x){
+  const t = String(x["記録日時"]||"").trim();
+  if(t){ const d = new Date(t.replace(" ","T") + (/[+Z]/.test(t)?"":"+09:00")); if(!isNaN(d)) return d; }
+  const a = String(x["発表日"]||x.date||"").slice(0,10);
+  if(/^\d{4}-\d{2}-\d{2}$/.test(a)) return new Date(a+"T15:00:00+09:00");
+  return null;
+}
+function inWindow(x){
+  const w = $("#fWhen").value; if(!w) return true;
+  const d = whenOf(x); if(!d) return false;
+  const h = {"24h":24,"3d":72,"7d":168}[w];
+  return Date.now() - d.getTime() <= h*3600e3;
+}
 function listItems(){
   const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
   let items;
   if(state.src==="master"){
-    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) &&
+    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow({date:c.date}) &&
       (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
       .map(c => ({ key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:c.periods?.at(-1)?.label||"", date:c.date||"", has:!!c.periods?.length }));
   } else {
-    items = state.digest.filter(d => (!q || String(d["企業"]).toLowerCase().includes(q)))
+    items = state.digest.filter(d => inWindow(d) && (!q || String(d["企業"]).toLowerCase().includes(q)))
       .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:qLabel(d["期"]), date:d["発表日"], has:true }));
   }
   if(sort==="date") items.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
@@ -370,9 +391,16 @@ $("#list").addEventListener("click", e=>{
 });
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   state.src = t.dataset.src; document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x===t));
+  $("#fWhen").value = state.src==="digest" ? "24h" : "";
   renderList();
 });
-["#q","#fCountry","#fCat","#fSort"].forEach(s=>$(s).addEventListener("input", renderList));
+["#q","#fCountry","#fCat","#fSort","#fWhen"].forEach(s=>$(s).addEventListener("input", renderList));
+$("#selAll").onclick = ()=>{
+  const on = new Set(state.rows.map(r=>r.key));
+  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has) state.rows.push(it.c ? rowFromMaster(it.c) : rowFromDigest(it.d));
+  autoTitle(); renderList(); renderEdit(); renderPreview();
+};
+$("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
 /* ---------- 編集 ---------- */
 const FIELDS = [["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
@@ -584,7 +612,7 @@ function autoTitle(){
     const r = state.rows.find(x=>x.key===$("#segCo").value);
     $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${qLabel(r.期)}）` : "セグメント別業績"; return;
   }
-  $("#title").value = "注目企業の決算";
+  $("#title").value = $("#fWhen").value==="24h" ? "過去24時間の決算" : "注目企業の決算";
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
