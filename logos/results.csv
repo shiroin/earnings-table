@@ -13,8 +13,8 @@ Samsung Electronics,samsung.com,ok,existing,,
 Micron,micron.com,ok,existing,,
 キオクシアホールディングス,kioxia-holdings.com,ok,existing,,
 Sandisk,sandisk.com,ok,existing,,
-南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
-CXMT,,none,指定でロゴなし,,
+南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
+CXMT,sse.com.cn,none,指定でロゴなし,,
 Seagate Technology,seagate.com,ok,existing,,
 Western Didital,wdc.com,ok,existing,,
 Dell Technologies,delltechnologies.com,ok,existing,,
@@ -26,7 +26,7 @@ Lenovo,lenovo.com,ok,existing,,
 Cisco Systems,cisco.com,ok,existing,,
 Celestica,celestica.com,ok,existing,,
 Arista Networks,arista.com,ok,existing,,
-Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
+Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
 Zhongji Innolight,zj-innolight.com,ok,existing,,
 Amphenol,amphenol.com,ok,existing,,
 Corning,corning.com,ok,existing,,
@@ -69,8 +69,8 @@ KOKUSAI ELECTRIC,kokusai-electric.com,ok,existing,,
 イビデン,ibiden.co.jp,ok,existing,,
 メイコー,meiko-elec.com,ok,existing,,
 JX金属,jx-nmm.com,ok,existing,,
-レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
-日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
+レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
+日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
 信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
 SUMCO,sumcosi.com,ok,existing,,
 味の素,ajinomoto.co.jp,ok,existing,,
@@ -147,7 +147,7 @@ Meituan,meituan.com,ok,existing,,
 楽天グループ,corp.rakuten.co.jp,ok,existing,,
 メルカリ,about.mercari.com,ok,existing,,
 ZOZO,corp.zozo.com,ok,existing,,
-ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
+ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
 SHEIN,sheingroup.com,ok,existing,,
 Booking Holdings,bookingholdings.com,ok,existing,,
 Airbnb,airbnb.com,ok,existing,,
@@ -158,7 +158,7 @@ Duolingo,duolingo.com,ok,existing,,
 Pinterest,pinterestinc.com,ok,existing,,
 Snap,snap.com,ok,existing,,
 ByteDance,,ok,existing,,
-DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
+DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
 百度,baidu.com,ok,existing,,
 LINEヤフー,lycorp.co.jp,ok,existing,,
 サイバーエージェント,cyberagent.co.jp,ok,existing,,
@@ -198,7 +198,7 @@ LVMH,lvmh.com,ok,existing,,
 Hermès,finance.hermes.com,ok,existing,,
 セイコーグループ,seiko.co.jp,ok,existing,,
 Ferrari,ferrari.com,ok,existing,,
-貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
+貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
 Nike,nike.com,ok,existing,,
 アシックス,corp.asics.com,ok,existing,,
 Lululemon,lululemon.com,ok,existing,,
@@ -218,7 +218,7 @@ Domino's Pizza,dominos.com,ok,existing,,
 Luckin Coffee,luckincoffee.com,none,指定でロゴなし,,
 FOOD & LIFE COMPANIES,food-and-life.co.jp,ok,existing,,
 日本マクドナルドホールディングス,mcd-holdings.co.jp,ok,existing,,
-サイゼリヤ,saizeriya.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://saizeriya.co.jp&size=256"
+サイゼリヤ,saizeriya.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://saizeriya.co.jp&size=256"
 ギフトホールディングス,gift-group.co.jp,ok,existing,,
 Visa,visa.com,ok,existing,,
 Mastercard,mastercard.com,ok,existing,,
@@ -233,7 +233,7 @@ Affirm,affirm.com,ok,existing,,
 Klarna,klarna.com,ok,existing,,
 Toast,toasttab.com,ok,existing,,
 PayPay,paypay.ne.jp,ok,existing,,
-GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
+GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
 Revolut,,ok,existing,,
 Stripe,,ok,existing,,
 富途控股,futuholdings.com,none,指定でロゴなし,,
@@ -252,7 +252,7 @@ SMC,,ok,existing,,
 安川電機,yaskawa.co.jp,ok,existing,,
 三菱電機,mitsubishielectric.co.jp,ok,existing,,
 THK,thk.com,ok,existing,,
-ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
+ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
 Intuitive Surgical,isrg.intuitive.com,ok,existing,,
 Unitree Robotics,unitree.com,ok,existing,,
 三菱重工業,mhi.com,ok,existing,,
@@ -290,7 +290,7 @@ Accenture,accenture.com,ok,existing,,
 ベイカレント,,ok,existing,,
 ノースサンド,northsand.co.jp,ok,existing,,
 シンプレクス・ホールディングス,simplex.holdings,ok,existing,,
-SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
+SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
 Finatextホールディングス,finatext.com,ok,existing,,
 ABEJA,abejainc.com,ok,existing,,
 エクサウィザーズ,exawizards.com,ok,existing,,
@@ -300,7 +300,7 @@ Preferred Networks,,ok,existing,,
 Eli Lilly,lilly.com,ok,existing,,
 Novo Nordisk,novonordisk.com,ok,existing,,
 エムスリー,m3.com,ok,existing,,
-JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
+JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
 メドレー,medley.jp,ok,existing,,
 エス・エム・エス,bm-sms.co.jp,ok,existing,,
 三菱商事,mitsubishicorp.com,ok,existing,,
@@ -312,13 +312,13 @@ JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://
 三菱地所,mec.co.jp,ok,existing,,
 住友不動産,sumitomo-rd.co.jp,ok,existing,,
 オープンハウス,openhouse-group.co.jp,ok,existing,,
-ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
+ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
 日本M&Aセンターホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 M&Aキャピタルパートナーズ,ma-cp.com,ok,existing,,
 ストライク,strike.co.jp,ok,existing,,
 クオンツ総研ホールディングス,quants-souken.co.jp,ok,existing,,
 リクルートホールディングス,recruit-holdings.com,ok,existing,,
-ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
+ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
 タイミー,corp.timee.co.jp,ok,existing,,
 星野リゾート,,ok,existing,,
 アパホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
@@ -332,242 +332,242 @@ TKP,tkp.jp,ok,existing,,
 クラシル,kurashiru.co.jp,ok,existing,,
 SUMIグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 DMM,,ok,existing,,
-大林組,http://www.obayashi.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8f/Obayashi_logo.svg,大林組.svg
-大成建設,http://www.taisei.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bc/Taisei_logo.svg,大成建設.svg
-鹿島建設,http://www.kajima.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/09/Kajima_Corporation_logo.png,鹿島建設.png
-清水建設,https://www.shimz.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/25/Shimizu_company_logo.svg,清水建設.svg
-大和ハウス工業,https://www.daiwahouse.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3d/Daiwa_House_logo.svg,大和ハウス工業.svg
-積水ハウス,https://www.sekisuihouse.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/32/Sekisui_House_Logo.svg,積水ハウス.svg
-住友林業,https://sfc.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/04/The_logo_of_Sumitomo_Forestry_Co.%2C_Ltd.svg,住友林業.svg
-飯田グループ,https://www.ighd.co.jp/,ok,site,https://www.ighd.co.jp/assets/common/images/apple-touch-icon-152x152.png,飯田グループ.png
-大東建託,https://www.kentaku.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.kentaku.co.jp,大東建託.png
-東急不動産ホールディングス,https://www.tokyu-fudosan-hd.co.jp/english/,ok,site,https://www.tokyu-fudosan-hd.co.jp/img/english/logo-en-01.svg,東急不動産ホールディングス.svg
-野村不動産ホールディングス,http://www.nomura-re-hd.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8b/Nomura_Real_Estate_Holdings_Logo.png,野村不動産ホールディングス.png
-日清食品ホールディングス,https://www.nissin.com/jp/about/nissinfoods-holdings/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/92/Nissin_FH_Logo_%28ja%29.svg,日清食品ホールディングス.svg
-キユーピー,http://www.kewpie.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/17/Kewpie_logo.png,キユーピー.png
-キッコーマン,http://www.kikkoman.co.jp/enjoys/factory/noda.html,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/38/Kikkoman-Logo.svg,キッコーマン.svg
-日本ハム,https://www.fighters.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/78/Hokkaido_Nippon-Ham_Fighters_insignia.svg,日本ハム.svg
-ニチレイ,http://www.nichirei.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/79/NICHIREI_Logo.svg,ニチレイ.svg
-明治ホールディングス,https://www.meiji.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8d/Meiji_logo.svg,明治ホールディングス.svg
-JT,https://www.jti.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/09/Japan_Tobacco_logo.svg,JT.svg
-ヤクルト,https://www.yakult-swallows.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8d/Tokyo_Yakult_Swallows_insignia.svg,ヤクルト.svg
-東洋水産,https://www.maruchan.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d4/Toyo_Suisan_Kaisha_company_logo.svg,東洋水産.svg
-山崎製パン,https://www.yamazakipan.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/22/%E5%B1%B1%E5%B4%8E%E8%A3%BD%E3%83%91%E3%83%B3%E3%83%AD%E3%82%B4%E9%BB%92.png,山崎製パン.png
-カルビー,http://www.calbee.co.jp/index.php,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/81/Calbee_logo.svg,カルビー.svg
-森永乳業,http://www.morinagamilk.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/af/Mmi-logo.svg,森永乳業.svg
-江崎グリコ,https://www.glico.com/th,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f6/Glico_logo.svg,江崎グリコ.svg
-カゴメ,http://www.kagome.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/29/KAGOME_logo.svg,カゴメ.svg
-ハウス食品グループ本社,http://housefoods-group.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/House_Foods_company_logo.svg,ハウス食品グループ本社.svg
-宝ホールディングス,https://www.takara.co.jp/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8f/TaKaRa_logo.svg,宝ホールディングス.svg
-サントリー,https://www.suntory.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/34/SUNTORY_logo.svg,サントリー.svg
-キリンホールディングス,https://www.kirinholdings.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3b/Kirin_logo.svg,キリンホールディングス.svg
-アサヒグループホールディングス,http://www.asahigroup-holdings.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0a/Asahi_logo.svg,アサヒグループホールディングス.svg
-サッポロ,http://www.sapporobeer.it,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5a/Sapporo_logo.svg,サッポロ.svg
-伊藤園,https://www.itoen.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/03/ITO_EN_logo.svg,伊藤園.svg
-コカ・コーラボトラーズジャパンホールディングス,https://www.ccbj-holdings.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/25/Coca-Cola_Bottlers_Japan.png,コカ・コーラボトラーズジャパンホールディングス.png
-TBSホールディングス,https://www.tbsholdings.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d7/TBSHD2020.svg,TBSホールディングス.svg
-日本テレビホールディングス,https://www.ntvhd.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3a/Nippon_Television_Holdings_logo.svg,日本テレビホールディングス.svg
-フジ・メディア・ホールディングス,https://www.fujimediahd.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e4/FujiMediaHoldingLogo.png,フジ・メディア・ホールディングス.png
-テレビ朝日ホールディングス,https://www.tv-asahihd.co.jp/e/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2f/TV_Asahi_HD_logo.svg,テレビ朝日ホールディングス.svg
-テレビ東京ホールディングス,https://www.txhd.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/TV_Tokyo_HD_%28Japanese%29_2023.png,テレビ東京ホールディングス.png
-日本電信電話,https://group.ntt/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d8/NTT_2025.svg,日本電信電話.svg
-KDDI,https://www.kddi.com/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/45/KDDI_logos.svg,KDDI.svg
-ソフトバンク,https://www.softbankhawks.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f6/Fukuoka_SoftBank_Hawks_insignia.svg,ソフトバンク.svg
-資生堂,https://corp.shiseido.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7f/Shiseido_logo.svg,資生堂.svg
-コーセー,http://www.kose.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d9/KOS%C3%89_company_logo.svg,コーセー.svg
-花王,https://www.kao.com/id/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4f/Kao-corp-logo.svg,花王.svg
-ライオン,https://www.comune.laion.bz.it/,ok,site,https://www.comune.laion.bz.it/cdnstatic/design_italia/external/logo-eu-inverted.svg,ライオン.svg
-ロート製薬,http://www.rohto.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6d/Rohto_2024.svg,ロート製薬.svg
+大林組,,ok,existing,,
+大成建設,,ok,existing,,
+鹿島建設,,ok,existing,,
+清水建設,,ok,existing,,
+大和ハウス工業,,ok,existing,,
+積水ハウス,,ok,existing,,
+住友林業,,ok,existing,,
+飯田グループ,,ok,existing,,
+大東建託,,ok,existing,,
+東急不動産ホールディングス,,ok,existing,,
+野村不動産ホールディングス,,ok,existing,,
+日清食品ホールディングス,,ok,existing,,
+キユーピー,,ok,existing,,
+キッコーマン,,ok,existing,,
+日本ハム,,ok,existing,,
+ニチレイ,,ok,existing,,
+明治ホールディングス,,ok,existing,,
+JT,,ok,existing,,
+ヤクルト,,ok,existing,,
+東洋水産,,ok,existing,,
+山崎製パン,,ok,existing,,
+カルビー,,ok,existing,,
+森永乳業,,ok,existing,,
+江崎グリコ,,ok,existing,,
+カゴメ,,ok,existing,,
+ハウス食品グループ本社,,ok,existing,,
+宝ホールディングス,,ok,existing,,
+サントリー,,ok,existing,,
+キリンホールディングス,,ok,existing,,
+アサヒグループホールディングス,,ok,existing,,
+サッポロ,,ok,existing,,
+伊藤園,,ok,existing,,
+コカ・コーラボトラーズジャパンホールディングス,,ok,existing,,
+TBSホールディングス,,ok,existing,,
+日本テレビホールディングス,,ok,existing,,
+フジ・メディア・ホールディングス,,ok,existing,,
+テレビ朝日ホールディングス,,ok,existing,,
+テレビ東京ホールディングス,,ok,existing,,
+日本電信電話,,ok,existing,,
+KDDI,,ok,existing,,
+ソフトバンク,,ok,existing,,
+資生堂,,ok,existing,,
+コーセー,,ok,existing,,
+花王,,ok,existing,,
+ライオン,,ok,existing,,
+ロート製薬,,ok,existing,,
 ポーラ・オルビスホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ユニ・チャーム,http://www.unicharm.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/da/Unicharm_company_logo.svg,ユニ・チャーム.svg
-小林製薬,http://www.kobayashi.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3f/Kobayashi_Pharmaceutical_Logo.svg,小林製薬.svg
+ユニ・チャーム,,ok,existing,,
+小林製薬,,ok,existing,,
 ピジョン,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-日本酸素ホールディングス,https://jp.nipponsanso.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/44/Taiyo_Nippon_Sanso_company_logo.svg,日本酸素ホールディングス.svg
-日産化学,https://www.nissanchem.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f4/Nissan_Chemical_company_logo.svg,日産化学.svg
-旭化成,http://asahi-kasei.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/17/AsahiKASEI_logo.svg,旭化成.svg
-三井化学,https://www.mitsuichemicals.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2e/Mitsui_Chemicals.svg,三井化学.svg
+日本酸素ホールディングス,,ok,existing,,
+日産化学,,ok,existing,,
+旭化成,,ok,existing,,
+三井化学,,ok,existing,,
 三菱ケミカルG,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-日本ペイントホールディングス,http://www.nipponpaint-holdings.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b3/Nippon_Paint_company_logo.svg,日本ペイントホールディングス.svg
-住友化学,https://www.sumitomo-chem.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/36/Sumitomo_Chemical_logo.svg,住友化学.svg
-東レ,http://www.toray.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c3/Toray_logo.svg,東レ.svg
-中外製薬,https://www.chugai-pharm.co.jp/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/84/Chugai_Pharmaceutical.svg,中外製薬.svg
-協和発酵キリン,http://www.kyowa-kirin.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/84/Kyowa_Hakko_Kirin_Logo.svg,協和発酵キリン.svg
-エーザイ,https://www.eisai.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5e/%C4%92zai-Logo.svg,エーザイ.svg
-アステラス製薬,https://www.astellas.com/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d1/Astellas_logo.svg,アステラス製薬.svg
-大塚ホールディングス,https://www.otsuka.com/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/46/Otsuka_Holdings_logo.svg,大塚ホールディングス.svg
-塩野義製薬,https://www.shionogi.com/jp/ja/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/89/Shionogi_Seiyaku_logo.svg,塩野義製薬.svg
-武田薬品工業,http://www.takeda.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/cc/Takeda_Pharmaceutical_Company_logo.svg,武田薬品工業.svg
-第一三共,https://www.daiichisankyo.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9d/Daiichi-sankyo_logomark.svg,第一三共.svg
-住友ファーマ,https://www.sumitomo-pharma.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/73/Sumitomo_Pharma_Logo.svg,住友ファーマ.svg
-富士電機,https://www.fujielectric.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/Fuji_Electric_company_logo.svg,富士電機.svg
-シャープ,https://corporate.jp.sharp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c8/Logo_of_the_Sharp_Corporation.svg,シャープ.svg
-NEC,https://www.nec.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/96/NEC_logo.svg,NEC.svg
-富士通,https://global.fujitsu/ja-jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/53/Fujitsu-Logo.svg,富士通.svg
-キヤノン,https://global.canon/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0a/Canon_wordmark.svg,キヤノン.svg
-富士フイルム,https://www.fujifilm.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a1/Fujifilm_logo.svg,富士フイルム.svg
-ニコン,https://www.nikon.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f3/Nikon_Logo.svg,ニコン.svg
-リコー,http://www.ricoh.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2e/Ricoh_logo_2005.svg,リコー.svg
-セイコーエプソン,https://corporate.epson/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/59/Epson_logo.svg,セイコーエプソン.svg
-京セラ,https://americas.kyocera.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d4/Kyocera_logo.svg,京セラ.svg
-オリンパス,http://www.olympus-global.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2d/Olympus_Corporation_logo.svg,オリンパス.svg
-カシオ計算機,http://world.casio.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4d/Casio_logo.svg,カシオ計算機.svg
-コニカミノルタ,https://kmbs.konicaminolta.us/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b4/Logo_Konica_Minolta.svg,コニカミノルタ.svg
-シチズン時計,http://www.citizen.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/51/Citizen_logo.svg,シチズン時計.svg
-ブラザー工業,https://global.brother/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/87/Brother_logo.svg,ブラザー工業.svg
-ミネベアミツミ,https://www.minebeamitsumi.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7c/MinebeaMitsumi_Logo.svg,ミネベアミツミ.svg
-オムロン,https://www.omron.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6c/OMRON_Logo.svg,オムロン.svg
-横河電機,http://www.yokogawa.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7e/Yokogawa.png,横河電機.png
-ダイフク,http://www.daifuku.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bb/Daifuku_company_logo.svg,ダイフク.svg
-栗田工業,http://www.kurita.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/64/Kurita_company_logo.svg,栗田工業.svg
-日本マイクロニクス,https://www.mjc.co.jp/,ok,site,https://www.mjc.co.jp/wp-content/themes/adop-mjc/img/logo.svg?v=230427,日本マイクロニクス.svg
-芝浦メカトロニクス,http://www.shibaura.co.jp/,ok,site,https://www.shibaura.co.jp/app-files/img/cmn_logo01.svg,芝浦メカトロニクス.svg
-ローム,https://www.rohm.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_ROHM.svg,ローム.svg
-ルネサスエレクトロニクス,https://www.renesas.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2b/Renesas_Electronics_logo.svg,ルネサスエレクトロニクス.svg
-ソシオネクスト,https://www.socionext.com/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a9/Socionext_logo.svg,ソシオネクスト.svg
-東京応化工業,https://www.tok.co.jp/,ok,site,https://www.tok.co.jp/application/files/4316/7107/9630/logo.svg,東京応化工業.svg
-HOYA,https://www.hoya.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/08/Hoya_Corporation_logo.svg,HOYA.svg
-住友ベークライト,http://www.sumibe.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/8d/Sumitomo_Bakelite_Co.%2CLtd.logo.png,住友ベークライト.png
+日本ペイントホールディングス,,ok,existing,,
+住友化学,,ok,existing,,
+東レ,,ok,existing,,
+中外製薬,,ok,existing,,
+協和発酵キリン,,ok,existing,,
+エーザイ,,ok,existing,,
+アステラス製薬,,ok,existing,,
+大塚ホールディングス,,ok,existing,,
+塩野義製薬,,ok,existing,,
+武田薬品工業,,ok,existing,,
+第一三共,,ok,existing,,
+住友ファーマ,,ok,existing,,
+富士電機,,ok,existing,,
+シャープ,,ok,existing,,
+NEC,,ok,existing,,
+富士通,,ok,existing,,
+キヤノン,,ok,existing,,
+富士フイルム,,ok,existing,,
+ニコン,,ok,existing,,
+リコー,,ok,existing,,
+セイコーエプソン,,ok,existing,,
+京セラ,,ok,existing,,
+オリンパス,,ok,existing,,
+カシオ計算機,,ok,existing,,
+コニカミノルタ,,ok,existing,,
+シチズン時計,,ok,existing,,
+ブラザー工業,,ok,existing,,
+ミネベアミツミ,,ok,existing,,
+オムロン,,ok,existing,,
+横河電機,,ok,existing,,
+ダイフク,,ok,existing,,
+栗田工業,,ok,existing,,
+日本マイクロニクス,,ok,existing,,
+芝浦メカトロニクス,,ok,existing,,
+ローム,,ok,existing,,
+ルネサスエレクトロニクス,,ok,existing,,
+ソシオネクスト,,ok,existing,,
+東京応化工業,,ok,existing,,
+HOYA,,ok,existing,,
+住友ベークライト,,ok,existing,,
 フェローテックホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-TDK,https://www.tdk.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e7/TDK-Logo.svg,TDK.svg
-太陽誘電,http://www.ty-top.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/4f/Taiyo_Yuden.svg,太陽誘電.svg
-ニデック,https://www.nidec.com/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/32/Nidec_company_logo.svg,ニデック.svg
-日東電工,https://www.nitto.com/jp/ja/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e0/Nitto_Denko_logo.svg,日東電工.svg
-デクセリアルズ,http://www.dexerials.jp/,ok,site,https://www.dexerials.jp/asset/images/common/logo.svg,デクセリアルズ.svg
-トヨタ自動車,https://global.toyota,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e7/Toyota.svg,トヨタ自動車.svg
-本田技研工業,https://global.honda,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/76/Honda_logo.svg,本田技研工業.svg
-スズキ,https://www.globalsuzuki.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b9/Suzuki_logo_2025.svg,スズキ.svg
-SUBARU,https://www.subaru-global.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/ca/Subaru_logo_%28transparent%29.svg,SUBARU.svg
-日産自動車,https://www.nissan-global.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e2/Nissan_brand_wordmark.svg,日産自動車.svg
-三菱自動車,https://www.mitsubishi-motors.com/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9a/Mitsubishi_motors_new_logo.svg,三菱自動車.svg
-三菱マテリアル,http://www.mmc.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6c/Mitsubishi_Material_Corporation.png,三菱マテリアル.png
-住友金属鉱山,http://www.smm.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f6/Sumitomo_logo.jpg,住友金属鉱山.jpg
-DOWA,http://www.dowa.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/94/DOWA.svg,DOWA.svg
-三井金属,https://www.mitsui-kinzoku.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ec/MITSUI_MINING_and_SMELTING_Logo.svg,三井金属.svg
-ゴールドウィン,https://about.goldwin.co.jp/,ok,site,https://about.goldwin.co.jp/cms/wp-content/themes/goldwin2024/assets/img/common/logo.svg,ゴールドウィン.svg
-ミズノ,https://corp.mizuno.com/en,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/53/MIZUNO_logo.svg,ミズノ.svg
-ヨネックス,https://www.yonex.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo-Yonex.svg,ヨネックス.svg
-シマノ,https://www.shimanoservicecenter.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/6b/Shimano_logo.svg,シマノ.svg
-パルグループホールディングス,https://www.palgroup.holdings/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.palgroup.holdings,パルグループホールディングス.png
-ABCマート,https://www.abc-mart.net/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/33/ABC_MART_logo.svg,ABCマート.svg
-しまむら,https://www.shimamura.gr.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/78/Shimamura_logo.svg,しまむら.svg
-ヤマダホールディングス,https://www.yamada-holdings.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1f/Yamada_Holdings_Logo.svg,ヤマダホールディングス.svg
+TDK,,ok,existing,,
+太陽誘電,,ok,existing,,
+ニデック,,ok,existing,,
+日東電工,,ok,existing,,
+デクセリアルズ,,ok,existing,,
+トヨタ自動車,,ok,existing,,
+本田技研工業,,ok,existing,,
+スズキ,,ok,existing,,
+SUBARU,,ok,existing,,
+日産自動車,,ok,existing,,
+三菱自動車,,ok,existing,,
+三菱マテリアル,,ok,existing,,
+住友金属鉱山,,ok,existing,,
+DOWA,,ok,existing,,
+三井金属,,ok,existing,,
+ゴールドウィン,,ok,existing,,
+ミズノ,,ok,existing,,
+ヨネックス,,ok,existing,,
+シマノ,,ok,existing,,
+パルグループホールディングス,,ok,existing,,
+ABCマート,,ok,existing,,
+しまむら,,ok,existing,,
+ヤマダホールディングス,,ok,existing,,
 ワークマン,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ノジマ,https://www.nojima.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/89/Nojima_logo2.svg,ノジマ.svg
-ビックカメラ,https://www.biccamera.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/eb/BICCAMERA_logo.svg,ビックカメラ.svg
-セリア,http://www.siljenergaard.com,ok,site,https://images.squarespace-cdn.com/content/v1/58dcf4ca59cc685d7c5fe6a9/4f4d88ae-a5d5-48b5-8fe8-850d995e51c4/silje+logo.png?format=1500w,セリア.webp
-ジンズ,http://www.theshins.com/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.theshins.com,ジンズ.jpg
-イオン,https://www.aeon.com.vn/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a8/AeonLogo.svg,イオン.svg
-セブン&アイホールディングス,http://www.7andi.com/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/09/Seveni_typo.svg,セブン&アイホールディングス.svg
-マツキヨココカラ,https://www.matsukiyococokara.com/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.matsukiyococokara.com,マツキヨココカラ.png
+ノジマ,,ok,existing,,
+ビックカメラ,,ok,existing,,
+セリア,,ok,existing,,
+ジンズ,,ok,existing,,
+イオン,,ok,existing,,
+セブン&アイホールディングス,,ok,existing,,
+マツキヨココカラ,,ok,existing,,
 ブルーゾーンホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-神戸物産,https://www.kobebussan.co.jp/english/,ok,site,https://www.kobebussan.co.jp/english/img/logo.png,神戸物産.png
-コスモス薬品,https://www.cosmospc.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.cosmospc.co.jp,コスモス薬品.png
-スギホールディングス,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.sugi-hd.co.jp&size=256"
-ツルハ,http://www.tsuruha.co.jp/,ok,site,https://www.tsuruha.co.jp/assets/common/logo.svg?dpl=dpl_D7uL3yroQvxPTccDYENJQ5Xa9r98,ツルハ.svg
+神戸物産,,ok,existing,,
+コスモス薬品,,ok,existing,,
+スギホールディングス,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.sugi-hd.co.jp&size=256"
+ツルハ,,ok,existing,,
 クスリのアオキホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-サンドラッグ,http://www.sundrug.co.jp/,ok,site,https://www.sundrug.co.jp/wp-content/themes/template-original/bin/image/design/parts/logo_site.png,サンドラッグ.png
-三越伊勢丹ホールディングス,https://www.imhds.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7a/Isetan_Mitsukoshi_Holdings_logo.svg,三越伊勢丹ホールディングス.svg
-丸井グループ,http://www.0101maruigroup.co.jp/,ok,site(inline svg),http://www.0101maruigroup.co.jp/,丸井グループ.svg
-Jフロントリテイリング,https://www.j-front-retailing.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/db/J._Front_Retailing_Logo.svg,Jフロントリテイリング.svg
-高島屋,https://www.takashimaya-global.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d1/Takashimaya-Logo.svg,高島屋.svg
-H2Oリテイリング,http://www.h2o-retailing.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d9/H2O_Retailing_logo.png,H2Oリテイリング.png
-野村総研,https://www.nri.com/jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/27/Nomura_Research_Institute_Logo.png,野村総研.png
+サンドラッグ,,ok,existing,,
+三越伊勢丹ホールディングス,,ok,existing,,
+丸井グループ,,ok,existing,,
+Jフロントリテイリング,,ok,existing,,
+高島屋,,ok,existing,,
+H2Oリテイリング,,ok,existing,,
+野村総研,,ok,existing,,
 日本オラクル,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-TISI,http://www.tisi.go.th/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a4/%E0%B8%A1%E0%B8%AD%E0%B8%81.svg,TISI.svg
-日鉄ソリューション,https://www.nssol.nipponsteel.com/,ok,site,https://www.nssol.nipponsteel.com/assets/img/common/logo.png,日鉄ソリューション.png
-BIPROGY,https://www.biprogy.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/5a/BIPROGY_logo.svg,BIPROGY.svg
-NSD,https://www.nlnetlabs.nl/projects/nsd/about/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/ab/NSD_logo_light-on-dark.svg,NSD.svg
+TISI,,ok,existing,,
+日鉄ソリューション,,ok,existing,,
+BIPROGY,,ok,existing,,
+NSD,,ok,existing,,
 カカクコム,,ok,existing,,
-グリーホールディングス,https://hd.gree.net/jp/ja/,ok,site,https://hd.gree.net/share/v4/img/hd_logo.svg,グリーホールディングス.svg
-フリー,https://freebandofficial.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/14/Free_%28Logo%29.png,フリー.png
+グリーホールディングス,,ok,existing,,
+フリー,,ok,existing,,
 インフォマート,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-トヨクモ,https://toyokumo.co.jp/,ok,site,https://www.toyokumo.co.jp/logo.svg,トヨクモ.svg
-セガサミー,https://www.segasammy.co.jp/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c0/Sega_Sammy_Holdings_logo.svg,セガサミー.svg
-スクウェア・エニックス,https://www.jp.square-enix.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/af/Square_Enix_logo.svg,スクウェア・エニックス.svg
-ガンホー,https://www.campo-vallemaggia.ch/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.campo-vallemaggia.ch,ガンホー.png
-タカラトミー,https://www.takaratomy.co.jp/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/53/TAKARA_TOMY_logo.svg,タカラトミー.svg
-東映,https://www.toei.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/46/Toei_logo_%28text%29.svg,東映.svg
-リゾートトラスト,https://www.resorttrust.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/35/Resorttrust_%E3%83%AD%E3%82%B4.png,リゾートトラスト.png
-寿スピリッツ,http://www.okashinet.co.jp/,ok,site,https://www.okashinet.co.jp/user/common/images/logo.png,寿スピリッツ.png
-共立メンテナンス,https://www.kyoritsugroup.co.jp/,ok,site,https://www.kyoritsugroup.co.jp/Portals/0/images/common/img_logo.svg,共立メンテナンス.svg
-平和,http://www.heiwanet.co.jp/,ok,site,https://www.heiwanet.co.jp/assets/images/common/f_logo_heiwa.png,平和.png
-第一興商,https://www.dkkaraoke.co.jp/,ok,site,https://www.dkkaraoke.co.jp/assets/img/top/logo_singing.svg,第一興商.svg
-エイチ・アイ・エス,https://www.his-j.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/6/60/H.I.S._logo.svg,エイチ・アイ・エス.svg
-コシダカホールディングス,http://www.koshidakaholdings.co.jp/,ok,site,https://www.koshidakaholdings.co.jp/ja/common/site-logo/main/0/teaserItems1/010/binaryNodeName/logo.png,コシダカホールディングス.png
+トヨクモ,,ok,existing,,
+セガサミー,,ok,existing,,
+スクウェア・エニックス,,ok,existing,,
+ガンホー,,ok,existing,,
+タカラトミー,,ok,existing,,
+東映,,ok,existing,,
+リゾートトラスト,,ok,existing,,
+寿スピリッツ,,ok,existing,,
+共立メンテナンス,,ok,existing,,
+平和,,ok,existing,,
+第一興商,,ok,existing,,
+エイチ・アイ・エス,,ok,existing,,
+コシダカホールディングス,,ok,existing,,
 ユニバーサル・エンターテイメント,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-イオンファンタジー,https://www.fantasy.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b6/Aeon_Fantasy_Logo.svg,イオンファンタジー.svg
-パーソル,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.inte.co.jp&size=256"
-テクノプロ,https://www.technopro.com/,ok,site,https://www.technopro.com/technopro_inc/wp-content/themes/technopro-corporate/assets/img/common/logo-white-pc.svg,テクノプロ.svg
-メイテック,https://www.meitecgroup-holdings.com/,ok,site,https://www.meitecgroup-holdings.com/ja/common/site-logo/main/0/teaserItems1/010/binaryNodeName/logo.png,メイテック.png
+イオンファンタジー,,ok,existing,,
+パーソル,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.inte.co.jp&size=256"
+テクノプロ,,ok,existing,,
+メイテック,,ok,existing,,
 オープンアップグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ディップ,https://www.dip-net.co.jp/,ok,site,https://www.dip-net.co.jp/assets/images/logo-dip.png,ディップ.png
+ディップ,,ok,existing,,
 JACリクルートメント,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-エン,https://www.nyc.gov/main,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/09/NYC_Logo_Wolff_Olins.svg,エン.svg
+エン,,ok,existing,,
 UTグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-パソナグループ,https://www.pasonagroup.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b3/Pasona_Logo.svg,パソナグループ.svg
-ゼンショーホールディングス,https://www.zensho.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2a/ZENSHO_logo.svg,ゼンショーホールディングス.svg
-すかいらーくホールディングス,https://corp.skylark.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c6/%E3%81%99%E3%81%8B%E3%81%84%E3%82%89%E3%83%BC%E3%81%8F%E3%83%AD%E3%82%B4svg.svg,すかいらーくホールディングス.svg
-トリドール,https://www.toridoll.com/,ok,site,https://images.microcms-assets.io/assets/f30f9e21e8d64c57996ea55a4f9dc3dc/bb2fca1a2dbe421ba9a774f69bfddfe9/logo.png,トリドール.png
-王将フードサービス,http://www.ohsho.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1d/Ohsho_food_service_logo.svg,王将フードサービス.svg
-吉野家ホールディングス,https://www.yoshinoya-holdings.com/,ok,site,https://www.yoshinoya-holdings.com/apple-touch-icon.png,吉野家ホールディングス.png
-くら寿司,https://www.kurasushi.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/fa/Kura_sushi.svg,くら寿司.svg
-物語コーポレーション,http://www.monogatari.co.jp/,ok,site,https://www.monogatari.co.jp/wp-content/themes/monogatari/img/common/logo/monogatari.svg,物語コーポレーション.svg
+パソナグループ,,ok,existing,,
+ゼンショーホールディングス,,ok,existing,,
+すかいらーくホールディングス,,ok,existing,,
+トリドール,,ok,existing,,
+王将フードサービス,,ok,existing,,
+吉野家ホールディングス,,ok,existing,,
+くら寿司,,ok,existing,,
+物語コーポレーション,,ok,existing,,
 コメダホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-松屋フーズホールディングス,https://www.matsuyafoods-holdings.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.matsuyafoods-holdings.co.jp,松屋フーズホールディングス.png
-モスフードサービス,https://www.mos.co.jp/global/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/97/MOS-Burger-Logo.svg,モスフードサービス.svg
-ドトール日レス,http://www.dnh.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/50/Doutor_Nichires_Holdings_Logo.png,ドトール日レス.png
-丸千代山岡家,https://maruchiyo.yamaokaya.com/,ok,site,https://maruchiyo.yamaokaya.com/i/origin/images/corporate/logo3.png,丸千代山岡家.png
-ダイキン工業,https://www.daikin.de,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/05/DAIKIN_logo.svg,ダイキン工業.svg
-マキタ,https://makita.com.ar/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/71/Makita_Logo.svg,マキタ.svg
-ホシザキ,http://www.hoshizaki.co.jp/,ok,site,https://www.hoshizaki.co.jp/assets/svg/common/logo-corporate.svg,ホシザキ.svg
-三浦工業,https://www.miuraz.co.jp/,ok,site,https://www.miuraz.co.jp/assets/img/corporate/logo.svg,三浦工業.svg
-日本郵船,https://www.nyk.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/3c/Nippon_Yusen_company_logo.svg,日本郵船.svg
-商船三井,https://www.mol.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/22/Mitsui_O.S.K._Lines_logo.svg,商船三井.svg
-川崎汽船,https://www.kline.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9e/K_line_logo.svg,川崎汽船.svg
-東日本旅客鉄道,https://www.jreast.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/30/JR_logo_%28east%29.svg,東日本旅客鉄道.svg
-西日本旅客鉄道,https://www.westjr.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bd/JR_logo_%28west%29.svg,西日本旅客鉄道.svg
-東京地下鉄,https://www.tokyometro.jp/lang_es/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d1/Tokyo_Metro_logo_%28full%29.svg,東京地下鉄.svg
-東急,https://www.fighters.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/78/Hokkaido_Nippon-Ham_Fighters_insignia.svg,東急.svg
-西武ホールディングス,https://www.seibuholdings.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7e/Seibu_holdings_logo.svg,西武ホールディングス.svg
-阪急阪神ホールディングス,https://www.hankyu-hanshin.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/e9/Hankyu_Hanshin_Holdings_Logo.svg,阪急阪神ホールディングス.svg
-近鉄グループホールディングス,http://www.kintetsu-g-hd.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/be/Kintetsu_GH_Logo.svg,近鉄グループホールディングス.svg
-京成電鉄,https://www.keisei.co.jp/keisei/ir/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b8/Keisei_Logo.svg,京成電鉄.svg
-九州旅客鉄道,https://www.jrkyushu.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/74/JR_logo_%28kyushu%29.svg,九州旅客鉄道.svg
-小田急電鉄,https://www.odakyu.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/ad/OdakyuGroup_logo.svg,小田急電鉄.svg
-東武鉄道,https://www.tobu-kids.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/13/T%C5%8Dbu_Tetsud%C5%8D_Logo.svg,東武鉄道.svg
-京王電鉄,https://www.keio.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1f/KeioRailway_logo.svg,京王電鉄.svg
-名古屋鉄道,https://www.meitetsu.co.jp/tha,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/2/2a/Meitetsu_logo_full.svg,名古屋鉄道.svg
-京阪ホールディングス,https://www.keihan-holdings.co.jp/,ok,site,https://www.keihan.co.jp/app-files/img/cmn_logo01.svg,京阪ホールディングス.svg
-京浜急行電鉄,https://www.haneda-tokyo-access.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/17/Keikyu_logo.svg,京浜急行電鉄.svg
-南海電気鉄道,https://www.howto-osaka.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9d/Nankai_logo_with_its_slogan.svg,南海電気鉄道.svg
-相鉄ホールディングス,http://www.sotetsu.co.jp/bus/index.html,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bb/Sotetsu_Bus_8861.jpg,相鉄ホールディングス.jpg
-西日本鉄道,http://www.nishitetsu.co.jp/en/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/08/Nishitetsu_logo_vector.svg,西日本鉄道.svg
-ゆうちょ銀行,https://www.jp-bank.japanpost.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/32/Japan_Post_Bank_Logo.svg,ゆうちょ銀行.svg
-三井住友トラスト・ホールディングス,https://www.smth.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/bd/Sumitomo_Mitsui_Trust_Group_Logo.png,三井住友トラスト・ホールディングス.png
-りそなホールディングス,http://www.resona-gr.co.jp/index.html,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/c/c1/Resona_Group_Logo.svg,りそなホールディングス.svg
-千葉銀行,http://www.chibabank.co.jp,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.chibabank.co.jp,千葉銀行.png
-横浜フィナンシャルグループ,https://www.yokohamafg.co.jp/,ok,site,https://www.yokohamafg.co.jp/shared/img/img-logo.svg,横浜フィナンシャルグループ.svg
-しずおかフィナンシャルグループ,https://www.shizuoka-fg.co.jp/,ok,site,https://www.shizuoka-fg.co.jp/common/images/logo.svg,しずおかフィナンシャルグループ.svg
-ふくおかフィナンシャルグループ,http://www.fukuoka-fg.com/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.fukuoka-fg.com,ふくおかフィナンシャルグループ.png
-SBI新生銀行,http://www.shinseibank.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/5/51/SBI_Shinsei_Bank_Logo.svg,SBI新生銀行.svg
-めぶきフィナンシャルグループ,http://www.mebuki-fg.co.jp/,ok,site,https://www.mebuki-fg.co.jp:443/common/image/hdr_logo.png,めぶきフィナンシャルグループ.png
+松屋フーズホールディングス,,ok,existing,,
+モスフードサービス,,ok,existing,,
+ドトール日レス,,ok,existing,,
+丸千代山岡家,,ok,existing,,
+ダイキン工業,,ok,existing,,
+マキタ,,ok,existing,,
+ホシザキ,,ok,existing,,
+三浦工業,,ok,existing,,
+日本郵船,,ok,existing,,
+商船三井,,ok,existing,,
+川崎汽船,,ok,existing,,
+東日本旅客鉄道,,ok,existing,,
+西日本旅客鉄道,,ok,existing,,
+東京地下鉄,,ok,existing,,
+東急,,ok,existing,,
+西武ホールディングス,,ok,existing,,
+阪急阪神ホールディングス,,ok,existing,,
+近鉄グループホールディングス,,ok,existing,,
+京成電鉄,,ok,existing,,
+九州旅客鉄道,,ok,existing,,
+小田急電鉄,,ok,existing,,
+東武鉄道,,ok,existing,,
+京王電鉄,,ok,existing,,
+名古屋鉄道,,ok,existing,,
+京阪ホールディングス,,ok,existing,,
+京浜急行電鉄,,ok,existing,,
+南海電気鉄道,,ok,existing,,
+相鉄ホールディングス,,ok,existing,,
+西日本鉄道,,ok,existing,,
+ゆうちょ銀行,,ok,existing,,
+三井住友トラスト・ホールディングス,,ok,existing,,
+りそなホールディングス,,ok,existing,,
+千葉銀行,,ok,existing,,
+横浜フィナンシャルグループ,,ok,existing,,
+しずおかフィナンシャルグループ,,ok,existing,,
+ふくおかフィナンシャルグループ,,ok,existing,,
+SBI新生銀行,,ok,existing,,
+めぶきフィナンシャルグループ,,ok,existing,,
 京都フィナンシャルグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-八十二長野銀行,https://bank.82group.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1f/Hachijuni_Nagano_Bank_Logo.svg,八十二長野銀行.svg
-いよぎん,http://www.shikoku-alliance-sec.co.jp/,ok,site,https://www.shikoku-alliance-sec.co.jp/assets/img/home/logo_holdings.svg,いよぎん.svg
-群馬銀行,http://www.gunmabank.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/a/a9/The_Gunma_Bank_Logo.svg,群馬銀行.svg
-ほくほくフィナンシャルグループ,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kiokim.ru&size=256"
-七十七銀行,https://www.77bank.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/b/b7/The_77_Bank_Logo.svg,七十七銀行.svg
-山口フィナンシャルグループ,https://www.ymfg.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/1f/Yamaguchi_Financial_Group_Logo.svg,山口フィナンシャルグループ.svg
-九州フィナンシャルグループ,https://kyushu-fg.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=kyushu-fg.co.jp,九州フィナンシャルグループ.png
-ひろぎんホールディングス,https://www.hirogin-hd.co.jp/,ok,site,https://www.hirogin-hd.co.jp/top_v2/images/logo.png,ひろぎんホールディングス.png
-東京海上ホールディングス,https://www.tokiomarinehd.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/f/f5/Tokio_Marine_Logo.svg,東京海上ホールディングス.svg
-MS＆ADインシュアランスグループホールディングス,https://www.ms-ins.com/english/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/95/MS%26AD_Insurance_Group_logo.svg,MS＆ADインシュアランスグループホールディングス.svg
+八十二長野銀行,,ok,existing,,
+いよぎん,,ok,existing,,
+群馬銀行,,ok,existing,,
+ほくほくフィナンシャルグループ,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kiokim.ru&size=256"
+七十七銀行,,ok,existing,,
+山口フィナンシャルグループ,,ok,existing,,
+九州フィナンシャルグループ,,ok,existing,,
+ひろぎんホールディングス,,ok,existing,,
+東京海上ホールディングス,,ok,existing,,
+MS＆ADインシュアランスグループホールディングス,,ok,existing,,
 第一ライフホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-SOMPOホールディングス,https://www.sompo-hd.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/3/31/SOMPO_Holdings_Logo.svg,SOMPOホールディングス.svg
-T＆Dホールディングス,https://www.td-holdings.co.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7a/%EF%BC%B4%EF%BC%86%EF%BC%A4%E4%BF%9D%E9%99%BA%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%EF%BC%88%E3%82%BF%E3%82%B0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%82%E3%82%8A%EF%BC%89.jpg,T＆Dホールディングス.jpg
-かんぽ生命保険,https://www.jp-life.japanpost.jp,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/7/7f/Japan_Post_Insurance_Logo.svg,かんぽ生命保険.svg
-野村ホールディングス,https://www.nomura.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/04/Nomura_Holdings_logo.svg,野村ホールディングス.svg
-日本取引所グループ,https://www.jpx.co.jp/chinese/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/0f/Japan_Exchange_Group_logo.svg,日本取引所グループ.svg
-大和証券グループ本社,https://www.daiwa-grp.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/43/Daiwa_Securities_Group_Logo.png,大和証券グループ本社.png
-テルモ,http://www.terumo.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/1/13/Terumo.svg,テルモ.svg
-朝日インテック,http://www.asahi-intecc.co.jp/,ok,site,https://www.asahi-intecc.co.jp/assets/svg/common/logo.svg,朝日インテック.svg
+SOMPOホールディングス,,ok,existing,,
+T＆Dホールディングス,,ok,existing,,
+かんぽ生命保険,,ok,existing,,
+野村ホールディングス,,ok,existing,,
+日本取引所グループ,,ok,existing,,
+大和証券グループ本社,,ok,existing,,
+テルモ,,ok,existing,,
+朝日インテック,,ok,existing,,
