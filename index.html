@@ -265,7 +265,7 @@ const store = {
   get(k){ try{ return JSON.parse(localStorage.getItem("et:"+k)); }catch{ return null; } },
   set(k,v){ try{ localStorage.setItem("et:"+k, JSON.stringify(v)); }catch{} },
 };
-const state = { masters: [], digest: [], logos: {}, rows: [], uploaded: {}, src: "master", cfg: {} };
+const state = { mcap: {}, mcapUpdated: "", masters: [], digest: [], logos: {}, rows: [], uploaded: {}, src: "master", cfg: {} };
 const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const truthy = v => v===true || /^(○|〇|◯|1|true|yes|はい|y|on|表示)$/i.test(String(v??"").trim());
 const num = v => { if(v==null) return null; if(typeof v==="number") return v; const t=String(v).replace(/[,%％\s]/g,"").replace(/[△▲−]/g,"-"); if(t===""||t==="-") return null; const x=+t; return isNaN(x)?null:x; };
@@ -292,6 +292,8 @@ async function loadAll(){
     state.masters = m.companies||[];
     $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。マスターを更新すると2時間以内に反映されます。`;
   }catch{ $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。"; }
+  try{ const r = await fetch("data/mcap.json",{cache:"no-cache"}); if(r.ok){ const j = await r.json(); state.mcap = j.companies||{}; state.mcapUpdated = j.updated||""; } }catch{}
+  if(state.mcapUpdated) $("#dataInfo").textContent += ` 時価総額は ${state.mcapUpdated} 時点（1日2回更新）。`;
   const sid = state.cfg.sheetId;
   if(sid){
     try{
@@ -420,19 +422,20 @@ function renderList(){
       <td>${esc(it.has?it.per:"マスターなし")}</td><td>${esc(String(it.date).slice(0,10))}</td></tr>`).join("")
   }</tbody></table>`;
 }
+const mcapOf = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.text) || "";
 function rowFromMaster(c, period){
   const ps = c.periods||[]; const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
   const dg = state.digest.find(d => (d["企業"]===c.ja || d["企業"]===c.name) && p.label && String(d["期"]).includes(p.label));
   return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
     period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
     売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
-    時価総額: dg?.["時価総額"] || "" };
+    時価総額: dg?.["時価総額"] || mcapOf(c) };
 }
 function rowFromDigest(d){
   const c = masterOf({企業:d["企業"]});
   return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
     period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
-    営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] };
+    営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] || mcapOf(c) };
 }
 $("#list").addEventListener("click", e=>{
   const tr = e.target.closest("tr[data-k]"); if(!tr) return;
