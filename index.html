@@ -145,8 +145,15 @@ input[type=url]{flex:1}
         <select id="fCountry" aria-label="本拠地"></select>
         <select id="fCat" aria-label="業種"></select>
         <select id="fWhen" aria-label="期間">
-          <option value="">すべての期間</option><option value="24h">過去24時間</option><option value="3d">過去3日</option><option value="7d">過去7日</option>
+          <option value="">すべての期間</option>
+          <option value="run">まとめの回ごと（従来版）</option>
+          <option value="run24">まとめの回から過去24時間</option>
+          <option value="at24">指定した時刻から過去24時間</option>
+          <option value="24h">今から過去24時間</option>
+          <option value="7d">過去7日</option>
         </select>
+        <select id="fRun" aria-label="まとめの回" hidden></select>
+        <input type="datetime-local" id="fAt" aria-label="基準の時刻" hidden>
         <select id="fSort" aria-label="並び順">
           <option value="date">決算日が新しい順</option><option value="no">ウォッチリスト順</option><option value="name">社名順</option>
         </select>
@@ -326,19 +333,67 @@ function fillFilters(){
   $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
   $("#fCat").innerHTML = opt(state.masters.map(c=>c.cat1), "すべての業種");
 }
-/* 期間の判定: 記録日時（自動まとめが書く）があればそれ、なければ発表日（その日の15時と見なす） */
+/* ---------- 期間の判定 ----------
+   発表日時: 決算データの「発表日時(JST)」（無ければ「記録日時」）。どちらも無ければ発表日と市場から目安を置く。
+   まとめの回: 朝（4〜10月 6:00 / 11〜3月 6:30、月〜土）と 17:00（月〜金）。 */
+const jst = (y,m,d,hh,mm) => new Date(Date.UTC(y,m-1,d,hh-9,mm));
+function fmtJ(d, withTime=true){ const t = new Date(d.getTime()+9*3600e3);
+  return `${t.getUTCMonth()+1}月${t.getUTCDate()}日` + (withTime ? ` ${t.getUTCHours()}:${String(t.getUTCMinutes()).padStart(2,"0")}` : ""); }
 function whenOf(x){
-  const t = String(x["記録日時"]||"").trim();
-  if(t){ const d = new Date(t.replace(" ","T") + (/[+Z]/.test(t)?"":"+09:00")); if(!isNaN(d)) return d; }
-  const a = String(x["発表日"]||x.date||"").slice(0,10);
-  if(/^\d{4}-\d{2}-\d{2}$/.test(a)) return new Date(a+"T15:00:00+09:00");
-  return null;
+  const t = String(x["発表日時(JST)"]||x["記録日時"]||"").trim();
+  if(t){ const d = new Date(t.replace(/\//g,"-").replace(" ","T") + (/[+Z]/.test(t)?"":"+09:00")); if(!isNaN(d)) return d; }
+  const a = String(x["発表日"]||x.date||"").replace(/\//g,"-").slice(0,10), m = a.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m) return null;
+  const [Y,M,D] = [+m[1],+m[2],+m[3]], mk = String(x["市場"]||x.country||"");
+  if(/US|米国/.test(mk)) return jst(Y,M,D+1,5,30);     // 米国は引け後 → 日本時間の翌朝
+  if(/KR|韓国/.test(mk)) return jst(Y,M,D,9,0);
+  if(/TW|台湾/.test(mk)) return jst(Y,M,D,14,30);
+  if(/CN|中国|香港/.test(mk)) return jst(Y,M,D,18,0);
+  return jst(Y,M,D,15,30);
+}
+/* 直近 n 日分のまとめの回（新しい順） */
+function runsList(days=21){
+  const out = [], now = Date.now();
+  for(let k=0;k<days;k++){
+    const t = new Date(now + 9*3600e3 - k*86400e3);
+    const Y=t.getUTCFullYear(), M=t.getUTCMonth()+1, D=t.getUTCDate(), wd=t.getUTCDay();
+    const ymd = `${Y}-${String(M).padStart(2,"0")}-${String(D).padStart(2,"0")}`;
+    if(wd>=1 && wd<=5) out.push({ key:`${ymd} 17時`, at:jst(Y,M,D,17,0), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 17時の回` });
+    if(wd>=1 && wd<=6){ const win = (M>=11||M<=3); out.push({ key:`${ymd} 朝`, at:jst(Y,M,D,6,win?30:0), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 朝の回` }); }
+  }
+  return out.filter(r=>r.at.getTime()<=now).sort((a,b)=>b.at-a.at);
+}
+function fillRuns(){
+  const cur = $("#fRun").value, rs = runsList();
+  $("#fRun").innerHTML = rs.map(r=>`<option value="${r.key}">${r.label}</option>`).join("");
+  if(rs.some(r=>r.key===cur)) $("#fRun").value = cur;
+}
+function windowNow(){
+  const w = $("#fWhen").value; if(!w) return null;
+  const H = 3600e3, now = new Date();
+  if(w==="24h") return { from:new Date(now-24*H), to:now, kind:"24", end:now };
+  if(w==="7d") return { from:new Date(now-168*H), to:now, kind:"7d", end:now };
+  if(w==="at24"){
+    const v = $("#fAt").value; if(!v) return null;
+    const end = new Date(v+":00+09:00"); return { from:new Date(end-24*H), to:end, kind:"24", end };
+  }
+  const rs = runsList(), i = rs.findIndex(r=>r.key===$("#fRun").value); if(i<0) return null;
+  const r = rs[i];
+  if(w==="run24") return { from:new Date(r.at-24*H), to:r.at, kind:"24", end:r.at, run:r };
+  const prev = rs[i+1]; return { from: prev ? prev.at : new Date(r.at-72*H), to:r.at, kind:"run", run:r };
 }
 function inWindow(x){
-  const w = $("#fWhen").value; if(!w) return true;
+  const win = windowNow(); if(!$("#fWhen").value) return true; if(!win) return false;
+  if(win.kind==="run" && x["回"]) return String(x["回"]).trim()===win.run.key;   // 自動まとめが記録した回があればそれを優先
   const d = whenOf(x); if(!d) return false;
-  const h = {"24h":24,"3d":72,"7d":168}[w];
-  return Date.now() - d.getTime() <= h*3600e3;
+  return d > win.from && d <= win.to;
+}
+function syncWhenUI(){
+  const w = $("#fWhen").value;
+  $("#fRun").hidden = !(w==="run" || w==="run24");
+  $("#fAt").hidden = w!=="at24";
+  if(!$("#fRun").hidden) fillRuns();
+  if(w==="at24" && !$("#fAt").value){ const t = new Date(Date.now()+9*3600e3); $("#fAt").value = t.toISOString().slice(0,16); }
 }
 function listItems(){
   const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
@@ -391,10 +446,11 @@ $("#list").addEventListener("click", e=>{
 });
 document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   state.src = t.dataset.src; document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x===t));
-  $("#fWhen").value = state.src==="digest" ? "24h" : "";
-  renderList();
+  if(state.src==="digest" && !$("#fWhen").value){ $("#fWhen").value = "run"; }
+  syncWhenUI(); renderList();
 });
-["#q","#fCountry","#fCat","#fSort","#fWhen"].forEach(s=>$(s).addEventListener("input", renderList));
+["#q","#fCountry","#fCat","#fSort"].forEach(s=>$(s).addEventListener("input", renderList));
+["#fWhen","#fRun","#fAt"].forEach(s=>$(s).addEventListener("input", ()=>{ syncWhenUI(); $("#title").dataset.touched=""; autoTitle(); renderList(); renderPreview(); }));
 $("#selAll").onclick = ()=>{
   const on = new Set(state.rows.map(r=>r.key));
   for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has) state.rows.push(it.c ? rowFromMaster(it.c) : rowFromDigest(it.d));
@@ -612,7 +668,11 @@ function autoTitle(){
     const r = state.rows.find(x=>x.key===$("#segCo").value);
     $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${qLabel(r.期)}）` : "セグメント別業績"; return;
   }
-  $("#title").value = $("#fWhen").value==="24h" ? "過去24時間の決算" : "注目企業の決算";
+  const win = windowNow();
+  if(win?.kind==="24") $("#title").value = `過去24時間の決算（${fmtJ(win.end)}まで）`;
+  else if(win?.kind==="run") $("#title").value = `注目企業の決算（${win.run.label.replace(/（.） /," ")}）`;
+  else if(win?.kind==="7d") $("#title").value = "過去7日間の決算";
+  else $("#title").value = "注目企業の決算";
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
