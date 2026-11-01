@@ -116,6 +116,7 @@ input[type=url]{flex:1}
 .tab[aria-selected=true]{background:var(--head);border-color:var(--head);color:#fff}
 .card select.per{font-family:var(--num);font-size:13px;width:100%}
 .src{font-size:11px;color:var(--muted);margin-left:auto}
+.warn{margin-top:8px;font-size:12px;color:#8A4B00;background:#FFF4E0;border-radius:6px;padding:6px 8px}
 /* セグメント表 */
 .et.seg td.sname{text-align:left;font-size:30px;font-weight:600;min-width:330px;border-right:1.5px dotted #555;height:110px;white-space:nowrap}
 .et.seg td.sname i{display:inline-block;width:18px;height:18px;border-radius:4px;margin-right:12px;vertical-align:middle}
@@ -406,7 +407,8 @@ function listItems(){
   if(state.src==="master"){
     items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow({date:c.date}) &&
       (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
-      .map(c => ({ key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:c.periods?.at(-1)?.label||"", date:c.date||"", has:!!c.periods?.length }));
+      .map(c => { const r = c.periods?.length ? rowFromMaster(c) : null;
+        return { key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:r ? r.期 + (r.stale ? " ⚠" : "") : "", date:r?.決算日 || latestEarn(c) || "", has:!!c.periods?.length || digestFor(c).length>0, stale:r?.stale }; });
   } else {
     items = state.digest.filter(d => inWindow(d) && (!q || String(d["企業"]).toLowerCase().includes(q)))
       .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:qLabel(d["期"]), date:d["発表日"], has:true }));
@@ -442,17 +444,39 @@ function mcapEarn(c, label, period){
   return "";
 }
 const mcapOf = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.text) || "";
+/* その会社の「決算データ」（自動まとめ・手入力）の行。新しい順 */
+const digestFor = c => state.digest.filter(d => d["企業"]===c.ja || d["企業"]===c.name).sort((a,b)=>String(b["発表日"]).localeCompare(String(a["発表日"])));
+/* 株価データ上の最新の決算発表日 */
+const latestEarn = c => ((state.mcap[c?.ticker] || state.mcap[c?.name])?.earn_dates || [])[0] || "";
 function rowFromMaster(c, period){
-  const ps = c.periods||[]; const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
-  const dg = state.digest.find(d => (d["企業"]===c.ja || d["企業"]===c.name) && p.label && String(d["期"]).includes(p.label));
+  const ps = c.periods||[];
+  const dgs = digestFor(c);
+  /* 期の指定がない（最新を出す）とき: 決算データにマスターより新しい期があればそちらを使う */
+  if(!period || period==="dg"){
+    const p = ps.at(-1) || {}, mDate = mcapEarn(c, p.label, p.period), d0 = dgs[0];
+    if(d0 && (period==="dg" || (qLabel(d0["期"]) !== p.label && (!mDate || String(d0["発表日"]) > mDate)))){
+      return { ...rowFromDigest(d0), key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, period:"dg", src:"自動まとめ（マスター未反映）" };
+    }
+  }
+  const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
+  const dg = dgs.find(d => p.label && qLabel(d["期"])===p.label);
+  const date = dg?.["発表日"] || mcapEarn(c, p.label, p.period) || "";
+  const le = latestEarn(c);
   return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
-    決算日: dg?.["発表日"] || mcapEarn(c, p.label, p.period) || "",
+    決算日: date, src:"マスター",
+    /* マスターの最新期より新しい決算が出ているのに、まだどこにも数字がない */
+    stale: (!period && le && (!date || le > date)) ? le : "",
     period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
     売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
     時価総額: dg?.["時価総額"] || mcapOf(c) };
 }
+function normUnit(v, u){
+  const m = String(u||"").match(/^百万(.+)$/), x = num(v);
+  return (m && x!=null) ? [String(Math.round(x/100*10)/10), "億"+m[1]] : [v, u];
+}
 function rowFromDigest(d){
   const c = masterOf({企業:d["企業"]});
+  d = { ...d }; [d["売上高"]] = normUnit(d["売上高"], d["単位"]); [d["営業利益"], d["単位"]] = normUnit(d["営業利益"], d["単位"]);
   return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
     決算日: d["発表日"] || "",
     period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
@@ -487,8 +511,9 @@ const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売�
 function renderEdit(){
   $("#edit").innerHTML = state.rows.map((r,i)=>{
     const c = r.key?.startsWith("m|") ? masterOf(r) : null;
-    const perSel = c?.periods?.length
-      ? `<label>期<select class="per" data-per>${c.periods.slice().reverse().map(p=>`<option value="${esc(p.period)}" ${p.period===r.period?"selected":""}>${esc(p.label)}（${esc(p.period)}）</option>`).join("")}</select></label>`
+    const d0 = c ? digestFor(c)[0] : null;
+    const perSel = c?.periods?.length || d0
+      ? `<label>期<select class="per" data-per>${d0 ? `<option value="dg" ${r.period==="dg"?"selected":""}>${esc(qLabel(d0["期"]))}（自動まとめ ${esc(String(d0["発表日"]).slice(5))}）</option>` : ""}${(c.periods||[]).slice().reverse().map(p=>`<option value="${esc(p.period)}" ${p.period===r.period?"selected":""}>${esc(p.label)}（${esc(p.period)}）</option>`).join("")}</select></label>`
       : `<label>期<input type="text" data-f="期" value="${esc(r.期??"")}"></label>`;
     return `<div class="card" data-i="${i}">
       <div class="top">
@@ -501,7 +526,8 @@ function renderEdit(){
       <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
         <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
-        <span class="src">${c?"マスター":r.key?"自動まとめ":"手入力"}</span></div>
+        <span class="src">${r.src || (c?"マスター":r.key?"自動まとめ":"手入力")}</span></div>
+      ${r.stale ? `<div class="warn">⚠ ${esc(mdOf(r.stale))} に新しい決算が出ていますが、まだ数字がありません（表示は前の期）。次のまとめの回で補います。</div>` : ""}
     </div>`; }).join("");
   fillSegCo();
 }
@@ -513,7 +539,7 @@ $("#edit").addEventListener("change", e=>{
   const card = e.target.closest(".card"); if(!card) return; const i = +card.dataset.i;
   if(e.target.matches("[data-per]")){
     const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 };
-    Object.assign(r, rowFromMaster(c, e.target.value), keep); renderEdit(); renderPreview(); return;
+    Object.assign(r, rowFromMaster(c, e.target.value), keep, { stale:"" }); renderEdit(); renderPreview(); return;
   }
   if(e.target.matches("[data-name]")){ state.rows[i].社名表示 = e.target.checked; renderPreview(); return; }
   if(e.target.matches("[data-f=企業]")) renderEdit();
