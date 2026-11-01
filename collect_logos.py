@@ -22,6 +22,7 @@
     out_dir/<企業名>.<拡張子>  と  out_dir/results.csv（取得元・URL・状態）
 """
 import argparse
+import json
 import csv
 import re
 import sys
@@ -264,7 +265,8 @@ def read_masters(path):
     for c in data["companies"]:
         host = _u(c.get("ir") or "").netloc
         host = re.sub(r"^(ir|investor|investors|corporate|global|www)\.", "", host) if host else ""
-        out.append((c["name"], host, ov.get(c["name"]) or ov.get(c.get("ja", "")) or "", c.get("ja", ""), c.get("ticker", "")))
+        spec = (c.get("logo_spec") or "").strip() or ov.get(c["name"]) or ov.get(c.get("ja", "")) or ""   # ウォッチリストの「指定ロゴ」が最優先
+        out.append((c["name"], host, spec, c.get("ja", ""), c.get("ticker", "")))
     return out
 
 
@@ -313,6 +315,14 @@ def main():
             print("skip (ロゴなし指定)")
             report.append([name, domain, "none", "指定でロゴなし", "", ""])
             continue
+        if spec and spec not in ("なし", "none", "-") and args.skip_existing:
+            prev = json.loads((args.out / "index.json").read_text(encoding="utf-8")) if (args.out / "index.json").exists() else {}
+            mark = args.out / ".specs.json"
+            done = json.loads(mark.read_text(encoding="utf-8")) if mark.exists() else {}
+            if done.get(name) != spec:   # 指定が新しい／変わった → 取り直す
+                for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img"):
+                    (args.out / safe_filename(name)).with_suffix(e).unlink(missing_ok=True)
+                done[name] = spec; mark.write_text(json.dumps(done, ensure_ascii=False), encoding="utf-8")
         if args.skip_existing and any((args.out / safe_filename(name)).with_suffix(e).exists()
                                       for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img")):
             print("skip (取得済み)")

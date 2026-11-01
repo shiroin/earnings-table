@@ -38,7 +38,7 @@ def read_watchlist(text):
     head = [c.strip() for c in rows[hi]]
     col = lambda name: next((i for i, h in enumerate(head) if h == name), None)
     idx = {k: col(k) for k in ["No.", "Ticker", "企業名", "日本名", "暫定Tier(個別記事化60)", "業種カテゴリー1", "業種カテゴリー2",
-                               "本拠地", "上場(307)", "決算資料", "フォルダ", "Financials", "決算期", "決算日", "通貨", "単位"]}
+                               "本拠地", "上場(307)", "決算資料", "指定ロゴ", "フォルダ", "Financials", "決算期", "決算日", "通貨", "単位"]}
     get = lambda r, k: (r[idx[k]].strip() if idx[k] is not None and idx[k] < len(r) else "")
     out = []
     for r in rows[hi + 1:]:
@@ -53,7 +53,7 @@ def read_watchlist(text):
             "country": get(r, "本拠地"), "listed": get(r, "上場(307)"), "ir": get(r, "決算資料"),
             "folder": get(r, "フォルダ"), "master_id": file_id(get(r, "Financials")),
             "fy_end": get(r, "決算期"), "date": get(r, "決算日").replace("/", "-"),
-            "currency_ja": get(r, "通貨"), "unit_in": get(r, "単位"),
+            "currency_ja": get(r, "通貨"), "unit_in": get(r, "単位"), "logo_spec": get(r, "指定ロゴ"),
         })
     return out
 
@@ -205,7 +205,7 @@ def enrich(w, m):
 
     return {
         "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
-        "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"],
+        "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"],
         "currency": cur, "unit": unit, "note": m.get("note"),
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
@@ -259,7 +259,7 @@ def main():
     for i, w in enumerate(watch, 1):
         key = w["ticker"] or w["name"]
         base = {"ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
-                "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "periods": []}
+                "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"], "periods": []}
         if not w["master_id"]:
             companies.append(base); continue
         try:

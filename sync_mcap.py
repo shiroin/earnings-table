@@ -68,6 +68,22 @@ def get_cap(sym):
     return float(cap), cur
 
 
+def last_earnings(sym):
+    """直近（過去）の決算発表日 → YYYY-MM-DD（取引所の現地日付）"""
+    import pandas as pd
+    t = yf.Ticker(sym)
+    try:
+        df = t.get_earnings_dates(limit=12)
+        if df is not None and len(df):
+            now = pd.Timestamp.now(tz=df.index.tz)
+            past = [d for d in df.index if d <= now]
+            if past:
+                return max(past).strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    return None
+
+
 def main():
     data = json.loads((ROOT / "data" / "masters.json").read_text(encoding="utf-8"))
     outp = ROOT / "data" / "mcap.json"
@@ -91,7 +107,8 @@ def main():
             tried.append(s)
             try:
                 cap, cur = get_cap(s)
-                out[key] = {"symbol": s, "value": cap, "currency": cur, "text": fmt(cap, cur), "date": today}
+                out[key] = {"symbol": s, "value": cap, "currency": cur, "text": fmt(cap, cur), "date": today,
+                            "earn_date": last_earnings(s) or (old.get(key) or {}).get("earn_date")}
                 break
             except Exception as e:
                 last = f"{c.get('ja')}（{s}）: {e}"
