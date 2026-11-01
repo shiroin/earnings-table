@@ -68,6 +68,19 @@ def get_cap(sym):
     return float(cap), cur
 
 
+def past_earnings(sym):
+    """過去の決算発表日（新しい順、最大12件）→ ["YYYY-MM-DD", ...]"""
+    import pandas as pd
+    try:
+        df = yf.Ticker(sym).get_earnings_dates(limit=16)
+        if df is not None and len(df):
+            now = pd.Timestamp.now(tz=df.index.tz)
+            return sorted({d.strftime("%Y-%m-%d") for d in df.index if d <= now}, reverse=True)[:12]
+    except Exception:
+        pass
+    return []
+
+
 def last_earnings(sym):
     """直近（過去）の決算発表日 → YYYY-MM-DD（取引所の現地日付）"""
     import pandas as pd
@@ -108,7 +121,7 @@ def main():
             try:
                 cap, cur = get_cap(s)
                 out[key] = {"symbol": s, "value": cap, "currency": cur, "text": fmt(cap, cur), "date": today,
-                            "earn_date": last_earnings(s) or (old.get(key) or {}).get("earn_date")}
+                            "earn_dates": past_earnings(s) or (old.get(key) or {}).get("earn_dates") or []}
                 break
             except Exception as e:
                 last = f"{c.get('ja')}（{s}）: {e}"

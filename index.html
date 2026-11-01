@@ -425,13 +425,27 @@ function renderList(){
       <td>${esc(it.has?it.per:"マスターなし")}</td><td>${esc(String(it.date).slice(0,10))}</td></tr>`).join("")
   }</tbody></table>`;
 }
-const mcapEarn = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.earn_date) || "";
+/* 表示している四半期（Q1〜Q4）に合う決算発表日を、過去の発表日の中から選ぶ。
+   決算期（例「3月」）から四半期末の月を決め、発表日の15日前の時点で直近に終わった四半期が一致するものを採用。 */
+function mcapEarn(c, label){
+  const m = c && (state.mcap[c.ticker] || state.mcap[c.name]); const ds = m?.earn_dates || [];
+  const E = parseInt(String(c?.fy_end||"").replace(/[^0-9]/g,"")), q = +(String(label||"").match(/Q([1-4])/)||[])[1];
+  if(!ds.length || !(E>=1 && E<=12) || !q) return "";
+  for(const d of ds){
+    const t = new Date(d+"T00:00:00Z"); t.setUTCDate(t.getUTCDate()-15);
+    let mo = t.getUTCMonth()+1;
+    for(let k=0;k<3;k++){ const mm = ((mo-1-k)%12+12)%12+1; if(((mm-E)%3+3)%3===0){ mo = mm; break; } }
+    const qq = ((mo-E)%12+12)%12/3 || 4;
+    if(qq===q) return d;
+  }
+  return "";
+}
 const mcapOf = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.text) || "";
 function rowFromMaster(c, period){
   const ps = c.periods||[]; const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
   const dg = state.digest.find(d => (d["企業"]===c.ja || d["企業"]===c.name) && p.label && String(d["期"]).includes(p.label));
   return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
-    決算日: dg?.["発表日"] || c.date || mcapEarn(c) || "",
+    決算日: dg?.["発表日"] || mcapEarn(c, p.label) || "",
     period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
     売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
     時価総額: dg?.["時価総額"] || mcapOf(c) };
@@ -439,7 +453,7 @@ function rowFromMaster(c, period){
 function rowFromDigest(d){
   const c = masterOf({企業:d["企業"]});
   return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
-    決算日: d["発表日"] || mcapEarn(c) || "",
+    決算日: d["発表日"] || "",
     period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
     営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] || mcapOf(c) };
 }
@@ -497,7 +511,7 @@ $("#edit").addEventListener("input", e=>{
 $("#edit").addEventListener("change", e=>{
   const card = e.target.closest(".card"); if(!card) return; const i = +card.dataset.i;
   if(e.target.matches("[data-per]")){
-    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額, 決算日:r.決算日 };
+    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 };
     Object.assign(r, rowFromMaster(c, e.target.value), keep); renderEdit(); renderPreview(); return;
   }
   if(e.target.matches("[data-name]")){ state.rows[i].社名表示 = e.target.checked; renderPreview(); return; }
