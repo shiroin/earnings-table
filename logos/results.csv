@@ -26,7 +26,7 @@ Lenovo,lenovo.com,ok,existing,,
 Cisco Systems,cisco.com,ok,existing,,
 Celestica,celestica.com,ok,existing,,
 Arista Networks,arista.com,ok,existing,,
-Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
+Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
 Zhongji Innolight,zj-innolight.com,ok,existing,,
 Amphenol,amphenol.com,ok,existing,,
 Corning,corning.com,ok,existing,,
@@ -64,14 +64,14 @@ Applied Materials,appliedmaterials.com,ok,existing,,
 Lam Research,lamresearch.com,ok,existing,,
 KLA,kla.com,ok,existing,,
 KOKUSAI ELECTRIC,kokusai-electric.com,ok,existing,,
-ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
+ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
 村田製作所,murata.com,ok,existing,,
 イビデン,ibiden.co.jp,ok,existing,,
 メイコー,meiko-elec.com,ok,existing,,
 JX金属,jx-nmm.com,ok,existing,,
-レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
-日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
-信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
+レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
+日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
+信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
 SUMCO,sumcosi.com,ok,existing,,
 味の素,ajinomoto.co.jp,ok,existing,,
 TOTO,jp.toto.com,ok,existing,,
@@ -141,7 +141,7 @@ Chewy,chewy.com,ok,existing,,
 Wayfair,wayfair.com,ok,existing,,
 MonotaRO,corp.monotaro.com,ok,existing,,
 Alibaba,alibabagroup.com,ok,existing,,
-PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
+PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
 JD.com,jd.com,ok,existing,,
 Meituan,meituan.com,ok,existing,,
 楽天グループ,corp.rakuten.co.jp,ok,existing,,
@@ -158,7 +158,7 @@ Duolingo,duolingo.com,ok,existing,,
 Pinterest,pinterestinc.com,ok,existing,,
 Snap,snap.com,ok,existing,,
 ByteDance,,ok,existing,,
-DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
+DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
 百度,baidu.com,ok,existing,,
 LINEヤフー,lycorp.co.jp,ok,existing,,
 サイバーエージェント,cyberagent.co.jp,ok,existing,,
@@ -252,7 +252,7 @@ SMC,,ok,existing,,
 安川電機,yaskawa.co.jp,ok,existing,,
 三菱電機,mitsubishielectric.co.jp,ok,existing,,
 THK,thk.com,ok,existing,,
-ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
+ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
 Intuitive Surgical,isrg.intuitive.com,ok,existing,,
 Unitree Robotics,unitree.com,ok,existing,,
 三菱重工業,mhi.com,ok,existing,,
@@ -285,12 +285,12 @@ LUUP,,ok,existing,,
 パーク24,park24.co.jp,ok,existing,,
 ネクステージ,nextage.jp,ok,existing,,
 プレミアグループ,premium-group.co.jp,ok,existing,,
-Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
+Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
 Accenture,accenture.com,ok,existing,,
 ベイカレント,,ok,existing,,
 ノースサンド,northsand.co.jp,ok,existing,,
 シンプレクス・ホールディングス,simplex.holdings,ok,existing,,
-SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
+SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
 Finatextホールディングス,finatext.com,ok,existing,,
 ABEJA,abejainc.com,ok,existing,,
 エクサウィザーズ,exawizards.com,ok,existing,,
@@ -312,13 +312,13 @@ JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://
 三菱地所,mec.co.jp,ok,existing,,
 住友不動産,sumitomo-rd.co.jp,ok,existing,,
 オープンハウス,openhouse-group.co.jp,ok,existing,,
-ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
+ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
 日本M&Aセンターホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 M&Aキャピタルパートナーズ,ma-cp.com,ok,existing,,
 ストライク,strike.co.jp,ok,existing,,
 クオンツ総研ホールディングス,quants-souken.co.jp,ok,existing,,
 リクルートホールディングス,recruit-holdings.com,ok,existing,,
-ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
+ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
 タイミー,corp.timee.co.jp,ok,existing,,
 星野リゾート,,ok,existing,,
 アパホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
@@ -462,7 +462,7 @@ ABCマート,,ok,existing,,
 ブルーゾーンホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 神戸物産,,ok,existing,,
 コスモス薬品,,ok,existing,,
-スギホールディングス,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.sugi-hd.co.jp&size=256"
+スギホールディングス,https://www.sugi-hd.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.sugi-hd.co.jp,スギホールディングス.png
 ツルハ,,ok,existing,,
 クスリのアオキホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 サンドラッグ,,ok,existing,,
@@ -496,7 +496,7 @@ NSD,,ok,existing,,
 コシダカホールディングス,,ok,existing,,
 ユニバーサル・エンターテイメント,,failed,,,Wikidataで見つからず、ドメイン指定もありません
 イオンファンタジー,,ok,existing,,
-パーソル,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.inte.co.jp&size=256"
+パーソル,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.inte.co.jp&size=256"
 テクノプロ,,ok,existing,,
 メイテック,,ok,existing,,
 オープンアップグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
@@ -555,7 +555,7 @@ SBI新生銀行,,ok,existing,,
 八十二長野銀行,,ok,existing,,
 いよぎん,,ok,existing,,
 群馬銀行,,ok,existing,,
-ほくほくフィナンシャルグループ,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kiokim.ru&size=256"
+ほくほくフィナンシャルグループ,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kiokim.ru&size=256"
 七十七銀行,,ok,existing,,
 山口フィナンシャルグループ,,ok,existing,,
 九州フィナンシャルグループ,,ok,existing,,
