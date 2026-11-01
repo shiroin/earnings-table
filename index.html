@@ -81,11 +81,12 @@ input[type=url]{flex:1}
 .et th small{font-size:21px}
 .et td{border-top:1.5px dotted #555;height:136px;padding:8px 18px;vertical-align:middle}
 .et td.comp{width:300px;min-width:300px;border-right:1.5px dotted #555;text-align:center;position:relative}
-.et td.comp.corner{padding-top:34px}
+.et td.comp.corner{padding-top:46px}
 .et td.comp img{display:block;margin:0 auto;height:64px;max-width:250px;object-fit:contain}
 .et td.comp .nm{font-size:21px;font-weight:600;line-height:1.3;margin-top:6px;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 .et td.comp .lt{font-weight:700;font-size:28px;line-height:1.3;word-break:keep-all;overflow-wrap:anywhere}
 .et .pc{position:absolute;top:8px;right:14px;font-family:var(--num);font-size:26px}
+.et .pd{position:absolute;top:8px;left:14px;font-family:var(--num);font-size:26px;color:#333}
 .et .pb{font-size:27px;margin-top:8px;font-weight:500}
 .et td.amt{text-align:right;font-family:var(--num);white-space:nowrap;min-width:230px}
 .et td.amt b{font-size:46px;font-weight:500;letter-spacing:.5px}
@@ -212,6 +213,8 @@ input[type=url]{flex:1}
         <div class="fxonly" id="fxBox" style="display:grid;grid-template-columns:auto 1fr;gap:4px 8px;font-size:12px"></div>
         <label for="align">金額の揃え</label>
         <select id="align"><option value="auto">自動（通貨がそろえば右、混在なら左）</option><option value="left">左揃え</option><option value="right">右揃え</option></select>
+        <label for="dateShow">決算日の表示</label>
+        <select id="dateShow"><option value="auto">自動（日付が混在するときだけ）</option><option value="on">常に表示</option><option value="off">表示しない</option></select>
         <label for="minus">マイナス記号</label>
         <select id="minus"><option value="△">△</option><option value="-">-</option></select>
       </div>
@@ -427,6 +430,7 @@ function rowFromMaster(c, period){
   const ps = c.periods||[]; const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
   const dg = state.digest.find(d => (d["企業"]===c.ja || d["企業"]===c.name) && p.label && String(d["期"]).includes(p.label));
   return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
+    決算日: dg?.["発表日"] || c.date || "",
     period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
     売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
     時価総額: dg?.["時価総額"] || mcapOf(c) };
@@ -434,6 +438,7 @@ function rowFromMaster(c, period){
 function rowFromDigest(d){
   const c = masterOf({企業:d["企業"]});
   return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
+    決算日: d["発表日"] || "",
     period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
     営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] || mcapOf(c) };
 }
@@ -462,7 +467,7 @@ $("#selAll").onclick = ()=>{
 $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
 /* ---------- 編集 ---------- */
-const FIELDS = [["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
+const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
 function renderEdit(){
   $("#edit").innerHTML = state.rows.map((r,i)=>{
     const c = r.key?.startsWith("m|") ? masterOf(r) : null;
@@ -476,7 +481,7 @@ function renderEdit(){
         <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
         <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
       </div>
-      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位"].includes(f)?"text":"decimal"}" data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
       <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
         <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
@@ -491,7 +496,7 @@ $("#edit").addEventListener("input", e=>{
 $("#edit").addEventListener("change", e=>{
   const card = e.target.closest(".card"); if(!card) return; const i = +card.dataset.i;
   if(e.target.matches("[data-per]")){
-    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 };
+    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額, 決算日:r.決算日 };
     Object.assign(r, rowFromMaster(c, e.target.value), keep); renderEdit(); renderPreview(); return;
   }
   if(e.target.matches("[data-name]")){ state.rows[i].社名表示 = e.target.checked; renderPreview(); return; }
@@ -556,11 +561,20 @@ function applyPalette(){ const p = PALETTES[$("#palette").value]; if(p){ $("#cHe
 $("#palette").addEventListener("change", ()=>{ applyPalette(); renderPreview(); });
 ["#cHead","#cAccent"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#palette").value="custom"; renderPreview(); }));
 
+/* 決算日 → 「10/29」 */
+function mdOf(v){ const t = String(v||"").trim(); let m = t.match(/(\d{4})[-\/年.](\d{1,2})[-\/月.](\d{1,2})/) || t.match(/^()(\d{1,2})[\/月-](\d{1,2})/);
+  return m ? `${+m[2]}/${+m[3]}` : t; }
+function showDates(){
+  const v = $("#dateShow").value; if(v==="on") return true; if(v==="off") return false;
+  return new Set(state.rows.map(r=>mdOf(r.決算日)).filter(Boolean)).size > 1;
+}
 function compCell(r, pmode){
-  const src = logoSrc(r), per = esc(qLabel(r.期));
+  const src = logoSrc(r), per = esc(qLabel(r.期)), dt = showDates() ? esc(mdOf(r.決算日)) : "";
+  const pd = dt ? `<span class="pd">${dt}</span>` : "";
   const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">${r.社名表示?`<div class="nm">${esc(r.企業)}</div>`:""}` : `<div class="lt">${esc(r.企業)}</div>`;
-  return pmode==="corner" ? `<td class="comp corner">${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
-       : pmode==="below" ? `<td class="comp">${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="comp">${logo}</td>`;
+  const cls = (pmode==="corner" && per) || dt ? "comp corner" : "comp";
+  return pmode==="corner" ? `<td class="${cls}">${pd}${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
+       : pmode==="below" ? `<td class="${cls}">${pd}${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="${cls}">${pd}${logo}</td>`;
 }
 /* 表示される通貨（億・兆などの桁は無視）が1種類なら右揃え */
 function shownCurrency(u){ const m = String(u||"").match(/^(?:百万|10億|十億|億|兆)?(.+)$/); return m ? m[1] : u; }
@@ -680,7 +694,7 @@ function autoTitle(){
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
 $("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
-["#unit","#period","#minus","#segProfit","#align","#cur"].forEach(s=>$(s).addEventListener("change", renderPreview));
+["#unit","#period","#minus","#segProfit","#align","#cur","#dateShow"].forEach(s=>$(s).addEventListener("change", renderPreview));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
@@ -697,7 +711,7 @@ $("#dlBtn").onclick = async ()=>{
 /* ---------- 保存・起動 ---------- */
 function saveState(){
   store.set("rows2", state.rows);
-  store.set("opts", { cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
+  store.set("opts", { dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
 }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
@@ -707,6 +721,7 @@ window.__render = (rows, opts={}) => {
   if(opts.minus) $("#minus").value = opts.minus;
   if(opts.align) $("#align").value = opts.align;
   if(opts.cur) $("#cur").value = opts.cur;
+  if(opts.dateShow) $("#dateShow").value = opts.dateShow;
   if(opts.fx){ state.cfg.fx = { ...(state.cfg.fx||{}), ...opts.fx }; $("#fxBox").innerHTML = ""; }
   if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
   if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
@@ -734,7 +749,7 @@ window.__renderSeg = async (key, opts={}) => {
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();
