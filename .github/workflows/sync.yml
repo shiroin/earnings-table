@@ -18,26 +18,28 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install requests openpyxl
-      - run: python sync_masters.py ${ONLY:+--only "$ONLY"}
+      - name: 同期してコミット（他の同期と重なったら取り直す）
         env:
           ONLY: ${{ github.event.inputs.only || github.event.client_payload.tickers }}
-      - name: 変更があればコミット（更新時刻だけの変化は無視）
         run: |
-          python - <<'PY'
-          import json, subprocess, sys
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python sync_masters.py ${ONLY:+--only "$ONLY"}
+            python - <<'PY'
+          import json, subprocess
           try:
               old = json.loads(subprocess.check_output(["git", "show", "HEAD:data/masters.json"]))
           except Exception:
               old = None
           new = json.load(open("data/masters.json"))
           strip = lambda d: {k: v for k, v in d.items() if k != "updated"} if d else None
-          open("changed", "w").write("1" if strip(old) != strip(new) else "0")
+          open("/tmp/changed", "w").write("1" if strip(old) != strip(new) else "0")
           PY
-          if [ "$(cat changed)" = "1" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-            git add data/masters.json
-            git commit -m "企業マスターを同期" && git pull --rebase -q && git push
-          else
-            echo "変更なし"
-          fi
+            if [ "$(cat /tmp/changed)" != "1" ]; then echo "変更なし"; exit 0; fi
+            git add data/masters.json && git commit -qm "企業マスターを同期${ONLY:+（$ONLY）}"
+            if git push -q; then exit 0; fi
+            echo "他の更新と重なったので取り直します（$attempt）"
+          done
+          exit 1
