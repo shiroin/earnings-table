@@ -162,7 +162,7 @@ Meituan,meituan.com,ok,existing,,
 楽天グループ,corp.rakuten.co.jp,ok,existing,,
 メルカリ,about.mercari.com,ok,existing,,
 ZOZO,corp.zozo.com,ok,existing,,
-ミスミグループ本社,misumi.co.jp,failed,指定,https://drive.google.com/file/d/1JYWnOLrCfeeXlITt11azdqgk3unF7YZ_/view?usp=drive_link,画像ではありません (application/octet-stream)
+ミスミグループ本社,misumi.co.jp,ok,指定,https://drive.google.com/file/d/1JYWnOLrCfeeXlITt11azdqgk3unF7YZ_/view?usp=drive_link,ミスミグループ本社.png
 SHEIN,sheingroup.com,ok,existing,,
 Booking Holdings,bookingholdings.com,ok,existing,,
 Airbnb,airbnb.com,ok,existing,,
@@ -571,9 +571,9 @@ T＆Dホールディングス,,ok,existing,,
 大和証券グループ本社,,ok,existing,,
 テルモ,,ok,existing,,
 朝日インテック,,ok,existing,,
-NIPPON EXPRESSホールディングス,,ok,指定,https://drive.google.com/file/d/1yFwlSuc4UOws4iS0D4FRV28_8qylij1L/view,NIPPON_EXPRESSホールディングス.svg
-ヤマトホールディングス,,ok,指定,https://drive.google.com/file/d/1M1iid0B2e1gqdyxruT9PsIYcZdGgZWsn/view,ヤマトホールディングス.png
-SGホールディングス,,ok,指定,https://drive.google.com/file/d/1rzpt7i6Kw2lPDJYfWX3YQDuzx01pXCrI/view,SGホールディングス.png
-セイノーホールディングス,,ok,指定,https://drive.google.com/file/d/1l1zV2cy62vV78Ha8UFK69TImxb8nVk3-/view,セイノーホールディングス.png
-山九,,ok,指定,https://drive.google.com/file/d/15673zYDeX9ye1zxhO08uMuzA9ZnGHUh-/view,山九.svg
-SBSホールディングス,,ok,指定,https://drive.google.com/file/d/1FzgG6EhpxEeushPGG_J8Rp7lCpyecwn4/view,SBSホールディングス.png
+NIPPON EXPRESSホールディングス,,ok,existing,,
+ヤマトホールディングス,,ok,existing,,
+SGホールディングス,,ok,existing,,
+セイノーホールディングス,,ok,existing,,
+山九,,ok,existing,,
+SBSホールディングス,,ok,existing,,
