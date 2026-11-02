@@ -35,7 +35,10 @@ def main():
     since = (datetime.date.today() - datetime.timedelta(days=a.days)).isoformat()
     out = []
     for c in m:
-        ds = (mc.get(c.get("ticker")) or {}).get("earn_dates") or []
+        e = mc.get(c.get("ticker")) or {}
+        today = datetime.date.today().isoformat()
+        # Yahoo の過去の発表日 ＋ 株探などの発表予定日のうち今日までのもの（日本株は Yahoo が遅れる・抜けるため）
+        ds = sorted(set((e.get("earn_dates") or []) + [d for d in (e.get("sched") or []) if d <= today]), reverse=True)
         if not c.get("periods") or not ds or ds[0] < since: continue
         p = c["periods"][-1]
         E = int(re.sub(r"\D", "", c.get("fy_end") or "") or 0)

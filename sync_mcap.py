@@ -81,6 +81,30 @@ def past_earnings(sym):
     return []
 
 
+def future_earnings(sym):
+    """これからの決算発表予定日（古い順）→ ["YYYY-MM-DD", ...]（米国などは Yahoo の予定がほぼ正確）"""
+    import pandas as pd
+    try:
+        df = yf.Ticker(sym).get_earnings_dates(limit=16)
+        if df is not None and len(df):
+            now = pd.Timestamp.now(tz=df.index.tz)
+            return sorted({d.strftime("%Y-%m-%d") for d in df.index if d > now})[:2]
+    except Exception:
+        pass
+    return []
+
+
+def kabutan_schedule(code):
+    """日本株: 株探の「決算発表予定日」→ "YYYY-MM-DD"（Yahoo は日本株の予定日がずれる・抜けるため）"""
+    try:
+        r = requests.get(f"https://s.kabutan.jp/stocks/{code}/finance/", headers={"User-Agent": "Mozilla/5.0 (earnings-table)"}, timeout=20)
+        m = re.search(r"決算発表予定日\D{0,40}?(\d{4})/(\d{2})/(\d{2})", r.text)
+        if m: return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    except Exception:
+        pass
+    return None
+
+
 def last_earnings(sym):
     """直近（過去）の決算発表日 → YYYY-MM-DD（取引所の現地日付）"""
     import pandas as pd
@@ -120,8 +144,16 @@ def main():
             tried.append(s)
             try:
                 cap, cur = get_cap(s)
+                o = old.get(key) or {}
+                sched = set(o.get("sched") or [])            # 一度見えた予定日は残す（発表後に次の予定日へ切り替わるため）
+                if s.endswith(".T"):
+                    d = kabutan_schedule(s[:-2]); time.sleep(0.5)
+                    if d: sched.add(d)
+                else:
+                    sched.update(future_earnings(s))
                 out[key] = {"symbol": s, "value": cap, "currency": cur, "text": fmt(cap, cur), "date": today,
-                            "earn_dates": past_earnings(s) or (old.get(key) or {}).get("earn_dates") or []}
+                            "earn_dates": past_earnings(s) or o.get("earn_dates") or [],
+                            "sched": sorted(sched)[-8:]}
                 break
             except Exception as e:
                 last = f"{c.get('ja')}（{s}）: {e}"

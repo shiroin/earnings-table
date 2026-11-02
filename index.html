@@ -435,7 +435,8 @@ function renderList(){
 /* 表示している四半期（Q1〜Q4）に合う決算発表日を、過去の発表日の中から選ぶ。
    決算期（例「3月」）から四半期末の月を決め、発表日の15日前の時点で直近に終わった四半期が一致するものを採用。 */
 function mcapEarn(c, label, period){
-  const m = c && (state.mcap[c.ticker] || state.mcap[c.name]); const ds = m?.earn_dates || [];
+  const m = c && (state.mcap[c.ticker] || state.mcap[c.name]); const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  const ds = [...new Set([...(m?.earn_dates||[]), ...(m?.sched||[]).filter(d=>d<=today)])].sort().reverse();
   let E = parseInt(String(c?.fy_end||"").replace(/[^0-9]/g,"")); const q = +(String(label||"").match(/Q([1-4])/)||[])[1];
   if(!(E>=1 && E<=12) && /^\s*(CY)?\s*\d{4}\s*[-_ ]?Q[1-4]\s*$/i.test(String(period||""))) E = 12;   // 「2026Q3」形式は暦年（12月決算）とみなす
   if(!ds.length || !(E>=1 && E<=12) || !q) return "";
@@ -452,7 +453,8 @@ const mcapOf = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.text) ||
 /* その会社の「決算データ」（自動まとめ・手入力）の行。新しい順 */
 const digestFor = c => state.digest.filter(d => d["企業"]===c.ja || d["企業"]===c.name).sort((a,b)=>String(b["発表日"]).localeCompare(String(a["発表日"])));
 /* 株価データ上の最新の決算発表日 */
-const latestEarn = c => ((state.mcap[c?.ticker] || state.mcap[c?.name])?.earn_dates || [])[0] || "";
+const latestEarn = c => { const e = state.mcap[c?.ticker] || state.mcap[c?.name] || {}, today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  return [...(e.earn_dates||[]), ...(e.sched||[]).filter(d=>d<=today)].sort().reverse()[0] || ""; };
 function rowFromMaster(c, period){
   const ps = c.periods||[];
   const dgs = digestFor(c);

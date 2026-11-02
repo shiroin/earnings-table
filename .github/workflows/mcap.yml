@@ -1,12 +1,13 @@
 name: 時価総額の更新
 on:
   schedule:
-    - cron: "40 21 * * 1-5"   # 日本時間 6:40（米国の引け後）
+    - cron: "40 21 * * 0-4"   # 日本時間 6:40 月〜金（米国の引け後）
+    - cron: "0 3 * * 1-5"     # 日本時間 12:00（その日の決算発表予定を取り込む）
     - cron: "40 6 * * 1-5"    # 日本時間 15:40（日本・アジアの引け後）
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: sync, cancel-in-progress: false }
+concurrency: { group: mcap, cancel-in-progress: false }
 jobs:
   mcap:
     runs-on: ubuntu-latest
