@@ -16,7 +16,7 @@ with sync_playwright() as p:
     ctx = b.new_context(user_agent=UA, device_scale_factor=3, viewport={"width": 1400, "height": 900}, locale="ja-JP")
     for no, url in items:
         print(no, url, flush=True)
-        pg = ctx.new_page()
+        pg = ctx.new_page(); pg.set_default_timeout(8000)
         try:
             pg.goto(url, wait_until="domcontentloaded", timeout=40000); pg.wait_for_timeout(4000)
         except Exception as e:
@@ -25,14 +25,14 @@ with sync_playwright() as p:
         for s in SEL:
             try: els = pg.query_selector_all(s)
             except Exception: continue
-            for el in els[:3]:
+            for el in els[:2]:
                 try:
                     bb = el.bounding_box()
                     if not bb or bb["width"] < 30 or bb["height"] < 12 or bb["y"] > 400 or bb["width"] > 700: continue
                     key = (round(bb["x"]), round(bb["y"]))
                     if key in seen: continue
                     seen.add(key)
-                    el.screenshot(path=str(OUT / f"{no}_{k}_shot.png"), omit_background=True)
+                    el.screenshot(path=str(OUT / f"{no}_{k}_shot.png"), omit_background=True, timeout=6000)
                     src = el.get_attribute("src") if el.evaluate("e=>e.tagName") == "IMG" else None
                     if src and not src.startswith("data:"):
                         try:
