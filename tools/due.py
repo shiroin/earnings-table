@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 def main():
-    today = (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).date().isoformat()
+    today = (datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None) + datetime.timedelta(hours=9)).date().isoformat()
     ap = argparse.ArgumentParser(); ap.add_argument("--from", dest="f", default=today); ap.add_argument("--to", dest="t", default=today); a = ap.parse_args()
     m = json.loads((ROOT / "data/masters.json").read_text(encoding="utf-8"))["companies"]
     mc = json.loads((ROOT / "data/mcap.json").read_text(encoding="utf-8"))["companies"]
