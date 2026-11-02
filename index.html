@@ -346,7 +346,7 @@ function fillFilters(){
 }
 /* ---------- 期間の判定 ----------
    発表日時: 決算データの「発表日時(JST)」（無ければ「記録日時」）。どちらも無ければ発表日と市場から目安を置く。
-   まとめの回: 朝（4〜10月 6:00 / 11〜3月 6:30、月〜土）と 17:00（月〜金）。 */
+   まとめの回: 朝（4〜10月 6:00 / 11〜3月 7:00、月〜土。2026/11/3までの冬は6:30）と 17:00（月〜金）。 */
 const jst = (y,m,d,hh,mm) => new Date(Date.UTC(y,m-1,d,hh-9,mm));
 function fmtJ(d, withTime=true){ const t = new Date(d.getTime()+9*3600e3);
   return `${t.getUTCMonth()+1}月${t.getUTCDate()}日` + (withTime ? ` ${t.getUTCHours()}:${String(t.getUTCMinutes()).padStart(2,"0")}` : ""); }
@@ -356,7 +356,7 @@ function whenOf(x){
   const a = String(x["発表日"]||x.date||"").replace(/\//g,"-").slice(0,10), m = a.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if(!m) return null;
   const [Y,M,D] = [+m[1],+m[2],+m[3]], mk = String(x["市場"]||x.country||"");
-  if(/US|米国/.test(mk)) return jst(Y,M,D+1,5,30);     // 米国は引け後 → 日本時間の翌朝
+  if(/US|米国/.test(mk)) return (M>=11||M<=3) ? jst(Y,M,D+1,6,30) : jst(Y,M,D+1,5,30);     // 米国は引け後 → 日本時間の翌朝（冬時間は1時間遅い）
   if(/KR|韓国/.test(mk)) return jst(Y,M,D,9,0);
   if(/TW|台湾/.test(mk)) return jst(Y,M,D,14,30);
   if(/CN|中国|香港/.test(mk)) return jst(Y,M,D,18,0);
@@ -370,7 +370,7 @@ function runsList(days=21){
     const Y=t.getUTCFullYear(), M=t.getUTCMonth()+1, D=t.getUTCDate(), wd=t.getUTCDay();
     const ymd = `${Y}-${String(M).padStart(2,"0")}-${String(D).padStart(2,"0")}`;
     if(wd>=1 && wd<=5) out.push({ key:`${ymd} 17時`, at:jst(Y,M,D,17,0), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 17時の回` });
-    if(wd>=1 && wd<=6){ const win = (M>=11||M<=3); out.push({ key:`${ymd} 朝`, at:jst(Y,M,D,6,win?30:0), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 朝の回` }); }
+    if(wd>=1 && wd<=6){ const win = (M>=11||M<=3), [hh,mm] = !win ? [6,0] : (ymd <= "2026-11-03" ? [6,30] : [7,0]); out.push({ key:`${ymd} 朝`, at:jst(Y,M,D,hh,mm), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 朝の回` }); }
   }
   return out.filter(r=>r.at.getTime()<=now).sort((a,b)=>b.at-a.at);
 }
