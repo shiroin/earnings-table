@@ -182,15 +182,36 @@ def favicon_url(domain: str) -> str:
 
 
 # ---------- 保存 ----------
+def drive_direct(url: str) -> str:
+    """Google ドライブの共有URL → 直接ダウンロードURL（それ以外はそのまま）"""
+    m = re.search(r"drive\.google\.com/(?:file/d/|open\?id=|uc\?(?:[^#]*&)?id=)([\w-]{20,})", url) or \
+        re.search(r"docs\.google\.com/[^?]*?/d/([\w-]{20,})", url)
+    return f"https://drive.google.com/uc?export=download&id={m.group(1)}" if m else url
+
+
+def sniff_ext(b: bytes) -> str:
+    h = b[:16]
+    if h.startswith(b"\x89PNG"): return ".png"
+    if h.startswith(b"\xff\xd8"): return ".jpg"
+    if h[:4] == b"GIF8": return ".gif"
+    if h[:4] == b"RIFF" and b[8:12] == b"WEBP": return ".webp"
+    if h[:4] == b"\x00\x00\x01\x00": return ".ico"
+    if b.lstrip()[:200].lower().find(b"<svg") >= 0 or b.lstrip()[:5].lower() == b"<?xml": return ".svg"
+    return ""
+
+
 def download(url: str, dest_stem: Path):
+    url = drive_direct(url)
     r = get(url, allow_redirects=True)
     r.raise_for_status()
     ctype = r.headers.get("Content-Type", "").split(";")[0].strip().lower()
-    if not ctype.startswith("image/") and not r.content.lstrip()[:5].lower().startswith((b"<svg", b"<?xml")):
+    sn = sniff_ext(r.content)
+    if not ctype.startswith("image/") and not sn:
         raise ValueError(f"画像ではありません ({ctype})")
     if len(r.content) < 200:
         raise ValueError("サイズが小さすぎます")
-    ext = EXT_BY_TYPE.get(ctype) or Path(urlparse(r.url).path).suffix or ".img"
+    ext = sn or EXT_BY_TYPE.get(ctype) or Path(urlparse(r.url).path).suffix or ".img"
+    if ext not in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico"): ext = ".img"
     path = dest_stem.with_suffix(ext)
     path.write_bytes(r.content)
     return path

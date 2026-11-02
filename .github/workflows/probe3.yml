@@ -1,0 +1,21 @@
+name: ロゴ候補の収集（サイト表示）
+on:
+  workflow_dispatch:
+    inputs:
+      list: { default: tools/probe_list3.json }
+      branch: { default: probe3 }
+permissions: { contents: write }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests playwright && python -m playwright install --with-deps chromium
+      - run: python tools/probe_shots.py ${{ inputs.list }}
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git checkout -B ${{ inputs.branch }} && git add -f probe && git commit -qm "ロゴ候補（サイト）" && git push -f origin ${{ inputs.branch }}
