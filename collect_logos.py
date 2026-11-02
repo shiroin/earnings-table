@@ -234,6 +234,7 @@ def collect_one(name: str, domain: str, out: Path, spec: str = ""):
                 return "指定", u, download(u, stem), domain
             except Exception as e:
                 errors.append(f"指定: {e}")
+        raise RuntimeError("; ".join(errors))   # 指定があるときは、別のロゴで代用しない
 
     logo_file, site = (None, None)
     try:
@@ -274,7 +275,7 @@ def collect_one(name: str, domain: str, out: Path, spec: str = ""):
 
 def read_masters(path):
     """data/masters.json の企業 → (英語名, ドメイン, ロゴ指定)。指定は logos/overrides.csv（企業,ロゴ指定）"""
-    import json
+    pass
     from urllib.parse import urlparse as _u
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     ov = {}
@@ -340,10 +341,21 @@ def main():
             prev = json.loads((args.out / "index.json").read_text(encoding="utf-8")) if (args.out / "index.json").exists() else {}
             mark = args.out / ".specs.json"
             done = json.loads(mark.read_text(encoding="utf-8")) if mark.exists() else {}
-            if done.get(name) != spec:   # 指定が新しい／変わった → 取り直す
-                for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img"):
-                    (args.out / safe_filename(name)).with_suffix(e).unlink(missing_ok=True)
-                done[name] = spec; mark.write_text(json.dumps(done, ensure_ascii=False), encoding="utf-8")
+            if done.get(name) != spec:   # 指定が新しい／変わった → 指定のロゴを取り直す（失敗したら今のロゴを残す）
+                stem = args.out / safe_filename(name)
+                tmp = args.out / ".tmp" / safe_filename(name); tmp.parent.mkdir(exist_ok=True)
+                try:
+                    newp = download(spec[5:] if False else (wiki_file_urls(spec[5:])[0] if spec.startswith("wiki:") else spec), tmp)
+                    for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img"):
+                        stem.with_suffix(e).unlink(missing_ok=True)
+                    newp.replace(stem.with_suffix(newp.suffix))
+                    done[name] = spec; mark.write_text(json.dumps(done, ensure_ascii=False), encoding="utf-8")
+                    print(f"OK (指定) -> {stem.with_suffix(newp.suffix).name}")
+                    report.append([name, domain, "ok", "指定", spec, stem.with_suffix(newp.suffix).name])
+                except Exception as e:
+                    print(f"NG (指定・今のロゴを維持): {e}")
+                    report.append([name, domain, "failed", "指定", spec, str(e)[:300]])
+                continue
         if args.skip_existing and any((args.out / safe_filename(name)).with_suffix(e).exists()
                                       for e in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico", ".img")):
             print("skip (取得済み)")
@@ -362,7 +374,7 @@ def main():
         w.writerow(["name", "domain", "status", "source", "url", "file_or_error"])
         w.writerows(report)
     # 企業名 → ファイル名 の対応表（Webアプリが使う）
-    import json
+    pass
     index = {}
     oldp = args.out / "index.json"
     if oldp.exists():
