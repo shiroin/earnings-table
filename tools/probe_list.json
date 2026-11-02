@@ -1,0 +1,498 @@
+[
+{
+"no": "15",
+"ja": "南亜科技",
+"en": "南亜科技",
+"name": "南亜科技",
+"ticker": "TPE:2408",
+"domain": "nanya.com"
+},
+{
+"no": "16",
+"ja": "CXMT",
+"en": "CXMT",
+"name": "CXMT",
+"ticker": "SHA:688825",
+"domain": "cxmt.com"
+},
+{
+"no": "28",
+"ja": "Astera Labs",
+"en": "Astera Labs",
+"name": "Astera Labs",
+"ticker": "ALAB",
+"domain": "asteralabs.com"
+},
+{
+"no": "37",
+"ja": "POETテクノロジーズ",
+"en": "POET Technologies",
+"name": "POET Technologies",
+"ticker": "POET",
+"domain": "poet-technologies.com"
+},
+{
+"no": "41",
+"ja": "精工技研",
+"en": "精工技研",
+"name": "精工技研",
+"ticker": "6834",
+"domain": "seikoh-giken.co.jp"
+},
+{
+"no": "60",
+"ja": "レーザーテック",
+"en": "レーザーテック",
+"name": "レーザーテック",
+"ticker": "6920",
+"domain": "lasertec.co.jp"
+},
+{
+"no": "66",
+"ja": "ローツェ",
+"en": "ローツェ",
+"name": "ローツェ",
+"ticker": "6323",
+"domain": "rorze.com"
+},
+{
+"no": "71",
+"ja": "レゾナック",
+"en": "レゾナック・ホールディングス",
+"name": "レゾナック・ホールディングス",
+"ticker": "4004",
+"domain": "resonac.com"
+},
+{
+"no": "72",
+"ja": "日東紡",
+"en": "日東紡績",
+"name": "日東紡績",
+"ticker": "3110",
+"domain": "nittobo.co.jp"
+},
+{
+"no": "73",
+"ja": "信越化学",
+"en": "信越化学工業",
+"name": "信越化学工業",
+"ticker": "4063",
+"domain": "shinetsu.co.jp"
+},
+{
+"no": "80",
+"ja": "Vistra",
+"en": "Vistra Corp.",
+"name": "Vistra Corp.",
+"ticker": "VST",
+"domain": "vistracorp.com"
+},
+{
+"no": "81",
+"ja": "SBエナジー",
+"en": "SBエナジー",
+"name": "SBエナジー",
+"ticker": "",
+"domain": "sbenergy.co.jp"
+},
+{
+"no": "85",
+"ja": "Eaton",
+"en": "Eaton",
+"name": "Eaton",
+"ticker": "ETN",
+"domain": "eaton.com"
+},
+{
+"no": "102",
+"ja": "Zscaler",
+"en": "Zscaler",
+"name": "Zscaler",
+"ticker": "ZS",
+"domain": "zscaler.com"
+},
+{
+"no": "112",
+"ja": "Elastic",
+"en": "Elastic",
+"name": "Elastic",
+"ticker": "ESTC",
+"domain": "elastic.co"
+},
+{
+"no": "114",
+"ja": "Samsara",
+"en": "Samsara",
+"name": "Samsara",
+"ticker": "IOT",
+"domain": "samsara.com"
+},
+{
+"no": "130",
+"ja": "SmartHR",
+"en": "SmartHR",
+"name": "SmartHR",
+"ticker": "",
+"domain": "smarthr.co.jp"
+},
+{
+"no": "131",
+"ja": "LegalOn",
+"en": "LegalOn Technologies",
+"name": "LegalOn Technologies",
+"ticker": "",
+"domain": "legalontech.jp"
+},
+{
+"no": "143",
+"ja": "PDD",
+"en": "PDD Holdings",
+"name": "PDD Holdings",
+"ticker": "PDD",
+"domain": "pddholdings.com"
+},
+{
+"no": "149",
+"ja": "ミスミグループ本社",
+"en": "ミスミグループ本社",
+"name": "ミスミグループ本社",
+"ticker": "9962",
+"domain": "misumi.co.jp"
+},
+{
+"no": "160",
+"ja": "DraftKings",
+"en": "DraftKings",
+"name": "DraftKings",
+"ticker": "DKNG",
+"domain": "draftkings.com"
+},
+{
+"no": "188",
+"ja": "円谷フィールズホールディングス",
+"en": "円谷フィールズホールディングス",
+"name": "円谷フィールズホールディングス",
+"ticker": "2767",
+"domain": "tsuburaya-fields.co.jp"
+},
+{
+"no": "200",
+"ja": "貴州茅台酒",
+"en": "貴州茅台",
+"name": "貴州茅台",
+"ticker": "SHA:600519",
+"domain": "moutaichina.com"
+},
+{
+"no": "204",
+"ja": "Monster Beverage",
+"en": "Monster Beverage",
+"name": "Monster Beverage",
+"ticker": "MNST",
+"domain": "monsterbevcorp.com"
+},
+{
+"no": "213",
+"ja": "トライアル・ホールディングス",
+"en": "トライアル・ホールディングス",
+"name": "トライアル・ホールディングス",
+"ticker": "141A",
+"domain": "trial-holdings.inc"
+},
+{
+"no": "217",
+"ja": "ラッキン・コーヒー",
+"en": "Luckin Coffee",
+"name": "Luckin Coffee",
+"ticker": "LKNCY",
+"domain": "luckincoffee.com"
+},
+{
+"no": "220",
+"ja": "サイゼリヤ",
+"en": "サイゼリヤ",
+"name": "サイゼリヤ",
+"ticker": "7581",
+"domain": "saizeriya.co.jp"
+},
+{
+"no": "228",
+"ja": "Nu Holdings",
+"en": "Nu Holdings",
+"name": "Nu Holdings",
+"ticker": "NU",
+"domain": "nu.com"
+},
+{
+"no": "235",
+"ja": "GMOペイメントゲートウェイ",
+"en": "GMOペイメントゲートウェイ",
+"name": "GMOペイメントゲートウェイ",
+"ticker": "3769",
+"domain": "gmo-pg.com"
+},
+{
+"no": "238",
+"ja": "富途控股（フートゥー・ホールディングス）",
+"en": "富途控股",
+"name": "富途控股",
+"ticker": "FUTU",
+"domain": "futuholdings.com"
+},
+{
+"no": "254",
+"ja": "ハーモニック・ドライブ・システムズ",
+"en": "ハーモニック・ドライブ・システムズ",
+"name": "ハーモニック・ドライブ・システムズ",
+"ticker": "6324",
+"domain": "hds.co.jp"
+},
+{
+"no": "265",
+"ja": "アストロスケール",
+"en": "アストロスケールホールディングス",
+"name": "アストロスケールホールディングス",
+"ticker": "186A",
+"domain": "astroscale.com"
+},
+{
+"no": "266",
+"ja": "QPSホールディングス",
+"en": "QPSホールディングス",
+"name": "QPSホールディングス",
+"ticker": "464A",
+"domain": "qpshd.com"
+},
+{
+"no": "268",
+"ja": "アクセルスペースホールディングス",
+"en": "アクセルスペースホールディングス",
+"name": "アクセルスペースホールディングス",
+"ticker": "402A",
+"domain": "axelspacehd.com"
+},
+{
+"no": "281",
+"ja": "GO",
+"en": "GO",
+"name": "GO",
+"ticker": "581A",
+"domain": "goinc.jp"
+},
+{
+"no": "287",
+"ja": "Turing",
+"en": "Turing",
+"name": "Turing",
+"ticker": "",
+"domain": "tur.ing"
+},
+{
+"no": "292",
+"ja": "SHIFT",
+"en": "SHIFT",
+"name": "SHIFT",
+"ticker": "3697",
+"domain": "shiftinc.jp"
+},
+{
+"no": "302",
+"ja": "JMDC",
+"en": "JMDC",
+"name": "JMDC",
+"ticker": "4483",
+"domain": "jmdc.co.jp"
+},
+{
+"no": "314",
+"ja": "ヒューリック",
+"en": "ヒューリック",
+"name": "ヒューリック",
+"ticker": "3003",
+"domain": "hulic.co.jp"
+},
+{
+"no": "315",
+"ja": "日本M&Aセンター",
+"en": "日本M&Aセンターホールディングス",
+"name": "日本M&Aセンターホールディングス",
+"ticker": "2127",
+"domain": "nihon-ma.co.jp"
+},
+{
+"no": "320",
+"ja": "ビジョナル",
+"en": "ビジョナル",
+"name": "ビジョナル",
+"ticker": "4194",
+"domain": "visional.inc"
+},
+{
+"no": "323",
+"ja": "アパ",
+"en": "アパホールディングス",
+"name": "アパホールディングス",
+"ticker": "",
+"domain": "apa.co.jp"
+},
+{
+"no": "324",
+"ja": "NOT A HOTEL",
+"en": "NOT A HOTEL",
+"name": "NOT A HOTEL",
+"ticker": "",
+"domain": "notahotel.com"
+},
+{
+"no": "332",
+"ja": "SUMIグループ",
+"en": "SUMIグループ",
+"name": "SUMIグループ",
+"ticker": "",
+"domain": "sumi-group.co.jp"
+},
+{
+"no": "380",
+"ja": "ポーラ・オルビスHD",
+"en": "ポーラ・オルビスホールディングス",
+"name": "ポーラ・オルビスホールディングス",
+"ticker": "4927",
+"domain": "po-holdings.co.jp"
+},
+{
+"no": "383",
+"ja": "ピジョン",
+"en": "ピジョン",
+"name": "ピジョン",
+"ticker": "7956",
+"domain": "pigeon.co.jp"
+},
+{
+"no": "388",
+"ja": "三菱ケミカルG",
+"en": "三菱ケミカルG",
+"name": "三菱ケミカルG",
+"ticker": "4188",
+"domain": "mcgc.com"
+},
+{
+"no": "429",
+"ja": "フェローテックHD",
+"en": "フェローテックホールディングス",
+"name": "フェローテックホールディングス",
+"ticker": "6890",
+"domain": "ferrotec.co.jp"
+},
+{
+"no": "453",
+"ja": "ワークマン",
+"en": "ワークマン",
+"name": "ワークマン",
+"ticker": "7564",
+"domain": "workman.co.jp"
+},
+{
+"no": "461",
+"ja": "ブルーゾーンHD",
+"en": "ブルーゾーンホールディングス",
+"name": "ブルーゾーンホールディングス",
+"ticker": "417A",
+"domain": "bluezone-hd.co.jp"
+},
+{
+"no": "466",
+"ja": "クスリのアオキHD",
+"en": "クスリのアオキホールディングス",
+"name": "クスリのアオキホールディングス",
+"ticker": "3549",
+"domain": "kusuri-aoki-hd.co.jp"
+},
+{
+"no": "474",
+"ja": "日本オラクル",
+"en": "日本オラクル",
+"name": "日本オラクル",
+"ticker": "4716",
+"domain": "oracle.com/jp"
+},
+{
+"no": "482",
+"ja": "インフォマート",
+"en": "インフォマート",
+"name": "インフォマート",
+"ticker": "2492",
+"domain": "infomart.co.jp"
+},
+{
+"no": "496",
+"ja": "ユニバーサル・エンターテイメント",
+"en": "ユニバーサル・エンターテイメント",
+"name": "ユニバーサル・エンターテイメント",
+"ticker": "6425",
+"domain": "universal-777.com"
+},
+{
+"no": "498",
+"ja": "パーソル",
+"en": "パーソル",
+"name": "パーソル",
+"ticker": "2181",
+"domain": "persol-group.co.jp"
+},
+{
+"no": "501",
+"ja": "オープンアップグループ",
+"en": "オープンアップグループ",
+"name": "オープンアップグループ",
+"ticker": "2154",
+"domain": "openupgroup.co.jp"
+},
+{
+"no": "503",
+"ja": "JACリクルートメント",
+"en": "JACリクルートメント",
+"name": "JACリクルートメント",
+"ticker": "2124",
+"domain": "jac-recruitment.jp"
+},
+{
+"no": "505",
+"ja": "UTグループ",
+"en": "UTグループ",
+"name": "UTグループ",
+"ticker": "2146",
+"domain": "ut-g.co.jp"
+},
+{
+"no": "514",
+"ja": "コメダホールディングス",
+"en": "コメダホールディングス",
+"name": "コメダホールディングス",
+"ticker": "3543",
+"domain": "komeda-holdings.co.jp"
+},
+{
+"no": "553",
+"ja": "京都FG",
+"en": "京都フィナンシャルグループ",
+"name": "京都フィナンシャルグループ",
+"ticker": "5844",
+"domain": "kyoto-fg.co.jp"
+},
+{
+"no": "557",
+"ja": "ほくほくFG",
+"en": "ほくほくフィナンシャルグループ",
+"name": "ほくほくフィナンシャルグループ",
+"ticker": "8377",
+"domain": "hokuhoku-fg.co.jp"
+},
+{
+"no": "564",
+"ja": "第一ライフHD",
+"en": "第一ライフホールディングス",
+"name": "第一ライフホールディングス",
+"ticker": "8750",
+"domain": "dai-ichi-life-hd.com"
+}
+]
