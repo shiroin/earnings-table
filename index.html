@@ -299,7 +299,7 @@ async function loadAll(){
   try{
     const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json();
     state.masters = m.companies||[];
-    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。マスターを更新すると2時間以内に反映されます。`;
+    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。表に入れた会社は、元の企業マスターのシートから最新の期をその場で読み直します。`;
   }catch{ $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。"; }
   try{ const r = await fetch("data/mcap.json",{cache:"no-cache"}); if(r.ok){ const j = await r.json(); state.mcap = j.companies||{}; state.mcapUpdated = j.updated||""; } }catch{}
   if(state.mcapUpdated) $("#dataInfo").textContent += ` 時価総額は ${state.mcapUpdated} 時点（1日2回更新）。`;
@@ -477,6 +477,49 @@ function rowFromMaster(c, period){
     売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
     時価総額: dg?.["時価総額"] || mcapOf(c) };
 }
+/* ---------- 企業マスターを元のシートから直接読む（同期を待たずに最新の期を出す） ---------- */
+const DIV = u => /^兆/.test(u) ? 1e6 : /^(10|十)億/.test(u) ? 1e3 : /^億/.test(u) ? 100 : /^百万/.test(u) ? 1 : 100;
+const liveDone = {};
+async function liveMaster(c){
+  if(!c?.master_id || liveDone[c.master_id]) return false;
+  liveDone[c.master_id] = true;
+  try{
+    const r = await fetch(`https://docs.google.com/spreadsheets/d/${c.master_id}/gviz/tq?tqx=out:csv&headers=0&sheet=${encodeURIComponent("会社全体_四半期")}`);
+    if(!r.ok) return false; const t = await r.text(); if(/^\s*</.test(t)) return false;
+    const rows = []; let row = [], cur = "", q = false;      // CSV（見出しなし）
+    for(let i=0;i<t.length;i++){ const ch=t[i];
+      if(q){ if(ch==='"'){ if(t[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=ch; }
+      else if(ch==='"') q=true; else if(ch===','){ row.push(cur); cur=""; } else if(ch==='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(ch!=='\r') cur+=ch; }
+    if(cur||row.length){ row.push(cur); rows.push(row); }
+    const hi = rows.findIndex(x => String(x[0]||"").trim().toLowerCase()==="period"); if(hi<0) return false;
+    const head = rows[hi].map(h=>String(h||"").trim()), ir = head.indexOf("revenue"), io = head.indexOf("operating_profit");
+    const val = x => { const v = String(x??"").replace(/,/g,"").trim(); return v===""||isNaN(+v) ? null : +v; };
+    const qs = rows.slice(hi+1).filter(x=>String(x[0]||"").trim()).map(x=>({period:String(x[0]).trim(), r: ir>=0?val(x[ir]):null, o: io>=0?val(x[io]):null}));
+    if(!qs.length) return false;
+    const div = DIV(c.unit||""), byp = {}; for(const d of qs){ const [fy,qn] = parsePeriod(d.period); if(fy) byp[fy+"|"+qn] = d; }
+    const yoy = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000)/10;
+    const ps = qs.map(d=>{ const [fy,qn] = parsePeriod(d.period), pv = fy ? byp[(fy-1)+"|"+qn] : null;
+      return { period:d.period, label: qn ? "Q"+qn : d.period, revenue: d.r==null?null:Math.round(d.r/div*100)/100, operating_profit: d.o==null?null:Math.round(d.o/div*100)/100,
+        revenue_yoy: yoy(d.r, pv?.r), op_yoy: yoy(d.o, pv?.o), margin: (d.r && d.o!=null) ? Math.round(d.o/d.r*1000)/10 : null }; })
+      .filter(p=>p.revenue!=null || p.operating_profit!=null);
+    const old = c.periods||[];
+    if(!ps.length || (old.at(-1)?.period===ps.at(-1).period && old.at(-1)?.revenue===ps.at(-1).revenue && old.at(-1)?.operating_profit===ps.at(-1).operating_profit)) return false;
+    c.periods = ps.slice(-24); c.live = true;
+    return true;
+  }catch{ return false; }
+}
+window.__live = { liveMaster, get state(){ return state; } };
+/* 表に入っているマスターの行を、最新の期で作り直す（期を指定していない行だけ） */
+async function refreshLive(cs){
+  const changed = (await Promise.all(cs.map(liveMaster))).some(Boolean);
+  if(!changed) return;
+  state.rows = state.rows.map(r=>{
+    if(!r.key?.startsWith("m|") || (r.period && r.period!=="dg" && r.period !== r._latest)) return r;
+    const c = masterOf(r); if(!c?.live) return r;
+    const n = rowFromMaster(c); n.社名表示 = r.社名表示; n._latest = n.period; return n;
+  });
+  renderList(); renderEdit(); renderPreview();
+}
 function normUnit(v, u){
   const m = String(u||"").match(/^百万(.+)$/), x = num(v);
   return (m && x!=null) ? [String(Math.round(x/100*10)/10), "億"+m[1]] : [v, u];
@@ -495,7 +538,8 @@ $("#list").addEventListener("click", e=>{
   if(i>=0) state.rows.splice(i,1);
   else {
     const it = listItems().find(x=>x.key===k); if(!it) return;
-    state.rows.push(it.c ? rowFromMaster(it.c) : rowFromDigest(it.d));
+    const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr);
+    if(it.c) refreshLive([it.c]);
   }
   autoTitle(); renderList(); renderEdit(); renderPreview();
 });
@@ -508,8 +552,10 @@ document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
 ["#fWhen","#fRun","#fAt"].forEach(s=>$(s).addEventListener("input", ()=>{ syncWhenUI(); $("#title").dataset.touched=""; autoTitle(); renderList(); renderPreview(); }));
 $("#selAll").onclick = ()=>{
   const on = new Set(state.rows.map(r=>r.key));
-  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has) state.rows.push(it.c ? rowFromMaster(it.c) : rowFromDigest(it.d));
+  const cs = [];
+  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has){ const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr); if(it.c) cs.push(it.c); }
   autoTitle(); renderList(); renderEdit(); renderPreview();
+  if(cs.length) refreshLive(cs);
 };
 $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
@@ -835,6 +881,8 @@ window.__renderSeg = async (key, opts={}) => {
   state.rows = store.get("rows2") || [];
   await loadAll();
   renderEdit(); renderPreview();
+  for(const r of state.rows) if(r.key?.startsWith("m|") && !r._latest){ const c = masterOf(r); if(c && (!r.period || r.period===c.periods?.at(-1)?.period)) r._latest = r.period; }
+  refreshLive(state.rows.filter(r=>r.key?.startsWith("m|")).map(masterOf).filter(Boolean));   // 前回選んだ会社も最新の期に
 })();
 </script>
 </body>

@@ -235,6 +235,7 @@ def main():
     ap.add_argument("--watch-csv", help="ウォッチリストのCSV（省略時は config.json のスプレッドシートから取得）")
     ap.add_argument("--master-dir", help="マスターのファイルを置いたフォルダ（試験用。ファイル名に Drive ID か Ticker を含める）")
     ap.add_argument("-o", "--out", default=str(ROOT / "data" / "masters.json"))
+    ap.add_argument("--only", help="この会社だけ取り直す（ティッカー、カンマ区切り）。他は前回の内容を使う")
     a = ap.parse_args()
     cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     s = requests.Session()
@@ -255,6 +256,7 @@ def main():
         try: old = {c["ticker"] or c["name"]: c for c in json.loads(outp.read_text(encoding="utf-8"))["companies"]}
         except Exception: pass
 
+    only = {t.strip().upper() for t in (a.only or "").split(",") if t.strip()}
     companies, errors = [], []
     for i, w in enumerate(watch, 1):
         key = w["ticker"] or w["name"]
@@ -262,6 +264,9 @@ def main():
                 "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"], "periods": []}
         if not w["master_id"]:
             companies.append(base); continue
+        if only and (w["ticker"] or "").upper() not in only and key in old:
+            prev = dict(old[key]); prev.update({k: base[k] for k in ("name", "ja", "tier", "cat1", "cat2", "country", "date", "fy_end", "master_id", "ir", "logo_spec")})
+            companies.append(prev); continue
         try:
             if a.master_dir:
                 f = next((p for p in Path(a.master_dir).iterdir() if w["master_id"] in p.name or (w["ticker"] and w["ticker"] in p.name) or w["name"].split()[0] in p.name), None)

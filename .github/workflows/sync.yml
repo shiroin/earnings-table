@@ -3,6 +3,10 @@ on:
   schedule:
     - cron: "15 */2 * * *"   # 2時間ごと
   workflow_dispatch:
+    inputs:
+      only: { description: "この会社だけ取り直す（ティッカー、カンマ区切り。空なら全社）", default: "" }
+  repository_dispatch:
+    types: [financials-updated]   # earnings-autoupdate が Financials を書き込んだ直後に呼ぶ
 permissions:
   contents: write
 concurrency: { group: sync, cancel-in-progress: false }
@@ -14,7 +18,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install requests openpyxl
-      - run: python sync_masters.py
+      - run: python sync_masters.py ${ONLY:+--only "$ONLY"}
+        env:
+          ONLY: ${{ github.event.inputs.only || github.event.client_payload.tickers }}
       - name: 変更があればコミット（更新時刻だけの変化は無視）
         run: |
           python - <<'PY'
