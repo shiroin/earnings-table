@@ -8,7 +8,7 @@ import requests
 from playwright.sync_api import sync_playwright
 OUT = Path("probe"); OUT.mkdir(exist_ok=True)
 SEL = ["header a[href='/'] img", "header a[href='./'] img", "header [class*='logo' i] img", "header [class*='logo' i] svg",
-       "[class*='logo' i] img", "[id*='logo' i] img", "img[alt*='logo' i]", "img[src*='logo' i]", "[class*='logo' i] svg", "header svg", "h1 img", "header img"]
+       "[class*='logo' i] img", "[id*='logo' i] img", "img[alt*='logo' i]", "img[src*='logo' i]", "[class*='logo' i] svg", "header svg", "h1 img", "header img", "a[class*='logo' i]", "[class*='logo' i]", "[class*='brand' i] img", "h1 a", "h1"]
 items = json.load(open(sys.argv[1]))
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"
 with sync_playwright() as p:
@@ -18,7 +18,8 @@ with sync_playwright() as p:
         print(no, url, flush=True)
         pg = ctx.new_page(); pg.set_default_timeout(8000)
         try:
-            pg.goto(url, wait_until="domcontentloaded", timeout=40000); pg.wait_for_timeout(4000)
+            pg.goto(url, wait_until="domcontentloaded", timeout=40000)
+            no = no + ("b" if any(f.name.startswith(no + "_") for f in OUT.iterdir()) else ""); pg.wait_for_timeout(4000)
         except Exception as e:
             print(" goto", e); pg.close(); continue
         k = 0; seen = set()
