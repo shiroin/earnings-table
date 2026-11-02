@@ -196,6 +196,7 @@ def sniff_ext(b: bytes) -> str:
     if h[:4] == b"GIF8": return ".gif"
     if h[:4] == b"RIFF" and b[8:12] == b"WEBP": return ".webp"
     if h[:4] == b"\x00\x00\x01\x00": return ".ico"
+    if b[4:12] in (b"ftypavif", b"ftypavis") or b[4:8] == b"ftyp" and b"avif" in b[8:32]: return ".avif"
     if h[:2] in (b"\xff\xfe", b"\xfe\xff"):
         try:
             if "<svg" in b[:8000].decode("utf-16", "ignore").lower(): return ".svg"
@@ -214,10 +215,15 @@ def download(url: str, dest_stem: Path):
         raise ValueError(f"画像ではありません ({ctype})")
     if len(r.content) < 200:
         raise ValueError("サイズが小さすぎます")
+    content = r.content
+    if sn == ".avif" or ctype == "image/avif":   # AVIF は表示できない環境があるので PNG に変換
+        from io import BytesIO
+        from PIL import Image
+        buf = BytesIO(); Image.open(BytesIO(content)).save(buf, "PNG"); content = buf.getvalue(); sn = ".png"
     ext = sn or EXT_BY_TYPE.get(ctype) or Path(urlparse(r.url).path).suffix or ".img"
     if ext not in (".svg", ".png", ".jpg", ".webp", ".gif", ".ico"): ext = ".img"
     path = dest_stem.with_suffix(ext)
-    path.write_bytes(r.content)
+    path.write_bytes(content)
     return path
 
 

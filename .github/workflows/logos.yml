@@ -21,7 +21,7 @@ jobs:
         with: { ref: main }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - run: pip install requests beautifulsoup4
+      - run: pip install requests beautifulsoup4 "pillow>=11.3"
       - name: ウォッチリスト（data/masters.json）の企業のロゴを取得
         run: |
           if [ "${{ inputs.force }}" = "true" ]; then python collect_logos.py data/masters.json -o logos
