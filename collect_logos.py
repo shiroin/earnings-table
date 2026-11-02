@@ -196,7 +196,11 @@ def sniff_ext(b: bytes) -> str:
     if h[:4] == b"GIF8": return ".gif"
     if h[:4] == b"RIFF" and b[8:12] == b"WEBP": return ".webp"
     if h[:4] == b"\x00\x00\x01\x00": return ".ico"
-    if b.lstrip()[:200].lower().find(b"<svg") >= 0 or b.lstrip()[:5].lower() == b"<?xml": return ".svg"
+    if h[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        try:
+            if "<svg" in b[:8000].decode("utf-16", "ignore").lower(): return ".svg"
+        except Exception: pass
+    if b.lstrip()[:3000].lower().find(b"<svg") >= 0 or b.lstrip()[:5].lower() == b"<?xml": return ".svg"
     return ""
 
 
