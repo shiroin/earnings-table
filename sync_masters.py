@@ -44,8 +44,8 @@ def read_watchlist(text):
     for r in rows[hi + 1:]:
         if not get(r, "企業名") and not get(r, "Ticker"):
             continue
-        # ウォッチリスト本体 = 番号があり、本拠地かマスターが入っている行（下の候補リストは除く）
-        if not get(r, "No.").isdigit() or not (get(r, "本拠地") or file_id(get(r, "Financials"))):
+        # ウォッチリスト本体 = 番号があり、本拠地・マスター・指定ロゴのどれかが入っている行（下の候補リストは除く）
+        if not get(r, "No.").isdigit() or not (get(r, "本拠地") or file_id(get(r, "Financials")) or get(r, "指定ロゴ")):
             continue
         out.append({
             "no": get(r, "No."), "ticker": get(r, "Ticker"), "name": get(r, "企業名"), "ja": get(r, "日本名") or get(r, "企業名"),
