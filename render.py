@@ -30,6 +30,8 @@ def main():
     ap.add_argument("--fx", help='為替の上書き（例: USD=157.9,KRW=0.108）')
     ap.add_argument("--date-show", choices=["auto", "on", "off"], default="auto", help="ロゴ左上の決算日（auto: 日付が混在するときだけ）")
     ap.add_argument("--align", choices=["auto", "left", "right"], default="auto", help="売上高・営業利益・時価総額の揃え（auto: 通貨がそろえば右、混在なら左）")
+    ap.add_argument("--sort", choices=["rev", "ry", "op", "oy", "mg", "cap"], help="並び順: rev=売上高 / ry=売上高前年比 / op=営業利益 / oy=営業利益前年比 / mg=営業利益率 / cap=時価総額（省略でCSVの順）")
+    ap.add_argument("--asc", action="store_true", help="小さい順に並べる（既定は大きい順）")
     ap.add_argument("--palette", default="teal", help="配色: teal / green / wine / charcoal / purple / ocean")
     ap.add_argument("--head", help="見出しの色（例 #1F6E75）。指定すると配色より優先")
     ap.add_argument("--accent", help="営業利益率の色（例 #EE7E1A）")
@@ -58,7 +60,7 @@ def main():
             if a.seg:
                 page.evaluate("([k,o]) => window.__renderSeg(k,o)", [a.seg, {"period": a.seg_period, "profit": a.seg_profit, "palette": a.palette, "title": a.title}])
             else:
-                page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "align": a.align, "dateShow": a.date_show, "cur": "jpy" if a.yen else "local",
+                page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "align": a.align, "dateShow": a.date_show, "sort": a.sort, "sortDir": "asc" if a.asc else "desc", "cur": "jpy" if a.yen else "local",
                     "fx": {k: float(v) for k, v in (x.split("=") for x in a.fx.split(","))} if a.fx else None, "palette": a.palette, "head": a.head, "accent": a.accent}])
             page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
