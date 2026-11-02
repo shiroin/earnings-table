@@ -588,6 +588,13 @@
 "mime": "image/svg+xml"
 },
 {
+"no": 85,
+"ja": "Eaton",
+"file": "Eaton.svg",
+"title": "085_Eaton.svg",
+"mime": "image/svg+xml"
+},
+{
 "no": 86,
 "ja": "Salesforce",
 "file": "Salesforce.svg",
@@ -2013,6 +2020,13 @@
 "ja": "シンプレクス",
 "file": "シンプレクス・ホールディングス.png",
 "title": "291_シンプレクス.png",
+"mime": "image/png"
+},
+{
+"no": 292,
+"ja": "SHIFT",
+"file": "SHIFT.png",
+"title": "292_SHIFT.png",
 "mime": "image/png"
 },
 {
