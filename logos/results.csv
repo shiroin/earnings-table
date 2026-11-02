@@ -1,573 +1,573 @@
 ﻿name,domain,status,source,url,file_or_error
-NVIDIA,nvidia.com,ok,existing,,
-AMD,amd.com,ok,existing,,
-Broadcom,broadcom.com,ok,existing,,
-Intel,intc.com,ok,existing,,
-TSMC,tsmc.com,ok,existing,,
-SMIC,smics.com,ok,existing,,
-Cambricon,cambricon.com,ok,existing,,
-Arm Holdings,arm.com,ok,existing,,
-Cerebras Systems,cerebras.ai,ok,existing,,
-SK hynix,skhynix.com,ok,existing,,
-Samsung Electronics,samsung.com,ok,existing,,
-Micron,micron.com,ok,existing,,
-キオクシアホールディングス,kioxia-holdings.com,ok,existing,,
-Sandisk,sandisk.com,ok,existing,,
-南亜科技,nanya.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nanya.com&size=256"
-CXMT,sse.com.cn,none,指定でロゴなし,,
-Seagate Technology,seagate.com,ok,existing,,
-Western Didital,wdc.com,ok,existing,,
-Dell Technologies,delltechnologies.com,ok,existing,,
-Hewlett Packard Enterprise,hpe.com,ok,existing,,
-Super Micro Computer,supermicro.com,ok,existing,,
-Lenovo,lenovo.com,ok,existing,,
-華為,,ok,existing,,
-鴻海精密工業,foxconn.com,ok,existing,,
-Cisco Systems,cisco.com,ok,existing,,
-Celestica,celestica.com,ok,existing,,
-Arista Networks,arista.com,ok,existing,,
-Astera Labs,asteralabs.gcs-web.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asteralabs.gcs-web.com&size=256"
-Zhongji Innolight,zj-innolight.com,ok,existing,,
-Amphenol,amphenol.com,ok,existing,,
-Corning,corning.com,ok,existing,,
-Credo Technology,credosemi.com,ok,existing,,
-Lumentum,lumentum.com,ok,existing,,
-Marvell,marvell.com,ok,existing,,
-Coherent,coherent.com,ok,existing,,
-Ciena,ciena.com,ok,existing,,
-POET Technologies,poet-technologies.com,none,指定でロゴなし,,
-フジクラ,fujikura.co.jp,ok,existing,,
-古河電気工業,furukawaelectric.com,ok,existing,,
-住友電気工業,sumitomoelectric.com,ok,existing,,
-精工技研,seikoh-giken.co.jp,none,指定でロゴなし,,
-santec Holdings,santec.com,ok,existing,,
-OpenAI,,ok,existing,,
-Anthropic,,ok,existing,,
-DeepSeek,,ok,existing,,
-Mistral AI,,ok,existing,,
-Moonshot AI,,ok,existing,,
-ソフトバンクグループ,group.softbank,ok,existing,,
-Microsoft,microsoft.com,ok,existing,,
-Alphabet,abc.xyz,ok,existing,,
-Amazon,aboutamazon.com,ok,existing,,
-Meta Platforms,atmeta.com,ok,existing,,
-Oracle,oracle.com,ok,existing,,
-CoreWeave,coreweave.com,ok,existing,,
-Nebius Group,nebius.com,ok,existing,,
-ASML,asml.com,ok,existing,,
-東京エレクトロン,tel.co.jp,ok,existing,,
-アドバンテスト,advantest.com,ok,existing,,
-ディスコ,disco.co.jp,ok,existing,,
-レーザーテック,lasertec.co.jp,none,指定でロゴなし,,
-SCREENホールディングス,screen.co.jp,ok,existing,,
-Applied Materials,appliedmaterials.com,ok,existing,,
-Lam Research,lamresearch.com,ok,existing,,
-KLA,kla.com,ok,existing,,
-KOKUSAI ELECTRIC,kokusai-electric.com,ok,existing,,
-ローツェ,rorze.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://rorze.com&size=256"
-村田製作所,murata.com,ok,existing,,
-イビデン,ibiden.co.jp,ok,existing,,
-メイコー,meiko-elec.com,ok,existing,,
-JX金属,jx-nmm.com,ok,existing,,
-レゾナック・ホールディングス,resonac.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://resonac.com&size=256"
-日東紡績,nittobo.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nittobo.co.jp&size=256"
-信越化学工業,shinetsu.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shinetsu.co.jp&size=256"
-SUMCO,sumcosi.com,ok,existing,,
-味の素,ajinomoto.co.jp,ok,existing,,
-TOTO,jp.toto.com,ok,existing,,
-IREN,iren.com,ok,existing,,
-Vertiv,vertiv.com,ok,existing,,
-Bloom Energy,bloomenergy.com,ok,existing,,
-Vistra Corp.,vistracorp.com,none,指定でロゴなし,,
-SBエナジー,,none,指定でロゴなし,,
-日立製作所,hitachi.com,ok,existing,,
-パナソニック,holdings.panasonic,ok,existing,,
-GE Vernova,gevernova.com,ok,existing,,
-Eaton,eaton.com,none,指定でロゴなし,,
-Salesforce,salesforce.com,ok,existing,,
-Adobe,adobe.com,ok,existing,,
-ServiceNow,servicenow.com,ok,existing,,
-Snowflake,snowflake.com,ok,existing,,
-Datadog,datadoghq.com,ok,existing,,
-Cloudflare,cloudflare.net,ok,existing,,
-Akamai Technologies,ir.akamai.com,ok,existing,,
-MongoDB,mongodb.com,ok,existing,,
-Palantir,palantir.com,ok,existing,,
-Workday,workday.com,ok,existing,,
-HubSpot,hubspot.com,ok,existing,,
-Zoom Video Communications,zoom.us,ok,existing,,
-Twilio,twilio.com,ok,existing,,
-Okta,okta.com,ok,existing,,
-CrowdStrike,crowdstrike.com,ok,existing,,
-Palo Alto Networks,paloaltonetworks.com,ok,existing,,
-Zscaler,zscaler.com,none,指定でロゴなし,,
-Intuit,intuit.com,ok,existing,,
-Autodesk,autodesk.com,ok,existing,,
-Cadence Design Systems,cadence.com,ok,existing,,
-Synopsys,synopsys.com,ok,existing,,
-GitLab,gitlab.com,ok,existing,,
-UiPath,uipath.com,ok,existing,,
-Atlassian,atlassian.com,ok,existing,,
-Shopify,shopify.com,ok,existing,,
-Figma,figma.com,ok,existing,,
-Elastic,elastic.co,none,指定でロゴなし,,
-Veeva Systems,veeva.com,ok,existing,,
-Samsara,samsara.com,none,指定でロゴなし,,
-monday.com,monday.com,ok,existing,,
-オービック,obic.co.jp,ok,existing,,
-オービックビジネスコンサルタント,corp.obc.co.jp,ok,existing,,
-Sansan,corp-sansan.com,ok,existing,,
-ラクス,rakus.co.jp,ok,existing,,
-マネーフォワード,corp.moneyforward.com,ok,existing,,
-サイボウズ,cybozu.co.jp,ok,existing,,
-freee,corp.freee.co.jp,ok,existing,,
-HENNGE,hennge.com,ok,existing,,
-プレイド,plaid.co.jp,ok,existing,,
-プラスアルファ・コンサルティング,pa-consul.co.jp,ok,existing,,
-スマレジ,corp.smaregi.jp,ok,existing,,
-Appier,appier.com,ok,existing,,
-弁護士ドットコム,bengo4.com,ok,existing,,
-LayerX,,ok,existing,,
-SmartHR,,none,指定でロゴなし,,
-LegalOn Technologies,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-Databricks,,ok,existing,,
-CADDi,,ok,existing,,
-MercadoLibre,,ok,existing,,
-Sea Limited,sea.com,ok,existing,,
-Coupang,aboutcoupang.com,ok,existing,,
-eBay,ebayinc.com,ok,existing,,
-DoorDash,doordash.com,ok,existing,,
-Chewy,chewy.com,ok,existing,,
-Wayfair,wayfair.com,ok,existing,,
-MonotaRO,corp.monotaro.com,ok,existing,,
-Alibaba,alibabagroup.com,ok,existing,,
-PDD Holdings,pddholdings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pddholdings.com&size=256"
-JD.com,jd.com,ok,existing,,
-Meituan,meituan.com,ok,existing,,
-楽天グループ,corp.rakuten.co.jp,ok,existing,,
-メルカリ,about.mercari.com,ok,existing,,
-ZOZO,corp.zozo.com,ok,existing,,
-ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
-SHEIN,sheingroup.com,ok,existing,,
-Booking Holdings,bookingholdings.com,ok,existing,,
-Airbnb,airbnb.com,ok,existing,,
-Expedia,expediagroup.com,ok,existing,,
-Trip.com,trip.com,ok,existing,,
-Reddit,redditinc.com,ok,existing,,
-Duolingo,duolingo.com,ok,existing,,
-Pinterest,pinterestinc.com,ok,existing,,
-Snap,snap.com,ok,existing,,
-ByteDance,,ok,existing,,
-DraftKings,aboutdraftkings.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://aboutdraftkings.com&size=256"
-百度,baidu.com,ok,existing,,
-LINEヤフー,lycorp.co.jp,ok,existing,,
-サイバーエージェント,cyberagent.co.jp,ok,existing,,
-AppLovin,applovin.com,ok,existing,,
-GMOインターネットグループ,group.gmo,ok,existing,,
-Netflix,netflix.net,ok,existing,,
-Disney,thewaltdisneycompany.com,ok,existing,,
-Spotify,spotify.com,ok,existing,,
-快手,kuaishou.com,ok,existing,,
-Bilibili,bilibili.com,ok,existing,,
-U-NEXT HOLDINGS,unext-hd.co.jp,ok,existing,,
-Roblox,roblox.com,ok,existing,,
-任天堂,nintendo.co.jp,ok,existing,,
-ソニーグループ,sony.com,ok,existing,,
-コナミグループ,konami.com,ok,existing,,
-ネクソン,nexon.co.jp,ok,existing,,
-カプコン,capcom.co.jp,ok,existing,,
-バンダイナムコホールディングス,bandainamco.co.jp,ok,existing,,
-ディー・エヌ・エー,dena.com,ok,existing,,
-コーエーテクモ,koeitecmo.co.jp,ok,existing,,
-MIXI,mixi.co.jp,ok,existing,,
-Tencent,tencent.com,ok,existing,,
-POP MART,popmart.com.cn,ok,existing,,
-サンリオ,sanrio.co.jp,ok,existing,,
-東宝,toho.co.jp,ok,existing,,
-東映アニメーション,corp.toei-anim.co.jp,ok,existing,,
-KADOKAWA,group.kadokawa.co.jp,ok,existing,,
-円谷フィールズホールディングス,tsuburaya-fields.co.jp,none,指定でロゴなし,,
-ポケモン,,ok,existing,,
-ANYCOLOR,anycolor.co.jp,ok,existing,,
-カバー,cover-corp.com,ok,existing,,
-ラウンドワン,round1-group.co.jp,ok,existing,,
-オリエンタルランド,olc.co.jp,ok,existing,,
-GENDA,genda.jp,ok,existing,,
-Apple,apple.com,ok,existing,,
-LVMH,lvmh.com,ok,existing,,
-Hermès,finance.hermes.com,ok,existing,,
-セイコーグループ,seiko.co.jp,ok,existing,,
-Ferrari,ferrari.com,ok,existing,,
-貴州茅台,moutaichina.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://moutaichina.com&size=256"
-Nike,nike.com,ok,existing,,
-アシックス,corp.asics.com,ok,existing,,
-Lululemon,lululemon.com,ok,existing,,
+NVIDIA,nvidia.com,ok,指定,https://drive.google.com/file/d/1fbaiV-paFBrfQrgyVYZhA1a1Jb6gWTbN/view,NVIDIA.svg
+AMD,amd.com,ok,指定,https://drive.google.com/file/d/1DBKIRetD8qAyMonwHe85GmqgPzPJOGlN/view,AMD.svg
+Broadcom,broadcom.com,ok,指定,https://drive.google.com/file/d/13f1cb5mghCWXhTo6nNDPuMI7ttgprhBG/view,Broadcom.svg
+Intel,intc.com,ok,指定,https://drive.google.com/file/d/1_dr_J4S9HTe6V6r69fEIauMqTKJl_4x_/view,Intel.svg
+TSMC,tsmc.com,ok,指定,https://drive.google.com/file/d/1Io9hz1Jq3vbv-D9AFjr3q9iRPgoOpUeQ/view,TSMC.svg
+SMIC,smics.com,ok,指定,https://drive.google.com/file/d/1k2g67ACc_TgCPmTH1OoIDvpFZQ2L2Z-g/view,SMIC.svg
+Cambricon,cambricon.com,ok,指定,https://drive.google.com/file/d/1f0C_uLQwztUiegZh7dFf8DCs2qACfeXE/view,Cambricon.svg
+Arm Holdings,arm.com,ok,指定,https://drive.google.com/file/d/1rO_s6KlVTnB_vAcOQUvPCdc5Zt-FOCcU/view,Arm_Holdings.svg
+Cerebras Systems,cerebras.ai,ok,指定,https://drive.google.com/file/d/1f_5KoqTHocoEGgv4xODZTGkk3yFfvKx2/view,Cerebras_Systems.svg
+SK hynix,skhynix.com,ok,指定,https://drive.google.com/file/d/1zFimsz7rusQRAB8TaKwozyW3FWbtFahH/view,SK_hynix.svg
+Samsung Electronics,samsung.com,ok,指定,https://drive.google.com/file/d/1Dm0XPKZa3Oa22s4OnuipPU4B9CV9sAxA/view,Samsung_Electronics.svg
+Micron,micron.com,ok,指定,https://drive.google.com/file/d/1ta2OtKxnxRfQy79PwoHbXde37SFqT0lX/view,Micron.png
+キオクシアホールディングス,kioxia-holdings.com,ok,指定,https://drive.google.com/file/d/1DcZj7uDKyecxw_m549AcFJpqw31PCD9q/view,キオクシアホールディングス.svg
+Sandisk,sandisk.com,ok,指定,https://drive.google.com/file/d/1q9qh8lpL21KjUCXk5t0L-X4oSWtH3Cqc/view,Sandisk.svg
+南亜科技,nanya.com,ok,指定,https://drive.google.com/file/d/1UaiePGrLZeoJ9pJl8Tqz3TVycbpIyk-f/view,南亜科技.png
+CXMT,sse.com.cn,ok,指定,https://drive.google.com/file/d/1H0rwx48oFlO6B5HWRHyf6a0DervoJC9M/view,CXMT.svg
+Seagate Technology,seagate.com,ok,指定,https://drive.google.com/file/d/1aO2sxGfo46w_hMfaz6RXSJuOcJZMlSEl/view,Seagate_Technology.svg
+Western Didital,wdc.com,ok,指定,https://drive.google.com/file/d/1K47Br2mivafW4HZYMSRQ807SEQnKzMZs/view,Western_Didital.svg
+Dell Technologies,delltechnologies.com,ok,指定,https://drive.google.com/file/d/1ocSQ2EZYy7C-QR0JlG8kc-4L5O31tey8/view,Dell_Technologies.svg
+Hewlett Packard Enterprise,hpe.com,ok,指定,https://drive.google.com/file/d/1p5tvTxWcmHcGKHM76neQK7M4jlDCQqDz/view,Hewlett_Packard_Enterprise.svg
+Super Micro Computer,supermicro.com,ok,指定,https://drive.google.com/file/d/1568Q48QA0JuK_E2r7NTDKbzyqvowS-YR/view,Super_Micro_Computer.svg
+Lenovo,lenovo.com,ok,指定,https://drive.google.com/file/d/1HfLeZe0FQP535_mgMF0T9OgV-DEDca32/view,Lenovo.svg
+華為,,ok,指定,https://drive.google.com/file/d/1Q1bjZBPDOTr2iooBMuKEEemIn0hdritx/view,華為.svg
+鴻海精密工業,foxconn.com,ok,指定,https://drive.google.com/file/d/156XM9N2wFLKZZpvgRxnMUPYt2dS6HbNI/view,鴻海精密工業.svg
+Cisco Systems,cisco.com,ok,指定,https://drive.google.com/file/d/1vmTf6lpwaYL2UOrnAbetPm0YAGzf3eOE/view,Cisco_Systems.svg
+Celestica,celestica.com,ok,指定,https://drive.google.com/file/d/18jd7zMcEMIEDxOt4dc5WczNq4dDQ_irT/view,Celestica.svg
+Arista Networks,arista.com,ok,指定,https://drive.google.com/file/d/1iN8vfEzhfVU5WfnoJn30VzPzuL-w3IvT/view,Arista_Networks.svg
+Astera Labs,asteralabs.gcs-web.com,ok,指定,https://drive.google.com/file/d/1y5GvtWHNvctH26sUQtptkEHciW5i_pz-/view,Astera_Labs.svg
+Zhongji Innolight,zj-innolight.com,ok,指定,https://drive.google.com/file/d/1vdeJnbw1uhpPpYO3gdnr5N_WjhQQCA7e/view,Zhongji_Innolight.png
+Amphenol,amphenol.com,ok,指定,https://drive.google.com/file/d/1bbmt9q_4r-6c0LH2wBl8phLmzrc4UadP/view,Amphenol.svg
+Corning,corning.com,ok,指定,https://drive.google.com/file/d/1ZcHYnLpteYNhW0icHWyzmhFxujhUTO_p/view,Corning.svg
+Credo Technology,credosemi.com,ok,指定,https://drive.google.com/file/d/152OXLEghDok0Eumk7veMWvu7i-jU_rLi/view,Credo_Technology.png
+Lumentum,lumentum.com,ok,指定,https://drive.google.com/file/d/1UoOLR4ReHeqkhdOj4IPMKxTnLxPWLsow/view,Lumentum.svg
+Marvell,marvell.com,ok,指定,https://drive.google.com/file/d/1siLdFjdXZGIn72IzHpwRqNU_-kS5syEG/view,Marvell.svg
+Coherent,coherent.com,ok,指定,https://drive.google.com/file/d/1ovrjYHboPIoBDQFR4w9AR_vSjubTdx9c/view,Coherent.png
+Ciena,ciena.com,ok,指定,https://drive.google.com/file/d/1onWC0nWcBkcDJAauqNOJxD_5UQIvq8qU/view,Ciena.png
+POET Technologies,poet-technologies.com,ok,指定,https://drive.google.com/file/d/1sG4ldIRE4nRi6pkRgQDrWh4E1_x-mTsO/view,POET_Technologies.png
+フジクラ,fujikura.co.jp,ok,指定,https://drive.google.com/file/d/1iy5yBgoRrzLSzmPeAAvvZUNERR0voOam/view,フジクラ.svg
+古河電気工業,furukawaelectric.com,ok,指定,https://drive.google.com/file/d/15eepHxz9FLIdVZ4V7jQYivKvFCdVxRgX/view,古河電気工業.svg
+住友電気工業,sumitomoelectric.com,ok,指定,https://drive.google.com/file/d/1Yusd-jQr4Cw2dhMdTlZPQwvSJRdlMW9v/view,住友電気工業.svg
+精工技研,seikoh-giken.co.jp,ok,指定,https://drive.google.com/file/d/1g4Z1VpHOMnlA9t5zlFx3qtPcsDRi-AHK/view,精工技研.png
+santec Holdings,santec.com,ok,指定,https://drive.google.com/file/d/1ChK8RTJC1FMbDlQl5ZNVMpZuRZSWgl6d/view,santec_Holdings.png
+OpenAI,,ok,指定,https://drive.google.com/file/d/1Rct9Jus6J2AwrRklbiMGQgRHMXNI4Pwm/view,OpenAI.svg
+Anthropic,,ok,指定,https://drive.google.com/file/d/1wiTbG5gsZDoNtsBdKcdIQPoN8DoPKXBX/view,Anthropic.svg
+DeepSeek,,ok,指定,https://drive.google.com/file/d/1bWOCPNN0I3vMUlCczbvA1dLfot93GA9P/view,DeepSeek.svg
+Mistral AI,,ok,指定,https://drive.google.com/file/d/1_0rd57gEBcNeCDXNl4QABdmJodf-LaZt/view,Mistral_AI.svg
+Moonshot AI,,ok,指定,https://drive.google.com/file/d/1GskTW-s-ypPhGwh9cvb_No6UAn5e7GHT/view,Moonshot_AI.svg
+ソフトバンクグループ,group.softbank,ok,指定,https://drive.google.com/file/d/1VjBHW0GZTTJ-jmA_Bwf4eL_MQl52CxZz/view,ソフトバンクグループ.svg
+Microsoft,microsoft.com,ok,指定,https://drive.google.com/file/d/1kxQsq-12BBbLdCjAlBzK-ygo9lvyiZ_-/view,Microsoft.svg
+Alphabet,abc.xyz,ok,指定,https://drive.google.com/file/d/1amxCz4nyEiqYoFJm9LgOhXaHwYDgWKiC/view,Alphabet.svg
+Amazon,aboutamazon.com,ok,指定,https://drive.google.com/file/d/1ArfjfL_MlbFwJiSmEA0tifSCRs8lq7Fv/view,Amazon.svg
+Meta Platforms,atmeta.com,ok,指定,https://drive.google.com/file/d/1rxQhkWMIBtNx8jpVrGOvUTpNXTgaJnRC/view,Meta_Platforms.svg
+Oracle,oracle.com,ok,指定,https://drive.google.com/file/d/1yglnUhOMoRfHIJtcT_0JY8Tl00bWy4e6/view,Oracle.svg
+CoreWeave,coreweave.com,ok,指定,https://drive.google.com/file/d/1qXMehx02NaBiOP-T0YmPb7wYZl7tLs9_/view,CoreWeave.svg
+Nebius Group,nebius.com,ok,指定,https://drive.google.com/file/d/1RjvQMMCI9-LjKLqXV3-1QM3b1kLat7BM/view,Nebius_Group.svg
+ASML,asml.com,ok,指定,https://drive.google.com/file/d/1InSxCDCPBLC9_5SeTOzP-q6K_Uto5ilR/view,ASML.svg
+東京エレクトロン,tel.co.jp,ok,指定,https://drive.google.com/file/d/1nRjSy74qG5fufAxykZnSQTe-rxS9gh_F/view,東京エレクトロン.svg
+アドバンテスト,advantest.com,ok,指定,https://drive.google.com/file/d/1RkiB7bFXmANiSTLQzrvH2PFUxJ2xRuDa/view,アドバンテスト.svg
+ディスコ,disco.co.jp,ok,指定,https://drive.google.com/file/d/1pyeA-0emV3VSiosV0CqSaCXig1tQ2yqx/view,ディスコ.png
+レーザーテック,lasertec.co.jp,ok,指定,https://drive.google.com/file/d/17R1khBDF_4796MuhaOqFdKF8J7Zv1O0i/view,レーザーテック.svg
+SCREENホールディングス,screen.co.jp,ok,指定,https://drive.google.com/file/d/12N5cLilLOs6tZapNRf5WzH2y3BLWYslt/view,SCREENホールディングス.svg
+Applied Materials,appliedmaterials.com,ok,指定,https://drive.google.com/file/d/1OmCMmY3fHQeKnXy6cTY0K5sPovmTKnKn/view,Applied_Materials.svg
+Lam Research,lamresearch.com,ok,指定,https://drive.google.com/file/d/19TFzoL2rMpDSu0k2LQ7UZU3th3ey4RFi/view,Lam_Research.svg
+KLA,kla.com,ok,指定,https://drive.google.com/file/d/1H8iu9env3mWqDkJnaUC50us-srvsq9H9/view,KLA.svg
+KOKUSAI ELECTRIC,kokusai-electric.com,ok,指定,https://drive.google.com/file/d/1tE56G-zUZ1GT6NPCi8AeCCXDeyOCPO14/view,KOKUSAI_ELECTRIC.svg
+ローツェ,rorze.com,ok,指定,https://drive.google.com/file/d/1YQ5o3dXLdmvtznaKNT2mbLaB9KnPXJHF/view,ローツェ.png
+村田製作所,murata.com,ok,指定,https://drive.google.com/file/d/1O0hyuzgUcG5EwtkaWzO_X7Q6HEH5aOhu/view,村田製作所.svg
+イビデン,ibiden.co.jp,ok,指定,https://drive.google.com/file/d/1XTI2kXWN6fmL-d62aOUJA3PPn9GhHBvp/view,イビデン.svg
+メイコー,meiko-elec.com,ok,指定,https://drive.google.com/file/d/112ToGq0qdYuCXZFavbSQtc4L_m4OAtfi/view,メイコー.png
+JX金属,jx-nmm.com,ok,指定,https://drive.google.com/file/d/18lw8J_DN9sirQ6PZD6MfJTsLtWfkdFhW/view,JX金属.svg
+レゾナック・ホールディングス,resonac.com,ok,指定,https://drive.google.com/file/d/1yq483b7w_Wy2GzHYELnVIg4W_F5zXirS/view,レゾナック・ホールディングス.svg
+日東紡績,nittobo.co.jp,ok,指定,https://drive.google.com/file/d/1pDi-Qa1Ebhj5Xo_BZ_onnVbcXySd9BsP/view,日東紡績.svg
+信越化学工業,shinetsu.co.jp,ok,指定,https://drive.google.com/file/d/11gOxler1FbcrShq1g7ygn-wJkA_h6cOR/view,信越化学工業.svg
+SUMCO,sumcosi.com,ok,指定,https://drive.google.com/file/d/1Tj58cbX4Q3Fd5zql5NwY0dkoaXpkITdi/view,SUMCO.svg
+味の素,ajinomoto.co.jp,ok,指定,https://drive.google.com/file/d/1xV5yZH0oy254txGDFooqdOPCCJbi8SfM/view,味の素.svg
+TOTO,jp.toto.com,ok,指定,https://drive.google.com/file/d/1VhhJVFsRZ5N9aG7xMcuvZ4kx2NTiOw6O/view,TOTO.png
+IREN,iren.com,ok,指定,https://drive.google.com/file/d/1bgBH7N07ODZhpLe99lzc68IgeDPbQxB8/view,IREN.svg
+Vertiv,vertiv.com,ok,指定,https://drive.google.com/file/d/1CbKSIWBAIKH62F_DVQV7AXW46CO2GD0I/view,Vertiv.svg
+Bloom Energy,bloomenergy.com,ok,指定,https://drive.google.com/file/d/1fpYbhcxMCUsaec31sOlJYEjfkkgSzxaF/view,Bloom_Energy.svg
+Vistra Corp.,vistracorp.com,ok,指定,https://drive.google.com/file/d/1mmj01191BS8JeJ9eUhQvCTYwDPZo7ixv/view,Vistra_Corp..svg
+SBエナジー,,ok,指定,https://drive.google.com/file/d/1kaHaScXai-ugvXn2eOP-Lv9avzij76HZ/view,SBエナジー.png
+日立製作所,hitachi.com,ok,指定,https://drive.google.com/file/d/1eyDiJDQx2GqXaDWvFbLXG7cLUFcAWuey/view,日立製作所.svg
+パナソニック,holdings.panasonic,ok,指定,https://drive.google.com/file/d/16MTZlrl83bK8q986Zq-rEExsqVuwyKr3/view,パナソニック.svg
+GE Vernova,gevernova.com,ok,指定,https://drive.google.com/file/d/1Wt0Rr0wPe-1QVwHicWLTxTAdBgA7a8kY/view,GE_Vernova.svg
+Eaton,eaton.com,ok,指定,https://drive.google.com/file/d/1KkHizAAkDKwZdqmL_JmmiDz7kM6TnJGo/view,Eaton.svg
+Salesforce,salesforce.com,ok,指定,https://drive.google.com/file/d/1rxwlOZPb5Rz6TIukqAgMULJzH7Lo7JFc/view,Salesforce.svg
+Adobe,adobe.com,ok,指定,https://drive.google.com/file/d/1-7YNQlq90-6nhQW54Vft3b4dyNkqFxGD/view,Adobe.svg
+ServiceNow,servicenow.com,ok,指定,https://drive.google.com/file/d/1D4JdoTp9sYRMOnTJxVa7a_NsO4VHPzmZ/view,ServiceNow.svg
+Snowflake,snowflake.com,ok,指定,https://drive.google.com/file/d/1I2LMjVCn4BiTElPw2Ksh8XVLGUb1d_mu/view,Snowflake.svg
+Datadog,datadoghq.com,ok,指定,https://drive.google.com/file/d/1504svDqQL9gN1f0uSoI4js0HF1rjr-xt/view,Datadog.png
+Cloudflare,cloudflare.net,ok,指定,https://drive.google.com/file/d/1bs0n_zsOeF4ecoC4lZtIutDaw5G7O00_/view,Cloudflare.svg
+Akamai Technologies,ir.akamai.com,ok,指定,https://drive.google.com/file/d/1FPg8QRFcUI-0fQRZ1PJkrlbcsX0MIDQ-/view,Akamai_Technologies.svg
+MongoDB,mongodb.com,ok,指定,https://drive.google.com/file/d/1-ZoCncPJksE06QtlYJYyAhAXJ73hhlUO/view,MongoDB.svg
+Palantir,palantir.com,ok,指定,https://drive.google.com/file/d/1wNyt4xrJJ5WqXqDpB7jOPqnc5B-U4W-l/view,Palantir.svg
+Workday,workday.com,ok,指定,https://drive.google.com/file/d/18C2AD6ROVZv3_3A735OpvBEETDcZs1KM/view,Workday.svg
+HubSpot,hubspot.com,ok,指定,https://drive.google.com/file/d/1qqI519fOZDDK_sB-okkQ4tbtIKG_PMAt/view,HubSpot.svg
+Zoom Video Communications,zoom.us,ok,指定,https://drive.google.com/file/d/1AfXTxYfn1DxJNol6emzAB_hw4mGYn3SN/view,Zoom_Video_Communications.svg
+Twilio,twilio.com,ok,指定,https://drive.google.com/file/d/15LhA0wTsej-zy5rrtiovIr_Khk-4g3xi/view,Twilio.svg
+Okta,okta.com,ok,指定,https://drive.google.com/file/d/18TJQC-jXppT1vCPgHuPnAVz1KIBO4k76/view,Okta.svg
+CrowdStrike,crowdstrike.com,ok,指定,https://drive.google.com/file/d/1FNrODrKTf80lso3eFnoaC4HOs1oANrAQ/view,CrowdStrike.svg
+Palo Alto Networks,paloaltonetworks.com,ok,指定,https://drive.google.com/file/d/1ERp64Ay4mL1kUl4sntkBRJOo6hNLk43O/view,Palo_Alto_Networks.svg
+Zscaler,zscaler.com,ok,指定,https://drive.google.com/file/d/17Ma5t3epFZ3VoWHQlDDwd1BS42RcYjcv/view,Zscaler.svg
+Intuit,intuit.com,ok,指定,https://drive.google.com/file/d/1MaBwNX85sxY4lOdUchN5riMpN0YEld0N/view,Intuit.svg
+Autodesk,autodesk.com,ok,指定,https://drive.google.com/file/d/1dWb08nLg4FHlgao5x_D53TFrf5VBv6Ag/view,Autodesk.svg
+Cadence Design Systems,cadence.com,ok,指定,https://drive.google.com/file/d/1StskvgS4dxUBXoc6t9ovKIvY4zRKcISA/view,Cadence_Design_Systems.svg
+Synopsys,synopsys.com,ok,指定,https://drive.google.com/file/d/1jPrjxMOmN1xmaXmpng55MWt_GD7_uaMy/view,Synopsys.svg
+GitLab,gitlab.com,ok,指定,https://drive.google.com/file/d/1HFcwD5GaYPiQcPs-O2MM6m0KsjdZPi_w/view,GitLab.svg
+UiPath,uipath.com,ok,指定,https://drive.google.com/file/d/1p2x1CqBbZ3e7vrxsqj9gW27hfab5FYPg/view,UiPath.svg
+Atlassian,atlassian.com,ok,指定,https://drive.google.com/file/d/1z8Nt-Stg09QJYKlu5lmrnRWCFFDsop3u/view,Atlassian.svg
+Shopify,shopify.com,ok,指定,https://drive.google.com/file/d/1NgBK3WN0bWo2JzqSFaO7GW64D_yr9dcD/view,Shopify.svg
+Figma,figma.com,ok,指定,https://drive.google.com/file/d/12gCD1IrcJyt9AlBZTJs76vvmvTUwww64/view,Figma.svg
+Elastic,elastic.co,ok,指定,https://drive.google.com/file/d/1ns-YTnn1JHYCLG2pKyGYCjMa7kRxPQxi/view,Elastic.png
+Veeva Systems,veeva.com,ok,指定,https://drive.google.com/file/d/1MotvXGvDgD47OzP203o_9tWTmwFMY-UM/view,Veeva_Systems.svg
+Samsara,samsara.com,ok,指定,https://drive.google.com/file/d/1saH_SgTjzzcynumEXmMWa88Ts1ygc7yY/view,Samsara.svg
+monday.com,monday.com,ok,指定,https://drive.google.com/file/d/1kDC5XUdGkH1rkJzqAii5_C7o3WBq9jaz/view,monday.svg
+オービック,obic.co.jp,ok,指定,https://drive.google.com/file/d/1iHaZcR1TOfQ7pqAlrbeh8Yur82sapbBO/view,オービック.png
+オービックビジネスコンサルタント,corp.obc.co.jp,ok,指定,https://drive.google.com/file/d/1AcI7nl9cY4lYOlgWf_7gUtuhzaG9egaq/view,オービックビジネスコンサルタント.svg
+Sansan,corp-sansan.com,ok,指定,https://drive.google.com/file/d/1DLEmoNn8lDxq5ePap-36ys13mPZ1HyK0/view,Sansan.svg
+ラクス,rakus.co.jp,ok,指定,https://drive.google.com/file/d/1mAXsjTId7vkkpSVm3d9u1pbcN-1R5YLv/view,ラクス.svg
+マネーフォワード,corp.moneyforward.com,ok,指定,https://drive.google.com/file/d/1qwdif9fNcZmwIJjQtSLhb3zD75LcXMva/view,マネーフォワード.png
+サイボウズ,cybozu.co.jp,ok,指定,https://drive.google.com/file/d/1EybdyY2wAg---Zgp1eAmoSUI4amjYrOU/view,サイボウズ.svg
+freee,corp.freee.co.jp,ok,指定,https://drive.google.com/file/d/1-vuBlgtGj_lAcjztcFTdHiR_L29P9QU7/view,freee.gif
+HENNGE,hennge.com,ok,指定,https://drive.google.com/file/d/1R0sdXTZt7LiWTR9RidUoWMMyjTvOsjlg/view,HENNGE.svg
+プレイド,plaid.co.jp,ok,指定,https://drive.google.com/file/d/1X4XDsWnLQ8NwqsBWzpie-r1THh1AT_wz/view,プレイド.svg
+プラスアルファ・コンサルティング,pa-consul.co.jp,ok,指定,https://drive.google.com/file/d/1RFBFFRt5I1uhRRiOp7oD7GooF5gp-yTd/view,プラスアルファ・コンサルティング.svg
+スマレジ,corp.smaregi.jp,ok,指定,https://drive.google.com/file/d/1Sg9Dpi26blg-wTTNNip0zj3eTtXbsUww/view,スマレジ.png
+Appier,appier.com,ok,指定,https://drive.google.com/file/d/1RQ4UfVMzZ8KBO_uOIQL7wG2UbXyVRNjH/view,Appier.svg
+弁護士ドットコム,bengo4.com,ok,指定,https://drive.google.com/file/d/1F0vNOOtNONc0rbqu26v7YjiNPsL-7bjL/view,弁護士ドットコム.svg
+LayerX,,ok,指定,https://drive.google.com/file/d/1iq4fcQ25_Aoh1VxExn13dLFxkXu9Qa5h/view,LayerX.svg
+SmartHR,,ok,指定,https://drive.google.com/file/d/1uE-knkhHfdt-e4mNdSSJ5C8WmuPzSSvm/view,SmartHR.svg
+LegalOn Technologies,,ok,指定,https://drive.google.com/file/d/1ZdDvNtB6Tr72AOJtNpFZzHt-ZHltxrEO/view,LegalOn_Technologies.svg
+Databricks,,ok,指定,https://drive.google.com/file/d/1SFQxqF1EonDUXni4FS-OE9utW1B2t3Bn/view,Databricks.png
+CADDi,,ok,指定,https://drive.google.com/file/d/1hUtihCDAGIMTFQNgmtFeR9FGUud3RuVO/view,CADDi.svg
+MercadoLibre,,ok,指定,https://drive.google.com/file/d/1bg-gWivkKMP4bxx6m7knfX-5gq0TluRG/view,MercadoLibre.svg
+Sea Limited,sea.com,ok,指定,https://drive.google.com/file/d/1_zkayCNkgGD0x-feQjD-L3UtCRcTsrCo/view,Sea_Limited.svg
+Coupang,aboutcoupang.com,ok,指定,https://drive.google.com/file/d/1ZAFIzh6yB7j0eMk90LrFA_2npPxzSybb/view,Coupang.svg
+eBay,ebayinc.com,ok,指定,https://drive.google.com/file/d/1pWX418C1uXUiYtFUPQayT0wxneLywtaS/view,eBay.svg
+DoorDash,doordash.com,ok,指定,https://drive.google.com/file/d/1e5Srx2haRSCv1c8iwlslCbz8hKLmoVtu/view,DoorDash.svg
+Chewy,chewy.com,ok,指定,https://drive.google.com/file/d/1tyeA2AHTEksuAspyyir0dydPuUp64BdR/view,Chewy.png
+Wayfair,wayfair.com,ok,指定,https://drive.google.com/file/d/1Y2n6j0NMWo3JdFxak2W1uvOHn_35hAVn/view,Wayfair.svg
+MonotaRO,corp.monotaro.com,ok,指定,https://drive.google.com/file/d/1Us_ibQtOMg8HGBgbwT05KCPdGKI7ZZRb/view,MonotaRO.png
+Alibaba,alibabagroup.com,ok,指定,https://drive.google.com/file/d/1MOl2i-VBIDmCOE6gFHEOojHVkLlDHucW/view,Alibaba.svg
+PDD Holdings,pddholdings.com,ok,指定,https://drive.google.com/file/d/1vDF43HG1iJoRAdx4F1-wPTqhjQ4KZVKY/view,PDD_Holdings.svg
+JD.com,jd.com,ok,指定,https://drive.google.com/file/d/1xMBYGgmpBgF6szwtMBKAKgtCo4mKVw3d/view,JD.png
+Meituan,meituan.com,ok,指定,https://drive.google.com/file/d/1__Rfpf-mpkEVDJo4r5Q1pvou2B3OgIDx/view,Meituan.png
+楽天グループ,corp.rakuten.co.jp,ok,指定,https://drive.google.com/file/d/1RS7mCO5EaxoyscWNAjtCnXDaTiFD8j7h/view,楽天グループ.svg
+メルカリ,about.mercari.com,ok,指定,https://drive.google.com/file/d/1gpdr30sP_YJf7TDWrwNuor-w-Ml8U85_/view,メルカリ.svg
+ZOZO,corp.zozo.com,ok,指定,https://drive.google.com/file/d/1dUScL986nCENi_Zuh9rfhsnlzsy0rcAI/view,ZOZO.svg
+ミスミグループ本社,misumi.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://misumi.co.jp&size=256"
+SHEIN,sheingroup.com,ok,指定,https://drive.google.com/file/d/1x8GNemXQcyQv75lRvdNhcwtYA_PBAxCP/view,SHEIN.svg
+Booking Holdings,bookingholdings.com,ok,指定,https://drive.google.com/file/d/1BTYGPvqkeAcnVdYYPo5HyYxcRmMIrywA/view,Booking_Holdings.svg
+Airbnb,airbnb.com,ok,指定,https://drive.google.com/file/d/16z3WwlnfDKw6F4Sw1NWbgUDFxHgIxumr/view,Airbnb.svg
+Expedia,expediagroup.com,ok,指定,https://drive.google.com/file/d/1KyzxlWMlXPbyuu6x1VVJivWb-S5QbRQn/view,Expedia.svg
+Trip.com,trip.com,ok,指定,https://drive.google.com/file/d/1eJFBOJ0P0Dg5zTafGiuFiG55JE77cVqS/view,Trip.png
+Reddit,redditinc.com,ok,指定,https://drive.google.com/file/d/1nbn1YbP9b_vQUMMHKGkWX-b2rMYrTN26/view,Reddit.svg
+Duolingo,duolingo.com,ok,指定,https://drive.google.com/file/d/1KgvChn1A45uvdXOJE_MnK0ld-feyNOqA/view,Duolingo.svg
+Pinterest,pinterestinc.com,ok,指定,https://drive.google.com/file/d/1i9jpOLzJogWM5Aywm0pvWMp_WHSCzaZy/view,Pinterest.svg
+Snap,snap.com,ok,指定,https://drive.google.com/file/d/14WovXnKl-dCPkBjq_toQMpw6SOjfAnHS/view,Snap.png
+ByteDance,,ok,指定,https://drive.google.com/file/d/1G7-gexgIKOozYCKdjzEQ-UhQZliBxWUS/view,ByteDance.svg
+DraftKings,aboutdraftkings.com,ok,指定,https://drive.google.com/file/d/155ulPAFGPsgy9biNqqE3oKMSaCkAUee6/view,DraftKings.svg
+百度,baidu.com,ok,指定,https://drive.google.com/file/d/1fZBGE06vS5LVFde0EEki6fDADt77bbhf/view,百度.png
+LINEヤフー,lycorp.co.jp,ok,指定,https://drive.google.com/file/d/1UCeZtiY97PZyl9s389UAjZjQq2vtD2Wb/view,LINEヤフー.svg
+サイバーエージェント,cyberagent.co.jp,ok,指定,https://drive.google.com/file/d/1pmo-l3faxNJMAgKsZdnwN8hZDuIOWQbv/view,サイバーエージェント.svg
+AppLovin,applovin.com,ok,指定,https://drive.google.com/file/d/16kY3Sf3FIvSjz5ojRGJP-jXYUPttMzgn/view,AppLovin.gif
+GMOインターネットグループ,group.gmo,ok,指定,https://drive.google.com/file/d/1C0f1_AGoOZhVDh17UfYViPPsLEdDYbWY/view,GMOインターネットグループ.svg
+Netflix,netflix.net,ok,指定,https://drive.google.com/file/d/1mu-gUJL22vkFK9iVsYgWCeFz-OUS0tzo/view,Netflix.svg
+Disney,thewaltdisneycompany.com,ok,指定,https://drive.google.com/file/d/14_fnVTpqMSq0ZaXRl859QA1iTa1ZXNac/view,Disney.svg
+Spotify,spotify.com,ok,指定,https://drive.google.com/file/d/1bJ9R53bK2eHZZZmtTgewZLqGqhXFjyxc/view,Spotify.svg
+快手,kuaishou.com,ok,指定,https://drive.google.com/file/d/1UPpCLynihZHGvccOgN5jbIY4bvhZZvOb/view,快手.png
+Bilibili,bilibili.com,ok,指定,https://drive.google.com/file/d/11qnVzvp6ryK29pTkfi4csAvXzcd8CTKX/view,Bilibili.svg
+U-NEXT HOLDINGS,unext-hd.co.jp,ok,指定,https://drive.google.com/file/d/1AIDO1BQdkeM7-g9GeOasKpo6_aF8-FgR/view,U-NEXT_HOLDINGS.svg
+Roblox,roblox.com,ok,指定,https://drive.google.com/file/d/1wMcjjcl6joW90FQXEg5hZt85RSYz1uMO/view,Roblox.svg
+任天堂,nintendo.co.jp,ok,指定,https://drive.google.com/file/d/1QMZhXQfaU6e08qW9rWuhoOxXEg4hPnby/view,任天堂.svg
+ソニーグループ,sony.com,ok,指定,https://drive.google.com/file/d/1TkgzYFr7Qe_RVJGnmtcTUjCSSOrIZEb5/view,ソニーグループ.svg
+コナミグループ,konami.com,ok,指定,https://drive.google.com/file/d/1fenAS2cP2V_h039lcZZzuf1B-NgvgPQe/view,コナミグループ.svg
+ネクソン,nexon.co.jp,ok,指定,https://drive.google.com/file/d/1bTmhGdjiFVkvrpmPrMxaqsaBrq1EklXw/view,ネクソン.svg
+カプコン,capcom.co.jp,ok,指定,https://drive.google.com/file/d/1goDkgOH_P6yU4fmj76HLMKJVxGIkRzGc/view,カプコン.svg
+バンダイナムコホールディングス,bandainamco.co.jp,ok,指定,https://drive.google.com/file/d/1U19KAG7oWDCf187dthUQBVzlL3GIW95M/view,バンダイナムコホールディングス.svg
+ディー・エヌ・エー,dena.com,ok,指定,https://drive.google.com/file/d/16G5b3LMFboDWG5A8k-sGHQ4wgPvkFhUf/view,ディー・エヌ・エー.svg
+コーエーテクモ,koeitecmo.co.jp,ok,指定,https://drive.google.com/file/d/1DAcMh_zLFROZALVG3C5gEoSIJd_rl98B/view,コーエーテクモ.svg
+MIXI,mixi.co.jp,ok,指定,https://drive.google.com/file/d/19LZ5R4MX-CPAuv3XWO8y2iBgco43mrDd/view,MIXI.png
+Tencent,tencent.com,ok,指定,https://drive.google.com/file/d/1095Fe0zpygBF14EL3EvFM5pRWYPUywpi/view,Tencent.svg
+POP MART,popmart.com.cn,ok,指定,https://drive.google.com/file/d/1nSYzHXoB8s6-j3sOqrtn11V-lh1vfwoi/view,POP_MART.svg
+サンリオ,sanrio.co.jp,ok,指定,https://drive.google.com/file/d/1VAyksAkQ2znC9Mek5_WkXCpwqG5v69Qv/view,サンリオ.png
+東宝,toho.co.jp,ok,指定,https://drive.google.com/file/d/18LQ-Qw7_KAiuIMRQeCIkZ23-0zde2kc-/view,東宝.svg
+東映アニメーション,corp.toei-anim.co.jp,ok,指定,https://drive.google.com/file/d/1L2Qva_7B-ONkHE6tXsx0Zdb8bjHWK1-T/view,東映アニメーション.png
+KADOKAWA,group.kadokawa.co.jp,ok,指定,https://drive.google.com/file/d/1--bKiftYIlhHyjBZm_pQziTEqrUz9jah/view,KADOKAWA.svg
+円谷フィールズホールディングス,tsuburaya-fields.co.jp,ok,指定,https://drive.google.com/file/d/1hnS5NGPdn31j4nvQW3lnsyzAZ13jJBpI/view,円谷フィールズホールディングス.png
+ポケモン,,ok,指定,https://drive.google.com/file/d/16PL5ak4nkZpL8AF7UKaca9U0aaRUjUYO/view,ポケモン.svg
+ANYCOLOR,anycolor.co.jp,ok,指定,https://drive.google.com/file/d/1bYfv5rqoFCJkuy7kpSIMzXXoSRZqsto8/view,ANYCOLOR.svg
+カバー,cover-corp.com,ok,指定,https://drive.google.com/file/d/1F_qS0TJ8sjnueMTqLj9xQUbrJEBXqzp9/view,カバー.svg
+ラウンドワン,round1-group.co.jp,ok,指定,https://drive.google.com/file/d/1vwmEwYWpnYaD9MfDrqjQWyzeUZheca79/view,ラウンドワン.png
+オリエンタルランド,olc.co.jp,ok,指定,https://drive.google.com/file/d/1TLhGOvgVBkHU404aer8b8B7Wms57vpkX/view,オリエンタルランド.svg
+GENDA,genda.jp,ok,指定,https://drive.google.com/file/d/1QC98AOsN9qgzuA4l9Yq9jYOoYDgYw_d2/view,GENDA.svg
+Apple,apple.com,ok,指定,https://drive.google.com/file/d/1TN3n8rSThp_xWiY6Xn15dpiozlA0um8F/view,Apple.svg
+LVMH,lvmh.com,ok,指定,https://drive.google.com/file/d/1E0EqOPCYhQBfj01r4Z45UlxkqifLhqCl/view,LVMH.svg
+Hermès,finance.hermes.com,ok,指定,https://drive.google.com/file/d/1dSqopgFWdZxG_pYZPzGv_g2WEUTB-xYF/view,Hermès.svg
+セイコーグループ,seiko.co.jp,ok,指定,https://drive.google.com/file/d/1sgDZkeGcGdSQwnxEUc7g5Hpm5HdBr_7S/view,セイコーグループ.svg
+Ferrari,ferrari.com,ok,指定,https://drive.google.com/file/d/15h43q3ncNceC1qJ-cMOZfeBdDp1SIqmr/view,Ferrari.svg
+貴州茅台,moutaichina.com,ok,指定,https://drive.google.com/file/d/1cBAzQWNjbcpxHCCrYvdSMM_jwKX8Hkqt/view,貴州茅台.png
+Nike,nike.com,ok,指定,https://drive.google.com/file/d/15ZlaRW5JjB3Eeg55O6R3OnpiEweJq9Lq/view,Nike.svg
+アシックス,corp.asics.com,ok,指定,https://drive.google.com/file/d/1MUy4_BRbx81zueHJhg0FFra81Xt6Q0n8/view,アシックス.svg
+Lululemon,lululemon.com,ok,指定,https://drive.google.com/file/d/1_GiT2KfPpjXWNXiyxWzE_PwzEt_OsSdz/view,Lululemon.svg
 Monster Beverage,monsterbevcorp.com,none,指定でロゴなし,,
-HUMAN MADE,,ok,existing,,
-MTG,,ok,existing,,
-Walmart,stock.walmart.com,ok,existing,,
-名創優品,miniso.com,ok,existing,,
-ファーストリテイリング,fastretailing.com,ok,existing,,
-パン・パシフィック・インターナショナルホールディングス,ppih.co.jp,ok,existing,,
-ニトリホールディングス,nitorihd.co.jp,ok,existing,,
-良品計画,ryohin-keikaku.jp,ok,existing,,
-トライアル・ホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-McDonald's,mcdonalds.com,ok,existing,,
-Starbucks,starbucks.com,ok,existing,,
-Domino's Pizza,dominos.com,ok,existing,,
-Luckin Coffee,luckincoffee.com,none,指定でロゴなし,,
-FOOD & LIFE COMPANIES,food-and-life.co.jp,ok,existing,,
-日本マクドナルドホールディングス,mcd-holdings.co.jp,ok,existing,,
-サイゼリヤ,saizeriya.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://saizeriya.co.jp&size=256"
-ギフトホールディングス,gift-group.co.jp,ok,existing,,
-Visa,visa.com,ok,existing,,
-Mastercard,mastercard.com,ok,existing,,
-American Express,americanexpress.com,ok,existing,,
-PayPal,pypl.com,ok,existing,,
-Block,block.xyz,ok,existing,,
-Adyen,adyen.com,ok,existing,,
-Nu Holdings,nu.com,none,指定でロゴなし,,
-Wise,owners.wise.com,ok,existing,,
-SoFi Technologies,sofi.com,ok,existing,,
-Affirm,affirm.com,ok,existing,,
-Klarna,klarna.com,ok,existing,,
-Toast,toasttab.com,ok,existing,,
-PayPay,paypay.ne.jp,ok,existing,,
-GMOペイメントゲートウェイ,gmo-pg.com,failed,,,"favicon: 404 Client Error: Not Found for url: https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://gmo-pg.com&size=256"
-Revolut,,ok,existing,,
-Stripe,,ok,existing,,
-富途控股,futuholdings.com,none,指定でロゴなし,,
-Coinbase,coinbase.com,ok,existing,,
-Robinhood,robinhood.com,ok,existing,,
-SBIホールディングス,sbigroup.co.jp,ok,existing,,
-Berkshire Hathaway,berkshirehathaway.com,ok,existing,,
-光通信,hikari.co.jp,ok,existing,,
-三菱UFJフィナンシャルグループ,mufg.jp,ok,existing,,
-三井住友フィナンシャルグループ,smfg.co.jp,ok,existing,,
-みずほフィナンシャルグループ,mizuho-fg.co.jp,ok,existing,,
-楽天銀行,rakuten-bank.co.jp,ok,existing,,
-ファナック,fanuc.co.jp,ok,existing,,
-キーエンス,keyence.co.jp,ok,existing,,
-SMC,,ok,existing,,
-安川電機,yaskawa.co.jp,ok,existing,,
-三菱電機,mitsubishielectric.co.jp,ok,existing,,
-THK,thk.com,ok,existing,,
-ハーモニック・ドライブ・システムズ,hds.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hds.co.jp&size=256"
-Intuitive Surgical,isrg.intuitive.com,ok,existing,,
-Unitree Robotics,unitree.com,ok,existing,,
-三菱重工業,mhi.com,ok,existing,,
-IHI,ihi.co.jp,ok,existing,,
-川崎重工,khi.co.jp,ok,existing,,
-テラドローン,terra-drone.net,ok,existing,,
-Anduril Industries,,ok,existing,,
-SpaceX,spacex.com,ok,existing,,
-Rocket Lab,rocketlabcorp.com,ok,existing,,
-ispace,ispace-inc.com,ok,existing,,
-アストロスケールホールディングス,astroscale.com,none,指定でロゴなし,,
-QPSホールディングス,qpshd.com,none,指定でロゴなし,,
-Synspective,synspective.com,ok,existing,,
-アクセルスペースホールディングス,axelspacehd.com,none,指定でロゴなし,,
-スカパーJSATホールディングス,skyperfectjsat.space,ok,existing,,
-三井海洋開発,modec.com,ok,existing,,
-Tesla,tesla.com,ok,existing,,
-BYD,byd-electronics.com,ok,existing,,
-吉利汽車,geelyauto.com.hk,ok,existing,,
-小鵬汽車,xiaopeng.com,ok,existing,,
-NIO,nio.com,ok,existing,,
-CATL,catl.com,ok,existing,,
-Xiaomi,mi.com,ok,existing,,
-Uber,uber.com,ok,existing,,
-Grab,grab.com,ok,existing,,
-DiDi Global,didiglobal.com,ok,existing,,
-GO,goinc.jp,none,指定でロゴなし,,
-LUUP,,ok,existing,,
-ティアフォー,tier4.co.jp,ok,existing,,
-パーク24,park24.co.jp,ok,existing,,
-ネクステージ,nextage.jp,ok,existing,,
-プレミアグループ,premium-group.co.jp,ok,existing,,
-Turing,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.turingarchive.org&size=256"
-Accenture,accenture.com,ok,existing,,
-ベイカレント,,ok,existing,,
-ノースサンド,northsand.co.jp,ok,existing,,
-シンプレクス・ホールディングス,simplex.holdings,ok,existing,,
-SHIFT,shiftinc.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shiftinc.jp&size=256"
-Finatextホールディングス,finatext.com,ok,existing,,
-ABEJA,abejainc.com,ok,existing,,
-エクサウィザーズ,exawizards.com,ok,existing,,
-PKSHA Technology,pkshatech.com,ok,existing,,
-Sakana AI,,ok,existing,,
-Preferred Networks,,ok,existing,,
-Eli Lilly,lilly.com,ok,existing,,
-Novo Nordisk,novonordisk.com,ok,existing,,
-エムスリー,m3.com,ok,existing,,
-JMDC,jmdc.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://jmdc.co.jp&size=256"
-メドレー,medley.jp,ok,existing,,
-エス・エム・エス,bm-sms.co.jp,ok,existing,,
-三菱商事,mitsubishicorp.com,ok,existing,,
-三井物産,mitsui.com,ok,existing,,
-伊藤忠商事,itochu.co.jp,ok,existing,,
-住友商事,sumitomocorp.com,ok,existing,,
-丸紅,marubeni.com,ok,existing,,
-三井不動産,mitsuifudosan.co.jp,ok,existing,,
-三菱地所,mec.co.jp,ok,existing,,
-住友不動産,sumitomo-rd.co.jp,ok,existing,,
-オープンハウス,openhouse-group.co.jp,ok,existing,,
-ヒューリック,hulic.co.jp,failed,,,"favicon: 404 Client Error: Not Found for url: https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hulic.co.jp&size=256"
-日本M&Aセンターホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-M&Aキャピタルパートナーズ,ma-cp.com,ok,existing,,
-ストライク,strike.co.jp,ok,existing,,
-クオンツ総研ホールディングス,quants-souken.co.jp,ok,existing,,
-リクルートホールディングス,recruit-holdings.com,ok,existing,,
-ビジョナル,visional.inc,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://visional.inc&size=256"
-タイミー,corp.timee.co.jp,ok,existing,,
-星野リゾート,,ok,existing,,
-アパホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-NOT A HOTEL,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-BuySell Technologies,buysell-technologies.com,ok,existing,,
-AlbaLink,albalink.co.jp,ok,existing,,
-技術承継機構,ngt-g.com,ok,existing,,
-パワーエックス,power-x.jp,ok,existing,,
-note,note.jp,ok,existing,,
-TKP,tkp.jp,ok,existing,,
-クラシル,kurashiru.co.jp,ok,existing,,
+HUMAN MADE,,ok,指定,https://drive.google.com/file/d/1XfGCJq9LUTuPFwe5E81kvIFuly4pxhaV/view,HUMAN_MADE.svg
+MTG,,ok,指定,https://drive.google.com/file/d/1lDAjj7bT3TfGoSgovChQkIgWNGKts9Br/view,MTG.png
+Walmart,stock.walmart.com,ok,指定,https://drive.google.com/file/d/1NsR4e5lPPupkW8xbAgutuYtBKK38Lb8k/view,Walmart.svg
+名創優品,miniso.com,ok,指定,https://drive.google.com/file/d/1Qq1x2ED4u-e_SnHAUq3cOR2LDLSV5PHu/view,名創優品.svg
+ファーストリテイリング,fastretailing.com,ok,指定,https://drive.google.com/file/d/1cD1xbv7MPjPu4KJShXJYGwnsOdkW26-q/view,ファーストリテイリング.svg
+パン・パシフィック・インターナショナルホールディングス,ppih.co.jp,ok,指定,https://drive.google.com/file/d/1TxPHyT6YlNLDrtosYGvnF0rCpvbyx06Z/view,パン・パシフィック・インターナショナルホールディングス.svg
+ニトリホールディングス,nitorihd.co.jp,ok,指定,https://drive.google.com/file/d/1OO_n2VFQn_dQz_EO8VepDxYuY6-QL8km/view,ニトリホールディングス.svg
+良品計画,ryohin-keikaku.jp,ok,指定,https://drive.google.com/file/d/1_hgX5JJ2YZpO5GhNcFFZTGxb_N-pgbuU/view,良品計画.svg
+トライアル・ホールディングス,,ok,指定,https://drive.google.com/file/d/14nwZkQuOw53WTunDUTwrmn_bjeLqgcGx/view,トライアル・ホールディングス.svg
+McDonald's,mcdonalds.com,ok,指定,https://drive.google.com/file/d/1jxoE6ofPsNq0WNIdnQRJTHUroikbvJ2T/view,McDonald's.svg
+Starbucks,starbucks.com,ok,指定,https://drive.google.com/file/d/1_KUQwhjGfnLsqAfyUP76SijgQl5hwghl/view,Starbucks.png
+Domino's Pizza,dominos.com,ok,指定,https://drive.google.com/file/d/1IDNTdNljgvUoOxEB0SkZ0E-7BUzlv0MO/view,Domino's_Pizza.svg
+Luckin Coffee,luckincoffee.com,ok,指定,https://drive.google.com/file/d/1S1_z9KLlHyW4S2vZAEXy3_gZV94yEn6z/view,Luckin_Coffee.svg
+FOOD & LIFE COMPANIES,food-and-life.co.jp,ok,指定,https://drive.google.com/file/d/13XzYb4GO6ZHHwcWTT5haaPo_CirkW5yD/view,FOOD_&_LIFE_COMPANIES.svg
+日本マクドナルドホールディングス,mcd-holdings.co.jp,ok,指定,https://drive.google.com/file/d/1kCLgc1BUSq08C52nqIY9Kw7hfiGE6sBY/view,日本マクドナルドホールディングス.jpg
+サイゼリヤ,saizeriya.co.jp,ok,指定,https://drive.google.com/file/d/1QvlWHA1f0DFkYKPE4pBnWa-SuD6d08lw/view,サイゼリヤ.png
+ギフトホールディングス,gift-group.co.jp,ok,指定,https://drive.google.com/file/d/1rktR2ING-CwWlRaj_ePObASsA3cNy0Kq/view,ギフトホールディングス.svg
+Visa,visa.com,ok,指定,https://drive.google.com/file/d/1WGTWrClQxbyi-v8YAe8tSZSEb9RqIouj/view,Visa.svg
+Mastercard,mastercard.com,ok,指定,https://drive.google.com/file/d/1ETEk0Gfgly8BYawNaduR9kZH4Rg0wGu7/view,Mastercard.svg
+American Express,americanexpress.com,ok,指定,https://drive.google.com/file/d/1dQfb7lMRz5KKQlY8VgBss1DvrX2yAIYX/view,American_Express.svg
+PayPal,pypl.com,ok,指定,https://drive.google.com/file/d/12FGDywJa3mjz0bhBxGwRsfr3FlQgtBai/view,PayPal.svg
+Block,block.xyz,ok,指定,https://drive.google.com/file/d/1hnNNi3zZFYQaXEJJaVrVnjwti3CYGCX2/view,Block.svg
+Adyen,adyen.com,ok,指定,https://drive.google.com/file/d/1OhvuM2tLBvGNN52-bC4xLrXOPOdDIT-Y/view,Adyen.svg
+Nu Holdings,nu.com,ok,指定,https://drive.google.com/file/d/1ARhDGtuFUhgr_-owemtRKSisv8VAAC-6/view,Nu_Holdings.svg
+Wise,owners.wise.com,ok,指定,https://drive.google.com/file/d/1i5o7XmpJjTIbm4kQBkdpWOuxhZOzymN9/view,Wise.png
+SoFi Technologies,sofi.com,ok,指定,https://drive.google.com/file/d/1_9n-u3GOlqA3k8sWhSMdAVc9Ur46DLBN/view,SoFi_Technologies.svg
+Affirm,affirm.com,ok,指定,https://drive.google.com/file/d/1mnGYhAZMbWV4Xa_TD8Pu5k27l6tP9EtK/view,Affirm.svg
+Klarna,klarna.com,ok,指定,https://drive.google.com/file/d/1HSc_Pe4TXzMWDNrvTSkmI9QxLlh-V3dm/view,Klarna.svg
+Toast,toasttab.com,ok,指定,https://drive.google.com/file/d/1pYf3T3M_dmEBjHsoSnOA5bUP8mzThL_1/view,Toast.svg
+PayPay,paypay.ne.jp,ok,指定,https://drive.google.com/file/d/1lMdY4WibLOYPMGkqPHLL-NUT19vUGwZK/view,PayPay.svg
+GMOペイメントゲートウェイ,gmo-pg.com,ok,指定,https://drive.google.com/file/d/1NZ5XZ58_9YaZTPDfvtGjMru8yE-3xlRz/view,GMOペイメントゲートウェイ.svg
+Revolut,,ok,指定,https://drive.google.com/file/d/1U7KxP0tEKyvPUHFVCpUBa2cKQ9ej63nQ/view,Revolut.svg
+Stripe,,ok,指定,https://drive.google.com/file/d/1JgvL0Cnk9zkbnjs3Sp00ZzPbnLzv7eQm/view,Stripe.svg
+富途控股,futuholdings.com,ok,指定,https://drive.google.com/file/d/192WLOZiouSNqUR0ShgCnVTTGzWYr5YC2/view,富途控股.svg
+Coinbase,coinbase.com,ok,指定,https://drive.google.com/file/d/1mkMH1VHptTDRYXyALoKYNZZax2LLA1W9/view,Coinbase.svg
+Robinhood,robinhood.com,ok,指定,https://drive.google.com/file/d/1B8fXN7naUOchDMcega5RKBI0bXopVKjG/view,Robinhood.svg
+SBIホールディングス,sbigroup.co.jp,ok,指定,https://drive.google.com/file/d/1gexRu1dXhzmHmbuJuN84j85Do89KoA_9/view,SBIホールディングス.svg
+Berkshire Hathaway,berkshirehathaway.com,ok,指定,https://drive.google.com/file/d/1niv3F6mhU6Z7KahBRHdn8EMkmLuUfzxb/view,Berkshire_Hathaway.svg
+光通信,hikari.co.jp,ok,指定,https://drive.google.com/file/d/1545GZ1v19EYPPEgPeHOZSGIBSknosPCT/view,光通信.svg
+三菱UFJフィナンシャルグループ,mufg.jp,ok,指定,https://drive.google.com/file/d/1ofYkB9f2lRC9DdIfLJ8NUOAXiUnX8lYZ/view,三菱UFJフィナンシャルグループ.svg
+三井住友フィナンシャルグループ,smfg.co.jp,ok,指定,https://drive.google.com/file/d/1jEhCCAfpZFgTdDLUjAnSsgT-QLlCtuUO/view,三井住友フィナンシャルグループ.svg
+みずほフィナンシャルグループ,mizuho-fg.co.jp,ok,指定,https://drive.google.com/file/d/1RnTbt71j4230k_R9UjGZ7N7NVnPwa0ET/view,みずほフィナンシャルグループ.svg
+楽天銀行,rakuten-bank.co.jp,ok,指定,https://drive.google.com/file/d/1oYunRxhysCDs1ylLtwJqschhwPx-ScuK/view,楽天銀行.svg
+ファナック,fanuc.co.jp,ok,指定,https://drive.google.com/file/d/1a5ACWw34LVO3Snkz4dEWpZhCTjGG_V-P/view,ファナック.svg
+キーエンス,keyence.co.jp,ok,指定,https://drive.google.com/file/d/1fgT_ChhvboyHRa1QKAM4XvJWi7O6Caz4/view,キーエンス.svg
+SMC,,ok,指定,https://drive.google.com/file/d/1Qou2whteHWE3loiqk2ELUrTN9oyHnwsd/view,SMC.svg
+安川電機,yaskawa.co.jp,ok,指定,https://drive.google.com/file/d/19U2jJHKF3x4nk_bSWcA4YQ9Owc8nL27F/view,安川電機.svg
+三菱電機,mitsubishielectric.co.jp,ok,指定,https://drive.google.com/file/d/1aPUKSPmYmeoOlTfMmJK7JrHVdeJczRno/view,三菱電機.svg
+THK,thk.com,ok,指定,https://drive.google.com/file/d/1jySx47aa4ktLcYt6xB5-PpTEzpXoems7/view,THK.svg
+ハーモニック・ドライブ・システムズ,hds.co.jp,ok,指定,https://drive.google.com/file/d/1qejXXWoxLQJ1YgX21W5kN7cpantd5oHf/view,ハーモニック・ドライブ・システムズ.png
+Intuitive Surgical,isrg.intuitive.com,ok,指定,https://drive.google.com/file/d/1mg3EdPv970zX3TF1Y6XMGjdCQLa4NJ_D/view,Intuitive_Surgical.svg
+Unitree Robotics,unitree.com,ok,指定,https://drive.google.com/file/d/1Cl-nJm4btTQ38jsxTMpp4VqQZ73tRtCs/view,Unitree_Robotics.svg
+三菱重工業,mhi.com,ok,指定,https://drive.google.com/file/d/11vvL_2SZnA8ZmxLhR2IuQcnv7Of0SE0b/view,三菱重工業.svg
+IHI,ihi.co.jp,ok,指定,https://drive.google.com/file/d/1H_sPibt_fd2mnS22izPacXO76DgExxFy/view,IHI.svg
+川崎重工,khi.co.jp,ok,指定,https://drive.google.com/file/d/1AzFjR06ZQueCjTH9ILQa_1RUydql_VCO/view,川崎重工.svg
+テラドローン,terra-drone.net,ok,指定,https://drive.google.com/file/d/1FHoAu1indD8koG7M7irNZObYOME0yOJe/view,テラドローン.svg
+Anduril Industries,,ok,指定,https://drive.google.com/file/d/1byvqHAZP9C2OK_SLK_4fjjsJ10iMkHYi/view,Anduril_Industries.svg
+SpaceX,spacex.com,ok,指定,https://drive.google.com/file/d/1D0CV_z-aPO3ZIDQvJbsOQNAKvGvea43D/view,SpaceX.svg
+Rocket Lab,rocketlabcorp.com,ok,指定,https://drive.google.com/file/d/1QzKUNqa_JsakL125R41j62_JEPtNfwZ5/view,Rocket_Lab.svg
+ispace,ispace-inc.com,ok,指定,https://drive.google.com/file/d/1G-ZzvaT_6kE5gD8YBsb83uStW43XaavG/view,ispace.svg
+アストロスケールホールディングス,astroscale.com,ok,指定,https://drive.google.com/file/d/1LT-90mLE0aiCrB_jUvJjv1buTwrTzrWo/view,アストロスケールホールディングス.svg
+QPSホールディングス,qpshd.com,ok,指定,https://drive.google.com/file/d/1gnY59Fg6SdD0jelTJEAOi477FZ3k8hJV/view,QPSホールディングス.jpg
+Synspective,synspective.com,ok,指定,https://drive.google.com/file/d/1cR7a8Sb_nbwarqe65WpEOTx1_9BM72EM/view,Synspective.png
+アクセルスペースホールディングス,axelspacehd.com,ok,指定,https://drive.google.com/file/d/1QypZMhbSYF9cfQswA6j038JPRqdf_Zs-/view,アクセルスペースホールディングス.png
+スカパーJSATホールディングス,skyperfectjsat.space,ok,指定,https://drive.google.com/file/d/1T8I5JX7h5rI9TRJlpEwiFdMrTkIxLzww/view,スカパーJSATホールディングス.svg
+三井海洋開発,modec.com,ok,指定,https://drive.google.com/file/d/1i-4NNNdHKqqmh-3u7xsxAwlzpkO80LG-/view,三井海洋開発.svg
+Tesla,tesla.com,ok,指定,https://drive.google.com/file/d/1DUGVoRwbkuO5irQyDpe-rnM7tdldWTl_/view,Tesla.svg
+BYD,byd-electronics.com,ok,指定,https://drive.google.com/file/d/1Iwb6Zj8k3e8IwwkcDOe_9JmVCBJyQzt1/view,BYD.svg
+吉利汽車,geelyauto.com.hk,ok,指定,https://drive.google.com/file/d/1kFZtYi0AHWS9yzud3Htu_uPFcpgj9pWa/view,吉利汽車.svg
+小鵬汽車,xiaopeng.com,ok,指定,https://drive.google.com/file/d/13qUaiumGWQEo7FrFY4XAH17Txjld1zSt/view,小鵬汽車.svg
+NIO,nio.com,ok,指定,https://drive.google.com/file/d/1W3RIfGAcuGzyKxTA2cHrassuajLZwg1G/view,NIO.png
+CATL,catl.com,ok,指定,https://drive.google.com/file/d/11kLeWBMViejQjHQxtvrN4xWH9Ju-LF6q/view,CATL.jpg
+Xiaomi,mi.com,ok,指定,https://drive.google.com/file/d/1lKkyZsfQ9jmZg39viHpWVGJJtmeVlIQj/view,Xiaomi.svg
+Uber,uber.com,ok,指定,https://drive.google.com/file/d/1eDPq9iuAsdNGE4Cd8KvY_1bFEjjcbv9I/view,Uber.svg
+Grab,grab.com,ok,指定,https://drive.google.com/file/d/1ktOuM6ryEYCvdQUV3i52kiMIWwM8pQjq/view,Grab.svg
+DiDi Global,didiglobal.com,ok,指定,https://drive.google.com/file/d/1iCV6jJ8K984NFVNWhey246PfiAhvDZfc/view,DiDi_Global.png
+GO,goinc.jp,ok,指定,https://drive.google.com/file/d/1PLpVPWgak5f9WPTVKfOnTjx9T35iqh6F/view,GO.png
+LUUP,,ok,指定,https://drive.google.com/file/d/127vt_OqH74ZtnHoww51yRljD9DOxeuAr/view,LUUP.svg
+ティアフォー,tier4.co.jp,ok,指定,https://drive.google.com/file/d/18d3IYA9YXlzxVy2eoAFaoY6uVWWT6dK1/view,ティアフォー.svg
+パーク24,park24.co.jp,ok,指定,https://drive.google.com/file/d/1vPRrLZvUaEtGEn6wvlHwd6cChz9macv8/view,パーク24.svg
+ネクステージ,nextage.jp,ok,指定,https://drive.google.com/file/d/1CSVn-iPgsmbTLQQ-1yavWhQ6jLXZEnwW/view,ネクステージ.svg
+プレミアグループ,premium-group.co.jp,ok,指定,https://drive.google.com/file/d/1zWKCaDjIJ5Sk48A5du10s6phWcdLhOUk/view,プレミアグループ.png
+Turing,,ok,指定,https://drive.google.com/file/d/1_U-9DriCeGVHXQaGPwLPz55XLP25ylxF/view,Turing.png
+Accenture,accenture.com,ok,指定,https://drive.google.com/file/d/1C89tfr729iN604cBaxDlXjMVE3Yx6TjP/view,Accenture.svg
+ベイカレント,,ok,指定,https://drive.google.com/file/d/1ZamHqdwaH-4cZxxGYcb9zT2FtbNJ83Ol/view,ベイカレント.png
+ノースサンド,northsand.co.jp,ok,指定,https://drive.google.com/file/d/1a4uhCFD5Mbs7bqJLDh81pCqP0hqjp97V/view,ノースサンド.svg
+シンプレクス・ホールディングス,simplex.holdings,ok,指定,https://drive.google.com/file/d/1oX1uxTslEVnJRgeZagGEP-MznaDtC7Zo/view,シンプレクス・ホールディングス.png
+SHIFT,shiftinc.jp,ok,指定,https://drive.google.com/file/d/1qc1gheTj7wFli-jUSzKJhpD7pbInDz0Z/view,SHIFT.png
+Finatextホールディングス,finatext.com,ok,指定,https://drive.google.com/file/d/1nYfMX9UY_XGJAFTpotWQuSgKax_jIVcn/view,Finatextホールディングス.svg
+ABEJA,abejainc.com,ok,指定,https://drive.google.com/file/d/1Obgsw_Riqd0UkG7d2RM3scDL6v3rm16T/view,ABEJA.ico
+エクサウィザーズ,exawizards.com,ok,指定,https://drive.google.com/file/d/1tejGXVPXfCbBnLFo3RUuo6z4ejQhm6tD/view,エクサウィザーズ.png
+PKSHA Technology,pkshatech.com,ok,指定,https://drive.google.com/file/d/1SjiN5GwF5CMwvSxlnN4Z7aDDesXFvZSu/view,PKSHA_Technology.png
+Sakana AI,,ok,指定,https://drive.google.com/file/d/1e46PUUdWLE1bULlHZ1EjXFAzjSXwDIKU/view,Sakana_AI.webp
+Preferred Networks,,ok,指定,https://drive.google.com/file/d/1OgUkctM4s5_XEvkDr0KL12OgVZEimrG0/view,Preferred_Networks.svg
+Eli Lilly,lilly.com,ok,指定,https://drive.google.com/file/d/13NzXc2JWgx5eiCtgoYT7-3_ttrO0N8cv/view,Eli_Lilly.svg
+Novo Nordisk,novonordisk.com,ok,指定,https://drive.google.com/file/d/172KEn6iQJiagk7Uuug1ib3kO_IUylHFG/view,Novo_Nordisk.png
+エムスリー,m3.com,ok,指定,https://drive.google.com/file/d/1NeB508M8-Re0wLBLvaNG3jJ48BZtR9Ua/view,エムスリー.png
+JMDC,jmdc.co.jp,ok,指定,https://drive.google.com/file/d/1sjAXt5hftUsomCH_lWjFxy_s-aRmQAn_/view,JMDC.svg
+メドレー,medley.jp,ok,指定,https://drive.google.com/file/d/1VdnxCOh8XRujxbmHQrtm53qdu3rQ3Eup/view,メドレー.svg
+エス・エム・エス,bm-sms.co.jp,ok,指定,https://drive.google.com/file/d/1_9l8GxF0GcotkQeWuoyU1EkLUGQfU47V/view,エス・エム・エス.png
+三菱商事,mitsubishicorp.com,ok,指定,https://drive.google.com/file/d/1F5yocu5F71OrN_4nsQm7um_Q63l0sxd4/view,三菱商事.svg
+三井物産,mitsui.com,ok,指定,https://drive.google.com/file/d/1KCjbM5FFPZpHN_pzcRbKxUCJW02V2OLc/view,三井物産.svg
+伊藤忠商事,itochu.co.jp,ok,指定,https://drive.google.com/file/d/1dkpS6gxWxmHbqnEfz6Hr-wJB7lDKiAGf/view,伊藤忠商事.svg
+住友商事,sumitomocorp.com,ok,指定,https://drive.google.com/file/d/1MEw7Im_79hcNq5V_Snb2DtYn0waIK4Bl/view,住友商事.svg
+丸紅,marubeni.com,ok,指定,https://drive.google.com/file/d/1G0fPpPtdcnzYY4IZseVegMkbXHNtTw2x/view,丸紅.svg
+三井不動産,mitsuifudosan.co.jp,ok,指定,https://drive.google.com/file/d/1e7go5SJYmEQmuhAtjV7JIhhuoRMwjRmW/view,三井不動産.svg
+三菱地所,mec.co.jp,ok,指定,https://drive.google.com/file/d/1fWhm_3WKmbi2GozRWJyO3behsGQFQY-X/view,三菱地所.svg
+住友不動産,sumitomo-rd.co.jp,failed,指定,https://drive.google.com/file/d/1ALUx4WXHB80jsqPHayIVjCui4U0tNyXW/view,画像ではありません (application/octet-stream)
+オープンハウス,openhouse-group.co.jp,ok,指定,https://drive.google.com/file/d/1Oabxfs2MvobcNb5KKK5ruEgwbcBCSlS8/view,オープンハウス.svg
+ヒューリック,hulic.co.jp,ok,指定,https://drive.google.com/file/d/1lMOYh-MaefjTyg78JIAPL94_Pg6eNdL-/view,ヒューリック.png
+日本M&Aセンターホールディングス,,ok,指定,https://drive.google.com/file/d/1lTM7jG2g-BB4j2d4Ge_T4PZLiu5LH5Cd/view,日本M&Aセンターホールディングス.svg
+M&Aキャピタルパートナーズ,ma-cp.com,ok,指定,https://drive.google.com/file/d/1PX6DdZwF7O9VIhongR1f6Dxp2xcUOO9z/view,M&Aキャピタルパートナーズ.svg
+ストライク,strike.co.jp,ok,指定,https://drive.google.com/file/d/13NCB0v50SlHXI19dM5OWBhnKAU-7zwt6/view,ストライク.svg
+クオンツ総研ホールディングス,quants-souken.co.jp,ok,指定,https://drive.google.com/file/d/1o4mw1JJ_2VRCNDIH4TESwraO8-jzOqXY/view,クオンツ総研ホールディングス.png
+リクルートホールディングス,recruit-holdings.com,ok,指定,https://drive.google.com/file/d/1_jV167Clbo87K7y-UKlDVD_Ue_WKYm5v/view,リクルートホールディングス.svg
+ビジョナル,visional.inc,ok,指定,https://drive.google.com/file/d/1U_-MWXPsSw7foTUmDUgxpJ4FRWTo_wBH/view,ビジョナル.png
+タイミー,corp.timee.co.jp,ok,指定,https://drive.google.com/file/d/1rJCCF-PZVWY3NvO7xo5WKjZ6t720My24/view,タイミー.svg
+星野リゾート,,ok,指定,https://drive.google.com/file/d/1hntwSJC8WljUKIGwQoX9PeNRLxUFfRsy/view,星野リゾート.svg
+アパホールディングス,,ok,指定,https://drive.google.com/file/d/1JyN74itft_9uO7cY5lQcnHCGwqlhWHVj/view,アパホールディングス.png
+NOT A HOTEL,,ok,指定,https://drive.google.com/file/d/1oULRUdxpCpGOE_6p6IRCe0jJx99cHw9G/view,NOT_A_HOTEL.svg
+BuySell Technologies,buysell-technologies.com,ok,指定,https://drive.google.com/file/d/1HQbQ2Z1j-13t60pr1vYTc8lNao7S8v9O/view,BuySell_Technologies.svg
+AlbaLink,albalink.co.jp,ok,指定,https://drive.google.com/file/d/1g0sHBn3EcbrKTulryxalDMDmYuBdE4D6/view,AlbaLink.png
+技術承継機構,ngt-g.com,ok,指定,https://drive.google.com/file/d/1_Y5d6NZv4J6i2pssGTlj4QPQ4OFW_nv4/view,技術承継機構.png
+パワーエックス,power-x.jp,ok,指定,https://drive.google.com/file/d/1lMk-dhj25Xnmju744jaO0TB2yO7mhcm4/view,パワーエックス.png
+note,note.jp,ok,指定,https://drive.google.com/file/d/11fP4DzrEPfZl8ZZQq2WCB8LCqk3XvQAL/view,note.png
+TKP,tkp.jp,ok,指定,https://drive.google.com/file/d/1v06-fP4TIegQQSu9m4qWfhhD_inNCzLr/view,TKP.webp
+クラシル,kurashiru.co.jp,ok,指定,https://drive.google.com/file/d/1IK5ko6YFWTlQuFY__bk5MniXyowkO4gI/view,クラシル.png
 SUMIグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-DMM,,ok,existing,,
-大林組,,ok,existing,,
-大成建設,,ok,existing,,
-鹿島建設,,ok,existing,,
-清水建設,,ok,existing,,
-大和ハウス工業,,ok,existing,,
-積水ハウス,,ok,existing,,
-住友林業,,ok,existing,,
-飯田グループ,,ok,existing,,
-大東建託,,ok,existing,,
-東急不動産ホールディングス,,ok,existing,,
-野村不動産ホールディングス,,ok,existing,,
-日清食品ホールディングス,,ok,existing,,
-キユーピー,,ok,existing,,
-キッコーマン,,ok,existing,,
-日本ハム,,ok,existing,,
-ニチレイ,,ok,existing,,
-明治ホールディングス,,ok,existing,,
-JT,,ok,existing,,
-ヤクルト,,ok,existing,,
-東洋水産,,ok,existing,,
-山崎製パン,,ok,existing,,
-カルビー,,ok,existing,,
-森永乳業,,ok,existing,,
-江崎グリコ,,ok,existing,,
-カゴメ,,ok,existing,,
-ハウス食品グループ本社,,ok,existing,,
-宝ホールディングス,,ok,existing,,
-サントリー,,ok,existing,,
-キリンホールディングス,,ok,existing,,
-アサヒグループホールディングス,,ok,existing,,
-サッポロ,,ok,existing,,
-伊藤園,,ok,existing,,
-コカ・コーラボトラーズジャパンホールディングス,,ok,existing,,
-TBSホールディングス,,ok,existing,,
-日本テレビホールディングス,,ok,existing,,
-フジ・メディア・ホールディングス,,ok,existing,,
-テレビ朝日ホールディングス,,ok,existing,,
-テレビ東京ホールディングス,,ok,existing,,
-日本電信電話,,ok,existing,,
-KDDI,,ok,existing,,
-ソフトバンク,,ok,existing,,
-資生堂,,ok,existing,,
-コーセー,,ok,existing,,
-花王,,ok,existing,,
-ライオン,,ok,existing,,
-ロート製薬,,ok,existing,,
+DMM,,ok,指定,https://drive.google.com/file/d/1vhiL9YzwGWA5TBwHwrmLxu3xtLhpOg6D/view,DMM.png
+大林組,,ok,指定,https://drive.google.com/file/d/1pBdvjqeXOYeD4leuWtsRclExzA9XgV3V/view,大林組.svg
+大成建設,,ok,指定,https://drive.google.com/file/d/1u6yjGDZ3bteo0RHyV1n2RmqM3IJBXGAj/view,大成建設.svg
+鹿島建設,,ok,指定,https://drive.google.com/file/d/1sYohNDUH_hQXcsLbKOwR2FCQiOkTM8NW/view,鹿島建設.png
+清水建設,,ok,指定,https://drive.google.com/file/d/1kQ1j8HlBiIYaFWZOHdPXeACuTEWgpxwY/view,清水建設.svg
+大和ハウス工業,,ok,指定,https://drive.google.com/file/d/1ovZS0GcByzb-VFsD0sH_vZOeTUR5bqgc/view,大和ハウス工業.svg
+積水ハウス,,ok,指定,https://drive.google.com/file/d/1TNNf8ixH4zPGhFltS4DEmDj4JueW6WOP/view,積水ハウス.svg
+住友林業,,ok,指定,https://drive.google.com/file/d/1mIJm-9FTpYtZNqaOmt-99IWlq6bW4H1B/view,住友林業.svg
+飯田グループ,,ok,指定,https://drive.google.com/file/d/1iZ1VRXbsMy0rW2-7g6-NOOGIuc_PsSOi/view,飯田グループ.png
+大東建託,,ok,指定,https://drive.google.com/file/d/16zbgk1G8xV6sQodAmeqFnJJS8_3CeXZ2/view,大東建託.png
+東急不動産ホールディングス,,ok,指定,https://drive.google.com/file/d/1KxPegMepjdTQwO-9Tqrufgfj1IFw9OnL/view,東急不動産ホールディングス.svg
+野村不動産ホールディングス,,ok,指定,https://drive.google.com/file/d/1tfLlr2EfTbdO5iSHIj08MC9mwSNFy76P/view,野村不動産ホールディングス.png
+日清食品ホールディングス,,ok,指定,https://drive.google.com/file/d/1Spb9IXw-lDw21VFFINK5akJxbGs0dWZk/view,日清食品ホールディングス.svg
+キユーピー,,ok,指定,https://drive.google.com/file/d/1WJd8fdWANhyBSktSOjzNX27UpFe7Vhzs/view,キユーピー.png
+キッコーマン,,ok,指定,https://drive.google.com/file/d/18_axnraSlJzvjYaDTU-OxWupsC_zc5TQ/view,キッコーマン.svg
+日本ハム,,ok,指定,https://drive.google.com/file/d/1npVBiZu7llKuC8_9OZlFK8XkE4O3S6c0/view,日本ハム.svg
+ニチレイ,,ok,指定,https://drive.google.com/file/d/1EJYFReMACP0BDUkQcgGmwLY5TiWt4jkG/view,ニチレイ.svg
+明治ホールディングス,,ok,指定,https://drive.google.com/file/d/1CSYAHQ1ceKq3BdMNhCv-yUTTL02vEAep/view,明治ホールディングス.svg
+JT,,ok,指定,https://drive.google.com/file/d/1lUYtMKzzwnndrkjwx1gzBlrAlh36xxkg/view,JT.svg
+ヤクルト,,ok,指定,https://drive.google.com/file/d/1KRYwLcdxfxEkiLdfYWBGSLR-e2WYQI9A/view,ヤクルト.svg
+東洋水産,,ok,指定,https://drive.google.com/file/d/1wjOfspuwURmRv4wQ1BADboqdsW9qd1BK/view,東洋水産.svg
+山崎製パン,,ok,指定,https://drive.google.com/file/d/1F6ASeYwi8cjDPMgQBKukPZuNdU_2Mg8f/view,山崎製パン.png
+カルビー,,ok,指定,https://drive.google.com/file/d/1dVvwrCbRGPtV0nJ9gEy9YtSUPv_oS_B7/view,カルビー.svg
+森永乳業,,ok,指定,https://drive.google.com/file/d/19YO36kBOIiWP7VIKkhEDR__BcxKFLzgt/view,森永乳業.svg
+江崎グリコ,,ok,指定,https://drive.google.com/file/d/1M36yFr8aIaYYZ0al47Ky2aa55dVO8_xb/view,江崎グリコ.svg
+カゴメ,,ok,指定,https://drive.google.com/file/d/1mQBAoMVQf6lM2bX7JFLBgMLGSsU_vgiP/view,カゴメ.svg
+ハウス食品グループ本社,,ok,指定,https://drive.google.com/file/d/18FXlFMnd4RifCMwoXyjyX0_Gmh50UmyO/view,ハウス食品グループ本社.svg
+宝ホールディングス,,ok,指定,https://drive.google.com/file/d/1NWZ-EyTHkq2dBpGlzNxTSaFNQKsIY5r4/view,宝ホールディングス.svg
+サントリー,,ok,指定,https://drive.google.com/file/d/1abiyiQEzLovjvAQ4o0rLPL3OqBzWYEIP/view,サントリー.svg
+キリンホールディングス,,ok,指定,https://drive.google.com/file/d/1rn228UdNUhz-xM5sHOvmx9y2jhdCo7Lm/view,キリンホールディングス.svg
+アサヒグループホールディングス,,ok,指定,https://drive.google.com/file/d/1fS9PDfh3PHyFPlWNWI4D3C08DL5e46jm/view,アサヒグループホールディングス.svg
+サッポロ,,ok,指定,https://drive.google.com/file/d/1sYFQoPgYAcP671YKb8i2DqkKBdwbeURi/view,サッポロ.svg
+伊藤園,,ok,指定,https://drive.google.com/file/d/1zypS0xud2g9pCSIueGhPYYVp8KeVpvws/view,伊藤園.svg
+コカ・コーラボトラーズジャパンホールディングス,,ok,指定,https://drive.google.com/file/d/1ORAcw5Sb-fHh1Fk6O7HnnUGiFp0zF6e8/view,コカ・コーラボトラーズジャパンホールディングス.png
+TBSホールディングス,,ok,指定,https://drive.google.com/file/d/1E8KlLTnPEV3GOjC7Md-3vTDIZMkAToNd/view,TBSホールディングス.svg
+日本テレビホールディングス,,ok,指定,https://drive.google.com/file/d/1NIqNKX7_6AcTZsirP1EPptLFb89lP8x-/view,日本テレビホールディングス.svg
+フジ・メディア・ホールディングス,,ok,指定,https://drive.google.com/file/d/19I6ulSuoKcmm2oXpXz1z3UoUlF3sXcce/view,フジ・メディア・ホールディングス.png
+テレビ朝日ホールディングス,,ok,指定,https://drive.google.com/file/d/1rBevFc6sH3FKxW1HzNE_UGLFWm4st6ya/view,テレビ朝日ホールディングス.svg
+テレビ東京ホールディングス,,ok,指定,https://drive.google.com/file/d/1mSHA6hazmhLiGpspkLAcsPAt6OVR5n8K/view,テレビ東京ホールディングス.png
+日本電信電話,,ok,指定,https://drive.google.com/file/d/1wLc5V81PSAp-cCRpjSDoS93kBr1NESKl/view,日本電信電話.svg
+KDDI,,ok,指定,https://drive.google.com/file/d/1hSN7Ftw4wRlon362UIboytZ0UE5fDbPB/view,KDDI.svg
+ソフトバンク,,ok,指定,https://drive.google.com/file/d/1yL0NM4B8LUS9oBz8b865HuwO1aPlAFaa/view,ソフトバンク.svg
+資生堂,,ok,指定,https://drive.google.com/file/d/1r7XJthwN1v3pMTp-w7mFL-tlVHO6Qqb0/view,資生堂.svg
+コーセー,,ok,指定,https://drive.google.com/file/d/1igKotKmcu6jJww2JibkkqdumCmgvhQpv/view,コーセー.svg
+花王,,ok,指定,https://drive.google.com/file/d/1O4PU0Ne5AsyGzTzi3V0mWk-cPh7pBSfx/view,花王.svg
+ライオン,,ok,指定,https://drive.google.com/file/d/1ge6Ge4aKWxfeO65WlwRsbqJu5l5dTCM5/view,ライオン.svg
+ロート製薬,,ok,指定,https://drive.google.com/file/d/1dlVDujJ1lIqtBm6PvlaZ7yFKi5NSAt3X/view,ロート製薬.svg
 ポーラ・オルビスホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ユニ・チャーム,,ok,existing,,
-小林製薬,,ok,existing,,
+ユニ・チャーム,,ok,指定,https://drive.google.com/file/d/1ascTbEpznoaYhWhf9BXq_KSS9JPdEDnn/view,ユニ・チャーム.svg
+小林製薬,,ok,指定,https://drive.google.com/file/d/10I0n-C_dXQgPFCJ---xjKWLoMXO_s5s9/view,小林製薬.svg
 ピジョン,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-日本酸素ホールディングス,,ok,existing,,
-日産化学,,ok,existing,,
-旭化成,,ok,existing,,
-三井化学,,ok,existing,,
-三菱ケミカルG,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-日本ペイントホールディングス,,ok,existing,,
-住友化学,,ok,existing,,
-東レ,,ok,existing,,
-中外製薬,,ok,existing,,
-協和発酵キリン,,ok,existing,,
-エーザイ,,ok,existing,,
-アステラス製薬,,ok,existing,,
-大塚ホールディングス,,ok,existing,,
-塩野義製薬,,ok,existing,,
-武田薬品工業,,ok,existing,,
-第一三共,,ok,existing,,
-住友ファーマ,,ok,existing,,
-富士電機,,ok,existing,,
-シャープ,,ok,existing,,
-NEC,,ok,existing,,
-富士通,,ok,existing,,
-キヤノン,,ok,existing,,
-富士フイルム,,ok,existing,,
-ニコン,,ok,existing,,
-リコー,,ok,existing,,
-セイコーエプソン,,ok,existing,,
-京セラ,,ok,existing,,
-オリンパス,,ok,existing,,
-カシオ計算機,,ok,existing,,
-コニカミノルタ,,ok,existing,,
-シチズン時計,,ok,existing,,
-ブラザー工業,,ok,existing,,
-ミネベアミツミ,,ok,existing,,
-オムロン,,ok,existing,,
-横河電機,,ok,existing,,
-ダイフク,,ok,existing,,
-栗田工業,,ok,existing,,
-日本マイクロニクス,,ok,existing,,
-芝浦メカトロニクス,,ok,existing,,
-ローム,,ok,existing,,
-ルネサスエレクトロニクス,,ok,existing,,
-ソシオネクスト,,ok,existing,,
-東京応化工業,,ok,existing,,
-HOYA,,ok,existing,,
-住友ベークライト,,ok,existing,,
-フェローテックホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-TDK,,ok,existing,,
-太陽誘電,,ok,existing,,
-ニデック,,ok,existing,,
-日東電工,,ok,existing,,
-デクセリアルズ,,ok,existing,,
-トヨタ自動車,,ok,existing,,
-本田技研工業,,ok,existing,,
-スズキ,,ok,existing,,
-SUBARU,,ok,existing,,
-日産自動車,,ok,existing,,
-三菱自動車,,ok,existing,,
-三菱マテリアル,,ok,existing,,
-住友金属鉱山,,ok,existing,,
-DOWA,,ok,existing,,
-三井金属,,ok,existing,,
-ゴールドウィン,,ok,existing,,
-ミズノ,,ok,existing,,
-ヨネックス,,ok,existing,,
-シマノ,,ok,existing,,
-パルグループホールディングス,,ok,existing,,
-ABCマート,,ok,existing,,
-しまむら,,ok,existing,,
-ヤマダホールディングス,,ok,existing,,
-ワークマン,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ノジマ,,ok,existing,,
-ビックカメラ,,ok,existing,,
-セリア,,ok,existing,,
-ジンズ,,ok,existing,,
-イオン,,ok,existing,,
-セブン&アイホールディングス,,ok,existing,,
-マツキヨココカラ,,ok,existing,,
+日本酸素ホールディングス,,ok,指定,https://drive.google.com/file/d/1109q3_XvrKUfXL41qE5hspIgC8t6pWbM/view,日本酸素ホールディングス.svg
+日産化学,,ok,指定,https://drive.google.com/file/d/1YE4j7m3nvHV8p6mVheQdxImWxdEI1J3F/view,日産化学.svg
+旭化成,,ok,指定,https://drive.google.com/file/d/1eiu2gdKmLuHi6TbGsFPoqES5M2H2Uyqa/view,旭化成.svg
+三井化学,,ok,指定,https://drive.google.com/file/d/1HJg2LQZIr8ITVos9Vm1N6fVt3jsFUOkE/view,三井化学.svg
+三菱ケミカルG,,ok,指定,https://drive.google.com/file/d/1dKfFWohI7ITzrv1lrnUuJTOpLeP6_QOi/view,三菱ケミカルG.svg
+日本ペイントホールディングス,,ok,指定,https://drive.google.com/file/d/1ZPVhdS0NujYw3JL2Mz-GkFMvrygZcOMk/view,日本ペイントホールディングス.svg
+住友化学,,failed,指定,https://drive.google.com/file/d/1VvEPg1an20ofnodvxN0Qdw0moMC8m6dn/view,画像ではありません (application/octet-stream)
+東レ,,ok,指定,https://drive.google.com/file/d/1dGCnLj6_j0My-_Q_eX7HOTDEY-usEWsN/view,東レ.svg
+中外製薬,,ok,指定,https://drive.google.com/file/d/13daMNr0CDqKqvifxxKffV7cqXJFUEs4N/view,中外製薬.svg
+協和発酵キリン,,ok,指定,https://drive.google.com/file/d/1xnCRNrha41u7Pg0jAiLRBECCvzu0yeox/view,協和発酵キリン.svg
+エーザイ,,ok,指定,https://drive.google.com/file/d/1ER838WDru6uGucQjS0DJtWfU1Prpcvrx/view,エーザイ.svg
+アステラス製薬,,ok,指定,https://drive.google.com/file/d/1bAXZYNf5DNoepdy7FG0Vo1p8sBNzvEAT/view,アステラス製薬.svg
+大塚ホールディングス,,ok,指定,https://drive.google.com/file/d/1WUbN1iZl4h6AifgHjdprrJh114NtyqUZ/view,大塚ホールディングス.svg
+塩野義製薬,,ok,指定,https://drive.google.com/file/d/1rVY-KAsrCf3hEzEzJmPraiwPAuHWKc9Q/view,塩野義製薬.svg
+武田薬品工業,,ok,指定,https://drive.google.com/file/d/1f9iT7_z_IJHaexZ2FD_MA4CtSW9Xk4r5/view,武田薬品工業.svg
+第一三共,,ok,指定,https://drive.google.com/file/d/1cAy96ORoeUxaxkwFgVPiciorLeyj7xnr/view,第一三共.svg
+住友ファーマ,,ok,指定,https://drive.google.com/file/d/1VcUOKwSMoglJkjgzNHae96_tVKAs2Dc5/view,住友ファーマ.svg
+富士電機,,ok,指定,https://drive.google.com/file/d/176VQj6sh1ZjzU7VFzFOatEBbRzC1SjUB/view,富士電機.svg
+シャープ,,ok,指定,https://drive.google.com/file/d/1Ilq2ndP1KnJjMQi5WxMwZHzKg8K0iZFs/view,シャープ.svg
+NEC,,ok,指定,https://drive.google.com/file/d/1baedu29ljvPJlH2eXcHLZgFgR6Nm5N56/view,NEC.svg
+富士通,,ok,指定,https://drive.google.com/file/d/1_8LKVV0XF3DxjcacJt4u3yNqWLRarqgh/view,富士通.svg
+キヤノン,,ok,指定,https://drive.google.com/file/d/1jCl_-a4wveIotTe-Kd54fLEq6uoP8wIj/view,キヤノン.svg
+富士フイルム,,ok,指定,https://drive.google.com/file/d/1Bi1feOU9ECXB1blNJMryVL-LUIwpuf5G/view,富士フイルム.svg
+ニコン,,ok,指定,https://drive.google.com/file/d/1tBucRk2aXmRTJp_JSeJ1e-xOlANJmgx9/view,ニコン.svg
+リコー,,ok,指定,https://drive.google.com/file/d/1iTO4ShWeQUR19DpuoHzAxlfkio6v52aP/view,リコー.svg
+セイコーエプソン,,ok,指定,https://drive.google.com/file/d/13Q1QzvN22DKnDuxhVrn8J98xQAKc3ocd/view,セイコーエプソン.svg
+京セラ,,ok,指定,https://drive.google.com/file/d/1_Qze6JcJTC7WBJ-p8HqLEqCBdQaj75Wc/view,京セラ.svg
+オリンパス,,ok,指定,https://drive.google.com/file/d/1_sB7dg6IZcBSDFIbgYtAXVmLHONJaaV_/view,オリンパス.svg
+カシオ計算機,,ok,指定,https://drive.google.com/file/d/1WP0mRH8dPBU-eduUZmQDJJoy7GBszlMK/view,カシオ計算機.svg
+コニカミノルタ,,ok,指定,https://drive.google.com/file/d/1yTl5zFy2FkU6Bhiwu-mMWNgd9zXRSzaG/view,コニカミノルタ.svg
+シチズン時計,,ok,指定,https://drive.google.com/file/d/1ste8YK-xXycrCc1WNSvJZ7Or0yQkPSXA/view,シチズン時計.svg
+ブラザー工業,,ok,指定,https://drive.google.com/file/d/1Cce6m9ppDPDccVKvrJZTvU_AYhH7Pe4k/view,ブラザー工業.svg
+ミネベアミツミ,,ok,指定,https://drive.google.com/file/d/1Ma6OUp9u9RA72OdjSSjbUfFZQ2W_dwJB/view,ミネベアミツミ.svg
+オムロン,,ok,指定,https://drive.google.com/file/d/1ym_U8KVGS7ZUP_mpZnt6rs34qcW1a2NA/view,オムロン.svg
+横河電機,,ok,指定,https://drive.google.com/file/d/1PRQ5iJwqce2zRQgA_1G2BTqQJPIDLBTu/view,横河電機.png
+ダイフク,,ok,指定,https://drive.google.com/file/d/1Hc8L_uO4cKaAU9wifb3BP1kiXWm0Iuh2/view,ダイフク.svg
+栗田工業,,ok,指定,https://drive.google.com/file/d/1zYQnN8xjUwllo0OdyyMQFMxdSqczlkPm/view,栗田工業.svg
+日本マイクロニクス,,ok,指定,https://drive.google.com/file/d/1FOQJ5uj95Jpd8m5sG-W8nSjJqHhdTxbC/view,日本マイクロニクス.svg
+芝浦メカトロニクス,,ok,指定,https://drive.google.com/file/d/1RtSJhLtmB_YqA3MJCOuArP8I0vAoO0eW/view,芝浦メカトロニクス.svg
+ローム,,ok,指定,https://drive.google.com/file/d/1WMzxLSiTh1PrRy_1s9ldJ-D-HzZQu4aq/view,ローム.svg
+ルネサスエレクトロニクス,,ok,指定,https://drive.google.com/file/d/1Zm3e4IoL3fx9mgCORFqbjfU0gMCImevf/view,ルネサスエレクトロニクス.svg
+ソシオネクスト,,ok,指定,https://drive.google.com/file/d/1nOtpWKyOCdP_NK_XofUI0qh6dNU6s7a4/view,ソシオネクスト.svg
+東京応化工業,,ok,指定,https://drive.google.com/file/d/1SkCxrA5LieQ7moaPQRbc_fxJZsTnNsjt/view,東京応化工業.svg
+HOYA,,ok,指定,https://drive.google.com/file/d/1v0bpHdenfZ3AWRZVyzMa8hZfdf3Cv1-z/view,HOYA.svg
+住友ベークライト,,ok,指定,https://drive.google.com/file/d/1oRBtxIAPAtQJBVLa2ht3IetH3zaNZOho/view,住友ベークライト.png
+フェローテックホールディングス,,ok,指定,https://drive.google.com/file/d/1ZRBOycVWJszVZaQX1ICzrcLXdtwjmwCz/view,フェローテックホールディングス.svg
+TDK,,ok,指定,https://drive.google.com/file/d/1iMosK2Xm5el8lmgGs7yAtkQFYJgTAf9w/view,TDK.svg
+太陽誘電,,ok,指定,https://drive.google.com/file/d/1Eni0X-6nfGYOQI4QsURkfK8n8KU2VYmA/view,太陽誘電.svg
+ニデック,,ok,指定,https://drive.google.com/file/d/11JN9LKif5cPe06ZTp4Iv2QOlyDJBA6Ii/view,ニデック.svg
+日東電工,,ok,指定,https://drive.google.com/file/d/1ebYoj_9IJTSq3uMsfSc7n5_blBn9Cgkx/view,日東電工.svg
+デクセリアルズ,,ok,指定,https://drive.google.com/file/d/1e0WrXwK3eGmGlc3BlT6fsmwW0OR64D1U/view,デクセリアルズ.svg
+トヨタ自動車,,ok,指定,https://drive.google.com/file/d/1f2ErbYT2LP54_lzE9sLZRYFYAS4Meza7/view,トヨタ自動車.svg
+本田技研工業,,ok,指定,https://drive.google.com/file/d/1Wq6Ln50h89aeXz28B1RdRmkJ4aeWIcAH/view,本田技研工業.svg
+スズキ,,ok,指定,https://drive.google.com/file/d/1kCXg80L7_n3BpL0PKrnuTtwC1at1wHu7/view,スズキ.svg
+SUBARU,,ok,指定,https://drive.google.com/file/d/1hYfmJ1HrwOiylE_NhcIVe15tp-Y2mLAY/view,SUBARU.svg
+日産自動車,,ok,指定,https://drive.google.com/file/d/1XFTkvK4aFUbAAj18oXEdDARkwIeJVM-j/view,日産自動車.svg
+三菱自動車,,ok,指定,https://drive.google.com/file/d/1UXHBdbpY9vtf5awQgKoyE_h3hayLcpf2/view,三菱自動車.svg
+三菱マテリアル,,ok,指定,https://drive.google.com/file/d/1TyYsW1hxcr4OqVAzTsXQLwRZeh6fRVhF/view,三菱マテリアル.png
+住友金属鉱山,,ok,指定,https://drive.google.com/file/d/1iNCBxW4am3dJreD68o6XLf2JCBsnztRT/view,住友金属鉱山.jpg
+DOWA,,ok,指定,https://drive.google.com/file/d/15_9Cn3OV994h6K_WBTHHTK4OuclULvb8/view,DOWA.svg
+三井金属,,ok,指定,https://drive.google.com/file/d/1wqS8WbF2EG4oJ-hS_Qjh6xXeIFUmISi-/view,三井金属.svg
+ゴールドウィン,,ok,指定,https://drive.google.com/file/d/1t50NrX0bTOQ3DlOPwp-J78B_ppcn2QKk/view,ゴールドウィン.svg
+ミズノ,,ok,指定,https://drive.google.com/file/d/1RCFmqSmmtEewgn0kka_CqWydN4928Dgv/view,ミズノ.svg
+ヨネックス,,ok,指定,https://drive.google.com/file/d/1YCR7Ep8xX_JZmQ2U_pYryHTPuQb-0CQl/view,ヨネックス.svg
+シマノ,,ok,指定,https://drive.google.com/file/d/1NUtQVZq-dlssdNHn_Z_ctfDrAo-K9gyb/view,シマノ.svg
+パルグループホールディングス,,ok,指定,https://drive.google.com/file/d/1iU3RaUKDmd3vgwaOVUiCP-0IgWyrr-da/view,パルグループホールディングス.png
+ABCマート,,ok,指定,https://drive.google.com/file/d/1E-ATyK2_toxT6DmLfth-EJYtpL7y1XcP/view,ABCマート.svg
+しまむら,,ok,指定,https://drive.google.com/file/d/1XPfLQkVga7QSossNozZpzIEJMA3-WTTY/view,しまむら.svg
+ヤマダホールディングス,,ok,指定,https://drive.google.com/file/d/1UEroLTlRF_xPSO_n1bXEqQPLryZjk-W8/view,ヤマダホールディングス.svg
+ワークマン,,ok,指定,https://drive.google.com/file/d/15H1UIWcfpUaZE9wKTWyj0IxHTehcrrxw/view,ワークマン.png
+ノジマ,,ok,指定,https://drive.google.com/file/d/1f9Fb1FxaNbziXTQc8MjrqC-Ag9Pj9yjD/view,ノジマ.svg
+ビックカメラ,,ok,指定,https://drive.google.com/file/d/1MuTSl7t8BPnt8S1zU5xNnR5SdOSd67go/view,ビックカメラ.svg
+セリア,,ok,指定,https://drive.google.com/file/d/12qfDRKrQUOfNdPxS029sYuZv7suxha8z/view,セリア.svg
+ジンズ,,ok,指定,https://drive.google.com/file/d/1movd4CKK-gsFfwPMvYZ-9rBRqq6NgVrB/view,ジンズ.svg
+イオン,,ok,指定,https://drive.google.com/file/d/1YIuFcgsiGHenMQHVGl8BRZ74Bj3bVo7O/view,イオン.svg
+セブン&アイホールディングス,,ok,指定,https://drive.google.com/file/d/1Xx0yumv-yKN0Q9E3-AXjMp0rDQo9dwrC/view,セブン&アイホールディングス.svg
+マツキヨココカラ,,ok,指定,https://drive.google.com/file/d/1SznD-qqJCaKWRma_SwbCgh-OBtNecAPX/view,マツキヨココカラ.svg
 ブルーゾーンホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-神戸物産,,ok,existing,,
-コスモス薬品,,ok,existing,,
-スギホールディングス,https://www.sugi-hd.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.sugi-hd.co.jp,スギホールディングス.png
-ツルハ,,ok,existing,,
-クスリのアオキホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-サンドラッグ,,ok,existing,,
-三越伊勢丹ホールディングス,,ok,existing,,
-丸井グループ,,ok,existing,,
-Jフロントリテイリング,,ok,existing,,
-高島屋,,ok,existing,,
-H2Oリテイリング,,ok,existing,,
-野村総研,,ok,existing,,
-日本オラクル,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-TISI,,ok,existing,,
-日鉄ソリューション,,ok,existing,,
-BIPROGY,,ok,existing,,
-NSD,,ok,existing,,
-カカクコム,,ok,existing,,
-グリーホールディングス,,ok,existing,,
-フリー,,ok,existing,,
-インフォマート,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-トヨクモ,,ok,existing,,
-セガサミー,,ok,existing,,
-スクウェア・エニックス,,ok,existing,,
-ガンホー,,ok,existing,,
-タカラトミー,,ok,existing,,
-東映,,ok,existing,,
-リゾートトラスト,,ok,existing,,
-寿スピリッツ,,ok,existing,,
-共立メンテナンス,,ok,existing,,
-平和,,ok,existing,,
-第一興商,,ok,existing,,
-エイチ・アイ・エス,,ok,existing,,
-コシダカホールディングス,,ok,existing,,
-ユニバーサル・エンターテイメント,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-イオンファンタジー,,ok,existing,,
-パーソル,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://www.inte.co.jp&size=256"
-テクノプロ,,ok,existing,,
-メイテック,,ok,existing,,
-オープンアップグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-ディップ,,ok,existing,,
-JACリクルートメント,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-エン,,ok,existing,,
-UTグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-パソナグループ,,ok,existing,,
-ゼンショーホールディングス,,ok,existing,,
-すかいらーくホールディングス,,ok,existing,,
-トリドール,,ok,existing,,
-王将フードサービス,,ok,existing,,
-吉野家ホールディングス,,ok,existing,,
-くら寿司,,ok,existing,,
-物語コーポレーション,,ok,existing,,
-コメダホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-松屋フーズホールディングス,,ok,existing,,
-モスフードサービス,,ok,existing,,
-ドトール日レス,,ok,existing,,
-丸千代山岡家,,ok,existing,,
-ダイキン工業,,ok,existing,,
-マキタ,,ok,existing,,
-ホシザキ,,ok,existing,,
-三浦工業,,ok,existing,,
-日本郵船,,ok,existing,,
-商船三井,,ok,existing,,
-川崎汽船,,ok,existing,,
-東日本旅客鉄道,,ok,existing,,
-西日本旅客鉄道,,ok,existing,,
-東京地下鉄,,ok,existing,,
-東急,,ok,existing,,
-西武ホールディングス,,ok,existing,,
-阪急阪神ホールディングス,,ok,existing,,
-近鉄グループホールディングス,,ok,existing,,
-京成電鉄,,ok,existing,,
-九州旅客鉄道,,ok,existing,,
-小田急電鉄,,ok,existing,,
-東武鉄道,,ok,existing,,
-京王電鉄,,ok,existing,,
-名古屋鉄道,,ok,existing,,
-京阪ホールディングス,,ok,existing,,
-京浜急行電鉄,,ok,existing,,
-南海電気鉄道,,ok,existing,,
-相鉄ホールディングス,,ok,existing,,
-西日本鉄道,,ok,existing,,
-ゆうちょ銀行,,ok,existing,,
-三井住友トラスト・ホールディングス,,ok,existing,,
-りそなホールディングス,,ok,existing,,
-千葉銀行,,ok,existing,,
-横浜フィナンシャルグループ,,ok,existing,,
-しずおかフィナンシャルグループ,,ok,existing,,
-ふくおかフィナンシャルグループ,,ok,existing,,
-SBI新生銀行,,ok,existing,,
-めぶきフィナンシャルグループ,,ok,existing,,
-京都フィナンシャルグループ,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-八十二長野銀行,,ok,existing,,
-いよぎん,,ok,existing,,
-群馬銀行,,ok,existing,,
-ほくほくフィナンシャルグループ,,failed,,,"favicon: 404 Client Error: Not Found for url: https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://kiokim.ru&size=256"
-七十七銀行,,ok,existing,,
-山口フィナンシャルグループ,,ok,existing,,
-九州フィナンシャルグループ,,ok,existing,,
-ひろぎんホールディングス,,ok,existing,,
-東京海上ホールディングス,,ok,existing,,
-MS＆ADインシュアランスグループホールディングス,,ok,existing,,
-第一ライフホールディングス,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-SOMPOホールディングス,,ok,existing,,
-T＆Dホールディングス,,ok,existing,,
-かんぽ生命保険,,ok,existing,,
-野村ホールディングス,,ok,existing,,
-日本取引所グループ,,ok,existing,,
-大和証券グループ本社,,ok,existing,,
-テルモ,,ok,existing,,
-朝日インテック,,ok,existing,,
+神戸物産,,ok,指定,https://drive.google.com/file/d/1XfFtcNatj6Q5GmoMzEW18Pbw7yhUYlmc/view,神戸物産.png
+コスモス薬品,,ok,指定,https://drive.google.com/file/d/1zHN0iRBBDP2KbRoLLuN44N5OO1XERGWu/view,コスモス薬品.png
+スギホールディングス,,ok,指定,https://drive.google.com/file/d/1FZL8_LsBDld2ool7vNnIFZ4AG_-h2GDm/view,スギホールディングス.png
+ツルハ,,ok,指定,https://drive.google.com/file/d/1AjkFIrg_1mw1Deg_Thr-aETN55Ply-F0/view,ツルハ.svg
+クスリのアオキホールディングス,,ok,指定,https://drive.google.com/file/d/11awp9nN9y-_w8t4vZA4y3CEivYB4OS98/view,クスリのアオキホールディングス.png
+サンドラッグ,,ok,指定,https://drive.google.com/file/d/16Ywf9mzYNaMjxhoTJhvdPL1dGsG3FfX7/view,サンドラッグ.png
+三越伊勢丹ホールディングス,,ok,指定,https://drive.google.com/file/d/1TVq2OwEENanr-luq9XVyW8KkIagfFsDR/view,三越伊勢丹ホールディングス.svg
+丸井グループ,,ok,指定,https://drive.google.com/file/d/1WNojhFrLTFbo3WKGmfwh-XZ24YlASR4d/view,丸井グループ.png
+Jフロントリテイリング,,ok,指定,https://drive.google.com/file/d/1EDLrERSkOqGtaJPHDAl45I6zj2A_vGh3/view,Jフロントリテイリング.svg
+高島屋,,ok,指定,https://drive.google.com/file/d/1KC8e-MPfIXwL4LQhGHSECiYLRT9wpPkJ/view,高島屋.svg
+H2Oリテイリング,,ok,指定,https://drive.google.com/file/d/1FE2w-cp6s_b0X3DPB9X0sWyT7efh6TVy/view,H2Oリテイリング.png
+野村総研,,ok,指定,https://drive.google.com/file/d/1-m4lFspVkkLwFkgkwSCjMtmxtlKs7vCW/view,野村総研.png
+日本オラクル,,ok,指定,https://drive.google.com/file/d/1omBw-vszc7Hn5VtTld9BufFQaz43kjNU/view,日本オラクル.svg
+TISI,,ok,指定,https://drive.google.com/file/d/1g_6NzxGtRhMFC_tseCmzoX_PuZAHCOru/view,TISI.svg
+日鉄ソリューション,,ok,指定,https://drive.google.com/file/d/1lPON5YQF5-ovSw-NNN9_TXLyFpwzQlAk/view,日鉄ソリューション.png
+BIPROGY,,ok,指定,https://drive.google.com/file/d/1wWEmOfXT2xNFaX199cuvFmQYOZ993sYe/view,BIPROGY.svg
+NSD,,ok,指定,https://drive.google.com/file/d/1aLg3VXTr91vqqw5Paipmgiyp9pdgj4FN/view,NSD.svg
+カカクコム,,ok,指定,https://drive.google.com/file/d/1IH9Sg2P1TbSHMZceuY6nRGH1x0W6oLxG/view,カカクコム.png
+グリーホールディングス,,ok,指定,https://drive.google.com/file/d/1awI0mnebMy5H_OJrs1V_PJ9pkOcs54XV/view,グリーホールディングス.svg
+フリー,,ok,指定,https://drive.google.com/file/d/1lzYN_dCwViLWpzHqQwC5BfBd7jmermKF/view,フリー.png
+インフォマート,,ok,指定,https://drive.google.com/file/d/1QpqWgks6_nyOzR2HcHiZquoi9NC0mKU3/view,インフォマート.svg
+トヨクモ,,ok,指定,https://drive.google.com/file/d/1Kv4FtNNQ7QjlZYypQCOy64qpvqf0nLOd/view,トヨクモ.svg
+セガサミー,,ok,指定,https://drive.google.com/file/d/1vv29yvzk9A4uvOmMQQXR4dBoI8tdMTPL/view,セガサミー.svg
+スクウェア・エニックス,,ok,指定,https://drive.google.com/file/d/1B37gEBshKIYr344aX9L4iyP-RSyXr-R7/view,スクウェア・エニックス.svg
+ガンホー,,ok,指定,https://drive.google.com/file/d/1YuBr_KSucgdX2rSKGP4ZKMqt7GcfNqQI/view,ガンホー.jpg
+タカラトミー,,ok,指定,https://drive.google.com/file/d/1y4WTEgRT6STCZ0oaEmSGOPi2nDXW5Qol/view,タカラトミー.svg
+東映,,ok,指定,https://drive.google.com/file/d/1whYGXQt5RuB226rhuFnzEQVMeyvhyul9/view,東映.svg
+リゾートトラスト,,ok,指定,https://drive.google.com/file/d/1fMQJa0px_UhWn_Jb5i_4llSRyh5f17cK/view,リゾートトラスト.svg
+寿スピリッツ,,ok,指定,https://drive.google.com/file/d/1LHtMaj0gCdzg9kpkqwDVxU5zTbsdb-Ub/view,寿スピリッツ.png
+共立メンテナンス,,ok,指定,https://drive.google.com/file/d/1EtnN7dmlV2CwnInZ172jCZWMjjgord3C/view,共立メンテナンス.svg
+平和,,ok,指定,https://drive.google.com/file/d/1ytmI3U60ssamvKoFdhRwYb_D8-51uvmu/view,平和.png
+第一興商,,ok,指定,https://drive.google.com/file/d/1hpfzpyYg0dIqjeOn_ChBtDmxG98TNwx2/view,第一興商.png
+エイチ・アイ・エス,,ok,指定,https://drive.google.com/file/d/1F7X_nARGG3H8gBx8Pa1GkHFSqksX40ar/view,エイチ・アイ・エス.svg
+コシダカホールディングス,,ok,指定,https://drive.google.com/file/d/1pCMDa2orHJzelrGAvKxWRfiVcSCAYX59/view,コシダカホールディングス.png
+ユニバーサル・エンターテイメント,,ok,指定,https://drive.google.com/file/d/1nV6XuBvXLKKd6kdTKqV4oEUwLBwusJQ7/view,ユニバーサル・エンターテイメント.svg
+イオンファンタジー,,ok,指定,https://drive.google.com/file/d/1bMa3cB2UDuSIdoQxmpayWxXg4DKXP52d/view,イオンファンタジー.svg
+パーソル,,ok,指定,https://drive.google.com/file/d/1cCKonyVNp48RHKqaOuiS_jRhIgdNr-MJ/view,パーソル.svg
+テクノプロ,,ok,指定,https://drive.google.com/file/d/15p4SEmlxj8I04CKr-9A-Le6YHNs4R7e8/view,テクノプロ.svg
+メイテック,,ok,指定,https://drive.google.com/file/d/1Sya9IKNG_Ifp51adjiHWGgG5joTyyuq7/view,メイテック.png
+オープンアップグループ,,ok,指定,https://drive.google.com/file/d/1cQyc4Mks_ER7wqG3-5TuxoTT-StKgIbY/view,オープンアップグループ.svg
+ディップ,,ok,指定,https://drive.google.com/file/d/1i2AOplIW4XCSIECdqq7TJxU8YNBfbjVN/view,ディップ.png
+JACリクルートメント,,ok,指定,https://drive.google.com/file/d/1X-7c6ZoVB57QSGlYi2LAaAnf3DUs1OWD/view,JACリクルートメント.png
+エン,,ok,指定,https://drive.google.com/file/d/1kenzRGM-VE1JNZU8Zo_2CO3RRNBq-_Qx/view,エン.svg
+UTグループ,,ok,指定,https://drive.google.com/file/d/1781jJCxOMCbyH8rC2FkyPUNqJEaczXLr/view,UTグループ.png
+パソナグループ,,ok,指定,https://drive.google.com/file/d/1UCoDiqh44NjKmuIOfS3YfM4A3XmgAPwN/view,パソナグループ.svg
+ゼンショーホールディングス,,ok,指定,https://drive.google.com/file/d/1m66Mp-0g6NYGNtcZXm_8WBXYwl--uws1/view,ゼンショーホールディングス.svg
+すかいらーくホールディングス,,ok,指定,https://drive.google.com/file/d/1D8klaXHmtpAxZQC9-lVtjj_Uc6rON3Bo/view,すかいらーくホールディングス.svg
+トリドール,,ok,指定,https://drive.google.com/file/d/1O3VtT4f9Rd7-RDRJf6FOrOVpYdfHRCeN/view,トリドール.png
+王将フードサービス,,ok,指定,https://drive.google.com/file/d/1bC9Bf0-HLBGqJ1UJDqO0fUE5VNOc8H1h/view,王将フードサービス.svg
+吉野家ホールディングス,,ok,指定,https://drive.google.com/file/d/1J1Jn766yF0dX829R-wvyWGrL0MI_yxTn/view,吉野家ホールディングス.png
+くら寿司,,ok,指定,https://drive.google.com/file/d/1T7lZmau246zrR1VhDOY4TSHNiGQSk-G-/view,くら寿司.svg
+物語コーポレーション,,ok,指定,https://drive.google.com/file/d/170tFwSzUmAfZMx7NN0Wu4jZTvGYl6Ie6/view,物語コーポレーション.svg
+コメダホールディングス,,ok,指定,https://drive.google.com/file/d/14pEMN3Pm4m_e8BJzSgyHzk9_TkZB0-3H/view,コメダホールディングス.svg
+松屋フーズホールディングス,,ok,指定,https://drive.google.com/file/d/1jcjxfrYxyng7_CVDmiuuUvq5AxfBu1TM/view,松屋フーズホールディングス.png
+モスフードサービス,,ok,指定,https://drive.google.com/file/d/1hE2kgpl73q3kARvstkGhQ0zx4kYxaDPz/view,モスフードサービス.svg
+ドトール日レス,,ok,指定,https://drive.google.com/file/d/16zDwtXxlKaaGK0csYDj0U-81GfknW4w5/view,ドトール日レス.png
+丸千代山岡家,,ok,指定,https://drive.google.com/file/d/1SCWwhTrykHkijSwyVzS7BSllsKGjN4fU/view,丸千代山岡家.png
+ダイキン工業,,ok,指定,https://drive.google.com/file/d/1XmfWWoo45ooJ8USZzNQHJA7E-NSm0yfh/view,ダイキン工業.svg
+マキタ,,ok,指定,https://drive.google.com/file/d/1Jy99cJYntiRrZDt6fmBACfp2acgzKkgr/view,マキタ.svg
+ホシザキ,,ok,指定,https://drive.google.com/file/d/1lbWhFXqDKWUUtQS_S0c_OpyCfBqhArtB/view,ホシザキ.svg
+三浦工業,,ok,指定,https://drive.google.com/file/d/1Mfc1-1i9XT4bzjKTT0w5ya3N9fDSmUXN/view,三浦工業.svg
+日本郵船,,ok,指定,https://drive.google.com/file/d/1yFGLo0xblqOsa_5LxGRaLlc9UNyCdLCx/view,日本郵船.svg
+商船三井,,ok,指定,https://drive.google.com/file/d/1rwBA4prH2Zhe4WkWmJ4K6HOtjR7b9WtN/view,商船三井.svg
+川崎汽船,,ok,指定,https://drive.google.com/file/d/1LBZniE37jXspUVAQgvxa7xytenv8Rzgq/view,川崎汽船.svg
+東日本旅客鉄道,,ok,指定,https://drive.google.com/file/d/1dbJykXVXe1Jlp1D5SVOxCYm3hR79YuYP/view,東日本旅客鉄道.svg
+西日本旅客鉄道,,ok,指定,https://drive.google.com/file/d/1LYd_-XyXY_Soi73AKVViYWx0pOeQ2hYt/view,西日本旅客鉄道.svg
+東京地下鉄,,ok,指定,https://drive.google.com/file/d/14M8FoDzOPB49cxb4aq5bdaz8fTzPx6FR/view,東京地下鉄.svg
+東急,,ok,指定,https://drive.google.com/file/d/1Vk4YlUnL_OT0ANR9tHMovMwpYacBJk-z/view,東急.svg
+西武ホールディングス,,ok,指定,https://drive.google.com/file/d/1TiVFL1IBGnYsb9DQTpLWWnFAQF7yqnAA/view,西武ホールディングス.svg
+阪急阪神ホールディングス,,ok,指定,https://drive.google.com/file/d/1TQlUKnwZqAzKK0QaaeL8JQov-vwhkaug/view,阪急阪神ホールディングス.svg
+近鉄グループホールディングス,,ok,指定,https://drive.google.com/file/d/1B_Pk35TxYY1PrlFtMBpW90WEE7QDPoHk/view,近鉄グループホールディングス.svg
+京成電鉄,,ok,指定,https://drive.google.com/file/d/11ivpN5ESfcHT7fOe5MyoAGfwbVC49rFc/view,京成電鉄.svg
+九州旅客鉄道,,ok,指定,https://drive.google.com/file/d/1II6Au3ydhS2Vo52QI8wN_0wM6Hfj0XpA/view,九州旅客鉄道.svg
+小田急電鉄,,ok,指定,https://drive.google.com/file/d/1bXQOksXMx9mad5bTkd68CLTrnQmRTK_d/view,小田急電鉄.svg
+東武鉄道,,ok,指定,https://drive.google.com/file/d/1eTaqk7IqlbU33hiHHOZcF0lBDg4uwaPP/view,東武鉄道.svg
+京王電鉄,,ok,指定,https://drive.google.com/file/d/19307dCX_CQAH9nASBSucXKG0FXdX31Hq/view,京王電鉄.svg
+名古屋鉄道,,ok,指定,https://drive.google.com/file/d/1QTL0rwTxS-4lNXmwLC4m6XL6zZezPv_O/view,名古屋鉄道.svg
+京阪ホールディングス,,ok,指定,https://drive.google.com/file/d/1bkZHdokUWElF89uQNeXzFgQAsYaUnuIa/view,京阪ホールディングス.svg
+京浜急行電鉄,,ok,指定,https://drive.google.com/file/d/1TEauaM4SeGqgJszX9hmpdY1fW-4AmnbW/view,京浜急行電鉄.svg
+南海電気鉄道,,ok,指定,https://drive.google.com/file/d/1QLAVN1uS_P55d6jHPYX_rzFMjaGwrtCx/view,南海電気鉄道.svg
+相鉄ホールディングス,,ok,指定,https://drive.google.com/file/d/1EU3WFJ7UItoPnPt2zK-qKeISa57HaBlF/view,相鉄ホールディングス.svg
+西日本鉄道,,ok,指定,https://drive.google.com/file/d/1vXNZEpM0UgR6aAZ1_k0Q45pLrwo5YCzg/view,西日本鉄道.svg
+ゆうちょ銀行,,ok,指定,https://drive.google.com/file/d/1ESGPsdW1sNXjuxMUKuIi29d0QI1Dywn5/view,ゆうちょ銀行.svg
+三井住友トラスト・ホールディングス,,ok,指定,https://drive.google.com/file/d/1kOfwPW1itlkn45vDIbMLVDV12z_nbvwb/view,三井住友トラスト・ホールディングス.png
+りそなホールディングス,,ok,指定,https://drive.google.com/file/d/1-Dzxg5XBIkJu_QOMs_tZ4mthkR1C7lT-/view,りそなホールディングス.svg
+千葉銀行,,ok,指定,https://drive.google.com/file/d/10rZVQzDkYIE_bueH60G8ZewmPgtuZIrw/view,千葉銀行.png
+横浜フィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1SOQ03TwienoC9GstwczQQAfG4ALd2ULc/view,横浜フィナンシャルグループ.svg
+しずおかフィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1gNc19DgJWyLLPA5j7huS7h3O-CfZeBOi/view,しずおかフィナンシャルグループ.svg
+ふくおかフィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1iofk-L1kfrcx_PQC2oXn0iDe0k8fGxlv/view,ふくおかフィナンシャルグループ.svg
+SBI新生銀行,,ok,指定,https://drive.google.com/file/d/1N7Bw4phcqKLsVH_a1aRo-3ok31RSWxSX/view,SBI新生銀行.svg
+めぶきフィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1_wSsJhIVNDMjybmPSpP9hY4P7DZCCCCZ/view,めぶきフィナンシャルグループ.png
+京都フィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1iVVoVu9FnvCiaDz2uLXp2uPL25J28MAx/view,京都フィナンシャルグループ.svg
+八十二長野銀行,,ok,指定,https://drive.google.com/file/d/1nIEY_TOxdsG5-YqCynW7TBz7y4HKySS5/view,八十二長野銀行.svg
+いよぎん,,ok,指定,https://drive.google.com/file/d/1cszoYCH-FpUGstljxnZwQ6cv3I3PE-5X/view,いよぎん.svg
+群馬銀行,,ok,指定,https://drive.google.com/file/d/1tsKjbcaDx9I8E81wF2DSbTu3M1HrsQMz/view,群馬銀行.svg
+ほくほくフィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/13PsUNjO25Jy2N0a0-PNvF8le4owrKiZt/view,ほくほくフィナンシャルグループ.svg
+七十七銀行,,ok,指定,https://drive.google.com/file/d/1BP5og1ITrqxRrY0eDJ2PijXhZ-qHd5si/view,七十七銀行.svg
+山口フィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1fnu4KR5kd-oKabHxxeQHrIOcsBUFk5Ka/view,山口フィナンシャルグループ.svg
+九州フィナンシャルグループ,,ok,指定,https://drive.google.com/file/d/1XcCIyI2Vq-zq80uEGJOjhImu_XJOdor2/view,九州フィナンシャルグループ.svg
+ひろぎんホールディングス,,ok,指定,https://drive.google.com/file/d/1yc3G-3gMXDQyxPy3CpjJUy8ikttymou-/view,ひろぎんホールディングス.png
+東京海上ホールディングス,,ok,指定,https://drive.google.com/file/d/1i0gefvJCfA6ZL5ARNnZcC9zNHvrGkrN7/view,東京海上ホールディングス.svg
+MS＆ADインシュアランスグループホールディングス,,ok,指定,https://drive.google.com/file/d/17Kjv8ugTZZv9ekwa7MFwpqWixNd31AJU/view,MS＆ADインシュアランスグループホールディングス.svg
+第一ライフホールディングス,,ok,指定,https://drive.google.com/file/d/1xYYCDyYx1inR5ZIao6U-yyeO22pILlju/view,第一ライフホールディングス.png
+SOMPOホールディングス,,ok,指定,https://drive.google.com/file/d/1tnHW4Q_D_5t09IKH3_xy90y54N1eBjaS/view,SOMPOホールディングス.svg
+T＆Dホールディングス,,ok,指定,https://drive.google.com/file/d/1nZWuYLk5ZuMJvvMaVxqaKpaM5aPge5LZ/view,T＆Dホールディングス.jpg
+かんぽ生命保険,,ok,指定,https://drive.google.com/file/d/11EDdePneOuOMbXFXUwrTawezFKK-LvW_/view,かんぽ生命保険.svg
+野村ホールディングス,,ok,指定,https://drive.google.com/file/d/1gzg2nAzFkgV294dGLWSCB9L_TuXvCHhe/view,野村ホールディングス.svg
+日本取引所グループ,,ok,指定,https://drive.google.com/file/d/1i1EulfVJxq4Kx2NUPI7-HeJ2HC2hp4uR/view,日本取引所グループ.svg
+大和証券グループ本社,,ok,指定,https://drive.google.com/file/d/1qC8VEH_uKsbLQ4SUEqKbkTJocilzowES/view,大和証券グループ本社.png
+テルモ,,ok,指定,https://drive.google.com/file/d/1Lij95Pu-VuwMWrIltMzB4T6aAvX9lf3p/view,テルモ.svg
+朝日インテック,,ok,指定,https://drive.google.com/file/d/1Dy7CDTtoLACU4MqbumSJWBOJURiRFvHZ/view,朝日インテック.svg
