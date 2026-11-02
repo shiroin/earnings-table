@@ -1,0 +1,3950 @@
+[
+{
+"no": 1,
+"ja": "NVIDIA",
+"file": "NVIDIA.svg",
+"title": "001_NVIDIA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 2,
+"ja": "AMD",
+"file": "AMD.svg",
+"title": "002_AMD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 3,
+"ja": "Broadcom",
+"file": "Broadcom.svg",
+"title": "003_Broadcom.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 4,
+"ja": "Intel",
+"file": "Intel.svg",
+"title": "004_Intel.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 5,
+"ja": "TSMC",
+"file": "TSMC.svg",
+"title": "005_TSMC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 6,
+"ja": "SMIC",
+"file": "SMIC.svg",
+"title": "006_SMIC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 7,
+"ja": "カンブリコン・テクノロジーズ",
+"file": "Cambricon.svg",
+"title": "007_カンブリコン・テクノロジーズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 8,
+"ja": "ARMホールディングス",
+"file": "Arm_Holdings.svg",
+"title": "008_ARMホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 9,
+"ja": "セレブラス・システムズ",
+"file": "Cerebras_Systems.svg",
+"title": "009_セレブラス・システムズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 10,
+"ja": "SKハイニックス",
+"file": "SK_hynix.svg",
+"title": "010_SKハイニックス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 11,
+"ja": "サムスン電子",
+"file": "Samsung_Electronics.svg",
+"title": "011_サムスン電子.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 12,
+"ja": "Micron",
+"file": "Micron.png",
+"title": "012_Micron.png",
+"mime": "image/png"
+},
+{
+"no": 13,
+"ja": "キオクシア",
+"file": "キオクシアホールディングス.svg",
+"title": "013_キオクシア.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 14,
+"ja": "サンディスク",
+"file": "Sandisk.svg",
+"title": "014_サンディスク.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 15,
+"ja": "南亜科技",
+"file": "南亜科技.png",
+"title": "015_南亜科技.png",
+"mime": "image/png"
+},
+{
+"no": 16,
+"ja": "CXMT",
+"file": "CXMT.svg",
+"title": "016_CXMT.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 17,
+"ja": "シーゲート",
+"file": "Seagate_Technology.svg",
+"title": "017_シーゲート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 18,
+"ja": "ウェスタン・デジタル",
+"file": "Western_Didital.svg",
+"title": "018_ウェスタン・デジタル.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 19,
+"ja": "Dell Technologies",
+"file": "Dell_Technologies.svg",
+"title": "019_Dell Technologies.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 20,
+"ja": "ヒューレット・パッカード・エンタープライズ",
+"file": "Hewlett_Packard_Enterprise.svg",
+"title": "020_ヒューレット・パッカード・エンタープライズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 21,
+"ja": "Super Micro Computer",
+"file": "Super_Micro_Computer.svg",
+"title": "021_Super Micro Computer.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 22,
+"ja": "レノボ",
+"file": "Lenovo.svg",
+"title": "022_レノボ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 23,
+"ja": "ファーウェイ",
+"file": "華為.svg",
+"title": "023_ファーウェイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 24,
+"ja": "鴻海精密工業",
+"file": "鴻海精密工業.svg",
+"title": "024_鴻海精密工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 25,
+"ja": "Cisco Systems",
+"file": "Cisco_Systems.svg",
+"title": "025_Cisco Systems.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 26,
+"ja": "Celestica",
+"file": "Celestica.svg",
+"title": "026_Celestica.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 27,
+"ja": "Arista Networks",
+"file": "Arista_Networks.svg",
+"title": "027_Arista Networks.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 28,
+"ja": "Astera Labs",
+"file": "Astera_Labs.svg",
+"title": "028_Astera Labs.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 29,
+"ja": "イノライト",
+"file": "Zhongji_Innolight.png",
+"title": "029_イノライト.png",
+"mime": "image/png"
+},
+{
+"no": 30,
+"ja": "アンフェノール",
+"file": "Amphenol.svg",
+"title": "030_アンフェノール.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 31,
+"ja": "Corning",
+"file": "Corning.svg",
+"title": "031_Corning.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 32,
+"ja": "Credo Technology",
+"file": "Credo_Technology.png",
+"title": "032_Credo Technology.png",
+"mime": "image/png"
+},
+{
+"no": 33,
+"ja": "Lumentum",
+"file": "Lumentum.svg",
+"title": "033_Lumentum.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 34,
+"ja": "Marvell",
+"file": "Marvell.svg",
+"title": "034_Marvell.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 35,
+"ja": "Coherent",
+"file": "Coherent.png",
+"title": "035_Coherent.png",
+"mime": "image/png"
+},
+{
+"no": 36,
+"ja": "シエナ・コーポレーション",
+"file": "Ciena.png",
+"title": "036_シエナ・コーポレーション.png",
+"mime": "image/png"
+},
+{
+"no": 37,
+"ja": "POETテクノロジーズ",
+"file": "POET_Technologies.png",
+"title": "037_POETテクノロジーズ.png",
+"mime": "image/png"
+},
+{
+"no": 38,
+"ja": "フジクラ",
+"file": "フジクラ.svg",
+"title": "038_フジクラ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 39,
+"ja": "古河電工",
+"file": "古河電気工業.svg",
+"title": "039_古河電工.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 40,
+"ja": "住友電工",
+"file": "住友電気工業.svg",
+"title": "040_住友電工.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 41,
+"ja": "精工技研",
+"file": "精工技研.png",
+"title": "041_精工技研.png",
+"mime": "image/png"
+},
+{
+"no": 42,
+"ja": "santec",
+"file": "santec_Holdings.png",
+"title": "042_santec.png",
+"mime": "image/png"
+},
+{
+"no": 43,
+"ja": "OpenAI",
+"file": "OpenAI.svg",
+"title": "043_OpenAI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 44,
+"ja": "Anthropic",
+"file": "Anthropic.svg",
+"title": "044_Anthropic.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 45,
+"ja": "DeepSeek",
+"file": "DeepSeek.svg",
+"title": "045_DeepSeek.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 46,
+"ja": "Mistral AI",
+"file": "Mistral_AI.svg",
+"title": "046_Mistral AI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 47,
+"ja": "Moonshot AI",
+"file": "Moonshot_AI.svg",
+"title": "047_Moonshot AI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 48,
+"ja": "ソフトバンクグループ",
+"file": "ソフトバンクグループ.svg",
+"title": "048_ソフトバンクグループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 49,
+"ja": "Microsoft",
+"file": "Microsoft.svg",
+"title": "049_Microsoft.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 50,
+"ja": "Alphabet",
+"file": "Alphabet.svg",
+"title": "050_Alphabet.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 51,
+"ja": "Amazon",
+"file": "Amazon.svg",
+"title": "051_Amazon.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 52,
+"ja": "Meta Platforms",
+"file": "Meta_Platforms.svg",
+"title": "052_Meta Platforms.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 53,
+"ja": "Oracle",
+"file": "Oracle.svg",
+"title": "053_Oracle.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 54,
+"ja": "コアウィーブ",
+"file": "CoreWeave.svg",
+"title": "054_コアウィーブ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 55,
+"ja": "ネビウスグループ",
+"file": "Nebius_Group.svg",
+"title": "055_ネビウスグループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 56,
+"ja": "ASML",
+"file": "ASML.svg",
+"title": "056_ASML.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 57,
+"ja": "東京エレクトロン",
+"file": "東京エレクトロン.svg",
+"title": "057_東京エレクトロン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 58,
+"ja": "アドバンテスト",
+"file": "アドバンテスト.svg",
+"title": "058_アドバンテスト.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 59,
+"ja": "ディスコ",
+"file": "ディスコ.png",
+"title": "059_ディスコ.png",
+"mime": "image/png"
+},
+{
+"no": 60,
+"ja": "レーザーテック",
+"file": "レーザーテック.svg",
+"title": "060_レーザーテック.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 61,
+"ja": "SCREEN",
+"file": "SCREENホールディングス.svg",
+"title": "061_SCREEN.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 62,
+"ja": "アプライド・マテリアル",
+"file": "Applied_Materials.svg",
+"title": "062_アプライド・マテリアル.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 63,
+"ja": "ラムリサーチ",
+"file": "Lam_Research.svg",
+"title": "063_ラムリサーチ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 64,
+"ja": "KLA",
+"file": "KLA.svg",
+"title": "064_KLA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 65,
+"ja": "KOKUSAI ELECTRIC",
+"file": "KOKUSAI_ELECTRIC.svg",
+"title": "065_KOKUSAI ELECTRIC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 66,
+"ja": "ローツェ",
+"file": "ローツェ.png",
+"title": "066_ローツェ.png",
+"mime": "image/png"
+},
+{
+"no": 67,
+"ja": "村田製作所",
+"file": "村田製作所.svg",
+"title": "067_村田製作所.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 68,
+"ja": "イビデン",
+"file": "イビデン.svg",
+"title": "068_イビデン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 69,
+"ja": "メイコー",
+"file": "メイコー.png",
+"title": "069_メイコー.png",
+"mime": "image/png"
+},
+{
+"no": 70,
+"ja": "JX金属",
+"file": "JX金属.svg",
+"title": "070_JX金属.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 71,
+"ja": "レゾナック",
+"file": "レゾナック・ホールディングス.svg",
+"title": "071_レゾナック.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 72,
+"ja": "日東紡",
+"file": "日東紡績.svg",
+"title": "072_日東紡.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 73,
+"ja": "信越化学",
+"file": "信越化学工業.svg",
+"title": "073_信越化学.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 74,
+"ja": "SUMCO",
+"file": "SUMCO.svg",
+"title": "074_SUMCO.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 75,
+"ja": "味の素",
+"file": "味の素.svg",
+"title": "075_味の素.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 76,
+"ja": "TOTO",
+"file": "TOTO.png",
+"title": "076_TOTO.png",
+"mime": "image/png"
+},
+{
+"no": 77,
+"ja": "IREN",
+"file": "IREN.svg",
+"title": "077_IREN.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 78,
+"ja": "Vertiv",
+"file": "Vertiv.svg",
+"title": "078_Vertiv.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 79,
+"ja": "Bloom Energy",
+"file": "Bloom_Energy.svg",
+"title": "079_Bloom Energy.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 80,
+"ja": "Vistra",
+"file": "Vistra_Corp..svg",
+"title": "080_Vistra.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 81,
+"ja": "SBエナジー",
+"file": "SBエナジー.png",
+"title": "081_SBエナジー.png",
+"mime": "image/png"
+},
+{
+"no": 82,
+"ja": "日立",
+"file": "日立製作所.svg",
+"title": "082_日立.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 83,
+"ja": "パナソニック",
+"file": "パナソニック.svg",
+"title": "083_パナソニック.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 84,
+"ja": "GEベルノバ",
+"file": "GE_Vernova.svg",
+"title": "084_GEベルノバ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 86,
+"ja": "Salesforce",
+"file": "Salesforce.svg",
+"title": "086_Salesforce.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 87,
+"ja": "Adobe",
+"file": "Adobe.svg",
+"title": "087_Adobe.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 88,
+"ja": "ServiceNow",
+"file": "ServiceNow.svg",
+"title": "088_ServiceNow.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 89,
+"ja": "Snowflake",
+"file": "Snowflake.svg",
+"title": "089_Snowflake.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 90,
+"ja": "Datadog",
+"file": "Datadog.png",
+"title": "090_Datadog.png",
+"mime": "image/png"
+},
+{
+"no": 91,
+"ja": "Cloudflare",
+"file": "Cloudflare.svg",
+"title": "091_Cloudflare.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 92,
+"ja": "アカマイ",
+"file": "Akamai_Technologies.svg",
+"title": "092_アカマイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 93,
+"ja": "MongoDB",
+"file": "MongoDB.svg",
+"title": "093_MongoDB.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 94,
+"ja": "Palantir",
+"file": "Palantir.svg",
+"title": "094_Palantir.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 95,
+"ja": "Workday",
+"file": "Workday.svg",
+"title": "095_Workday.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 96,
+"ja": "HubSpot",
+"file": "HubSpot.svg",
+"title": "096_HubSpot.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 97,
+"ja": "Zoom Video Communications",
+"file": "Zoom_Video_Communications.svg",
+"title": "097_Zoom Video Communications.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 98,
+"ja": "Twilio",
+"file": "Twilio.svg",
+"title": "098_Twilio.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 99,
+"ja": "Okta",
+"file": "Okta.svg",
+"title": "099_Okta.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 100,
+"ja": "CrowdStrike",
+"file": "CrowdStrike.svg",
+"title": "100_CrowdStrike.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 101,
+"ja": "Palo Alto Networks",
+"file": "Palo_Alto_Networks.svg",
+"title": "101_Palo Alto Networks.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 102,
+"ja": "Zscaler",
+"file": "Zscaler.svg",
+"title": "102_Zscaler.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 103,
+"ja": "Intuit",
+"file": "Intuit.svg",
+"title": "103_Intuit.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 104,
+"ja": "Autodesk",
+"file": "Autodesk.svg",
+"title": "104_Autodesk.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 105,
+"ja": "Cadence",
+"file": "Cadence_Design_Systems.svg",
+"title": "105_Cadence.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 106,
+"ja": "Synopsys",
+"file": "Synopsys.svg",
+"title": "106_Synopsys.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 107,
+"ja": "GitLab",
+"file": "GitLab.svg",
+"title": "107_GitLab.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 108,
+"ja": "UiPath",
+"file": "UiPath.svg",
+"title": "108_UiPath.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 109,
+"ja": "Atlassian",
+"file": "Atlassian.svg",
+"title": "109_Atlassian.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 110,
+"ja": "Shopify",
+"file": "Shopify.svg",
+"title": "110_Shopify.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 111,
+"ja": "Figma",
+"file": "Figma.svg",
+"title": "111_Figma.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 112,
+"ja": "Elastic",
+"file": "Elastic.png",
+"title": "112_Elastic.png",
+"mime": "image/png"
+},
+{
+"no": 113,
+"ja": "Veeva Systems",
+"file": "Veeva_Systems.svg",
+"title": "113_Veeva Systems.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 114,
+"ja": "Samsara",
+"file": "Samsara.svg",
+"title": "114_Samsara.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 115,
+"ja": "monday.com",
+"file": "monday.svg",
+"title": "115_monday.com.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 116,
+"ja": "オービック",
+"file": "オービック.png",
+"title": "116_オービック.png",
+"mime": "image/png"
+},
+{
+"no": 117,
+"ja": "オービックビジネスコンサルタント",
+"file": "オービックビジネスコンサルタント.svg",
+"title": "117_オービックビジネスコンサルタント.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 118,
+"ja": "Sansan",
+"file": "Sansan.svg",
+"title": "118_Sansan.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 119,
+"ja": "ラクス",
+"file": "ラクス.svg",
+"title": "119_ラクス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 120,
+"ja": "マネーフォワード",
+"file": "マネーフォワード.png",
+"title": "120_マネーフォワード.png",
+"mime": "image/png"
+},
+{
+"no": 121,
+"ja": "サイボウズ",
+"file": "サイボウズ.svg",
+"title": "121_サイボウズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 122,
+"ja": "freee",
+"file": "freee.gif",
+"title": "122_freee.gif",
+"mime": "image/gif"
+},
+{
+"no": 123,
+"ja": "HENNGE",
+"file": "HENNGE.svg",
+"title": "123_HENNGE.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 124,
+"ja": "プレイド",
+"file": "プレイド.svg",
+"title": "124_プレイド.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 125,
+"ja": "プラスアルファ・コンサルティング",
+"file": "プラスアルファ・コンサルティング.svg",
+"title": "125_プラスアルファ・コンサルティング.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 126,
+"ja": "スマレジ",
+"file": "スマレジ.png",
+"title": "126_スマレジ.png",
+"mime": "image/png"
+},
+{
+"no": 127,
+"ja": "Appier",
+"file": "Appier.svg",
+"title": "127_Appier.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 128,
+"ja": "弁護士ドットコム",
+"file": "弁護士ドットコム.svg",
+"title": "128_弁護士ドットコム.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 129,
+"ja": "LayerX",
+"file": "LayerX.svg",
+"title": "129_LayerX.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 130,
+"ja": "SmartHR",
+"file": "SmartHR.svg",
+"title": "130_SmartHR.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 131,
+"ja": "LegalOn",
+"file": "LegalOn_Technologies.svg",
+"title": "131_LegalOn.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 132,
+"ja": "Databricks",
+"file": "Databricks.png",
+"title": "132_Databricks.png",
+"mime": "image/png"
+},
+{
+"no": 133,
+"ja": "CADDi",
+"file": "CADDi.svg",
+"title": "133_CADDi.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 134,
+"ja": "メルカドリブレ",
+"file": "MercadoLibre.svg",
+"title": "134_メルカドリブレ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 135,
+"ja": "Sea",
+"file": "Sea_Limited.svg",
+"title": "135_Sea.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 136,
+"ja": "クーパン",
+"file": "Coupang.svg",
+"title": "136_クーパン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 137,
+"ja": "eBay",
+"file": "eBay.svg",
+"title": "137_eBay.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 138,
+"ja": "DoorDash",
+"file": "DoorDash.svg",
+"title": "138_DoorDash.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 139,
+"ja": "Chewy",
+"file": "Chewy.png",
+"title": "139_Chewy.png",
+"mime": "image/png"
+},
+{
+"no": 140,
+"ja": "Wayfair",
+"file": "Wayfair.svg",
+"title": "140_Wayfair.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 141,
+"ja": "モノタロウ",
+"file": "MonotaRO.png",
+"title": "141_モノタロウ.png",
+"mime": "image/png"
+},
+{
+"no": 142,
+"ja": "アリババ",
+"file": "Alibaba.svg",
+"title": "142_アリババ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 143,
+"ja": "PDD",
+"file": "PDD_Holdings.svg",
+"title": "143_PDD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 144,
+"ja": "JD.com",
+"file": "JD.png",
+"title": "144_JD.com.png",
+"mime": "image/png"
+},
+{
+"no": 145,
+"ja": "美団(メイトゥアン)",
+"file": "Meituan.png",
+"title": "145_美団(メイトゥアン).png",
+"mime": "image/png"
+},
+{
+"no": 146,
+"ja": "楽天グループ",
+"file": "楽天グループ.svg",
+"title": "146_楽天グループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 147,
+"ja": "メルカリ",
+"file": "メルカリ.svg",
+"title": "147_メルカリ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 148,
+"ja": "ZOZO",
+"file": "ZOZO.svg",
+"title": "148_ZOZO.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 150,
+"ja": "SHEIN",
+"file": "SHEIN.svg",
+"title": "150_SHEIN.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 151,
+"ja": "Bookingホールディングス",
+"file": "Booking_Holdings.svg",
+"title": "151_Bookingホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 152,
+"ja": "Airbnb",
+"file": "Airbnb.svg",
+"title": "152_Airbnb.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 153,
+"ja": "Expedia",
+"file": "Expedia.svg",
+"title": "153_Expedia.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 154,
+"ja": "Trip.com",
+"file": "Trip.png",
+"title": "154_Trip.com.png",
+"mime": "image/png"
+},
+{
+"no": 155,
+"ja": "Reddit",
+"file": "Reddit.svg",
+"title": "155_Reddit.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 156,
+"ja": "Duolingo",
+"file": "Duolingo.svg",
+"title": "156_Duolingo.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 157,
+"ja": "Pinterest",
+"file": "Pinterest.svg",
+"title": "157_Pinterest.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 158,
+"ja": "Snap",
+"file": "Snap.png",
+"title": "158_Snap.png",
+"mime": "image/png"
+},
+{
+"no": 159,
+"ja": "ByteDance",
+"file": "ByteDance.svg",
+"title": "159_ByteDance.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 160,
+"ja": "DraftKings",
+"file": "DraftKings.svg",
+"title": "160_DraftKings.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 161,
+"ja": "百度(バイドゥ)",
+"file": "百度.png",
+"title": "161_百度(バイドゥ).png",
+"mime": "image/png"
+},
+{
+"no": 162,
+"ja": "LINEヤフー",
+"file": "LINEヤフー.svg",
+"title": "162_LINEヤフー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 163,
+"ja": "サイバーエージェント",
+"file": "サイバーエージェント.svg",
+"title": "163_サイバーエージェント.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 164,
+"ja": "AppLovin",
+"file": "AppLovin.gif",
+"title": "164_AppLovin.gif",
+"mime": "image/gif"
+},
+{
+"no": 165,
+"ja": "GMOインターネット",
+"file": "GMOインターネットグループ.svg",
+"title": "165_GMOインターネット.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 166,
+"ja": "Netflix",
+"file": "Netflix.svg",
+"title": "166_Netflix.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 167,
+"ja": "ウォルト・ディズニー",
+"file": "Disney.svg",
+"title": "167_ウォルト・ディズニー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 168,
+"ja": "Spotify",
+"file": "Spotify.svg",
+"title": "168_Spotify.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 169,
+"ja": "快手(クワイショウ)",
+"file": "快手.png",
+"title": "169_快手(クワイショウ).png",
+"mime": "image/png"
+},
+{
+"no": 170,
+"ja": "Bilibili",
+"file": "Bilibili.svg",
+"title": "170_Bilibili.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 171,
+"ja": "U-NEXT",
+"file": "U-NEXT_HOLDINGS.svg",
+"title": "171_U-NEXT.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 172,
+"ja": "Roblox",
+"file": "Roblox.svg",
+"title": "172_Roblox.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 173,
+"ja": "任天堂",
+"file": "任天堂.svg",
+"title": "173_任天堂.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 174,
+"ja": "ソニーグループ",
+"file": "ソニーグループ.svg",
+"title": "174_ソニーグループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 175,
+"ja": "コナミ",
+"file": "コナミグループ.svg",
+"title": "175_コナミ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 176,
+"ja": "ネクソン",
+"file": "ネクソン.svg",
+"title": "176_ネクソン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 177,
+"ja": "カプコン",
+"file": "カプコン.svg",
+"title": "177_カプコン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 178,
+"ja": "バンダイナムコホールディングス",
+"file": "バンダイナムコホールディングス.svg",
+"title": "178_バンダイナムコホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 179,
+"ja": "ディー・エヌ・エー",
+"file": "ディー・エヌ・エー.svg",
+"title": "179_ディー・エヌ・エー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 180,
+"ja": "コーエーテクモ",
+"file": "コーエーテクモ.svg",
+"title": "180_コーエーテクモ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 181,
+"ja": "MIXI",
+"file": "MIXI.png",
+"title": "181_MIXI.png",
+"mime": "image/png"
+},
+{
+"no": 182,
+"ja": "テンセント",
+"file": "Tencent.svg",
+"title": "182_テンセント.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 183,
+"ja": "POP MART",
+"file": "POP_MART.svg",
+"title": "183_POP MART.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 184,
+"ja": "サンリオ",
+"file": "サンリオ.png",
+"title": "184_サンリオ.png",
+"mime": "image/png"
+},
+{
+"no": 185,
+"ja": "東宝",
+"file": "東宝.svg",
+"title": "185_東宝.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 186,
+"ja": "東映アニメーション",
+"file": "東映アニメーション.png",
+"title": "186_東映アニメーション.png",
+"mime": "image/png"
+},
+{
+"no": 187,
+"ja": "KADOKAWA",
+"file": "KADOKAWA.svg",
+"title": "187_KADOKAWA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 188,
+"ja": "円谷フィールズホールディングス",
+"file": "円谷フィールズホールディングス.png",
+"title": "188_円谷フィールズホールディングス.png",
+"mime": "image/png"
+},
+{
+"no": 189,
+"ja": "ポケモン",
+"file": "ポケモン.svg",
+"title": "189_ポケモン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 190,
+"ja": "ANYCOLOR",
+"file": "ANYCOLOR.svg",
+"title": "190_ANYCOLOR.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 191,
+"ja": "カバー",
+"file": "カバー.svg",
+"title": "191_カバー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 192,
+"ja": "ラウンドワン",
+"file": "ラウンドワン.png",
+"title": "192_ラウンドワン.png",
+"mime": "image/png"
+},
+{
+"no": 193,
+"ja": "オリエンタルランド",
+"file": "オリエンタルランド.svg",
+"title": "193_オリエンタルランド.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 194,
+"ja": "GENDA",
+"file": "GENDA.svg",
+"title": "194_GENDA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 195,
+"ja": "Apple",
+"file": "Apple.svg",
+"title": "195_Apple.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 196,
+"ja": "LVMH",
+"file": "LVMH.svg",
+"title": "196_LVMH.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 197,
+"ja": "エルメス",
+"file": "Hermès.svg",
+"title": "197_エルメス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 198,
+"ja": "セイコー",
+"file": "セイコーグループ.svg",
+"title": "198_セイコー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 199,
+"ja": "フェラーリ",
+"file": "Ferrari.svg",
+"title": "199_フェラーリ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 200,
+"ja": "貴州茅台酒",
+"file": "貴州茅台.png",
+"title": "200_貴州茅台酒.png",
+"mime": "image/png"
+},
+{
+"no": 201,
+"ja": "Nike",
+"file": "Nike.svg",
+"title": "201_Nike.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 202,
+"ja": "アシックス",
+"file": "アシックス.svg",
+"title": "202_アシックス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 203,
+"ja": "Lululemon",
+"file": "Lululemon.svg",
+"title": "203_Lululemon.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 205,
+"ja": "HUMAN MADE",
+"file": "HUMAN_MADE.svg",
+"title": "205_HUMAN MADE.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 206,
+"ja": "MTG",
+"file": "MTG.png",
+"title": "206_MTG.png",
+"mime": "image/png"
+},
+{
+"no": 207,
+"ja": "ウォルマート",
+"file": "Walmart.svg",
+"title": "207_ウォルマート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 208,
+"ja": "名創優品(MINISO)",
+"file": "名創優品.svg",
+"title": "208_名創優品(MINISO).svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 209,
+"ja": "ファーストリテイリング",
+"file": "ファーストリテイリング.svg",
+"title": "209_ファーストリテイリング.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 210,
+"ja": "PPIH(ドン・キホーテ)",
+"file": "パン・パシフィック・インターナショナルホールディングス.svg",
+"title": "210_PPIH(ドン・キホーテ).svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 211,
+"ja": "ニトリ",
+"file": "ニトリホールディングス.svg",
+"title": "211_ニトリ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 212,
+"ja": "良品計画",
+"file": "良品計画.svg",
+"title": "212_良品計画.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 213,
+"ja": "トライアル・ホールディングス",
+"file": "トライアル・ホールディングス.svg",
+"title": "213_トライアル・ホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 214,
+"ja": "マクドナルド",
+"file": "McDonald's.svg",
+"title": "214_マクドナルド.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 215,
+"ja": "スターバックス",
+"file": "Starbucks.png",
+"title": "215_スターバックス.png",
+"mime": "image/png"
+},
+{
+"no": 216,
+"ja": "ドミノピザ",
+"file": "Domino's_Pizza.svg",
+"title": "216_ドミノピザ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 217,
+"ja": "ラッキン・コーヒー",
+"file": "Luckin_Coffee.svg",
+"title": "217_ラッキン・コーヒー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 218,
+"ja": "FOOD & LIFE(スシロー)",
+"file": "FOOD_&_LIFE_COMPANIES.svg",
+"title": "218_FOOD & LIFE(スシロー).svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 219,
+"ja": "日本マクドナルド",
+"file": "日本マクドナルドホールディングス.jpg",
+"title": "219_日本マクドナルド.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 220,
+"ja": "サイゼリヤ",
+"file": "サイゼリヤ.png",
+"title": "220_サイゼリヤ.png",
+"mime": "image/png"
+},
+{
+"no": 221,
+"ja": "ギフト",
+"file": "ギフトホールディングス.svg",
+"title": "221_ギフト.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 222,
+"ja": "Visa",
+"file": "Visa.svg",
+"title": "222_Visa.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 223,
+"ja": "Mastercard",
+"file": "Mastercard.svg",
+"title": "223_Mastercard.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 224,
+"ja": "アメリカン・エクスプレス",
+"file": "American_Express.svg",
+"title": "224_アメリカン・エクスプレス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 225,
+"ja": "PayPal",
+"file": "PayPal.svg",
+"title": "225_PayPal.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 226,
+"ja": "Block",
+"file": "Block.svg",
+"title": "226_Block.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 227,
+"ja": "Adyen",
+"file": "Adyen.svg",
+"title": "227_Adyen.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 228,
+"ja": "Nu Holdings",
+"file": "Nu_Holdings.svg",
+"title": "228_Nu Holdings.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 229,
+"ja": "Wise",
+"file": "Wise.png",
+"title": "229_Wise.png",
+"mime": "image/png"
+},
+{
+"no": 230,
+"ja": "SoFi Technologies",
+"file": "SoFi_Technologies.svg",
+"title": "230_SoFi Technologies.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 231,
+"ja": "Affirm",
+"file": "Affirm.svg",
+"title": "231_Affirm.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 232,
+"ja": "Klarna",
+"file": "Klarna.svg",
+"title": "232_Klarna.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 233,
+"ja": "Toast",
+"file": "Toast.svg",
+"title": "233_Toast.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 234,
+"ja": "PayPay",
+"file": "PayPay.svg",
+"title": "234_PayPay.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 235,
+"ja": "GMOペイメントゲートウェイ",
+"file": "GMOペイメントゲートウェイ.svg",
+"title": "235_GMOペイメントゲートウェイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 236,
+"ja": "Revolut",
+"file": "Revolut.svg",
+"title": "236_Revolut.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 237,
+"ja": "ストライプ",
+"file": "Stripe.svg",
+"title": "237_ストライプ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 238,
+"ja": "富途控股（フートゥー・ホールディングス）",
+"file": "富途控股.svg",
+"title": "238_富途控股（フートゥー・ホールディングス）.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 239,
+"ja": "Coinbase",
+"file": "Coinbase.svg",
+"title": "239_Coinbase.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 240,
+"ja": "Robinhood",
+"file": "Robinhood.svg",
+"title": "240_Robinhood.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 241,
+"ja": "SBIホールディングス",
+"file": "SBIホールディングス.svg",
+"title": "241_SBIホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 242,
+"ja": "バークシャー・ハサウェイ",
+"file": "Berkshire_Hathaway.svg",
+"title": "242_バークシャー・ハサウェイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 243,
+"ja": "光通信",
+"file": "光通信.svg",
+"title": "243_光通信.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 244,
+"ja": "三菱UFJ",
+"file": "三菱UFJフィナンシャルグループ.svg",
+"title": "244_三菱UFJ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 245,
+"ja": "三井住友FG",
+"file": "三井住友フィナンシャルグループ.svg",
+"title": "245_三井住友FG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 246,
+"ja": "みずほ",
+"file": "みずほフィナンシャルグループ.svg",
+"title": "246_みずほ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 247,
+"ja": "楽天銀行",
+"file": "楽天銀行.svg",
+"title": "247_楽天銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 248,
+"ja": "ファナック",
+"file": "ファナック.svg",
+"title": "248_ファナック.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 249,
+"ja": "キーエンス",
+"file": "キーエンス.svg",
+"title": "249_キーエンス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 250,
+"ja": "SMC",
+"file": "SMC.svg",
+"title": "250_SMC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 251,
+"ja": "安川電機",
+"file": "安川電機.svg",
+"title": "251_安川電機.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 252,
+"ja": "三菱電機",
+"file": "三菱電機.svg",
+"title": "252_三菱電機.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 253,
+"ja": "THK",
+"file": "THK.svg",
+"title": "253_THK.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 254,
+"ja": "ハーモニック・ドライブ・システムズ",
+"file": "ハーモニック・ドライブ・システムズ.png",
+"title": "254_ハーモニック・ドライブ・システムズ.png",
+"mime": "image/png"
+},
+{
+"no": 255,
+"ja": "Intuitive Surgical",
+"file": "Intuitive_Surgical.svg",
+"title": "255_Intuitive Surgical.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 256,
+"ja": "Unitree Robotics",
+"file": "Unitree_Robotics.svg",
+"title": "256_Unitree Robotics.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 257,
+"ja": "三菱重工",
+"file": "三菱重工業.svg",
+"title": "257_三菱重工.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 258,
+"ja": "IHI",
+"file": "IHI.svg",
+"title": "258_IHI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 259,
+"ja": "川崎重工",
+"file": "川崎重工.svg",
+"title": "259_川崎重工.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 260,
+"ja": "テラドローン",
+"file": "テラドローン.svg",
+"title": "260_テラドローン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 261,
+"ja": "Anduril",
+"file": "Anduril_Industries.svg",
+"title": "261_Anduril.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 262,
+"ja": "SpaceX",
+"file": "SpaceX.svg",
+"title": "262_SpaceX.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 263,
+"ja": "Rocket Lab",
+"file": "Rocket_Lab.svg",
+"title": "263_Rocket Lab.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 264,
+"ja": "ispace",
+"file": "ispace.svg",
+"title": "264_ispace.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 265,
+"ja": "アストロスケール",
+"file": "アストロスケールホールディングス.svg",
+"title": "265_アストロスケール.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 266,
+"ja": "QPSホールディングス",
+"file": "QPSホールディングス.jpg",
+"title": "266_QPSホールディングス.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 267,
+"ja": "Synspective",
+"file": "Synspective.png",
+"title": "267_Synspective.png",
+"mime": "image/png"
+},
+{
+"no": 268,
+"ja": "アクセルスペースホールディングス",
+"file": "アクセルスペースホールディングス.png",
+"title": "268_アクセルスペースホールディングス.png",
+"mime": "image/png"
+},
+{
+"no": 269,
+"ja": "スカパーJSAT",
+"file": "スカパーJSATホールディングス.svg",
+"title": "269_スカパーJSAT.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 270,
+"ja": "三井海洋開発",
+"file": "三井海洋開発.svg",
+"title": "270_三井海洋開発.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 271,
+"ja": "テスラ",
+"file": "Tesla.svg",
+"title": "271_テスラ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 272,
+"ja": "BYD",
+"file": "BYD.svg",
+"title": "272_BYD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 273,
+"ja": "吉利汽車(ジーリー)",
+"file": "吉利汽車.svg",
+"title": "273_吉利汽車(ジーリー).svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 274,
+"ja": "小鵬汽車(シャオペン)",
+"file": "小鵬汽車.svg",
+"title": "274_小鵬汽車(シャオペン).svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 275,
+"ja": "NIO(ニーオ)",
+"file": "NIO.png",
+"title": "275_NIO(ニーオ).png",
+"mime": "image/png"
+},
+{
+"no": 276,
+"ja": "CATL",
+"file": "CATL.jpg",
+"title": "276_CATL.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 277,
+"ja": "シャオミ",
+"file": "Xiaomi.svg",
+"title": "277_シャオミ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 278,
+"ja": "Uber",
+"file": "Uber.svg",
+"title": "278_Uber.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 279,
+"ja": "Grab",
+"file": "Grab.svg",
+"title": "279_Grab.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 280,
+"ja": "Didi",
+"file": "DiDi_Global.png",
+"title": "280_Didi.png",
+"mime": "image/png"
+},
+{
+"no": 281,
+"ja": "GO",
+"file": "GO.png",
+"title": "281_GO.png",
+"mime": "image/png"
+},
+{
+"no": 282,
+"ja": "LUUP",
+"file": "LUUP.svg",
+"title": "282_LUUP.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 283,
+"ja": "ティアフォー",
+"file": "ティアフォー.svg",
+"title": "283_ティアフォー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 284,
+"ja": "パーク24",
+"file": "パーク24.svg",
+"title": "284_パーク24.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 285,
+"ja": "ネクステージ",
+"file": "ネクステージ.svg",
+"title": "285_ネクステージ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 286,
+"ja": "プレミアグループ",
+"file": "プレミアグループ.png",
+"title": "286_プレミアグループ.png",
+"mime": "image/png"
+},
+{
+"no": 287,
+"ja": "Turing",
+"file": "Turing.png",
+"title": "287_Turing.png",
+"mime": "image/png"
+},
+{
+"no": 288,
+"ja": "アクセンチュア",
+"file": "Accenture.svg",
+"title": "288_アクセンチュア.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 289,
+"ja": "ベイカレント",
+"file": "ベイカレント.png",
+"title": "289_ベイカレント.png",
+"mime": "image/png"
+},
+{
+"no": 290,
+"ja": "ノースサンド",
+"file": "ノースサンド.svg",
+"title": "290_ノースサンド.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 291,
+"ja": "シンプレクス",
+"file": "シンプレクス・ホールディングス.png",
+"title": "291_シンプレクス.png",
+"mime": "image/png"
+},
+{
+"no": 293,
+"ja": "Finatext",
+"file": "Finatextホールディングス.svg",
+"title": "293_Finatext.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 294,
+"ja": "ABEJA",
+"file": "ABEJA.ico",
+"title": "294_ABEJA.ico",
+"mime": "image/x-icon"
+},
+{
+"no": 295,
+"ja": "エクサウィザーズ",
+"file": "エクサウィザーズ.png",
+"title": "295_エクサウィザーズ.png",
+"mime": "image/png"
+},
+{
+"no": 296,
+"ja": "PKSHA Technology",
+"file": "PKSHA_Technology.png",
+"title": "296_PKSHA Technology.png",
+"mime": "image/png"
+},
+{
+"no": 297,
+"ja": "Sakana AI",
+"file": "Sakana_AI.webp",
+"title": "297_Sakana AI.webp",
+"mime": "image/webp"
+},
+{
+"no": 298,
+"ja": "Preferred Networks",
+"file": "Preferred_Networks.svg",
+"title": "298_Preferred Networks.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 299,
+"ja": "イーライ・リリー",
+"file": "Eli_Lilly.svg",
+"title": "299_イーライ・リリー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 300,
+"ja": "ノボ・ノルディスク",
+"file": "Novo_Nordisk.png",
+"title": "300_ノボ・ノルディスク.png",
+"mime": "image/png"
+},
+{
+"no": 301,
+"ja": "エムスリー",
+"file": "エムスリー.png",
+"title": "301_エムスリー.png",
+"mime": "image/png"
+},
+{
+"no": 302,
+"ja": "JMDC",
+"file": "JMDC.svg",
+"title": "302_JMDC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 303,
+"ja": "メドレー",
+"file": "メドレー.svg",
+"title": "303_メドレー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 304,
+"ja": "エス・エム・エス",
+"file": "エス・エム・エス.png",
+"title": "304_エス・エム・エス.png",
+"mime": "image/png"
+},
+{
+"no": 305,
+"ja": "三菱商事",
+"file": "三菱商事.svg",
+"title": "305_三菱商事.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 306,
+"ja": "三井物産",
+"file": "三井物産.svg",
+"title": "306_三井物産.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 307,
+"ja": "伊藤忠商事",
+"file": "伊藤忠商事.svg",
+"title": "307_伊藤忠商事.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 308,
+"ja": "住友商事",
+"file": "住友商事.svg",
+"title": "308_住友商事.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 309,
+"ja": "丸紅",
+"file": "丸紅.svg",
+"title": "309_丸紅.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 310,
+"ja": "三井不動産",
+"file": "三井不動産.svg",
+"title": "310_三井不動産.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 311,
+"ja": "三菱地所",
+"file": "三菱地所.svg",
+"title": "311_三菱地所.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 312,
+"ja": "住友不動産",
+"file": "住友不動産.svg",
+"title": "312_住友不動産.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 313,
+"ja": "オープンハウス",
+"file": "オープンハウス.svg",
+"title": "313_オープンハウス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 314,
+"ja": "ヒューリック",
+"file": "ヒューリック.png",
+"title": "314_ヒューリック.png",
+"mime": "image/png"
+},
+{
+"no": 315,
+"ja": "日本M&Aセンター",
+"file": "日本M&Aセンターホールディングス.svg",
+"title": "315_日本M&Aセンター.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 316,
+"ja": "M&Aキャピタルパートナーズ",
+"file": "M&Aキャピタルパートナーズ.svg",
+"title": "316_M&Aキャピタルパートナーズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 317,
+"ja": "ストライク",
+"file": "ストライク.svg",
+"title": "317_ストライク.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 318,
+"ja": "クオンツ総研",
+"file": "クオンツ総研ホールディングス.png",
+"title": "318_クオンツ総研.png",
+"mime": "image/png"
+},
+{
+"no": 319,
+"ja": "リクルート",
+"file": "リクルートホールディングス.svg",
+"title": "319_リクルート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 320,
+"ja": "ビジョナル",
+"file": "ビジョナル.png",
+"title": "320_ビジョナル.png",
+"mime": "image/png"
+},
+{
+"no": 321,
+"ja": "タイミー",
+"file": "タイミー.svg",
+"title": "321_タイミー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 322,
+"ja": "星野リゾート",
+"file": "星野リゾート.svg",
+"title": "322_星野リゾート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 323,
+"ja": "アパ",
+"file": "アパホールディングス.png",
+"title": "323_アパ.png",
+"mime": "image/png"
+},
+{
+"no": 324,
+"ja": "NOT A HOTEL",
+"file": "NOT_A_HOTEL.svg",
+"title": "324_NOT A HOTEL.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 325,
+"ja": "バイセル・テクノロジーズ",
+"file": "BuySell_Technologies.svg",
+"title": "325_バイセル・テクノロジーズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 326,
+"ja": "AlbaLink",
+"file": "AlbaLink.png",
+"title": "326_AlbaLink.png",
+"mime": "image/png"
+},
+{
+"no": 327,
+"ja": "技術承継機構",
+"file": "技術承継機構.png",
+"title": "327_技術承継機構.png",
+"mime": "image/png"
+},
+{
+"no": 328,
+"ja": "パワーエックス",
+"file": "パワーエックス.png",
+"title": "328_パワーエックス.png",
+"mime": "image/png"
+},
+{
+"no": 329,
+"ja": "note",
+"file": "note.png",
+"title": "329_note.png",
+"mime": "image/png"
+},
+{
+"no": 330,
+"ja": "TKP",
+"file": "TKP.webp",
+"title": "330_TKP.webp",
+"mime": "image/webp"
+},
+{
+"no": 331,
+"ja": "クラシル",
+"file": "クラシル.png",
+"title": "331_クラシル.png",
+"mime": "image/png"
+},
+{
+"no": 333,
+"ja": "DMM",
+"file": "DMM.png",
+"title": "333_DMM.png",
+"mime": "image/png"
+},
+{
+"no": 334,
+"ja": "大林組",
+"file": "大林組.svg",
+"title": "334_大林組.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 335,
+"ja": "大成建設",
+"file": "大成建設.svg",
+"title": "335_大成建設.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 336,
+"ja": "鹿島建設",
+"file": "鹿島建設.png",
+"title": "336_鹿島建設.png",
+"mime": "image/png"
+},
+{
+"no": 337,
+"ja": "清水建設",
+"file": "清水建設.svg",
+"title": "337_清水建設.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 338,
+"ja": "大和ハウス工業",
+"file": "大和ハウス工業.svg",
+"title": "338_大和ハウス工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 339,
+"ja": "積水ハウス",
+"file": "積水ハウス.svg",
+"title": "339_積水ハウス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 340,
+"ja": "住友林業",
+"file": "住友林業.svg",
+"title": "340_住友林業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 341,
+"ja": "飯田グループ",
+"file": "飯田グループ.png",
+"title": "341_飯田グループ.png",
+"mime": "image/png"
+},
+{
+"no": 342,
+"ja": "大東建託",
+"file": "大東建託.png",
+"title": "342_大東建託.png",
+"mime": "image/png"
+},
+{
+"no": 343,
+"ja": "東急不動産",
+"file": "東急不動産ホールディングス.svg",
+"title": "343_東急不動産.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 344,
+"ja": "野村不動産",
+"file": "野村不動産ホールディングス.png",
+"title": "344_野村不動産.png",
+"mime": "image/png"
+},
+{
+"no": 345,
+"ja": "日清食品",
+"file": "日清食品ホールディングス.svg",
+"title": "345_日清食品.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 346,
+"ja": "キユーピー",
+"file": "キユーピー.png",
+"title": "346_キユーピー.png",
+"mime": "image/png"
+},
+{
+"no": 347,
+"ja": "キッコーマン",
+"file": "キッコーマン.svg",
+"title": "347_キッコーマン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 348,
+"ja": "日本ハム",
+"file": "日本ハム.svg",
+"title": "348_日本ハム.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 349,
+"ja": "ニチレイ",
+"file": "ニチレイ.svg",
+"title": "349_ニチレイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 350,
+"ja": "明治HD",
+"file": "明治ホールディングス.svg",
+"title": "350_明治HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 351,
+"ja": "JT",
+"file": "JT.svg",
+"title": "351_JT.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 352,
+"ja": "ヤクルト",
+"file": "ヤクルト.svg",
+"title": "352_ヤクルト.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 353,
+"ja": "東洋水産",
+"file": "東洋水産.svg",
+"title": "353_東洋水産.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 354,
+"ja": "山崎製パン",
+"file": "山崎製パン.png",
+"title": "354_山崎製パン.png",
+"mime": "image/png"
+},
+{
+"no": 355,
+"ja": "カルビー",
+"file": "カルビー.svg",
+"title": "355_カルビー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 356,
+"ja": "森永乳業",
+"file": "森永乳業.svg",
+"title": "356_森永乳業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 357,
+"ja": "江崎グリコ",
+"file": "江崎グリコ.svg",
+"title": "357_江崎グリコ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 358,
+"ja": "カゴメ",
+"file": "カゴメ.svg",
+"title": "358_カゴメ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 359,
+"ja": "ハウス食品",
+"file": "ハウス食品グループ本社.svg",
+"title": "359_ハウス食品.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 360,
+"ja": "宝ホールディングス",
+"file": "宝ホールディングス.svg",
+"title": "360_宝ホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 361,
+"ja": "サントリー",
+"file": "サントリー.svg",
+"title": "361_サントリー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 362,
+"ja": "キリンHD",
+"file": "キリンホールディングス.svg",
+"title": "362_キリンHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 363,
+"ja": "アサヒグループHD",
+"file": "アサヒグループホールディングス.svg",
+"title": "363_アサヒグループHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 364,
+"ja": "サッポロ",
+"file": "サッポロ.svg",
+"title": "364_サッポロ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 365,
+"ja": "伊藤園",
+"file": "伊藤園.svg",
+"title": "365_伊藤園.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 366,
+"ja": "コカ・コーラボトラーズジャパン",
+"file": "コカ・コーラボトラーズジャパンホールディングス.png",
+"title": "366_コカ・コーラボトラーズジャパン.png",
+"mime": "image/png"
+},
+{
+"no": 367,
+"ja": "TBSHD",
+"file": "TBSホールディングス.svg",
+"title": "367_TBSHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 368,
+"ja": "日本テレビHD",
+"file": "日本テレビホールディングス.svg",
+"title": "368_日本テレビHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 369,
+"ja": "フジ・メディアHD",
+"file": "フジ・メディア・ホールディングス.png",
+"title": "369_フジ・メディアHD.png",
+"mime": "image/png"
+},
+{
+"no": 370,
+"ja": "テレビ朝日HD",
+"file": "テレビ朝日ホールディングス.svg",
+"title": "370_テレビ朝日HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 371,
+"ja": "テレビ東京HD",
+"file": "テレビ東京ホールディングス.png",
+"title": "371_テレビ東京HD.png",
+"mime": "image/png"
+},
+{
+"no": 372,
+"ja": "日本電信電話",
+"file": "日本電信電話.svg",
+"title": "372_日本電信電話.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 373,
+"ja": "KDDI",
+"file": "KDDI.svg",
+"title": "373_KDDI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 374,
+"ja": "ソフトバンク",
+"file": "ソフトバンク.svg",
+"title": "374_ソフトバンク.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 375,
+"ja": "資生堂",
+"file": "資生堂.svg",
+"title": "375_資生堂.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 376,
+"ja": "コーセー",
+"file": "コーセー.svg",
+"title": "376_コーセー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 377,
+"ja": "花王",
+"file": "花王.svg",
+"title": "377_花王.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 378,
+"ja": "ライオン",
+"file": "ライオン.svg",
+"title": "378_ライオン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 379,
+"ja": "ロート製薬",
+"file": "ロート製薬.svg",
+"title": "379_ロート製薬.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 381,
+"ja": "ユニ・チャーム",
+"file": "ユニ・チャーム.svg",
+"title": "381_ユニ・チャーム.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 382,
+"ja": "小林製薬",
+"file": "小林製薬.svg",
+"title": "382_小林製薬.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 384,
+"ja": "日本酸素HD",
+"file": "日本酸素ホールディングス.svg",
+"title": "384_日本酸素HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 385,
+"ja": "日産化学",
+"file": "日産化学.svg",
+"title": "385_日産化学.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 386,
+"ja": "旭化成",
+"file": "旭化成.svg",
+"title": "386_旭化成.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 387,
+"ja": "三井化学",
+"file": "三井化学.svg",
+"title": "387_三井化学.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 388,
+"ja": "三菱ケミカルG",
+"file": "三菱ケミカルG.svg",
+"title": "388_三菱ケミカルG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 389,
+"ja": "日本ペイントHD",
+"file": "日本ペイントホールディングス.svg",
+"title": "389_日本ペイントHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 390,
+"ja": "住友化学",
+"file": "住友化学.svg",
+"title": "390_住友化学.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 391,
+"ja": "東レ",
+"file": "東レ.svg",
+"title": "391_東レ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 392,
+"ja": "中外製薬",
+"file": "中外製薬.svg",
+"title": "392_中外製薬.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 393,
+"ja": "協和発酵キリン",
+"file": "協和発酵キリン.svg",
+"title": "393_協和発酵キリン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 394,
+"ja": "エーザイ",
+"file": "エーザイ.svg",
+"title": "394_エーザイ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 395,
+"ja": "アステラス製薬",
+"file": "アステラス製薬.svg",
+"title": "395_アステラス製薬.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 396,
+"ja": "大塚HD",
+"file": "大塚ホールディングス.svg",
+"title": "396_大塚HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 397,
+"ja": "塩野義製薬",
+"file": "塩野義製薬.svg",
+"title": "397_塩野義製薬.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 398,
+"ja": "武田薬品工業",
+"file": "武田薬品工業.svg",
+"title": "398_武田薬品工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 399,
+"ja": "第一三共",
+"file": "第一三共.svg",
+"title": "399_第一三共.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 400,
+"ja": "住友ファーマ",
+"file": "住友ファーマ.svg",
+"title": "400_住友ファーマ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 401,
+"ja": "富士電機",
+"file": "富士電機.svg",
+"title": "401_富士電機.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 402,
+"ja": "シャープ",
+"file": "シャープ.svg",
+"title": "402_シャープ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 403,
+"ja": "NEC",
+"file": "NEC.svg",
+"title": "403_NEC.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 404,
+"ja": "富士通",
+"file": "富士通.svg",
+"title": "404_富士通.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 405,
+"ja": "キヤノン",
+"file": "キヤノン.svg",
+"title": "405_キヤノン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 406,
+"ja": "富士フイルム",
+"file": "富士フイルム.svg",
+"title": "406_富士フイルム.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 407,
+"ja": "ニコン",
+"file": "ニコン.svg",
+"title": "407_ニコン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 408,
+"ja": "リコー",
+"file": "リコー.svg",
+"title": "408_リコー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 409,
+"ja": "セイコーエプソン",
+"file": "セイコーエプソン.svg",
+"title": "409_セイコーエプソン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 410,
+"ja": "京セラ",
+"file": "京セラ.svg",
+"title": "410_京セラ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 411,
+"ja": "オリンパス",
+"file": "オリンパス.svg",
+"title": "411_オリンパス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 412,
+"ja": "カシオ計算機",
+"file": "カシオ計算機.svg",
+"title": "412_カシオ計算機.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 413,
+"ja": "コニカミノルタ",
+"file": "コニカミノルタ.svg",
+"title": "413_コニカミノルタ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 414,
+"ja": "シチズン時計",
+"file": "シチズン時計.svg",
+"title": "414_シチズン時計.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 415,
+"ja": "ブラザー工業",
+"file": "ブラザー工業.svg",
+"title": "415_ブラザー工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 416,
+"ja": "ミネベアミツミ",
+"file": "ミネベアミツミ.svg",
+"title": "416_ミネベアミツミ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 417,
+"ja": "オムロン",
+"file": "オムロン.svg",
+"title": "417_オムロン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 418,
+"ja": "横河電機",
+"file": "横河電機.png",
+"title": "418_横河電機.png",
+"mime": "image/png"
+},
+{
+"no": 419,
+"ja": "ダイフク",
+"file": "ダイフク.svg",
+"title": "419_ダイフク.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 420,
+"ja": "栗田工業",
+"file": "栗田工業.svg",
+"title": "420_栗田工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 421,
+"ja": "日本マイクロニクス",
+"file": "日本マイクロニクス.svg",
+"title": "421_日本マイクロニクス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 422,
+"ja": "芝浦メカトロニクス",
+"file": "芝浦メカトロニクス.svg",
+"title": "422_芝浦メカトロニクス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 423,
+"ja": "ローム",
+"file": "ローム.svg",
+"title": "423_ローム.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 424,
+"ja": "ルネサスエレクトロニクス",
+"file": "ルネサスエレクトロニクス.svg",
+"title": "424_ルネサスエレクトロニクス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 425,
+"ja": "ソシオネクスト",
+"file": "ソシオネクスト.svg",
+"title": "425_ソシオネクスト.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 426,
+"ja": "東京応化工業",
+"file": "東京応化工業.svg",
+"title": "426_東京応化工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 427,
+"ja": "HOYA",
+"file": "HOYA.svg",
+"title": "427_HOYA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 428,
+"ja": "住友ベークライト",
+"file": "住友ベークライト.png",
+"title": "428_住友ベークライト.png",
+"mime": "image/png"
+},
+{
+"no": 429,
+"ja": "フェローテックHD",
+"file": "フェローテックホールディングス.svg",
+"title": "429_フェローテックHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 430,
+"ja": "TDK",
+"file": "TDK.svg",
+"title": "430_TDK.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 431,
+"ja": "太陽誘電",
+"file": "太陽誘電.svg",
+"title": "431_太陽誘電.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 432,
+"ja": "ニデック",
+"file": "ニデック.svg",
+"title": "432_ニデック.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 433,
+"ja": "日東電工",
+"file": "日東電工.svg",
+"title": "433_日東電工.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 434,
+"ja": "デクセリアルズ",
+"file": "デクセリアルズ.svg",
+"title": "434_デクセリアルズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 435,
+"ja": "トヨタ自動車",
+"file": "トヨタ自動車.svg",
+"title": "435_トヨタ自動車.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 436,
+"ja": "本田技研工業",
+"file": "本田技研工業.svg",
+"title": "436_本田技研工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 437,
+"ja": "スズキ",
+"file": "スズキ.svg",
+"title": "437_スズキ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 438,
+"ja": "SUBARU",
+"file": "SUBARU.svg",
+"title": "438_SUBARU.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 439,
+"ja": "日産自動車",
+"file": "日産自動車.svg",
+"title": "439_日産自動車.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 440,
+"ja": "三菱自動車",
+"file": "三菱自動車.svg",
+"title": "440_三菱自動車.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 441,
+"ja": "三菱マテリアル",
+"file": "三菱マテリアル.png",
+"title": "441_三菱マテリアル.png",
+"mime": "image/png"
+},
+{
+"no": 442,
+"ja": "住友金属鉱山",
+"file": "住友金属鉱山.jpg",
+"title": "442_住友金属鉱山.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 443,
+"ja": "DOWA",
+"file": "DOWA.svg",
+"title": "443_DOWA.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 444,
+"ja": "三井金属",
+"file": "三井金属.svg",
+"title": "444_三井金属.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 445,
+"ja": "ゴールドウィン",
+"file": "ゴールドウィン.svg",
+"title": "445_ゴールドウィン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 446,
+"ja": "ミズノ",
+"file": "ミズノ.svg",
+"title": "446_ミズノ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 447,
+"ja": "ヨネックス",
+"file": "ヨネックス.svg",
+"title": "447_ヨネックス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 448,
+"ja": "シマノ",
+"file": "シマノ.svg",
+"title": "448_シマノ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 449,
+"ja": "パルグループHD",
+"file": "パルグループホールディングス.png",
+"title": "449_パルグループHD.png",
+"mime": "image/png"
+},
+{
+"no": 450,
+"ja": "ABCマート",
+"file": "ABCマート.svg",
+"title": "450_ABCマート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 451,
+"ja": "しまむら",
+"file": "しまむら.svg",
+"title": "451_しまむら.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 452,
+"ja": "ヤマダHD",
+"file": "ヤマダホールディングス.svg",
+"title": "452_ヤマダHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 453,
+"ja": "ワークマン",
+"file": "ワークマン.png",
+"title": "453_ワークマン.png",
+"mime": "image/png"
+},
+{
+"no": 454,
+"ja": "ノジマ",
+"file": "ノジマ.svg",
+"title": "454_ノジマ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 455,
+"ja": "ビックカメラ",
+"file": "ビックカメラ.svg",
+"title": "455_ビックカメラ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 456,
+"ja": "セリア",
+"file": "セリア.svg",
+"title": "456_セリア.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 457,
+"ja": "ジンズ",
+"file": "ジンズ.svg",
+"title": "457_ジンズ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 458,
+"ja": "イオン",
+"file": "イオン.svg",
+"title": "458_イオン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 459,
+"ja": "セブン&アイHD",
+"file": "セブン&アイホールディングス.svg",
+"title": "459_セブン&アイHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 460,
+"ja": "マツキヨココカラ",
+"file": "マツキヨココカラ.svg",
+"title": "460_マツキヨココカラ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 462,
+"ja": "神戸物産",
+"file": "神戸物産.png",
+"title": "462_神戸物産.png",
+"mime": "image/png"
+},
+{
+"no": 463,
+"ja": "コスモス薬品",
+"file": "コスモス薬品.png",
+"title": "463_コスモス薬品.png",
+"mime": "image/png"
+},
+{
+"no": 464,
+"ja": "スギHD",
+"file": "スギホールディングス.png",
+"title": "464_スギHD.png",
+"mime": "image/png"
+},
+{
+"no": 465,
+"ja": "ツルハ",
+"file": "ツルハ.svg",
+"title": "465_ツルハ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 466,
+"ja": "クスリのアオキHD",
+"file": "クスリのアオキホールディングス.png",
+"title": "466_クスリのアオキHD.png",
+"mime": "image/png"
+},
+{
+"no": 467,
+"ja": "サンドラッグ",
+"file": "サンドラッグ.png",
+"title": "467_サンドラッグ.png",
+"mime": "image/png"
+},
+{
+"no": 468,
+"ja": "三越伊勢丹HD",
+"file": "三越伊勢丹ホールディングス.svg",
+"title": "468_三越伊勢丹HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 469,
+"ja": "丸井グループ",
+"file": "丸井グループ.png",
+"title": "469_丸井グループ.png",
+"mime": "image/png"
+},
+{
+"no": 470,
+"ja": "Jフロントリテイリング",
+"file": "Jフロントリテイリング.svg",
+"title": "470_Jフロントリテイリング.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 471,
+"ja": "高島屋",
+"file": "高島屋.svg",
+"title": "471_高島屋.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 472,
+"ja": "H2Oリテイリング",
+"file": "H2Oリテイリング.png",
+"title": "472_H2Oリテイリング.png",
+"mime": "image/png"
+},
+{
+"no": 473,
+"ja": "野村総研",
+"file": "野村総研.png",
+"title": "473_野村総研.png",
+"mime": "image/png"
+},
+{
+"no": 474,
+"ja": "日本オラクル",
+"file": "日本オラクル.svg",
+"title": "474_日本オラクル.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 475,
+"ja": "TISI",
+"file": "TISI.svg",
+"title": "475_TISI.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 476,
+"ja": "日鉄ソリューション",
+"file": "日鉄ソリューション.png",
+"title": "476_日鉄ソリューション.png",
+"mime": "image/png"
+},
+{
+"no": 477,
+"ja": "BIPROGY",
+"file": "BIPROGY.svg",
+"title": "477_BIPROGY.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 478,
+"ja": "NSD",
+"file": "NSD.svg",
+"title": "478_NSD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 479,
+"ja": "カカクコム",
+"file": "カカクコム.png",
+"title": "479_カカクコム.png",
+"mime": "image/png"
+},
+{
+"no": 480,
+"ja": "グリーHD",
+"file": "グリーホールディングス.svg",
+"title": "480_グリーHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 481,
+"ja": "フリー",
+"file": "フリー.png",
+"title": "481_フリー.png",
+"mime": "image/png"
+},
+{
+"no": 482,
+"ja": "インフォマート",
+"file": "インフォマート.svg",
+"title": "482_インフォマート.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 483,
+"ja": "トヨクモ",
+"file": "トヨクモ.svg",
+"title": "483_トヨクモ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 484,
+"ja": "セガサミー",
+"file": "セガサミー.svg",
+"title": "484_セガサミー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 485,
+"ja": "スクウェア・エニックス",
+"file": "スクウェア・エニックス.svg",
+"title": "485_スクウェア・エニックス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 486,
+"ja": "ガンホー",
+"file": "ガンホー.jpg",
+"title": "486_ガンホー.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 487,
+"ja": "タカラトミー",
+"file": "タカラトミー.svg",
+"title": "487_タカラトミー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 488,
+"ja": "東映",
+"file": "東映.svg",
+"title": "488_東映.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 489,
+"ja": "リゾートトラスト",
+"file": "リゾートトラスト.svg",
+"title": "489_リゾートトラスト.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 490,
+"ja": "寿スピリッツ",
+"file": "寿スピリッツ.png",
+"title": "490_寿スピリッツ.png",
+"mime": "image/png"
+},
+{
+"no": 491,
+"ja": "共立メンテナンス",
+"file": "共立メンテナンス.svg",
+"title": "491_共立メンテナンス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 492,
+"ja": "平和",
+"file": "平和.png",
+"title": "492_平和.png",
+"mime": "image/png"
+},
+{
+"no": 493,
+"ja": "第一興商",
+"file": "第一興商.png",
+"title": "493_第一興商.png",
+"mime": "image/png"
+},
+{
+"no": 494,
+"ja": "エイチ・アイ・エス",
+"file": "エイチ・アイ・エス.svg",
+"title": "494_エイチ・アイ・エス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 495,
+"ja": "コシダカホールディングス",
+"file": "コシダカホールディングス.png",
+"title": "495_コシダカホールディングス.png",
+"mime": "image/png"
+},
+{
+"no": 496,
+"ja": "ユニバーサル・エンターテイメント",
+"file": "ユニバーサル・エンターテイメント.svg",
+"title": "496_ユニバーサル・エンターテイメント.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 497,
+"ja": "イオンファンタジー",
+"file": "イオンファンタジー.svg",
+"title": "497_イオンファンタジー.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 498,
+"ja": "パーソル",
+"file": "パーソル.svg",
+"title": "498_パーソル.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 499,
+"ja": "テクノプロ",
+"file": "テクノプロ.svg",
+"title": "499_テクノプロ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 500,
+"ja": "メイテック",
+"file": "メイテック.png",
+"title": "500_メイテック.png",
+"mime": "image/png"
+},
+{
+"no": 501,
+"ja": "オープンアップグループ",
+"file": "オープンアップグループ.svg",
+"title": "501_オープンアップグループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 502,
+"ja": "ディップ",
+"file": "ディップ.png",
+"title": "502_ディップ.png",
+"mime": "image/png"
+},
+{
+"no": 503,
+"ja": "JACリクルートメント",
+"file": "JACリクルートメント.png",
+"title": "503_JACリクルートメント.png",
+"mime": "image/png"
+},
+{
+"no": 504,
+"ja": "エン",
+"file": "エン.svg",
+"title": "504_エン.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 505,
+"ja": "UTグループ",
+"file": "UTグループ.png",
+"title": "505_UTグループ.png",
+"mime": "image/png"
+},
+{
+"no": 506,
+"ja": "パソナグループ",
+"file": "パソナグループ.svg",
+"title": "506_パソナグループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 507,
+"ja": "ゼンショーHD",
+"file": "ゼンショーホールディングス.svg",
+"title": "507_ゼンショーHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 508,
+"ja": "すかいらーくHD",
+"file": "すかいらーくホールディングス.svg",
+"title": "508_すかいらーくHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 509,
+"ja": "トリドール",
+"file": "トリドール.png",
+"title": "509_トリドール.png",
+"mime": "image/png"
+},
+{
+"no": 510,
+"ja": "王将フードサービス",
+"file": "王将フードサービス.svg",
+"title": "510_王将フードサービス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 511,
+"ja": "吉野家ホールディングス",
+"file": "吉野家ホールディングス.png",
+"title": "511_吉野家ホールディングス.png",
+"mime": "image/png"
+},
+{
+"no": 512,
+"ja": "くら寿司",
+"file": "くら寿司.svg",
+"title": "512_くら寿司.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 513,
+"ja": "物語コーポレーション",
+"file": "物語コーポレーション.svg",
+"title": "513_物語コーポレーション.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 514,
+"ja": "コメダホールディングス",
+"file": "コメダホールディングス.svg",
+"title": "514_コメダホールディングス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 515,
+"ja": "松屋フーズHD",
+"file": "松屋フーズホールディングス.png",
+"title": "515_松屋フーズHD.png",
+"mime": "image/png"
+},
+{
+"no": 516,
+"ja": "モスフードサービス",
+"file": "モスフードサービス.svg",
+"title": "516_モスフードサービス.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 517,
+"ja": "ドトール日レス",
+"file": "ドトール日レス.png",
+"title": "517_ドトール日レス.png",
+"mime": "image/png"
+},
+{
+"no": 518,
+"ja": "丸千代山岡家",
+"file": "丸千代山岡家.png",
+"title": "518_丸千代山岡家.png",
+"mime": "image/png"
+},
+{
+"no": 519,
+"ja": "ダイキン工業",
+"file": "ダイキン工業.svg",
+"title": "519_ダイキン工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 520,
+"ja": "マキタ",
+"file": "マキタ.svg",
+"title": "520_マキタ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 521,
+"ja": "ホシザキ",
+"file": "ホシザキ.svg",
+"title": "521_ホシザキ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 522,
+"ja": "三浦工業",
+"file": "三浦工業.svg",
+"title": "522_三浦工業.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 523,
+"ja": "日本郵船",
+"file": "日本郵船.svg",
+"title": "523_日本郵船.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 524,
+"ja": "商船三井",
+"file": "商船三井.svg",
+"title": "524_商船三井.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 525,
+"ja": "川崎汽船",
+"file": "川崎汽船.svg",
+"title": "525_川崎汽船.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 526,
+"ja": "JR東日本",
+"file": "東日本旅客鉄道.svg",
+"title": "526_JR東日本.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 527,
+"ja": "JR西日本",
+"file": "西日本旅客鉄道.svg",
+"title": "527_JR西日本.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 528,
+"ja": "東京メトロ",
+"file": "東京地下鉄.svg",
+"title": "528_東京メトロ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 529,
+"ja": "東急",
+"file": "東急.svg",
+"title": "529_東急.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 530,
+"ja": "西武HD",
+"file": "西武ホールディングス.svg",
+"title": "530_西武HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 531,
+"ja": "阪急阪神HD",
+"file": "阪急阪神ホールディングス.svg",
+"title": "531_阪急阪神HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 532,
+"ja": "近鉄グループHD",
+"file": "近鉄グループホールディングス.svg",
+"title": "532_近鉄グループHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 533,
+"ja": "京成電鉄",
+"file": "京成電鉄.svg",
+"title": "533_京成電鉄.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 534,
+"ja": "九州旅客鉄道",
+"file": "九州旅客鉄道.svg",
+"title": "534_九州旅客鉄道.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 535,
+"ja": "小田急電鉄",
+"file": "小田急電鉄.svg",
+"title": "535_小田急電鉄.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 536,
+"ja": "東武鉄道",
+"file": "東武鉄道.svg",
+"title": "536_東武鉄道.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 537,
+"ja": "京王電鉄",
+"file": "京王電鉄.svg",
+"title": "537_京王電鉄.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 538,
+"ja": "名古屋鉄道",
+"file": "名古屋鉄道.svg",
+"title": "538_名古屋鉄道.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 539,
+"ja": "京阪HD",
+"file": "京阪ホールディングス.svg",
+"title": "539_京阪HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 540,
+"ja": "京浜急行電鉄",
+"file": "京浜急行電鉄.svg",
+"title": "540_京浜急行電鉄.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 541,
+"ja": "南海電気鉄道",
+"file": "南海電気鉄道.svg",
+"title": "541_南海電気鉄道.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 542,
+"ja": "相鉄HD",
+"file": "相鉄ホールディングス.svg",
+"title": "542_相鉄HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 543,
+"ja": "西日本鉄道",
+"file": "西日本鉄道.svg",
+"title": "543_西日本鉄道.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 544,
+"ja": "ゆうちょ銀行",
+"file": "ゆうちょ銀行.svg",
+"title": "544_ゆうちょ銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 545,
+"ja": "三井住友トラストHD",
+"file": "三井住友トラスト・ホールディングス.png",
+"title": "545_三井住友トラストHD.png",
+"mime": "image/png"
+},
+{
+"no": 546,
+"ja": "りそなHD",
+"file": "りそなホールディングス.svg",
+"title": "546_りそなHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 547,
+"ja": "千葉銀行",
+"file": "千葉銀行.png",
+"title": "547_千葉銀行.png",
+"mime": "image/png"
+},
+{
+"no": 548,
+"ja": "横浜FG",
+"file": "横浜フィナンシャルグループ.svg",
+"title": "548_横浜FG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 549,
+"ja": "しずおかFG",
+"file": "しずおかフィナンシャルグループ.svg",
+"title": "549_しずおかFG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 550,
+"ja": "ふくおかFG",
+"file": "ふくおかフィナンシャルグループ.svg",
+"title": "550_ふくおかFG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 551,
+"ja": "SBI新生銀行",
+"file": "SBI新生銀行.svg",
+"title": "551_SBI新生銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 552,
+"ja": "めぶきFG",
+"file": "めぶきフィナンシャルグループ.png",
+"title": "552_めぶきFG.png",
+"mime": "image/png"
+},
+{
+"no": 553,
+"ja": "京都FG",
+"file": "京都フィナンシャルグループ.svg",
+"title": "553_京都FG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 554,
+"ja": "八十二長野銀行",
+"file": "八十二長野銀行.svg",
+"title": "554_八十二長野銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 555,
+"ja": "いよぎん",
+"file": "いよぎん.svg",
+"title": "555_いよぎん.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 556,
+"ja": "群馬銀行",
+"file": "群馬銀行.svg",
+"title": "556_群馬銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 557,
+"ja": "ほくほくFG",
+"file": "ほくほくフィナンシャルグループ.svg",
+"title": "557_ほくほくFG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 558,
+"ja": "七十七銀行",
+"file": "七十七銀行.svg",
+"title": "558_七十七銀行.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 559,
+"ja": "山口FG",
+"file": "山口フィナンシャルグループ.svg",
+"title": "559_山口FG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 560,
+"ja": "九州FG",
+"file": "九州フィナンシャルグループ.svg",
+"title": "560_九州FG.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 561,
+"ja": "ひろぎんHD",
+"file": "ひろぎんホールディングス.png",
+"title": "561_ひろぎんHD.png",
+"mime": "image/png"
+},
+{
+"no": 562,
+"ja": "東京海上HD",
+"file": "東京海上ホールディングス.svg",
+"title": "562_東京海上HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 563,
+"ja": "MS＆ADインシュアランスグループHD",
+"file": "MS＆ADインシュアランスグループホールディングス.svg",
+"title": "563_MS＆ADインシュアランスグループHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 564,
+"ja": "第一ライフHD",
+"file": "第一ライフホールディングス.png",
+"title": "564_第一ライフHD.png",
+"mime": "image/png"
+},
+{
+"no": 565,
+"ja": "SOMPOHD",
+"file": "SOMPOホールディングス.svg",
+"title": "565_SOMPOHD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 566,
+"ja": "T＆DHD",
+"file": "T＆Dホールディングス.jpg",
+"title": "566_T＆DHD.jpg",
+"mime": "image/jpeg"
+},
+{
+"no": 567,
+"ja": "かんぽ生命保険",
+"file": "かんぽ生命保険.svg",
+"title": "567_かんぽ生命保険.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 568,
+"ja": "野村HD",
+"file": "野村ホールディングス.svg",
+"title": "568_野村HD.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 569,
+"ja": "日本取引所グループ",
+"file": "日本取引所グループ.svg",
+"title": "569_日本取引所グループ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 570,
+"ja": "大和証券グループ本社",
+"file": "大和証券グループ本社.png",
+"title": "570_大和証券グループ本社.png",
+"mime": "image/png"
+},
+{
+"no": 571,
+"ja": "テルモ",
+"file": "テルモ.svg",
+"title": "571_テルモ.svg",
+"mime": "image/svg+xml"
+},
+{
+"no": 572,
+"ja": "朝日インテック",
+"file": "朝日インテック.svg",
+"title": "572_朝日インテック.svg",
+"mime": "image/svg+xml"
+}
+]

@@ -28,6 +28,13 @@ def wp_images(lang, q):
 
 items = json.loads(Path(sys.argv[1] if len(sys.argv)>1 else "tools/probe_list.json").read_text(encoding="utf-8"))
 log = []
+if items and isinstance(items[0], list):   # [[No, URL or wiki:ファイル名], ...] を直接試す
+    for k, (no, u) in enumerate(items):
+        for uu in (cl.wiki_file_urls(u[5:]) if u.startswith("wiki:") else [u]):
+            try:
+                p = cl.download(uu, OUT / f"{no}_{k}_url"); log.append([no, u, uu, p.name]); print("OK", no, uu); break
+            except Exception as e: print("NG", no, uu, e)
+    Path("probe/log.json").write_text(json.dumps(log, ensure_ascii=False, indent=0), encoding="utf-8"); sys.exit(0)
 for it in items:
     no = it["no"]; print(no, it["ja"], flush=True)
     cands = []
