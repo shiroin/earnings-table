@@ -26,7 +26,7 @@ def wp_images(lang, q):
         print("  wp err", lang, e)
     return urls
 
-items = json.loads(Path("tools/probe_list.json").read_text(encoding="utf-8"))
+items = json.loads(Path(sys.argv[1] if len(sys.argv)>1 else "tools/probe_list.json").read_text(encoding="utf-8"))
 log = []
 for it in items:
     no = it["no"]; print(no, it["ja"], flush=True)

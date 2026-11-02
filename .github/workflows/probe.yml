@@ -1,5 +1,9 @@
 name: ロゴ候補の収集
-on: { workflow_dispatch: {} }
+on:
+  workflow_dispatch:
+    inputs:
+      list: { default: tools/probe_list.json }
+      branch: { default: probe }
 permissions: { contents: write }
 jobs:
   probe:
@@ -10,8 +14,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install requests beautifulsoup4
-      - run: python tools/probe_logos.py
+      - run: python tools/probe_logos.py ${{ inputs.list }}
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          git checkout -B probe && git add -f probe && git commit -qm "ロゴ候補" && git push -f origin probe
+          git checkout -B ${{ inputs.branch }} && git add -f probe && git commit -qm "ロゴ候補" && git push -f origin ${{ inputs.branch }}

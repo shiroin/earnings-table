@@ -1,0 +1,290 @@
+[
+{
+"no": "31",
+"ja": "Corning",
+"en": "Corning",
+"name": "Corning",
+"ticker": "GLW",
+"domain": "corning.com"
+},
+{
+"no": "39",
+"ja": "古河電工",
+"en": "古河電気工業",
+"name": "古河電気工業",
+"ticker": "5801",
+"domain": "furukawa.co.jp"
+},
+{
+"no": "59",
+"ja": "ディスコ",
+"en": "ディスコ",
+"name": "ディスコ",
+"ticker": "6146",
+"domain": "disco.co.jp"
+},
+{
+"no": "61",
+"ja": "SCREEN",
+"en": "SCREENホールディングス",
+"name": "SCREENホールディングス",
+"ticker": "7735",
+"domain": "screen.co.jp"
+},
+{
+"no": "111",
+"ja": "Figma",
+"en": "Figma",
+"name": "Figma",
+"ticker": "FIG",
+"domain": "figma.com"
+},
+{
+"no": "118",
+"ja": "Sansan",
+"en": "Sansan",
+"name": "Sansan",
+"ticker": "4443",
+"domain": "jp.corp-sansan.com"
+},
+{
+"no": "151",
+"ja": "Bookingホールディングス",
+"en": "Booking Holdings",
+"name": "Booking Holdings",
+"ticker": "BKNG",
+"domain": "bookingholdings.com"
+},
+{
+"no": "170",
+"ja": "Bilibili",
+"en": "Bilibili",
+"name": "Bilibili",
+"ticker": "BILI",
+"domain": "bilibili.com"
+},
+{
+"no": "206",
+"ja": "MTG",
+"en": "MTG",
+"name": "MTG",
+"ticker": "7806",
+"domain": "mtg.gr.jp"
+},
+{
+"no": "243",
+"ja": "光通信",
+"en": "光通信",
+"name": "光通信",
+"ticker": "9435",
+"domain": "hikari.co.jp"
+},
+{
+"no": "253",
+"ja": "THK",
+"en": "THK",
+"name": "THK",
+"ticker": "6481",
+"domain": "thk.com"
+},
+{
+"no": "284",
+"ja": "パーク24",
+"en": "パーク24",
+"name": "パーク24",
+"ticker": "4666",
+"domain": "park24.co.jp"
+},
+{
+"no": "286",
+"ja": "プレミアグループ",
+"en": "プレミアグループ",
+"name": "プレミアグループ",
+"ticker": "7199",
+"domain": "premium-group.co.jp"
+},
+{
+"no": "293",
+"ja": "Finatext",
+"en": "Finatextホールディングス",
+"name": "Finatextホールディングス",
+"ticker": "4419",
+"domain": "finatext.com"
+},
+{
+"no": "296",
+"ja": "PKSHA Technology",
+"en": "PKSHA Technology",
+"name": "PKSHA Technology",
+"ticker": "3993",
+"domain": "pkshatech.com"
+},
+{
+"no": "322",
+"ja": "星野リゾート",
+"en": "星野リゾート",
+"name": "星野リゾート",
+"ticker": "",
+"domain": "hoshinoresorts.com"
+},
+{
+"no": "374",
+"ja": "ソフトバンク",
+"en": "ソフトバンク",
+"name": "ソフトバンク",
+"ticker": "9434",
+"domain": "softbank.jp"
+},
+{
+"no": "378",
+"ja": "ライオン",
+"en": "ライオン",
+"name": "ライオン",
+"ticker": "4912",
+"domain": "lion.co.jp"
+},
+{
+"no": "449",
+"ja": "パルグループHD",
+"en": "パルグループホールディングス",
+"name": "パルグループホールディングス",
+"ticker": "2726",
+"domain": "palgroup.holdings"
+},
+{
+"no": "456",
+"ja": "セリア",
+"en": "セリア",
+"name": "セリア",
+"ticker": "2782",
+"domain": "seria-group.com"
+},
+{
+"no": "457",
+"ja": "ジンズ",
+"en": "ジンズ",
+"name": "ジンズ",
+"ticker": "3046",
+"domain": "jins.com"
+},
+{
+"no": "460",
+"ja": "マツキヨココカラ",
+"en": "マツキヨココカラ",
+"name": "マツキヨココカラ",
+"ticker": "3088",
+"domain": "matsukiyococokara.com"
+},
+{
+"no": "469",
+"ja": "丸井グループ",
+"en": "丸井グループ",
+"name": "丸井グループ",
+"ticker": "8252",
+"domain": "0101maruigroup.co.jp"
+},
+{
+"no": "478",
+"ja": "NSD",
+"en": "NSD",
+"name": "NSD",
+"ticker": "9759",
+"domain": "nsd.co.jp"
+},
+{
+"no": "486",
+"ja": "ガンホー",
+"en": "ガンホー",
+"name": "ガンホー",
+"ticker": "3765",
+"domain": "gungho.co.jp"
+},
+{
+"no": "489",
+"ja": "リゾートトラスト",
+"en": "リゾートトラスト",
+"name": "リゾートトラスト",
+"ticker": "4681",
+"domain": "resorttrust.co.jp"
+},
+{
+"no": "492",
+"ja": "平和",
+"en": "平和",
+"name": "平和",
+"ticker": "6412",
+"domain": "heiwanet.co.jp"
+},
+{
+"no": "493",
+"ja": "第一興商",
+"en": "第一興商",
+"name": "第一興商",
+"ticker": "7458",
+"domain": "dkkaraoke.co.jp"
+},
+{
+"no": "495",
+"ja": "コシダカホールディングス",
+"en": "コシダカホールディングス",
+"name": "コシダカホールディングス",
+"ticker": "2157",
+"domain": "koshidakahd.co.jp"
+},
+{
+"no": "499",
+"ja": "テクノプロ",
+"en": "テクノプロ",
+"name": "テクノプロ",
+"ticker": "6028",
+"domain": "technoproholdings.com"
+},
+{
+"no": "502",
+"ja": "ディップ",
+"en": "ディップ",
+"name": "ディップ",
+"ticker": "2379",
+"domain": "dip-net.co.jp"
+},
+{
+"no": "504",
+"ja": "エン",
+"en": "エン",
+"name": "エン",
+"ticker": "4849",
+"domain": "enjapan.com"
+},
+{
+"no": "542",
+"ja": "相鉄HD",
+"en": "相鉄ホールディングス",
+"name": "相鉄ホールディングス",
+"ticker": "9003",
+"domain": "sotetsu.co.jp"
+},
+{
+"no": "550",
+"ja": "ふくおかFG",
+"en": "ふくおかフィナンシャルグループ",
+"name": "ふくおかフィナンシャルグループ",
+"ticker": "8354",
+"domain": "fukuoka-fg.com"
+},
+{
+"no": "560",
+"ja": "九州FG",
+"en": "九州フィナンシャルグループ",
+"name": "九州フィナンシャルグループ",
+"ticker": "7180",
+"domain": "kyushu-fg.co.jp"
+},
+{
+"no": "47",
+"ja": "Moonshot AI",
+"en": "Moonshot AI",
+"name": "Moonshot AI",
+"ticker": "",
+"domain": "moonshot.ai"
+}
+]
