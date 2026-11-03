@@ -293,24 +293,38 @@ function parseCSV(text){
   const head = (rows.shift()||[]).map(h=>h.trim());
   return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]??"").trim()])));
 }
-async function loadAll(){
-  try{ state.cfg = await (await fetch("config.json",{cache:"no-cache"})).json(); }catch{}
-  try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
+/* 小さな読み込みキャッシュ（前回の内容をすぐ出し、裏で取り直す） */
+const lcache = {
+  get(k, ttl){ try{ const v = JSON.parse(localStorage.getItem("etc:"+k)); if(v && (!ttl || Date.now()-v.t < ttl)) return v; }catch{} return null; },
+  set(k, d){ try{ localStorage.setItem("etc:"+k, JSON.stringify({t:Date.now(), d})); }catch{} }
+};
+function digestFromCSV(t){ return parseCSV(t).map(d=>({...d, 発表日:(d["発表日"]||"").replace(/\//g,"-")})); }
+async function loadDigest(sid){
+  const c = lcache.get("digest:"+sid);
+  if(c?.d){ state.digest = digestFromCSV(c.d); }
   try{
-    const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json();
-    state.masters = m.companies||[];
-    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。表に入れた会社は、元の企業マスターのシートから最新の期をその場で読み直します。`;
-  }catch{ $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。"; }
-  try{ const r = await fetch("data/mcap.json",{cache:"no-cache"}); if(r.ok){ const j = await r.json(); state.mcap = j.companies||{}; state.mcapUpdated = j.updated||""; } }catch{}
-  if(state.mcapUpdated) $("#dataInfo").textContent += ` 時価総額は ${state.mcapUpdated} 時点（1日2回更新）。`;
+    const r = await fetch(`https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent("決算データ")}`);
+    if(r.ok){ const t = await r.text(); if(!/^\s*</.test(t)){ if(t!==c?.d){ state.digest = digestFromCSV(t); lcache.set("digest:"+sid, t); return true; } } }
+  }catch{}
+  return !!c?.d;
+}
+async function loadAll(){
+  const j = (u) => fetch(u,{cache:"no-cache"}).then(r=>r.ok ? r.json() : null).catch(()=>null);
+  const pc = j("config.json"), pl = j("logos/index.json"), pm = j("data/masters.json"), pk = j("data/mcap.json");
+  state.cfg = (await pc) || {};
   const sid = state.cfg.sheetId;
-  if(sid){
-    try{
-      const r = await fetch(`https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent("決算データ")}`);
-      if(r.ok){ const t = await r.text(); if(!/^\s*</.test(t)) state.digest = parseCSV(t).map(d=>({...d, 発表日:(d["発表日"]||"").replace(/\//g,"-")})); }
-    }catch{}
-  }
+  const pd = sid ? loadDigest(sid) : Promise.resolve(false);   // 決算データのシートは他と並行して読む
+  if(sid && state.digest.length && state.src==="digest"){ fillFilters(); renderList(); }   // キャッシュがあれば先に出す
+  const [m, lg, mk] = await Promise.all([pm, pl, pk]);
+  if(lg) state.logos = lg;
+  if(m){ state.masters = m.companies||[];
+    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。表に入れた会社は、元の企業マスターのシートから最新の期をその場で読み直します。`;
+  } else $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。";
+  if(mk){ state.mcap = mk.companies||{}; state.mcapUpdated = mk.updated||""; }
+  if(state.mcapUpdated) $("#dataInfo").textContent += ` 時価総額は ${state.mcapUpdated} 時点（1日2回更新）。`;
   fillFilters(); renderList();
+  pd.then(ch => { if(ch){ fillFilters(); renderList(); renderPreview(); } });
+  return { digest: pd };
 }
 
 /* ---------- 期の扱い ---------- */
@@ -491,12 +505,26 @@ function rowFromMaster(c, period){
 /* ---------- 企業マスターを元のシートから直接読む（同期を待たずに最新の期を出す） ---------- */
 const DIV = u => /^兆/.test(u) ? 1e6 : /^(10|十)億/.test(u) ? 1e3 : /^億/.test(u) ? 100 : /^百万/.test(u) ? 1 : 100;
 const liveDone = {};
+let liveActive = 0; const liveQueue = [];
+function liveSlot(){ return new Promise(res => { if(liveActive < 8){ liveActive++; res(); } else liveQueue.push(res); }); }
+function liveFree(){ const n = liveQueue.shift(); if(n) n(); else liveActive--; }
+async function liveCSV(id){
+  const k = "m:"+id; let hit = null;
+  try{ hit = JSON.parse(sessionStorage.getItem(k)); }catch{}
+  if(hit && Date.now()-hit.t < 10*60e3) return hit.d;         // 10分以内に読んだシートは読み直さない
+  await liveSlot();                                           // 同時に読むのは8社まで（一斉に投げると全部が遅くなる）
+  try{
+    const r = await fetch(`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&headers=0&sheet=${encodeURIComponent("会社全体_四半期")}`);
+    if(!r.ok) return null; const t = await r.text(); if(/^\s*</.test(t)) return null;
+    try{ sessionStorage.setItem(k, JSON.stringify({t:Date.now(), d:t})); }catch{}
+    return t;
+  }catch{ return null; } finally{ liveFree(); }
+}
 async function liveMaster(c){
   if(!c?.master_id || liveDone[c.master_id]) return false;
   liveDone[c.master_id] = true;
   try{
-    const r = await fetch(`https://docs.google.com/spreadsheets/d/${c.master_id}/gviz/tq?tqx=out:csv&headers=0&sheet=${encodeURIComponent("会社全体_四半期")}`);
-    if(!r.ok) return false; const t = await r.text(); if(/^\s*</.test(t)) return false;
+    const t = await liveCSV(c.master_id); if(!t) return false;
     const rows = []; let row = [], cur = "", q = false;      // CSV（見出しなし）
     for(let i=0;i<t.length;i++){ const ch=t[i];
       if(q){ if(ch==='"'){ if(t[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=ch; }
@@ -521,17 +549,24 @@ async function liveMaster(c){
 }
 window.__live = { liveMaster, get state(){ return state; } };
 /* 表に入っているマスターの行を、最新の期で作り直す（期を指定していない行だけ） */
-async function refreshLive(cs){
-  await Promise.all(cs.map(liveMaster));
+function applyLive(c){
   let upd = false;
   state.rows = state.rows.map(r=>{
     if(!r.key?.startsWith("m|") || (r.period && r.period!=="dg" && r.period !== r._latest)) return r;
-    const c = masterOf(r); if(!c?.periods?.length) return r;
-    const n = rowFromMaster(c); if(n.period===r.period && !c.live) return r;
+    const m = masterOf(r); if(m!==c || !m?.periods?.length) return r;
+    const n = rowFromMaster(m); if(n.period===r.period && !m.live) return r;
     n.社名表示 = r.社名表示; n._latest = n.period; upd = true; return n;
   });
-  if(!upd) return;
-  renderList(); renderEdit(); renderPreview();
+  return upd;
+}
+let liveRT = 0;
+function liveRender(){ clearTimeout(liveRT); liveRT = setTimeout(()=>{ renderList(); renderEdit(); renderPreview(); }, 150); }
+/* 表に入っているマスターの行を、最新の期で作り直す（期を指定していない行だけ）。読めた会社から順に反映 */
+async function refreshLive(cs){
+  // まず masters.json の最新期に合わせる（シートを待たない）
+  let any = false; for(const c of new Set(cs)) if(applyLive(c)) any = true;
+  if(any) liveRender();
+  await Promise.all([...new Set(cs)].map(c => liveMaster(c).then(ch => { if(ch && applyLive(c)) liveRender(); })));
 }
 function normUnit(v, u){
   const m = String(u||"").match(/^百万(.+)$/), x = num(v);
