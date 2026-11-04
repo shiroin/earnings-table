@@ -88,6 +88,26 @@ def table(ws):
     return cols, data
 
 
+def raw_table(ws):
+    """文字列も残して 'period' 見出しの表を読む（ガイダンス・進捗・比較タブ用）"""
+    rows = list(ws.iter_rows(values_only=True))
+    hi = next((i for i, r in enumerate(rows) if r and str(r[0]).strip().lower() == "period"), None)
+    if hi is None:
+        return []
+    head = [str(h).strip() if h is not None else "" for h in rows[hi]]
+    out = []
+    for r in rows[hi + 1:]:
+        if not r or r[0] is None or str(r[0]).strip() == "":
+            continue
+        d = {}
+        for j, h in enumerate(head):
+            if h:
+                v = r[j] if j < len(r) else None
+                d[h] = v if isinstance(v, (int, float)) else ("" if v is None else str(v).strip())
+        out.append(d)
+    return out
+
+
 def settings(wb):
     if "設定" not in wb.sheetnames:
         return {}, {}
@@ -165,6 +185,7 @@ def read_master(path_or_bytes):
         c, d = sheet(name)
         out[key] = {"columns": c, "rows": d} if c else None
     out["segments"] = {k: v for k, v in seg_meta.items()}
+    out["guide_view"] = raw_table(wb["進捗・比較"]) if "進捗・比較" in wb.sheetnames else []
     return out
 
 
@@ -216,7 +237,35 @@ def enrich(w, m):
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
         "segments": m.get("segments") or {},
+        "guide": guide_rows(m.get("guide_view") or [], div),
     }
+
+
+PER_SHARE = re.compile(r"^(円|USD|ドル|\$|EUR|ユーロ|KRW|ウォン|TWD|CNY|元|HKD|%|％)$", re.I)
+
+
+def guide_rows(rows, div):
+    """進捗・比較タブ → Webアプリ用（金額は表示単位に、EPS・配当・利益率はそのまま）"""
+    out = []
+    for r in rows:
+        unit = str(r.get("unit") or "")
+        metric = str(r.get("metric") or "")
+        amount = not (PER_SHARE.match(unit) or metric in ("eps", "dividend") or metric.endswith("margin"))
+        def sc(v):
+            if not isinstance(v, (int, float)):
+                return None
+            return round(v / div, 2) if amount else v
+        def pc(v):
+            return v if isinstance(v, (int, float)) else None
+        out.append({"period": str(r.get("period") or ""), "type": str(r.get("type") or ""), "metric": metric,
+                    "label": str(r.get("label") or ""), "target": str(r.get("target") or ""),
+                    "actual": sc(r.get("actual")), "low": sc(r.get("low")), "high": sc(r.get("high")), "mid": sc(r.get("mid")),
+                    "ratio": pc(r.get("ratio")), "judge": str(r.get("judge") or ""), "avg5": pc(r.get("avg5")),
+                    "prev_year": pc(r.get("prev_year")), "consensus": sc(r.get("consensus")), "vs_consensus": pc(r.get("vs_consensus")),
+                    "prev_mid": sc(r.get("prev_mid")), "revision": str(r.get("revision") or ""), "kind": str(r.get("kind") or ""),
+                    "amount": amount, "unit": "" if amount else unit, "basis": str(r.get("basis") or ""),
+                    "announced": str(r.get("announced") or "")})
+    return out
 
 
 def download(fid, session):

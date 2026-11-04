@@ -35,14 +35,20 @@ def main():
     ap.add_argument("--palette", default="teal", help="配色: teal / green / wine / charcoal / purple / ocean")
     ap.add_argument("--head", help="見出しの色（例 #1F6E75）。指定すると配色より優先")
     ap.add_argument("--accent", help="営業利益率の色（例 #EE7E1A）")
+    ap.add_argument("--progress", action="store_true", help="通期予想に対する進捗率（5年平均つき）の列を足す（日本企業向け）")
+    ap.add_argument("--guide", action="store_true", help="ガイダンス比（実績 vs 決算前の会社ガイダンス）の列を足す（米国企業向け）")
+    ap.add_argument("--next", action="store_true", help="次の四半期の売上高ガイダンスの列を足す（米国企業向け）")
+    ap.add_argument("--one", metavar="TICKER", help="1社まとめの画像を作る（企業マスターのティッカー）")
+    ap.add_argument("--one-period", help="1社まとめの期（例 FY2027Q2。省略で最新）")
+    ap.add_argument("--theme", choices=["dark", "light"], default="dark", help="1社まとめの配色")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
     rows = []
     if a.csv:
       with open(a.csv, encoding="utf-8-sig", newline="") as f:
         rows = [{k: (r.get(k) or "").strip() for k in KEYS} for r in csv.DictReader(f) if (r.get("企業") or "").strip()]
-    elif not a.seg:
-        ap.error("CSV か --seg を指定してください")
+    elif not a.seg and not a.one:
+        ap.error("CSV か --seg / --one を指定してください")
     for r in rows:  # 社名表示: ○ / 1 / TRUE などで表示
         r["社名表示"] = bool(re.match(r"^(○|〇|◯|1|true|yes|はい|y|on|表示)$", r["社名表示"], re.I))
 
@@ -57,11 +63,14 @@ def main():
             page = b.new_page(viewport={"width": 4000, "height": 1200}, device_scale_factor=a.scale)
             page.goto(f"http://127.0.0.1:{srv.server_port}/index.html?headless=1")
             page.wait_for_function("window.__ready === true")
-            if a.seg:
+            if a.one:
+                page.evaluate("([k,o]) => window.__renderOne(k,o)", [a.one, {"period": a.one_period, "theme": a.theme, "title": a.title}])
+            elif a.seg:
                 page.evaluate("([k,o]) => window.__renderSeg(k,o)", [a.seg, {"period": a.seg_period, "profit": a.seg_profit, "palette": a.palette, "title": a.title}])
             else:
                 page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "align": a.align, "dateShow": a.date_show, "sort": a.sort, "sortDir": "asc" if a.asc else "desc", "cur": "jpy" if a.yen else "local",
-                    "fx": {k: float(v) for k, v in (x.split("=") for x in a.fx.split(","))} if a.fx else None, "palette": a.palette, "head": a.head, "accent": a.accent}])
+                    "fx": {k: float(v) for k, v in (x.split("=") for x in a.fx.split(","))} if a.fx else None, "palette": a.palette, "head": a.head, "accent": a.accent,
+                    "progress": a.progress, "guide": a.guide, "next": a.next}])
             page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
             b.close()

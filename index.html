@@ -96,6 +96,12 @@ input[type=url]{flex:1}
 .et td.cap{border-left:1.5px dotted #555;text-align:right;font-family:var(--num);white-space:nowrap;min-width:200px}
 .et td.cap b{font-size:42px;font-weight:500}
 .et td.sep{border-left:1.5px solid #888}
+.et td.gd,.et td.pg,.et td.nx{text-align:right;font-family:var(--num);white-space:nowrap;min-width:160px;border-left:1.5px dotted #bbb;line-height:1.15}
+.et td.gd b,.et td.pg b{font-size:38px;font-weight:600}
+.et td.nx b{font-size:32px;font-weight:600}
+.et td.nx b small{font-size:20px}
+.et td.gd small,.et td.pg small,.et td.nx>small{display:block;font-family:var(--ja);font-size:20px;color:#555;margin-top:4px}
+.et td.up b{color:#1E9E5A} .et td.dn b{color:#E0453A}
 /* 金額を左揃えにする */
 .et.alignL td.amt,.et.alignL td.cap{text-align:left}
 .et.alignL td.amt{padding-left:26px}
@@ -128,6 +134,62 @@ input[type=url]{flex:1}
 #canvas .ttl h3{margin:0}
 #canvas .fxnote{font-size:19px;color:#555;margin-top:12px;text-align:right}
 #canvas .note{font-size:20px;color:#555;margin-top:12px;text-align:right}
+/* 1社まとめ */
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-600.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-800.woff2) format("woff2");font-weight:800}
+#canvas.one{width:1250px;padding:34px 34px 26px;--o-bg:#0B0B0B;--o-fg:#fff;--o-ac:#F5C518;--o-mut:#BDBDBD;--o-card:#111;background:var(--o-bg);color:var(--o-fg)}
+#canvas.one.light{--o-bg:#fff;--o-fg:#111;--o-ac:var(--head);--o-mut:#555;--o-card:#fff}
+#canvas.one .o-n,#canvas.one .o-big,#canvas.one .o-t td,#canvas.one .o-pv b,#canvas.one .bd{font-family:"ETNum",var(--num)}
+#canvas.one .o-head{display:flex;align-items:center;justify-content:center;gap:26px;border-bottom:4px solid var(--o-ac);padding-bottom:16px;margin-bottom:22px}
+#canvas.one .o-head img{height:92px;max-width:300px;object-fit:contain;background:#fff;border-radius:14px;padding:8px 14px}
+#canvas.one .o-head h3{margin:0;font-size:64px;font-weight:900;line-height:1.1;text-align:left;letter-spacing:0}
+#canvas.one .o-head .tk{margin-left:18px;padding-left:18px;border-left:6px solid var(--o-ac);font-family:"ETNum",var(--num);font-weight:800}
+#canvas.one .o-sub{font-size:40px;font-weight:800;margin-top:6px}
+#canvas.one .o-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-bottom:20px}
+#canvas.one .o-grid.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+#canvas.one .o-grid.g1{grid-template-columns:1fr}
+#canvas.one .o-low .o-t{font-size:24px} #canvas.one .o-low .o-t th{font-size:21px} #canvas.one .o-low .o-t td{padding:5px 8px}
+#canvas.one .o-big.lg{font-size:78px} #canvas.one .o-big.xl{font-size:62px}
+#canvas.one .o-grid.g3 .o-big.lg,#canvas.one .o-grid.g3 .o-big.xl{font-size:56px}
+#canvas.one .o-a5{text-align:right;font-size:24px;font-weight:800;color:var(--o-mut);margin-top:2px}
+#canvas.one .o-sm{font-size:.85em;color:var(--o-mut)}
+#canvas.one .o-grid.g3 .o-ref{font-size:24px}
+#canvas.one .o-grid.g3 .o-ct{max-width:58%}
+#canvas.one .o-grid.g3 .bd{font-size:22px;padding:5px 10px}
+#canvas.one .o-card{border:3px solid var(--o-ac);border-radius:18px;padding:18px 22px 16px;background:var(--o-card);position:relative;min-height:200px}
+#canvas.one .o-ct{display:flex;flex-direction:column;border-left:5px solid var(--o-ac);padding-left:14px;font-size:27px;font-weight:800;line-height:1.2;max-width:62%}
+#canvas.one .o-ct span{font-size:24px;font-weight:700;color:var(--o-mut)}
+#canvas.one .o-ct em,#canvas.one .o-t em{font-style:normal;font-size:.7em;font-weight:700;margin-left:8px;color:var(--o-mut)}
+#canvas.one .bd{position:absolute;top:18px;right:18px;background:var(--o-ac);color:#000;font-size:26px;font-weight:800;padding:6px 14px;border-radius:10px}
+#canvas.one .bd.up{background:#2FBF71;color:#fff} #canvas.one .bd.dn{background:#E5484D;color:#fff}
+#canvas.one .o-big{font-size:96px;font-weight:800;line-height:1.05;text-align:center;margin:14px 0 6px;white-space:nowrap;letter-spacing:-1px}
+#canvas.one .o-grid.g3 .o-big{font-size:68px}
+#canvas.one .o-big small{font-family:var(--ja);font-size:.46em;font-weight:900;margin-left:8px;letter-spacing:0}
+#canvas.one .o-ref{text-align:center;font-size:25px;font-weight:800;color:var(--o-fg)}
+#canvas.one .o-ref small{font-size:1em;margin-left:2px}
+#canvas.one .o-low{align-items:start}
+#canvas.one .o-sec{border:3px solid var(--o-ac);border-radius:18px;padding:14px 18px 18px;background:var(--o-card)}
+#canvas.one .o-sec.wide{margin-bottom:20px}
+#canvas.one .o-sec h4{margin:0 0 10px;font-size:34px;font-weight:900}
+#canvas.one .o-t{width:100%;border-collapse:collapse;font-size:27px}
+#canvas.one .o-t th{background:var(--o-ac);color:#000;font-weight:800;padding:6px 10px;font-size:24px;border:2px solid var(--o-bg)}
+#canvas.one.light .o-t th{color:#fff}
+#canvas.one .o-t td{border:2px solid #444;padding:6px 12px;text-align:right;font-weight:700;white-space:nowrap}
+#canvas.one.light .o-t td{border-color:#ccc}
+#canvas.one .o-t td:first-child{text-align:left;font-family:var(--ja);font-weight:800}
+#canvas.one .o-t td small{font-family:var(--ja);font-size:.75em;margin-left:2px}
+#canvas.one .o-t td.up{color:#2FBF71} #canvas.one .o-t td.dn{color:#FF6B6B}
+#canvas.one .o-prog{margin:10px 6px 10px}
+#canvas.one .o-bar{position:relative;height:22px;border-radius:11px;background:#333;overflow:visible}
+#canvas.one.light .o-bar{background:#E5E5E5}
+#canvas.one .o-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:11px;background:var(--o-ac)}
+#canvas.one .o-bar u{position:absolute;top:-6px;bottom:-6px;width:4px;background:var(--o-fg);text-decoration:none}
+#canvas.one .o-pv{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;font-size:26px;font-weight:800;white-space:nowrap}
+#canvas.one .o-pv b{font-size:50px}
+#canvas.one .o-pv.up b{color:#2FBF71} #canvas.one .o-pv.dn b{color:#FF6B6B}
+#canvas.one .o-note{font-size:19px;color:var(--o-mut);text-align:right;margin-top:4px}
+#canvas.one .o-empty{font-size:30px;padding:40px;text-align:center}
 </style>
 </head>
 <body>
@@ -184,7 +246,13 @@ input[type=url]{flex:1}
       <h2><span class="n">3</span>表の種類と見た目</h2>
       <div class="settings">
         <label for="mode">表の種類</label>
-        <select id="mode"><option value="table">決算比較表</option><option value="seg">セグメント表（1社）</option></select>
+        <select id="mode"><option value="table">決算比較表</option><option value="seg">セグメント表（1社）</option><option value="one">1社まとめ（ガイダンス・進捗率）</option></select>
+        <label for="oneCo" class="oneonly">まとめる企業</label>
+        <select id="oneCo" class="oneonly"></select>
+        <label for="onePer" class="oneonly">期</label>
+        <select id="onePer" class="oneonly"></select>
+        <label for="oneTheme" class="oneonly">配色</label>
+        <select id="oneTheme" class="oneonly"><option value="dark">黒 × 黄（目立つ）</option><option value="light">白 × 見出しの色</option></select>
         <label for="segCo" class="segonly">セグメント表の企業</label>
         <select id="segCo" class="segonly"></select>
         <label class="segonly">セグメント利益</label>
@@ -207,9 +275,15 @@ input[type=url]{flex:1}
           <label class="clr">見出し <input type="color" id="cHead"></label>
           <label class="clr">営業利益率 <input type="color" id="cAccent"></label>
         </div>
+        <label>追加する列</label>
+        <div class="row" style="gap:14px;flex-wrap:wrap">
+          <label style="flex-direction:row;display:flex;align-items:center;gap:6px;color:var(--ink)"><input type="checkbox" id="colProg">進捗率（通期予想に対する累計）</label>
+          <label style="flex-direction:row;display:flex;align-items:center;gap:6px;color:var(--ink)"><input type="checkbox" id="colGuide">ガイダンス比（実績と会社ガイダンス）</label>
+          <label style="flex-direction:row;display:flex;align-items:center;gap:6px;color:var(--ink)"><input type="checkbox" id="colNext">次の四半期ガイダンス（売上高）</label>
+        </div>
         <label for="sortKey">並び順</label>
         <div class="row" style="gap:6px">
-          <select id="sortKey" style="flex:1"><option value="">選んだ順</option><option value="rev">売上高</option><option value="ry">売上高の前年同期比</option><option value="op">営業利益</option><option value="oy">営業利益の前年同期比</option><option value="mg">営業利益率</option><option value="cap">時価総額</option></select>
+          <select id="sortKey" style="flex:1"><option value="">選んだ順</option><option value="rev">売上高</option><option value="ry">売上高の前年同期比</option><option value="op">営業利益</option><option value="oy">営業利益の前年同期比</option><option value="mg">営業利益率</option><option value="cap">時価総額</option><option value="rp">売上高の進捗率</option><option value="op_p">営業利益の進捗率</option><option value="rg">売上高のガイダンス比</option><option value="og">営業利益のガイダンス比</option></select>
           <select id="sortDir"><option value="desc">大きい順</option><option value="asc">小さい順</option></select>
         </div>
         <label for="period">期の表示</label>
@@ -250,11 +324,25 @@ function inlineStyles(src, dst){
   dst.setAttribute("style", css);
   for(let i=0;i<src.childNodes.length;i++) inlineStyles(src.childNodes[i], dst.childNodes[i]);
 }
+/* 画像の中でも同じ欧文フォントが出るように、@font-face を data URL にして埋め込む */
+let fontCSS = null;
+async function embeddedFonts(){
+  if(fontCSS!==null) return fontCSS;
+  const out = [];
+  for(const sh of document.styleSheets){ let rules; try{ rules = sh.cssRules; }catch{ continue; }
+    for(const r of rules){ if(r.type!==CSSRule.FONT_FACE_RULE) continue;
+      const m = r.cssText.match(/url\(["']?([^"')]+)["']?\)/); if(!m) continue;
+      try{ out.push(r.cssText.replace(m[0], `url(${await toDataURL(new URL(m[1], sh.href||location.href).href)})`)); }catch{}
+    } }
+  return fontCSS = out.join("\n");
+}
 async function toPng(node, { pixelRatio=2, backgroundColor="#fff" }={}){
   const w = node.offsetWidth, h = node.offsetHeight;
   const clone = node.cloneNode(true);
   inlineStyles(node, clone);
   clone.style.margin = "0";
+  const fc = await embeddedFonts();
+  if(fc){ const st = document.createElement("style"); st.textContent = fc; clone.insertBefore(st, clone.firstChild); }
   await Promise.all([...clone.querySelectorAll("img")].map(async im=>{ im.setAttribute("src", await toDataURL(im.getAttribute("src"))); }));
   const xml = new XMLSerializer().serializeToString(clone);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject x="0" y="0" width="100%" height="100%">${xml}</foreignObject></svg>`;
@@ -617,7 +705,7 @@ $("#selNoTweet").onclick = ()=>{
 $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
 /* ---------- 編集 ---------- */
-const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
+const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"],["売上高予想比","売上高のガイダンス比 %（空欄=自動）"],["営業利益予想比","営業利益のガイダンス比 %（空欄=自動）"],["売上高進捗率","売上高の進捗率 %（空欄=自動）"],["営業利益進捗率","営業利益の進捗率 %（空欄=自動）"]];
 function renderEdit(){
   $("#edit").innerHTML = state.rows.map((r,i)=>{
     const c = r.key?.startsWith("m|") ? masterOf(r) : null;
@@ -752,6 +840,10 @@ function sortValue(r, key){
     case "op":  return yenValue(op, unit);
     case "ry":  return num(r.売上高前年比);
     case "oy":  return num(r.営業利益前年比);
+    case "rp":  return progress(r,"rev");
+    case "op_p":return progress(r,"op");
+    case "rg":  return guideCompare(r,"rev")?.pct ?? null;
+    case "og":  return guideCompare(r,"op")?.pct ?? null;
     case "mg":  return num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
     case "cap": { const c = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/); return c ? yenValue(num(c[1]), c[2]) : null; }
   }
@@ -763,10 +855,64 @@ function sortedRows(){
   return state.rows.map((r,i)=>({r,i,v:sortValue(r,key)}))
     .sort((a,b)=> (a.v==null)-(b.v==null) || (a.v==null ? 0 : (a.v-b.v)*dir) || a.i-b.i).map(x=>x.r);
 }
-const SORT_COL = ["", "rev", "ry", "op", "oy", "mg", "cap"];   // 表の見出しの並び
+/* ---------- ガイダンス・進捗率（企業マスターの「進捗・比較」タブ → masters.json の guide） ---------- */
+function rowPeriod(r){   // 行の期（FY2027Q2 など）。自動まとめの行はマスターの同じラベルの最新期
+  if(r.period && r.period!=="dg") return r.period;
+  const c = masterOf(r); if(!c?.periods?.length) return "";
+  const lb = qLabel(r.期); const hit = [...c.periods].reverse().find(p=>p.label===lb);
+  return hit?.period || "";
+}
+const gKey = s => String(s||"").replace(/\s/g,"").toUpperCase().replace(/^FY/,"");
+const GAAPISH = b => !/non/i.test(b||"");
+function metricOf(r, which){ return which==="rev" ? "revenue" : (isPbt(r) ? "profit_before_tax" : "operating_profit"); }
+/* その会社の guide 行（type・期・指標で絞る）。基準は GAAP 系を優先し、なければ Non-GAAP */
+function guideFind(c, type, period, metric){
+  const per = gKey(period);
+  const hits = (c?.guide||[]).filter(g => g.type===type && gKey(g.period)===per && g.metric===metric);
+  return hits.find(g=>GAAPISH(g.basis)) || hits[0] || null;
+}
+/* 予想比: 決算発表前に出ていた会社ガイダンス（レンジは中央値）と実績の比較 */
+function guideCompare(r, which){
+  const man = num(r[which==="rev" ? "売上高予想比" : "営業利益予想比"]); if(man!=null) return { pct:man };
+  const g = guideFind(masterOf(r), "ガイダンス比較", rowPeriod(r), metricOf(r, which));
+  return g && g.ratio!=null ? { pct:g.ratio, band:g.judge, basis:g.basis, g } : null;
+}
+/* 進捗率: 通期の会社予想に対する累計実績（avg5 = 過去5年の同じ四半期時点の平均） */
+function progressOf(r, which){
+  const man = num(r[which==="rev" ? "売上高進捗率" : "営業利益進捗率"]); if(man!=null) return { pct:man };
+  const g = guideFind(masterOf(r), "通期進捗", rowPeriod(r), metricOf(r, which));
+  return g && g.ratio!=null ? { pct:g.ratio, avg5:g.avg5, judge:g.judge, basis:g.basis, g } : null;
+}
+function progress(r, which){ return progressOf(r, which)?.pct ?? null; }
+/* 次の期（四半期）のガイダンス: 行の期より後で、まだ実績のない期のうち一番近いもの */
+function nextGuide(r, metric="revenue", span="quarter"){
+  const c = masterOf(r); if(!c?.guide) return null;
+  const [fy, q] = parsePeriod(rowPeriod(r) || c.periods?.at(-1)?.period || "");
+  const isQ = p => /Q[1-4]$/i.test(p);
+  const cand = c.guide.filter(g => g.type==="次期ガイダンス" && g.metric===metric && (span==="quarter" ? isQ(g.period) : !isQ(g.period) && !/H1$/i.test(g.period)));
+  const ord = g => { const [f2,q2] = parsePeriod(g.period); const fy2 = f2 || +String(g.period).replace(/\D/g,"").slice(0,4); return fy2*10 + (q2||5); };
+  const after = cand.filter(g => !fy || ord(g) > fy*10 + (span==="quarter" ? (q||0) : 0)).sort((a,b)=>ord(a)-ord(b));
+  return after.find(g=>GAAPISH(g.basis)) || after[0] || null;
+}
+const JUDGE_CLS = { "上振れ":"up", "達成":"up", "高め":"up", "上方修正":"up", "市場予想超え":"up", "下振れ":"dn", "未達":"dn", "低め":"dn", "下方修正":"dn", "市場予想未達":"dn" };
+function fmtRange(g, m, unit){
+  if(!g) return "-";
+  const f = v => g.amount ? fmtAmt(v, m) : (Math.abs(v) < 100 ? v.toFixed(2) : fmtAmt(v, m));
+  if(g.low==null && g.high==null) return "-";
+  return (g.low===g.high || g.high==null ? f(g.low ?? g.high) : `${f(g.low)}〜${f(g.high)}`) + (unit ? `<small>${unit}</small>` : "");
+}
+let SORT_COL = ["", "rev", "ry", "op", "oy", "mg", "cap"];   // 表の見出しの並び（列を足したときは tableHTML が作り直す）
 function tableHTML(){
   const m = $("#minus").value, pmode = $("#period").value;
   const yen = $("#cur").value==="jpy";
+  const gOn = $("#colGuide").checked, pOn = $("#colProg").checked;
+  const nOn = $("#colNext").checked;
+  const extra = (r, w) => (gOn ? (()=>{ const g = guideCompare(r,w);
+      return `<td class="gd ${JUDGE_CLS[g?.band]||""}">${g ? `<b>${fmtPct(g.pct,m)}</b>` + (g.band||g.basis&&!GAAPISH(g.basis) ? `<small>${[g.band, g.basis&&!GAAPISH(g.basis)?"Non-GAAP":""].filter(Boolean).join("・")}</small>` : "") : "<b>-</b>"}</td>`; })() : "")
+    + (pOn ? (()=>{ const p = progressOf(r,w);
+      return `<td class="pg ${JUDGE_CLS[p?.judge]||""}">${p ? `<b>${p.pct.toFixed(1)}%</b>` + (p.avg5!=null ? `<small>5年平均 ${p.avg5.toFixed(1)}%</small>` : "") : "<b>-</b>"}</td>`; })() : "")
+    + (nOn && w==="rev" ? (()=>{ const g = nextGuide(r); const u = esc(r.単位 || $("#unit").value);
+      return `<td class="nx">${g ? `<b>${fmtRange(g, m, u)}</b><small>${esc(qLabel(g.period)||g.period)}${g.ratio!=null?`　前年比 ${fmtPct(g.ratio,m)}`:""}</small>` : "<b>-</b>"}</td>`; })() : "");
   const body = sortedRows().map(r=>{
     let unit = r.単位 || $("#unit").value, unitOp = unit;
     let rev=num(r.売上高), op=num(r.営業利益), dRev, dOp; const ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
@@ -779,21 +925,25 @@ function tableHTML(){
     unit = esc(unit); unitOp = esc(unitOp);
     return `<tr>${compCell(r,pmode)}
       <td class="amt"><b>${fmtAmt(rev,m,dRev)}</b><small>${rev==null?"":unit}</small></td>
-      <td class="yoy">${fmtPct(ry,m)}</td>
+      <td class="yoy">${fmtPct(ry,m)}</td>${extra(r,"rev")}
       <td class="amt sep"><b>${fmtAmt(op,m,dOp)}</b><small>${op==null?"":unitOp}</small></td>
-      <td class="yoy">${fmtPct(oy,m)}</td>
+      <td class="yoy">${fmtPct(oy,m)}</td>${extra(r,"op")}
       <td class="mg">${fmtPct(mg,m,false)}</td>
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
   // 総合商社は営業利益の代わりに税引前当期純利益。全社がそうなら見出しごと替え、混在なら営業利益のまま注記
   const pb = state.rows.filter(isPbt), allPb = pb.length && pb.length===state.rows.length;
   const opH = allPb ? "税引前<br>利益" : "営業利益", mgH = allPb ? "利益率" : "営業<br>利益率";
+  const ex = w => [...(gOn ? [["ガイダンス<br>比", w==="rev"?"rg":"og"]] : []), ...(pOn ? [["通期予想<br>進捗率", w==="rev"?"rp":"op_p"]] : []), ...(nOn && w==="rev" ? [["次の四半期<br>ガイダンス", ""]] : [])];
+  const heads = [["企業",""],["売上高","rev"],["前年<br>同期比","ry"],...ex("rev"),[opH,"op"],["前年<br>同期比","oy"],...ex("op"),[mgH,"mg"],["時価総額","cap"]];
+  SORT_COL = heads.map(h=>h[1]);
   const notes = [];
+  if(gOn || pOn || nOn) notes.push(`※ ${[gOn?"ガイダンス比は決算発表前に出ていた会社ガイダンス（レンジは中央値）に対する実績":"", pOn?"進捗率は通期の会社予想に対する累計実績（5年平均は過去5年の同じ時点の実績ベース）":"", nOn?"次の四半期ガイダンスの前年比は中央値ベース":""].filter(Boolean).join("、")}`);
   if(allPb) notes.push("※ 税引前当期純利益");
   else if(pb.length) notes.push(`※ ${pb.map(r=>esc(r.企業)).join("、")}は営業利益ではなく税引前当期純利益`);
   if(yen && usedCurrencies().length) notes.push(`※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・${allPb?"利益率":"営業利益率"}は現地通貨ベース`);
   return `<h3>${esc($("#title").value)}</h3>
-    <table class="et ${alignLeft()?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>${opH}</th><th>前年<br>同期比</th><th>${mgH}</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
+    <table class="et ${alignLeft()?"alignL":""}"><thead><tr>${heads.map(h=>`<th>${h[0]}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
 }
 
 /* ---------- セグメント表 ---------- */
@@ -838,6 +988,152 @@ function segHTML(){
     <div class="note">${esc(qLabel(r.期))}（${esc(r.period)}）　単位: ${unit}${d.c.note?`　${esc(d.c.note)}`:""}</div>`;
 }
 
+/* ---------- 1社まとめ（ガイダンス・進捗率） ---------- */
+const M_JA = { revenue:"売上高", gross_profit:"売上総利益", operating_profit:"営業利益", ordinary_profit:"経常利益", profit_before_tax:"税引前利益",
+  net_income:"純利益", eps:"EPS", dividend:"年間配当", gross_margin:"粗利率", operating_margin:"営業利益率", ebitda:"EBITDA",
+  free_cash_flow:"フリーCF", capex:"設備投資", arr:"ARR", orders:"受注高" };
+const M_ORDER = ["revenue","gross_profit","operating_profit","ordinary_profit","profit_before_tax","net_income","eps","dividend","gross_margin","operating_margin","ebitda","free_cash_flow","capex","arr","orders"];
+const mRank = m => { const i = M_ORDER.indexOf(m); return i<0 ? 99 : i; };
+function oneRows(){ return state.rows.filter(r=>r.key?.startsWith("m|") && masterOf(r)); }
+function fillOneCo(){
+  const cand = oneRows(), cur = $("#oneCo").value;
+  $("#oneCo").innerHTML = cand.length ? cand.map(r=>{ const c = masterOf(r), n = (c.guide||[]).length;
+    return `<option value="${esc(r.key)}">${esc(r.企業)}${n?"":"（ガイダンスなし）"}</option>`; }).join("") : `<option value="">企業マスターから企業を選んでください</option>`;
+  if(cand.some(r=>r.key===cur)) $("#oneCo").value = cur;
+  fillOnePer();
+}
+function fillOnePer(){
+  const r = state.rows.find(x=>x.key===$("#oneCo").value), c = r && masterOf(r), cur = $("#onePer").value;
+  const ps = (c?.periods||[]).map(p=>p.period).reverse().slice(0,8);
+  $("#onePer").innerHTML = `<option value="">最新の期</option>` + ps.map(p=>`<option>${esc(p)}</option>`).join("");
+  if(ps.includes(cur)) $("#onePer").value = cur;
+}
+const unitOfG = (g, amtUnit) => g.amount ? amtUnit : ({USD:"ドル", "$":"ドル", EUR:"ユーロ", KRW:"ウォン", TWD:"台湾ドル", CNY:"元", HKD:"香港ドル", "％":"%"}[g.unit] || g.unit || "");
+/* 億 → 兆 の繰り上げ（1万億以上） */
+function bigAmt(v, unit, m){
+  if(v==null) return ["-", ""];
+  const mm = String(unit||"").match(/^億(.+)$/);
+  if(mm && Math.abs(v) >= 10000) return [fmtAmt(v/10000, m, 2), "兆"+mm[1]];
+  return [fmtAmt(v, m), unit];
+}
+let oneScale = 1;   // 1社まとめでは 百万ドル → 億ドル のように桁を上げて短く見せる
+function valHTML(v, g, amtUnit, m){
+  if(v==null) return "-";
+  if(!g || g.amount) v = v * oneScale;
+  if(g && !g.amount){ const u = unitOfG(g, amtUnit); const d = u==="%" ? 1 : (Math.abs(v)>=1000 || Number.isInteger(v) ? 0 : 2);
+    return `${v<0?m:""}${Math.abs(v).toLocaleString("ja-JP",{minimumFractionDigits:d, maximumFractionDigits:d})}<small>${esc(u)}</small>`; }
+  const [t,u] = bigAmt(v, amtUnit, m); return `${t}<small>${esc(u)}</small>`;
+}
+function rangeHTML(g, amtUnit, m){
+  if(!g || (g.low==null && g.high==null)) return "-";
+  if(g.low===g.high || g.high==null || g.low==null) return valHTML(g.low ?? g.high, g, amtUnit, m);
+  const strip = h => h.replace(/<small>.*<\/small>/,"");
+  const u = (valHTML(g.high, g, amtUnit, m).match(/<small>(.*)<\/small>/)||[])[1]||"";
+  if(g.amount && !/^兆/.test(u)){   // レンジの両端は桁をそろえる（11.9–12.0）
+    const a = Math.abs(g.high*oneScale), dig = a<10 ? 2 : a<100 ? 1 : 0;
+    return `${fmtAmt(g.low*oneScale, m, dig)}–${fmtAmt(g.high*oneScale, m, dig)}<small>${u}</small>`;
+  }
+  return `${strip(valHTML(g.low, g, amtUnit, m))}–${strip(valHTML(g.high, g, amtUnit, m))}<small>${u}</small>`;
+}
+function perJa(c, period, us){
+  const [fy, q] = parsePeriod(period);
+  if(!fy) return esc(period);
+  if(us) return `FY${String(fy).slice(-2)} Q${q}`;
+  const fe = String(c.fy_end||"").match(/(\d{1,2})/); return fe ? `${fy}年${fe[1]}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
+}
+const bigDiv = h => { const n = h.replace(/<small>.*?<\/small>/g,"").replace(/<[^>]+>/g,"").length; return `<div class="o-big ${n>11?"xl":n>8?"lg":""}">${h}</div>`; };
+const badge = (txt, cls) => txt ? `<span class="bd ${cls||""}">${txt}</span>` : "";
+const mName = g => (M_JA[g.metric] || g.label || g.metric) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
+function oneData(){
+  const r = state.rows.find(x=>x.key===$("#oneCo").value) || oneRows()[0]; if(!r) return null;
+  const c = masterOf(r); if(!c) return null;
+  const per = $("#onePer").value || c.periods?.at(-1)?.period || "";
+  const G = c.guide || [];
+  const at = (type, p) => G.filter(g => g.type===type && gKey(g.period)===gKey(p));
+  const pick = gs => { const by = {}; for(const g of gs){ const k = g.metric; if(!by[k] || (!GAAPISH(by[k].basis) && GAAPISH(g.basis) && g.metric!=="eps") || (g.metric==="eps" && !GAAPISH(g.basis) && GAAPISH(by[k].basis))) by[k] = g; } return Object.values(by).sort((a,b)=>mRank(a.metric)-mRank(b.metric)); };
+  const cmp = pick(at("ガイダンス比較", per));
+  const prog = pick(at("通期進捗", per));
+  const [fy, q] = parsePeriod(per);
+  const ordP = p => { const [f2,q2] = parsePeriod(p); const y = f2 || +(String(p).match(/(\d{4}|\d{2})/)||[])[1]; return (y<100?y+2000:y)*10 + (q2 || 5); };
+  const fut = G.filter(g => g.type==="次期ガイダンス" && fy && ordP(g.period) > fy*10+(q||0));
+  const isQ = p => /Q[1-4]$/i.test(p);
+  const nextQp = fut.filter(g=>isQ(g.period)).map(g=>g.period).sort((a,b)=>ordP(a)-ordP(b))[0];
+  const nextQ = nextQp ? pick(fut.filter(g=>g.period===nextQp)) : [];
+  const fyG = pick(fut.filter(g=>!isQ(g.period) && !/H1$/i.test(g.period) && ordP(g.period) === (fy*10+5)));
+  const hist = G.filter(g => g.type==="ガイダンス比較" && isQ(g.period) && ordP(g.period) <= fy*10+(q||0));
+  const us = cmp.some(g=>isQ(g.period)) || nextQ.length > 0;
+  let unit = r.単位 || c.unit || "";
+  const mu = unit.match(/^百万(.+)$/); oneScale = 1;
+  if(mu){ oneScale = 0.01; unit = "億"+mu[1]; }
+  return { r, c, per, fy, q, cmp, prog, nextQ, nextQp, fyG, hist, us, unit, ordP };
+}
+function oneHTML(){
+  const d = oneData(); if(!d) return null;
+  const { r, c, per, cmp, prog, nextQ, nextQp, fyG, hist, us, unit } = d, m = $("#minus").value;
+  const src = logoSrc(r), title = $("#title").value || c.ja || c.name;
+  const head = `<div class="o-head">${src?`<img src="${src}" alt="">`:""}<div><h3>${esc(title)}${c.ticker && !/^\d+$/.test(c.ticker) ? `<span class="tk">${esc(c.ticker)}</span>` : ""}</h3><div class="o-sub">${perJa(c, per, us)}決算</div></div></div>`;
+  if(!(c.guide||[]).length) return head + `<div class="o-empty">この会社のガイダンス（会社予想）はまだ企業マスターにありません。</div>`;
+  let body = "";
+  if(us){
+    const main = (cmp.length ? cmp : []).filter(g=>["eps","revenue","operating_profit","net_income","gross_margin","operating_margin","free_cash_flow"].includes(g.metric));
+    const top = [...main.filter(g=>g.metric==="eps"), ...main.filter(g=>g.metric==="revenue"), ...main.filter(g=>!["eps","revenue"].includes(g.metric))].slice(0,2);
+    const card = (g, kind) => {
+      if(kind==="act"){
+        const cls = JUDGE_CLS[g.judge]||"";
+        return `<div class="o-card"><div class="o-ct"><span>${perJa(c, per, true)}実績</span><b>${mName(g)}</b></div>${badge(g.ratio!=null?`ガイダンス比 ${fmtPct(g.ratio,m)}`:"", cls)}
+          ${bigDiv(valHTML(g.actual, g, unit, m))}<div class="o-ref">ガイダンス ${rangeHTML(g, unit, m)}${g.judge?`（${g.judge}）`:""}</div></div>`;
+      }
+      const cls = JUDGE_CLS[g.judge]||"";
+      return `<div class="o-card"><div class="o-ct"><span>${perJa(c, g.period, true)}ガイダンス</span><b>${mName(g)}</b></div>${badge(g.judge || (g.ratio!=null?`前年比 ${fmtPct(g.ratio,m)}`:""), cls)}
+        ${bigDiv(rangeHTML(g, unit, m))}<div class="o-ref">${g.actual!=null?`前年同期 ${valHTML(g.actual, g, unit, m)}`:""}${g.consensus!=null?`　市場予想 ${valHTML(g.consensus, g, unit, m)}`:""}</div></div>`;
+    };
+    const nx = top.map(t => nextQ.find(g=>g.metric===t.metric)).filter(Boolean);
+    const nxt = nx.length ? nx : nextQ.slice(0,2);
+    body += `<div class="o-grid">${top.map(g=>card(g,"act")).join("")}</div>`;
+    if(nxt.length) body += `<div class="o-grid">${nxt.map(g=>card(g,"next")).join("")}</div>`;
+    // 推移と通期ガイダンス
+    const hm = (top.length ? top : cmp).map(g=>g.metric).slice(0,2);
+    const histT = mt => { const hs = hist.filter(g=>g.metric===mt).sort((a,b)=>d.ordP(a.period)-d.ordP(b.period));
+      const byP = {}; for(const g of hs){ if(!byP[g.period] || GAAPISH(byP[g.period].basis)!==GAAPISH(top.find(t=>t.metric===mt)?.basis||"")) byP[g.period] = g; }
+      const rows = Object.values(byP).slice(-4); if(!rows.length) return "";
+      return `<div class="o-sec"><h4>${M_JA[mt]||mt}の推移</h4><table class="o-t"><tr><th>四半期</th><th>実績</th><th>ガイダンス</th><th>比</th></tr>${rows.map(g=>`<tr><td>${perJa(c,g.period,true)}</td><td>${valHTML(g.actual,g,unit,m)}</td><td>${rangeHTML(g,unit,m)}</td><td class="${JUDGE_CLS[g.judge]||""}">${fmtPct(g.ratio,m)}</td></tr>`).join("")}</table></div>`; };
+    const fyT = fyG.length ? `<div class="o-sec"><h4>${perJa(c, fyG[0].period.replace(/Q\d$/,""), true).replace(/ Q\d+$/,"")} 通期ガイダンス</h4><table class="o-t"><tr><th>項目</th><th>ガイダンス</th><th>前回から</th><th>前年比</th></tr>${fyG.filter(g=>g.low!=null||g.high!=null).slice(0,5).map(g=>`<tr><td>${mName(g)}</td><td>${rangeHTML(g,unit,m)}</td><td class="${JUDGE_CLS[g.revision]||""}">${g.revision||"-"}</td><td>${fmtPct(g.ratio,m)}</td></tr>`).join("")}</table></div>` : "";
+    const hs = hm.map(histT).filter(Boolean);
+    if(hs.length) body += `<div class="o-grid o-low ${hs.length===1?"g1":""}">${hs.join("")}</div>`;
+    if(fyT) body += fyT.replace('class="o-sec"','class="o-sec wide"');
+  } else {
+    // 日本企業: 累計実績・通期予想・進捗率
+    const cards = prog.filter(g=>!["dividend","eps"].includes(g.metric)).slice(0,3);
+    const fyAll = fyG.length ? fyG : [];
+    const [, q] = parsePeriod(per);
+    const card = g => { const f = fyAll.find(x=>x.metric===g.metric && x.basis===g.basis) || fyAll.find(x=>x.metric===g.metric);
+      const p = Math.max(0, Math.min(100, g.ratio||0)), a5 = g.avg5;
+      return `<div class="o-card"><div class="o-ct"><span>${q===4?"通期":`第${q}四半期累計`}</span><b>${mName(g)}</b></div>${badge(f?.revision && f.revision!=="据え置き" ? f.revision : (f?.kind||""), JUDGE_CLS[f?.revision]||"")}
+        ${bigDiv(valHTML(g.actual, g, unit, m))}
+        <div class="o-prog"><div class="o-bar"><i style="width:${p}%"></i>${a5!=null?`<u style="left:${Math.min(100,a5)}%"></u>`:""}</div>
+          <div class="o-pv ${JUDGE_CLS[g.judge]||""}"><span class="l">進捗率</span><b>${g.ratio.toFixed(1)}%</b></div>${a5!=null?`<div class="o-a5">5年平均 ${a5.toFixed(1)}%${g.judge?`（${g.judge}）`:""}</div>`:""}</div>
+        <div class="o-ref">通期予想 ${rangeHTML(g, unit, m)}${f?.ratio!=null?`<br><span class="o-sm">前期比 ${fmtPct(f.ratio,m)}</span>`:""}</div></div>`; };
+    body += `<div class="o-grid ${cards.length===3?"g3":""}">${cards.map(card).join("")}</div>`;
+    const rows = (fyAll.length ? fyAll : prog).filter(g=>g.low!=null||g.high!=null);
+    if(rows.length) body += `<div class="o-sec wide"><h4>通期の会社予想（${esc(String(rows[0].period||rows[0].target))}）</h4><table class="o-t"><tr><th>項目</th><th>通期予想</th><th>前期比</th><th>前回予想から</th><th>進捗率</th><th>5年平均</th></tr>${rows.map(g=>{
+      const pg = prog.find(x=>x.metric===g.metric && x.basis===g.basis) || prog.find(x=>x.metric===g.metric);
+      const showP = pg && g.metric!=="dividend";
+      return `<tr><td>${mName(g)}</td><td>${rangeHTML(g,unit,m)}</td><td>${g.type==="次期ガイダンス"?fmtPct(g.ratio,m):"-"}</td><td class="${JUDGE_CLS[g.revision]||""}">${g.revision||g.kind||"-"}</td><td class="${showP?JUDGE_CLS[pg.judge]||"":""}">${showP&&pg.ratio!=null?pg.ratio.toFixed(1)+"%":"-"}</td><td>${showP&&pg.avg5!=null?pg.avg5.toFixed(1)+"%":"-"}</td></tr>`; }).join("")}</table></div>`;
+  }
+  const note = `<div class="o-note">出典: 会社の決算資料（ガイダンス・会社予想）。${us?"ガイダンス比は決算前に出ていたガイダンスの中央値に対する実績。":"進捗率は通期予想に対する累計実績、5年平均は過去5年の同じ時点の実績ベース。"}</div>`;
+  return head + body + note;
+}
+window.__renderOne = async (key, opts={}) => {
+  if(!state.masters.length){ const mm = await (await fetch("data/masters.json",{cache:"no-cache"})).json(); state.masters = mm.companies||[]; }
+  const c = state.masters.find(x => [x.ticker, x.name, x.ja].includes(key)); if(!c) throw new Error("マスターに見つかりません: "+key);
+  const r = rowFromMaster(c, opts.period); r.社名表示 = false; state.rows = [r];
+  $("#mode").value = "one"; fillOneCo(); $("#oneCo").value = r.key; fillOnePer(); if(opts.period) $("#onePer").value = opts.period;
+  if(opts.theme) $("#oneTheme").value = opts.theme;
+  $("#title").dataset.touched = opts.title ? "1" : ""; if(opts.title) $("#title").value = opts.title; else autoTitle();
+  renderPreview();
+  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+};
+
 /* ---------- プレビュー ---------- */
 function renderPreview(){
   saveState();
@@ -845,12 +1141,14 @@ function renderPreview(){
   renderFxIfNeeded();
   document.querySelectorAll(".fxonly").forEach(e=>e.style.display = $("#cur").value==="jpy" ? "" : "none");
   document.querySelectorAll(".segonly").forEach(e=>e.style.display = mode==="seg" ? "" : "none");
+  document.querySelectorAll(".oneonly").forEach(e=>e.style.display = mode==="one" ? "" : "none");
+  if(mode==="one") fillOneCo();
   $("#count").textContent = state.rows.length ? `${state.rows.length}社を選んでいます` : "企業が選ばれていません";
-  const inner = mode==="seg" ? segHTML() : (state.rows.length ? tableHTML() : null);
+  const inner = mode==="seg" ? segHTML() : mode==="one" ? oneHTML() : (state.rows.length ? tableHTML() : null);
   $("#dlBtn").disabled = !inner;
-  if(!inner){ $("#stage").innerHTML = `<div class="placeholder">${mode==="seg"?"セグメント表は、企業マスターから選んだ企業（セグメントのデータがある会社）で作れます。":"左で企業を選ぶか、手入力で追加すると、ここに表ができます。"}</div>`; return; }
-  $("#stage").innerHTML = `<div class="fit"><div id="canvas" style="--head:${$("#cHead").value};--accent:${$("#cAccent").value}">${inner}</div></div>`;
-  if(mode!=="seg") document.querySelectorAll("#canvas table.et thead th").forEach((th,i)=>{   // 見出しクリックで並び替え
+  if(!inner){ $("#stage").innerHTML = `<div class="placeholder">${mode==="seg"?"セグメント表は、企業マスターから選んだ企業（セグメントのデータがある会社）で作れます。":mode==="one"?"1社まとめは、企業マスターから選んだ企業で作れます（ガイダンスのある会社）。":"左で企業を選ぶか、手入力で追加すると、ここに表ができます。"}</div>`; return; }
+  $("#stage").innerHTML = `<div class="fit"><div id="canvas" class="${mode==="one" ? "one "+($("#oneTheme").value==="light"?"light":"") : ""}" style="--head:${$("#cHead").value};--accent:${$("#cAccent").value}">${inner}</div></div>`;
+  if(mode==="table") document.querySelectorAll("#canvas table.et thead th").forEach((th,i)=>{   // 見出しクリックで並び替え
     if(!SORT_COL[i]) return; th.style.cursor = "pointer"; th.title = "クリックで並び替え（もう一度で逆順）";
     th.onclick = ()=>{ const k = SORT_COL[i];
       if($("#sortKey").value===k) $("#sortDir").value = $("#sortDir").value==="desc" ? "asc" : "desc";
@@ -871,6 +1169,10 @@ function fit(){
 addEventListener("resize", fit);
 function autoTitle(){
   if($("#title").dataset.touched) return;
+  if($("#mode").value==="one"){
+    const r = state.rows.find(x=>x.key===$("#oneCo").value) || oneRows()[0], c = r && masterOf(r);
+    $("#title").value = c ? (c.ja || c.name) : "1社まとめ"; return;
+  }
   if($("#mode").value==="seg"){
     const r = state.rows.find(x=>x.key===$("#segCo").value);
     $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${qLabel(r.期)}）` : "セグメント別業績"; return;
@@ -882,15 +1184,17 @@ function autoTitle(){
   else $("#title").value = "注目企業の決算";
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
-$("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
+$("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); fillOneCo(); autoTitle(); renderPreview(); });
+$("#oneCo").addEventListener("change", ()=>{ fillOnePer(); $("#title").dataset.touched=""; autoTitle(); renderPreview(); });
+["#onePer","#oneTheme"].forEach(s=>$(s).addEventListener("change", renderPreview));
 $("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
-["#unit","#period","#minus","#segProfit","#align","#cur","#dateShow","#sortKey","#sortDir"].forEach(s=>$(s).addEventListener("change", renderPreview));
+["#unit","#period","#minus","#segProfit","#align","#cur","#dateShow","#sortKey","#sortDir","#colProg","#colGuide","#colNext"].forEach(s=>$(s).addEventListener("change", renderPreview));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
   const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
   try{
-    const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: "#fff" });
+    const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: getComputedStyle($("#canvas")).backgroundColor || "#fff" });
     const a = document.createElement("a"); a.href = url;
     a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
     btn.textContent = "ダウンロードしました";
@@ -901,7 +1205,7 @@ $("#dlBtn").onclick = async ()=>{
 /* ---------- 保存・起動 ---------- */
 function saveState(){
   store.set("rows2", state.rows);
-  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
+  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked, colProg:$("#colProg").checked, colGuide:$("#colGuide").checked, colNext:$("#colNext").checked });
 }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
@@ -912,6 +1216,7 @@ window.__render = (rows, opts={}) => {
   if(opts.align) $("#align").value = opts.align;
   if(opts.cur) $("#cur").value = opts.cur;
   if(opts.dateShow) $("#dateShow").value = opts.dateShow;
+  $("#colProg").checked = !!opts.progress; $("#colGuide").checked = !!opts.guide; $("#colNext").checked = !!opts.next;
   $("#sortKey").value = opts.sort || ""; $("#sortDir").value = opts.sortDir || "desc";
   if(opts.fx){ state.cfg.fx = { ...(state.cfg.fx||{}), ...opts.fx }; $("#fxBox").innerHTML = ""; }
   if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
@@ -937,10 +1242,11 @@ window.__renderSeg = async (key, opts={}) => {
   if(new URLSearchParams(location.search).has("headless")){
     try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
     try{ state.cfg = await (await fetch("config.json",{cache:"no-cache"})).json(); }catch{}
+    try{ const r = await fetch("data/masters.json",{cache:"no-cache"}); if(r.ok) state.masters = (await r.json()).companies||[]; }catch{}   // 総合商社の判定・進捗率に使う
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; $("#colProg").checked=!!o.colProg; $("#colGuide").checked=!!o.colGuide; $("#colNext").checked=!!o.colNext; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();
