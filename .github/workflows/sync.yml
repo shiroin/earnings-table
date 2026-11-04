@@ -24,9 +24,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
-          for attempt in 1 2 3; do
+          # 全社の同期は時間がかかるので、push が他の更新（時価総額など）とぶつかったら、作った masters.json を
+          # 最新の main に載せ直して push し直す（同期そのものはやり直さない）。一部の会社だけの同期はすぐ終わるのでやり直す
+          for attempt in 1 2 3 4 5; do
             git fetch -q origin main && git reset -q --hard origin/main
-            python sync_masters.py ${ONLY:+--only "$ONLY"}
+            if [ -n "$ONLY" ] || [ ! -f /tmp/masters.json ]; then
+              python sync_masters.py ${ONLY:+--only "$ONLY"}
+              [ -z "$ONLY" ] && cp data/masters.json /tmp/masters.json
+            else
+              cp /tmp/masters.json data/masters.json
+            fi
             python - <<'PY'
           import json, subprocess
           try:
