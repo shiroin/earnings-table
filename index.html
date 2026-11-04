@@ -626,7 +626,10 @@ async function liveMaster(c){
       else if(ch==='"') q=true; else if(ch===','){ row.push(cur); cur=""; } else if(ch==='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(ch!=='\r') cur+=ch; }
     if(cur||row.length){ row.push(cur); rows.push(row); }
     const hi = rows.findIndex(x => String(x[0]||"").trim().toLowerCase()==="period"); if(hi<0) return false;
-    const head = rows[hi].map(h=>String(h||"").trim()), ir = head.indexOf("revenue"), io0 = head.indexOf("operating_profit"), ipb = head.indexOf("profit_before_tax"), io = io0>=0 ? io0 : ipb;
+    const head = rows[hi].map(h=>String(h||"").trim()), lh = head.map(h=>h.toLowerCase()), pickCol = ks => { for(const k of ks){ const i = lh.indexOf(k); if(i>=0) return i; } return -1; };
+    // 利益は営業利益の列を優先（net_income・eps の列があっても使わない）。なければ税引前利益
+    const ir = pickCol(["revenue","net_sales","sales","total_revenue","operating_revenue"]), io0 = pickCol(["operating_profit","operating_income","operating_profit_ifrs","core_operating_profit"]),
+      ipb = pickCol(["profit_before_tax","income_before_income_taxes","income_before_taxes","pretax_income","pre_tax_income"]), io = io0>=0 ? io0 : ipb;
     if(io0<0 && ipb>=0) c.profit_kind = "pbt";
     const val = x => { const v = String(x??"").replace(/,/g,"").trim(); return v===""||isNaN(+v) ? null : +v; };
     const qs = rows.slice(hi+1).filter(x=>String(x[0]||"").trim()).map(x=>({period:String(x[0]).trim(), r: ir>=0?val(x[ir]):null, o: io>=0?val(x[io]):null}));

@@ -162,7 +162,9 @@ def parse_period(p):
     return fy, q
 
 
-PREFER_PBT = False
+REVENUE_COLS = ["revenue", "net_sales", "sales", "total_revenue", "operating_revenue"]
+OP_COLS = ["operating_profit", "operating_income", "operating_profit_ifrs", "core_operating_profit"]
+PBT_COLS = ["profit_before_tax", "income_before_income_taxes", "income_before_taxes", "pretax_income", "pre_tax_income"]
 
 
 def read_master(path_or_bytes):
@@ -176,10 +178,17 @@ def read_master(path_or_bytes):
         return table(wb[name]) if name in wb.sheetnames else ([], [])
 
     cols, q = sheet("会社全体_四半期")
-    # 総合商社など営業利益を開示しない会社は、税引前利益（profit_before_tax）を利益欄に使う
-    pk = "profit_before_tax" if ("profit_before_tax" in cols and ("operating_profit" not in cols or PREFER_PBT)) else "operating_profit"
-    out["profit_kind"] = "pbt" if pk == "profit_before_tax" else None
-    out["quarters"] = [{"period": d["period"], "revenue": d.get("revenue"), "operating_profit": d.get(pk)} for d in q]
+    # 利益の欄に使う列: 営業利益（operating_profit / operating_income）を優先。net_income・eps などの列があっても使わない。
+    # 総合商社など営業利益を開示しない会社は、税引前利益（profit_before_tax）
+    low = {c.lower(): c for c in cols}
+    rk = next((low[k] for k in REVENUE_COLS if k in low), "revenue")
+    pk = next((low[k] for k in OP_COLS if k in low), None)
+    kind = None
+    if pk is None:
+        pk = next((low[k] for k in PBT_COLS if k in low), None)
+        kind = "pbt" if pk else None
+    out["profit_kind"] = kind
+    out["quarters"] = [{"period": d["period"], "revenue": d.get(rk), "operating_profit": d.get(pk) if pk else None} for d in q]
     seg_meta = items.get("セグメント", {})
     for key, name in (("seg_revenue", "セグメント売上高_四半期"), ("seg_profit", "セグメント利益_四半期")):
         c, d = sheet(name)
