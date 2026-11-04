@@ -163,6 +163,7 @@ input[type=url]{flex:1}
       <div class="row" style="margin-bottom:8px;gap:6px">
         <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
         <button class="btn ghost small" id="selNone">選択を外す</button>
+        <button class="btn ghost small" id="selNoTweet" title="ウォッチリストのF列（暫定Tier）が「ツイート」の企業を表から外します">「ツイート」の企業を外す</button>
       </div>
       <div class="list" id="list"><div class="empty">読み込み中…</div></div>
       <p class="hint" id="dataInfo"></p>
@@ -353,6 +354,8 @@ const yoyOf = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000
 
 /* ---------- 一覧 ---------- */
 const masterOf = r => state.masters.find(c => (r.ticker && c.ticker===r.ticker) || c.ja===r.企業 || c.name===r.企業);
+/* 利益の欄が税引前利益の会社（総合商社など。企業マスターに営業利益がなく profit_before_tax を使っている） */
+const isPbt = r => masterOf(r)?.profit_kind==="pbt";
 function fillFilters(){
   const opt = (arr, all) => `<option value="">${all}</option>` + [...new Set(arr.filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
   $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
@@ -531,7 +534,8 @@ async function liveMaster(c){
       else if(ch==='"') q=true; else if(ch===','){ row.push(cur); cur=""; } else if(ch==='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(ch!=='\r') cur+=ch; }
     if(cur||row.length){ row.push(cur); rows.push(row); }
     const hi = rows.findIndex(x => String(x[0]||"").trim().toLowerCase()==="period"); if(hi<0) return false;
-    const head = rows[hi].map(h=>String(h||"").trim()), ir = head.indexOf("revenue"), io = head.indexOf("operating_profit");
+    const head = rows[hi].map(h=>String(h||"").trim()), ir = head.indexOf("revenue"), io0 = head.indexOf("operating_profit"), ipb = head.indexOf("profit_before_tax"), io = io0>=0 ? io0 : ipb;
+    if(io0<0 && ipb>=0) c.profit_kind = "pbt";
     const val = x => { const v = String(x??"").replace(/,/g,"").trim(); return v===""||isNaN(+v) ? null : +v; };
     const qs = rows.slice(hi+1).filter(x=>String(x[0]||"").trim()).map(x=>({period:String(x[0]).trim(), r: ir>=0?val(x[ir]):null, o: io>=0?val(x[io]):null}));
     if(!qs.length) return false;
@@ -605,6 +609,11 @@ $("#selAll").onclick = ()=>{
   autoTitle(); renderList(); renderEdit(); renderPreview();
   if(cs.length) refreshLive(cs);
 };
+$("#selNoTweet").onclick = ()=>{
+  const n = state.rows.length;
+  state.rows = state.rows.filter(r => String(masterOf(r)?.tier||"").trim()!=="ツイート");
+  if(state.rows.length!==n){ autoTitle(); renderList(); renderEdit(); renderPreview(); }
+};
 $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
 /* ---------- 編集 ---------- */
@@ -623,7 +632,7 @@ function renderEdit(){
         <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
         <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
       </div>
-      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${f==="営業利益" && isPbt(r) ? "税引前当期純利益（営業利益の欄）" : l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
       <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
         <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
@@ -776,8 +785,15 @@ function tableHTML(){
       <td class="mg">${fmtPct(mg,m,false)}</td>
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
+  // 総合商社は営業利益の代わりに税引前当期純利益。全社がそうなら見出しごと替え、混在なら営業利益のまま注記
+  const pb = state.rows.filter(isPbt), allPb = pb.length && pb.length===state.rows.length;
+  const opH = allPb ? "税引前<br>利益" : "営業利益", mgH = allPb ? "利益率" : "営業<br>利益率";
+  const notes = [];
+  if(allPb) notes.push("※ 税引前当期純利益");
+  else if(pb.length) notes.push(`※ ${pb.map(r=>esc(r.企業)).join("、")}は営業利益ではなく税引前当期純利益`);
+  if(yen && usedCurrencies().length) notes.push(`※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・${allPb?"利益率":"営業利益率"}は現地通貨ベース`);
   return `<h3>${esc($("#title").value)}</h3>
-    <table class="et ${alignLeft()?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>営業利益</th><th>前年<br>同期比</th><th>営業<br>利益率</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${yen && usedCurrencies().length ? `<div class="fxnote">※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・営業利益率は現地通貨ベース</div>` : ""}`;
+    <table class="et ${alignLeft()?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>${opH}</th><th>前年<br>同期比</th><th>${mgH}</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
 }
 
 /* ---------- セグメント表 ---------- */

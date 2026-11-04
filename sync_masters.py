@@ -142,6 +142,9 @@ def parse_period(p):
     return fy, q
 
 
+PREFER_PBT = False
+
+
 def read_master(path_or_bytes):
     wb = openpyxl.load_workbook(io.BytesIO(path_or_bytes) if isinstance(path_or_bytes, bytes) else path_or_bytes,
                                 data_only=True, read_only=False)
@@ -153,7 +156,10 @@ def read_master(path_or_bytes):
         return table(wb[name]) if name in wb.sheetnames else ([], [])
 
     cols, q = sheet("会社全体_四半期")
-    out["quarters"] = [{"period": d["period"], "revenue": d.get("revenue"), "operating_profit": d.get("operating_profit")} for d in q]
+    # 総合商社など営業利益を開示しない会社は、税引前利益（profit_before_tax）を利益欄に使う
+    pk = "profit_before_tax" if ("profit_before_tax" in cols and ("operating_profit" not in cols or PREFER_PBT)) else "operating_profit"
+    out["profit_kind"] = "pbt" if pk == "profit_before_tax" else None
+    out["quarters"] = [{"period": d["period"], "revenue": d.get("revenue"), "operating_profit": d.get(pk)} for d in q]
     seg_meta = items.get("セグメント", {})
     for key, name in (("seg_revenue", "セグメント売上高_四半期"), ("seg_profit", "セグメント利益_四半期")):
         c, d = sheet(name)
@@ -206,7 +212,7 @@ def enrich(w, m):
     return {
         "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
         "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"],
-        "currency": cur, "unit": unit, "note": m.get("note"),
+        "currency": cur, "unit": unit, "note": m.get("note"), "profit_kind": m.get("profit_kind"),
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
         "segments": m.get("segments") or {},
