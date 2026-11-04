@@ -188,7 +188,9 @@ def read_master(path_or_bytes):
         pk = next((low[k] for k in PBT_COLS if k in low), None)
         kind = "pbt" if pk else None
     out["profit_kind"] = kind
-    out["quarters"] = [{"period": d["period"], "revenue": d.get(rk), "operating_profit": d.get(pk) if pk else None} for d in q]
+    ek = low.get("eps")
+    out["quarters"] = [{"period": d["period"], "revenue": d.get(rk), "operating_profit": d.get(pk) if pk else None,
+                        "eps": d.get(ek) if ek else None} for d in q]
     seg_meta = items.get("セグメント", {})
     for key, name in (("seg_revenue", "セグメント売上高_四半期"), ("seg_profit", "セグメント利益_四半期")):
         c, d = sheet(name)
@@ -224,6 +226,7 @@ def enrich(w, m):
             "period": d["period"], "label": f"Q{qn}" if qn else d["period"],
             "revenue": None if r is None else round(r / div, 2), "operating_profit": None if o is None else round(o / div, 2),
             "revenue_yoy": yoy(r, prev and prev.get("revenue")), "op_yoy": yoy(o, prev and prev.get("operating_profit")),
+            **({"eps": d["eps"]} if d.get("eps") is not None else {}),
             "margin": None if (r in (None, 0) or o is None) else round(o / r * 100, 1),
         })
     periods = [p for p in periods if p["revenue"] is not None or p["operating_profit"] is not None]
