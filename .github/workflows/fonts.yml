@@ -1,0 +1,17 @@
+name: フォント取得
+on: workflow_dispatch
+permissions: { contents: write }
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p fonts
+          for w in 500 600 700 800; do
+            curl -fsSL -o fonts/montserrat-latin-$w.woff2 "https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5/files/montserrat-latin-$w-normal.woff2"
+          done
+          curl -fsSL -o fonts/OFL-Montserrat.txt "https://cdn.jsdelivr.net/npm/@fontsource/montserrat@5/LICENSE" || true
+          ls -la fonts
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add fonts && git commit -m "Montserrat（OFL）を追加" && git push
