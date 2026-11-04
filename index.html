@@ -1060,11 +1060,31 @@ function rangeHTML(g, amtUnit, m){
   }
   return `${strip(valHTML(g.low, g, amtUnit, m))}–${strip(valHTML(g.high, g, amtUnit, m))}<small>${u}</small>`;
 }
+/* シートが年度を「始まる年」で呼んでいるとき（FY2026 = 2026年4月〜2027年3月）は、決算期の表示を終わる年に直す。
+   最新の期とその発表日から、四半期末の年を割り出して判定 */
+const fyOffCache = new Map();
+function fyOffset(c){
+  if(fyOffCache.has(c)) return fyOffCache.get(c);
+  let off = 0;
+  const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  const fe = +(String(c.fy_end || (c.country==="日本" ? "3月" : "")).match(/(\d{1,2})/)||[])[1], last = (c.periods||[]).at(-1),
+    d = String(latestEarn(c) || (c.date && c.date <= today ? c.date : "")).slice(0,10);
+  const [fy, q] = parsePeriod(last?.period||"");
+  if(fe && fy && q && /^\d{4}-\d{2}-\d{2}$/.test(d)){
+    const qm = ((fe - 1 + 3*q) % 12) + 1;                      // 四半期末の月
+    const dy = +d.slice(0,4), dm = +d.slice(5,7);
+    const qy = qm <= dm ? dy : dy - 1;                          // 発表日より前の、その月の年
+    const endYear = qm <= fe ? qy : qy + 1;                     // その四半期を含む年度が終わる年
+    if(Math.abs(endYear - fy) === 1) off = endYear - fy;
+  }
+  fyOffCache.set(c, off); return off;
+}
 function perJa(c, period, us){
-  const [fy, q] = parsePeriod(period);
+  let [fy, q] = parsePeriod(period);
+  if(fy) fy += fyOffset(c);
   if(!fy) return esc(period);
   if(us) return `FY${String(fy).slice(-2)} Q${q}`;
-  const fe = String(c.fy_end||"").match(/(\d{1,2})/); return fe ? `${fy}年${fe[1]}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
+  const fe = String(c.fy_end || (c.country==="日本" ? "3月" : "")).match(/(\d{1,2})/); return fe ? `${fy}年${fe[1]}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
 }
 const bigDiv = h => { const n = h.replace(/<small>.*?<\/small>/g,"").replace(/<[^>]+>/g,"").length; return `<div class="o-big ${n>10?"xl":n>8?"lg":""}">${h}</div>`; };
 /* 利益率など % の項目は「比」を相対%ではなくポイント差で */
@@ -1342,6 +1362,7 @@ window.__renderSeg = async (key, opts={}) => {
     try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
     try{ state.cfg = await (await fetch("config.json",{cache:"no-cache"})).json(); }catch{}
     try{ const r = await fetch("data/masters.json",{cache:"no-cache"}); if(r.ok) state.masters = (await r.json()).companies||[]; }catch{}   // 総合商社の判定・進捗率に使う
+    try{ const r = await fetch("data/mcap.json",{cache:"no-cache"}); if(r.ok){ const j = await r.json(); state.mcap = j.companies||{}; } }catch{}   // 決算日（期の年の判定）に使う
     window.__ready = true; return;
   }
   const o = store.get("opts");
