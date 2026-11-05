@@ -163,7 +163,7 @@ def parse_period(p):
 
 
 REVENUE_COLS = ["revenue", "net_sales", "sales", "total_revenue", "operating_revenue"]
-OP_COLS = ["operating_profit", "operating_income", "operating_profit_ifrs", "core_operating_profit"]
+OP_COLS = ["operating_profit", "operating_income", "operating_profit_ifrs", "core_operating_profit", "business_profit"]
 PBT_COLS = ["profit_before_tax", "income_before_income_taxes", "income_before_taxes", "pretax_income", "pre_tax_income"]
 
 
