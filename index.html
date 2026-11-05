@@ -1101,7 +1101,12 @@ const mName = g => (M_JA[g.metric] || g.label || g.metric) + (g.basis && !GAAPIS
 function oneData(){
   const r = state.rows.find(x=>x.key===$("#oneCo").value) || oneRows()[0]; if(!r) return null;
   const c = masterOf(r); if(!c) return null;
-  const per = $("#onePer").value || c.periods?.at(-1)?.period || "";
+  let per = $("#onePer").value || c.periods?.at(-1)?.period || "";
+  if(!$("#onePer").value){   // 企業マスターより新しい期の「実績 vs ガイダンス」があれば、その期でまとめる
+    const ord = p => { const [f,q] = parsePeriod(p); return f ? f*10+(q||0) : 0; };
+    const newer = (c.guide||[]).filter(g=>g.type==="ガイダンス比較" && /Q[1-4]$/i.test(g.period) && ord(g.period) > ord(per)).map(g=>g.period).sort((a,b)=>ord(b)-ord(a))[0];
+    if(newer) per = newer;
+  }
   const G = c.guide || [];
   const at = (type, p) => G.filter(g => g.type===type && gKey(g.period)===gKey(p));
   // 同じ項目に GAAP と Non-GAAP があるとき: 売上高は GAAP、利益・利益率・EPS は市場が見る Non-GAAP を優先
@@ -1154,7 +1159,7 @@ function oneHTML(){
       const cls = JUDGE_CLS[g.judge]||"";
       if(kind==="act")
         return `<div class="o-card"><div class="o-ct"><span>${head}</span><b>${mName(g)}</b></div>${g.nog?"":badge(vsGuide(g,m)?`ガイダンス比 ${vsGuide(g,m)}`:"", signCls(guideDiff(g)))}
-          ${bigDiv(valHTML(g.actual, g, unit, m))}<div class="o-ref">${g.nog ? "ガイダンスなし" : `ガイダンス ${rangeHTML(g, unit, m)}${/株式分割/.test(g.note||"") ? `<br><span class="o-sm">${esc((g.note.match(/株式分割（[^）]*）/)||[""])[0])}を調整</span>` : ""}`}</div></div>`;
+          ${bigDiv(valHTML(g.actual, g, unit, m))}<div class="o-ref">${g.nog ? "ガイダンスなし" : `ガイダンス ${rangeHTML(g, unit, m)}${/株式分割（[^）]*）を調整/.test(g.note||"") ? `<br><span class="o-sm">${esc(g.note.match(/株式分割（[^）]*）/)[0])}を調整</span>` : ""}`}</div></div>`;
       const pv = vsPrev(g,m), useRev = kind==="fy" && g.revision && g.revision!=="据え置き", useJudge = kind!=="fy" && g.judge;
       const b = useRev ? g.revision : useJudge ? g.judge : (pv?`前年比 ${pv}`:"");
       return `<div class="o-card"><div class="o-ct"><span>${head}</span><b>${mName(g)}</b></div>${badge(b, useRev ? JUDGE_CLS[g.revision]||"" : useJudge ? cls : signCls(prevDiff(g)))}
@@ -1185,7 +1190,8 @@ function oneHTML(){
     // 累計実績の前年同期比（企業マスターの四半期を足し上げ。売上高・営業利益（税引前利益）だけ）
     const [cfy, cq] = parsePeriod(per);
     const cumOf = (fy, key) => { let t = 0; for(let k=1;k<=cq;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===fy && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
-    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : ["operating_profit","profit_before_tax"].includes(mt) ? "operating_profit" : null;
+    const pbtCo = c.profit_kind==="pbt";   // 企業マスターの利益欄が税引前利益の会社（総合商社など）
+    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : (mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) ? "operating_profit" : null;
       if(!key || !cfy) return null; const a = cumOf(cfy, key), b = cumOf(cfy-1, key); return (a==null || b==null || b<=0) ? null : (a/b-1)*100; };
     const card = g => {
       const p = Math.max(0, Math.min(100, g.ratio||0)), a5 = g.avg5, yy = cumYoY(g.metric);
