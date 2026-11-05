@@ -192,7 +192,8 @@ input[type=url]{flex:1}
 #canvas.one.light .o-t td{border-color:#ccc}
 #canvas.one .o-t td:first-child{text-align:left;font-family:var(--ja);font-weight:800}
 #canvas.one .o-t td small{font-family:var(--ja);font-size:.75em;margin-left:2px}
-#canvas.one .o-t td.up{color:#2FBF71} #canvas.one .o-t td.dn{color:#FF6B6B}
+#canvas.one .o-t td.up,#canvas.one .o-t span.up{color:#1E9E5A} #canvas.one .o-t td.dn,#canvas.one .o-t span.dn{color:#E0453A}
+#canvas.one .o-t .o-prev{color:var(--o-mut);font-weight:600;font-size:.85em}
 #canvas.one .o-prog{margin:10px 6px 10px}
 #canvas.one .o-bar{position:relative;height:22px;border-radius:11px;background:#333;overflow:visible}
 #canvas.one.light .o-bar{background:#E5E5E5}
@@ -1096,6 +1097,15 @@ const vsPrev = (g, m) => isPctG(g) ? (g.actual!=null && g.mid!=null ? ptTxt(g.mi
 const guideDiff = g => isPctG(g) ? (g.actual!=null && g.mid!=null ? g.actual - g.mid : null) : g.ratio;
 const prevDiff = g => isPctG(g) ? (g.actual!=null && g.mid!=null ? g.mid - g.actual : null) : g.ratio;
 const signCls = v => v==null || Math.abs(v) < 0.05 ? "" : v > 0 ? "up" : "dn";
+/* 予想の修正: 上方修正は緑・下方修正は赤。修正前の数字が分かれば「修正前 → 修正後」 */
+const revLabel = g => g.revision && g.revision!=="" ? g.revision : (g.kind || "-");
+const revCls = g => g.revision==="上方修正" ? "up" : g.revision==="下方修正" ? "dn" : "";
+function fcHTML(g, unit, m){
+  const now = rangeHTML(g, unit, m);
+  if(!(g.revision==="上方修正" || g.revision==="下方修正") || g.prev_mid==null) return now;
+  const pv = { ...g, low:g.prev_mid, high:g.prev_mid };
+  return `<span class="o-prev">${rangeHTML(pv, unit, m)}</span> → <span class="${revCls(g)}">${now}</span>`;
+}
 const badge = (txt, cls) => txt ? `<span class="bd ${cls||""}">${txt}</span>` : "";
 const mName = g => (M_JA[g.metric] || g.label || g.metric) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
 function oneData(){
@@ -1181,7 +1191,7 @@ function oneHTML(){
     }
     if($("#oneChart").checked) body += perfChartHTML(d, m);
     const fyRows = fyUsedInCards ? [] : fyNext.sort((a,b)=>pr(a.metric)-pr(b.metric)).slice(0,6);
-    if(fyRows.length) body += `<div class="o-sec wide"><h4>${perJa(c, fyG[0].period.replace(/Q\d$/,""), true).replace(/ Q\d+$/,"")} 通期ガイダンス</h4><table class="o-t"><tr><th>項目</th><th>ガイダンス</th><th>前回から</th><th>前年比</th></tr>${fyRows.map(g=>`<tr><td>${mName(g)}</td><td>${rangeHTML(g,unit,m)}</td><td class="${JUDGE_CLS[g.revision]||""}">${g.revision||"-"}</td><td class="${signCls(prevDiff(g))}">${vsPrev(g,m)||"-"}</td></tr>`).join("")}</table></div>`;
+    if(fyRows.length) body += `<div class="o-sec wide"><h4>${perJa(c, fyG[0].period.replace(/Q\d$/,""), true).replace(/ Q\d+$/,"")} 通期ガイダンス</h4><table class="o-t"><tr><th>項目</th><th>ガイダンス</th><th>前回から</th><th>前年比</th></tr>${fyRows.map(g=>`<tr><td>${mName(g)}</td><td>${fcHTML(g,unit,m)}</td><td class="${revCls(g)}">${revLabel(g)}</td><td class="${signCls(prevDiff(g))}">${vsPrev(g,m)||"-"}</td></tr>`).join("")}</table></div>`;
   } else {
     // 日本企業: 累計実績・通期予想・進捗率
     const cards = prog.filter(g=>!["dividend","eps"].includes(g.metric) && !isPctG(g) && g.metric!=="other").slice(0,3);
@@ -1205,7 +1215,7 @@ function oneHTML(){
     if(rows.length) body += `<div class="o-sec wide"><h4>通期の会社予想（${esc(String(rows[0].period||rows[0].target))}）</h4><table class="o-t"><tr><th>項目</th><th>通期予想</th><th>前期比</th><th>前回予想から</th><th>進捗率</th><th>5年平均</th></tr>${rows.map(g=>{
       const pg = prog.find(x=>x.metric===g.metric && x.basis===g.basis) || prog.find(x=>x.metric===g.metric);
       const showP = pg && g.metric!=="dividend" && !isPctG(g);
-      return `<tr><td>${mName(g)}</td><td>${rangeHTML(g,unit,m)}</td><td class="${g.type==="次期ガイダンス"?signCls(prevDiff(g)):""}">${g.type==="次期ガイダンス"?(vsPrev(g,m)||"-"):"-"}</td><td class="${JUDGE_CLS[g.revision]||""}">${g.revision||g.kind||"-"}</td><td class="${showP?JUDGE_CLS[pg.judge]||"":""}">${showP&&pg.ratio!=null?pg.ratio.toFixed(1)+"%":"-"}</td><td>${showP&&pg.avg5!=null?pg.avg5.toFixed(1)+"%":"-"}</td></tr>`; }).join("")}</table></div>`;
+      return `<tr><td>${mName(g)}</td><td>${fcHTML(g,unit,m)}</td><td class="${g.type==="次期ガイダンス"?signCls(prevDiff(g)):""}">${g.type==="次期ガイダンス"?(vsPrev(g,m)||"-"):"-"}</td><td class="${revCls(g)}">${revLabel(g)}</td><td class="${showP?JUDGE_CLS[pg.judge]||"":""}">${showP&&pg.ratio!=null?pg.ratio.toFixed(1)+"%":"-"}</td><td>${showP&&pg.avg5!=null?pg.avg5.toFixed(1)+"%":"-"}</td></tr>`; }).join("")}</table></div>`;
   }
   const note = `<div class="o-note">出典: 会社の決算資料（ガイダンス・会社予想）。${us?"ガイダンス比は決算前に出ていたガイダンスの中央値に対する実績。":"進捗率は通期予想に対する累計実績、5年平均は過去5年の同じ時点の実績ベース。"}</div>`;
   return head + body + note;
