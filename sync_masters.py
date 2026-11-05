@@ -276,7 +276,7 @@ def guide_rows(rows, div):
                     "prev_year": pc(r.get("prev_year")), "consensus": sc(r.get("consensus")), "vs_consensus": pc(r.get("vs_consensus")),
                     "prev_mid": sc(r.get("prev_mid")), "revision": str(r.get("revision") or ""), "kind": str(r.get("kind") or ""),
                     "amount": amount, "unit": "" if amount else unit, "basis": str(r.get("basis") or ""),
-                    "announced": str(r.get("announced") or "")})
+                    "announced": str(r.get("announced") or ""), "note": str(r.get("note") or "")[:120]})
     return out
 
 
