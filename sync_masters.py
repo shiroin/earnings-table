@@ -39,6 +39,21 @@ def read_watchlist(text):
     col = lambda name: next((i for i, h in enumerate(head) if h == name), None)
     idx = {k: col(k) for k in ["No.", "Ticker", "企業名", "日本名", "暫定Tier(個別記事化60)", "業種カテゴリー1", "業種カテゴリー2",
                                "本拠地", "上場(307)", "決算資料", "指定ロゴ", "フォルダ", "Financials", "決算期", "決算日", "通貨", "単位"]}
+    # 見出しの数字が変わる列（上場(486) など）は先頭一致で
+    for k, pre in (("上場(307)", "上場("), ("暫定Tier(個別記事化60)", "暫定Tier(")):
+        if idx[k] is None:
+            idx[k] = next((i for i, h in enumerate(head) if h.startswith(pre)), None)
+    # Financials の見出しが書き換わっていても、スプレッドシートのURLが一番多く入っている列を Financials とみなす
+    if idx["Financials"] is None:
+        body = rows[hi + 1:]
+        counts = {}
+        for r in body:
+            for i, v in enumerate(r):
+                if "docs.google.com/spreadsheets/d/" in v:
+                    counts[i] = counts.get(i, 0) + 1
+        if counts:
+            idx["Financials"] = max(counts, key=counts.get)
+            print(f"注意: 「Financials」の見出しが見つからないため、{idx['Financials'] + 1}列目（スプレッドシートのURLが{counts[idx['Financials']]}件）を使います")
     get = lambda r, k: (r[idx[k]].strip() if idx[k] is not None and idx[k] < len(r) else "")
     out = []
     for r in rows[hi + 1:]:
@@ -315,7 +330,14 @@ def main():
         r.raise_for_status()
         text = r.content.decode("utf-8")
     watch = read_watchlist(text)
-    print(f"ウォッチリスト: {len(watch)}社（マスターあり {sum(1 for x in watch if x['master_id'])}社）")
+    n_master = sum(1 for x in watch if x['master_id'])
+    print(f"ウォッチリスト: {len(watch)}社（マスターあり {n_master}社）")
+    try:   # ウォッチリストの読み違いで全社が消えないように: マスターありの会社が前回の半分未満なら書き込まずに止める
+        prev_n = sum(1 for c in json.loads(Path(a.out).read_text(encoding="utf-8"))["companies"] if c.get("master_id"))
+    except Exception:
+        prev_n = 0
+    if prev_n and n_master < prev_n * 0.5:
+        sys.exit(f"マスターありの会社が前回 {prev_n}社 → 今回 {n_master}社 と大きく減ったので中止しました（ウォッチリストの列の見出しを確認してください）")
 
     old = {}
     outp = Path(a.out)
