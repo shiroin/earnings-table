@@ -492,12 +492,19 @@ function whenOf(x){
   return jst(Y,M,D,15,30);
 }
 /* マスターの国 → 発表時刻の目安に使う市場区分（米国上場の海外企業は米国扱い） */
-function mkOfCountry(co){
+function mkOfCountry(co, ticker){
   co = String(co||"");
+  const usListed = ticker && !/:/.test(ticker) && !/^\d/.test(ticker);   // 取引所の接頭辞がない英字ティッカー＝米国上場
   if(/日本/.test(co)) return "JP"; if(/韓国/.test(co)) return "KR"; if(/台湾/.test(co)) return "TW"; if(/中国|香港/.test(co)) return "CN";
   if(/英国|オランダ|スウェーデン|フランス|イタリア|デンマーク|ドイツ|スイス/.test(co)) return "EU";
-  if(/豪州/.test(co)) return "AU";
+  if(/豪州/.test(co)) return usListed ? "US" : "AU";   // IREN など米国上場の豪州企業は米国の引け後
   return "US";
+}
+/* 企業マスターの会社の発表タイミング: 自動まとめが記録した回・発表日時があればそれを使う */
+function masterWhen(c){
+  const date = (c.periods?.length && rowFromMaster(c).決算日) || latestEarn(c) || c.date;
+  const d = digestFor(c).find(x => String(x["発表日"]||"").slice(0,10) === String(date||"").slice(0,10));
+  return { date, 市場: mkOfCountry(c.country, c.ticker), ...(d ? { "回": d["回"]||"", "発表日時(JST)": d["発表日時(JST)"]||"" } : {}) };
 }
 /* 直近 n 日分のまとめの回（新しい順） */
 function runsList(days=21){
@@ -548,7 +555,7 @@ function listItems(){
   const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
   let items;
   if(state.src==="master"){
-    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow({date:(c.periods?.length && rowFromMaster(c).決算日) || latestEarn(c) || c.date, 市場:mkOfCountry(c.country)}) &&
+    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow(masterWhen(c)) &&
       (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
       .map(c => { const r = c.periods?.length ? rowFromMaster(c) : null;
         return { key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:r ? r.期 + (r.stale ? " ⚠" : "") : "", date:r?.決算日 || latestEarn(c) || "", has:!!c.periods?.length || digestFor(c).length>0, stale:r?.stale }; });
