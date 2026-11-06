@@ -32,6 +32,11 @@ def file_id(url):
 
 
 # ---------------------------------------------------------------- ウォッチリスト
+def fy_end(v):
+    """決算期は「3月」のような1〜12月だけを受け付ける（列ずれで入った日付シリアル等は空にする）。"""
+    m = re.fullmatch(r"\s*(\d{1,2})\s*月?(\D.*)?", v or "")
+    return f"{int(m.group(1))}月" if m and 1 <= int(m.group(1)) <= 12 else ""
+
 def read_watchlist(text):
     rows = list(csv.reader(io.StringIO(text)))
     hi = next(i for i, r in enumerate(rows) if any(c.strip() == "Ticker" for c in r))
@@ -67,7 +72,7 @@ def read_watchlist(text):
             "tier": get(r, "暫定Tier(個別記事化60)"), "cat1": get(r, "業種カテゴリー1"), "cat2": get(r, "業種カテゴリー2"),
             "country": get(r, "本拠地"), "listed": get(r, "上場(307)"), "ir": get(r, "決算資料"),
             "folder": get(r, "フォルダ"), "master_id": file_id(get(r, "Financials")),
-            "fy_end": get(r, "決算期"), "date": get(r, "決算日").replace("/", "-"),
+            "fy_end": fy_end(get(r, "決算期")), "date": get(r, "決算日").replace("/", "-"),
             "currency_ja": get(r, "通貨"), "unit_in": get(r, "単位"), "logo_spec": get(r, "指定ロゴ"),
         })
     return out

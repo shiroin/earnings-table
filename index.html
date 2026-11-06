@@ -577,12 +577,14 @@ function renderList(){
       <td>${esc(it.has?it.per:"マスターなし")}</td><td>${esc(String(it.date).slice(0,10))}</td></tr>`).join("")
   }</tbody></table>`;
 }
+/* 決算期（「3月」など）を月の数字に。「46332」のような日付シリアルなど1〜12以外は無効として、日本企業は3月、それ以外は不明(0)にする */
+function fyEndM(c){ const m=String(c?.fy_end||"").trim().match(/^(\d{1,2})\s*月?(期|決算)?$/); const n=m?+m[1]:0; return (n>=1&&n<=12)?n:(c?.country==="日本"?3:0); }
 /* 表示している四半期（Q1〜Q4）に合う決算発表日を、過去の発表日の中から選ぶ。
    決算期（例「3月」）から四半期末の月を決め、発表日の15日前の時点で直近に終わった四半期が一致するものを採用。 */
 function mcapEarn(c, label, period){
   const m = c && (state.mcap[c.ticker] || state.mcap[c.name]); const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
   const ds = [...new Set([...(m?.earn_dates||[]), ...(m?.sched||[]).filter(d=>d<=today)])].sort().reverse();
-  let E = parseInt(String(c?.fy_end||"").replace(/[^0-9]/g,"")); const q = +(String(label||"").match(/Q([1-4])/)||[])[1];
+  let E = fyEndM(c); const q = +(String(label||"").match(/Q([1-4])/)||[])[1];
   if(!(E>=1 && E<=12) && /^\s*(CY)?\s*\d{4}\s*[-_ ]?Q[1-4]\s*$/i.test(String(period||""))) E = 12;   // 「2026Q3」形式は暦年（12月決算）とみなす
   if(!ds.length || !(E>=1 && E<=12) || !q) return "";
   for(const d of ds){
@@ -1075,7 +1077,7 @@ function fyOffset(c){
   if(fyOffCache.has(c)) return fyOffCache.get(c);
   let off = 0;
   const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
-  const fe = +(String(c.fy_end || (c.country==="日本" ? "3月" : "")).match(/(\d{1,2})/)||[])[1], last = (c.periods||[]).at(-1),
+  const fe = fyEndM(c), last = (c.periods||[]).at(-1),
     d = String(latestEarn(c) || (c.date && c.date <= today ? c.date : "")).slice(0,10);
   const [fy, q] = parsePeriod(last?.period||"");
   if(fe && fy && q && /^\d{4}-\d{2}-\d{2}$/.test(d)){
@@ -1092,7 +1094,7 @@ function perJa(c, period, us){
   if(fy) fy += fyOffset(c);
   if(!fy) return esc(period);
   if(us) return `FY${String(fy).slice(-2)} Q${q}`;
-  const fe = String(c.fy_end || (c.country==="日本" ? "3月" : "")).match(/(\d{1,2})/); return fe ? `${fy}年${fe[1]}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
+  const fe = fyEndM(c); return fe ? `${fy}年${fe}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
 }
 const bigDiv = h => { const n = h.replace(/<small>.*?<\/small>/g,"").replace(/<[^>]+>/g,"").length; return `<div class="o-big ${n>10?"xl":n>8?"lg":""}">${h}</div>`; };
 /* 利益率など % の項目は「比」を相対%ではなくポイント差で */

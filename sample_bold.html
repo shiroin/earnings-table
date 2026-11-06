@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>決算比較表メーカー</title>
+<style>
+:root{
+  --ink:#1F2A3A; --muted:#6B7787; --line:#D5DBE3; --bg:#EEF1F5; --panel:#FFFFFF;
+  --head:#3F5A7E; --accent:#E8604C; --sel:#E6EDF6;
+  --ja:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  --num:"Avenir Next","Avenir","Helvetica Neue","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ja);font-size:14px;line-height:1.6}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--head);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:minmax(380px,460px) 1fr;min-height:100vh}
+.side{background:var(--panel);border-right:1px solid var(--line);padding:22px 22px 60px;overflow:auto;max-height:100vh;position:sticky;top:0}
+.main{padding:28px 32px 60px;overflow:auto}
+h1{font-size:20px;margin:0 0 4px;font-weight:700;letter-spacing:.02em}
+.lead{color:var(--muted);margin:0 0 22px;font-size:13px}
+
+.step{border-top:1px solid var(--line);padding:18px 0 6px}
+.step h2{font-size:15px;margin:0 0 10px;display:flex;align-items:baseline;gap:10px}
+.step h2 .n{font-family:var(--num);font-weight:600;color:var(--head);font-size:18px;min-width:16px}
+.hint{color:var(--muted);font-size:12px;margin:6px 0 0}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+input[type=text],input[type=url],select{border:1px solid var(--line);border-radius:6px;padding:7px 9px;background:#fff;min-width:0}
+input[type=url]{flex:1}
+.btn{border:1px solid var(--head);background:var(--head);color:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-weight:600;white-space:nowrap}
+.btn.ghost{background:#fff;color:var(--head)}
+.btn.small{padding:3px 9px;font-size:12px;font-weight:500}
+.btn:disabled{opacity:.45;cursor:default}
+.msg{font-size:12px;margin-top:8px}
+.msg.err{color:#B3261E}.msg.ok{color:#2E7D4F}
+
+/* 決算データ一覧 */
+.filters{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.list{border:1px solid var(--line);border-radius:8px;max-height:300px;overflow:auto}
+.list table{width:100%;border-collapse:collapse;font-size:13px}
+.list th{position:sticky;top:0;white-space:nowrap;background:#F6F8FB;text-align:left;font-weight:600;color:var(--muted);font-size:12px;padding:6px 8px;border-bottom:1px solid var(--line)}
+.list td{padding:6px 8px;border-bottom:1px solid #EEF1F5;white-space:nowrap}
+.list tr.on td{background:var(--sel)}
+.list tr{cursor:pointer}
+.list .num{font-family:var(--num);text-align:right}
+.empty{padding:16px;color:var(--muted);font-size:13px}
+
+/* 編集 */
+.edit{display:flex;flex-direction:column;gap:10px}
+.card{border:1px solid var(--line);border-radius:8px;padding:10px 10px 8px;background:#FBFCFD}
+.card .top{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+.card .top input.name{flex:1;font-weight:600}
+.card .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 8px}
+.card label{display:flex;flex-direction:column;font-size:11px;color:var(--muted);gap:2px}
+.card label input{font-family:var(--num);font-size:13px;color:var(--ink);width:100%}
+.card .logo-row{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--muted)}
+.card .logo-row img{height:22px;max-width:90px;object-fit:contain}
+.icon{border:none;background:none;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:4px;font-size:15px;line-height:1}
+.icon:hover{background:#E9EDF2;color:var(--ink)}
+
+.settings{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center}
+.settings label{font-size:12px;color:var(--muted)}
+.clr{display:flex;align-items:center;gap:6px}
+.clr input{width:34px;height:26px;padding:0;border:1px solid var(--line);border-radius:4px;background:none;cursor:pointer}
+
+/* プレビュー */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.bar .t{color:var(--muted);font-size:13px}
+.stage{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;overflow:hidden}
+.fit{transform-origin:top left;width:max-content}
+.placeholder{color:var(--muted);padding:80px 20px;text-align:center}
+
+/* 出力する表（PNGになる部分） */
+#canvas{background:#fff;padding:28px 24px 30px;display:inline-block;width:max-content;font-family:var(--ja);color:#111}
+#canvas h3{text-align:center;font-weight:600;font-size:40px;letter-spacing:1px;margin:0 0 22px;line-height:1.3}
+.et{border-collapse:collapse;border:2.5px solid #222}
+.et th{background:var(--head);color:#fff;font-weight:500;font-size:26px;line-height:1.25;padding:18px 16px;border-left:1.5px dotted #fff;white-space:nowrap}
+.et th:first-child{border-left:none}
+.et th small{font-size:21px}
+.et td{border-top:1.5px dotted #555;height:136px;padding:8px 18px;vertical-align:middle}
+.et td.comp{width:300px;min-width:300px;border-right:1.5px dotted #555;text-align:center;position:relative}
+.et td.comp.corner{padding-top:46px}
+.et td.comp img{display:block;margin:0 auto;height:64px;max-width:250px;object-fit:contain}
+.et td.comp .nm{font-size:21px;font-weight:600;line-height:1.3;margin-top:6px;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+.et td.comp .lt{font-weight:700;font-size:28px;line-height:1.3;word-break:keep-all;overflow-wrap:anywhere}
+.et .pc{position:absolute;top:8px;right:14px;font-family:var(--num);font-size:26px}
+.et .pd{position:absolute;top:8px;left:14px;font-family:var(--num);font-size:26px;color:#333}
+.et .pb{font-size:27px;margin-top:8px;font-weight:500}
+.et td.amt{text-align:right;font-family:var(--num);white-space:nowrap;min-width:230px}
+.et td.amt b{font-size:46px;font-weight:500;letter-spacing:.5px}
+.et td.amt small,.et td.cap small{font-size:26px;font-weight:500}
+.et td.yoy{text-align:right;font-family:var(--num);font-size:34px;white-space:nowrap;min-width:170px;border-left:1.5px dotted #bbb}
+.et td.mg{color:var(--accent);font-family:var(--num);font-size:40px;text-align:right;white-space:nowrap;min-width:170px}
+.et td.cap{border-left:1.5px dotted #555;text-align:right;font-family:var(--num);white-space:nowrap;min-width:200px}
+.et td.cap b{font-size:42px;font-weight:500}
+.et td.sep{border-left:1.5px solid #888}
+/* 金額を左揃えにする */
+.et.alignL td.amt,.et.alignL td.cap{text-align:left}
+.et.alignL td.amt{padding-left:26px}
+
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;max-height:none;border-right:none;border-bottom:1px solid var(--line)}
+  .main{padding:18px 12px 40px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* 企業一覧 */
+.search{flex:1;min-width:140px}
+.list tr.nomaster td{color:#9AA3AE}
+.list .sub{color:var(--muted);font-size:11px}
+.tabs{display:flex;gap:6px;margin-bottom:10px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;font-size:13px}
+.tab[aria-selected=true]{background:var(--head);border-color:var(--head);color:#fff}
+.card select.per{font-family:var(--num);font-size:13px;width:100%}
+.src{font-size:11px;color:var(--muted);margin-left:auto}
+.warn{margin-top:8px;font-size:12px;color:#8A4B00;background:#FFF4E0;border-radius:6px;padding:6px 8px}
+/* セグメント表 */
+.et.seg td.sname{text-align:left;font-size:30px;font-weight:600;min-width:330px;border-right:1.5px dotted #555;height:110px;white-space:nowrap}
+.et.seg td.sname i{display:inline-block;width:18px;height:18px;border-radius:4px;margin-right:12px;vertical-align:middle}
+.et.seg td{height:110px}
+.et.seg td.share{color:#444;font-family:var(--num);font-size:34px;text-align:right;min-width:150px;border-left:1.5px dotted #bbb}
+.et.seg tr.total td{font-weight:700;border-top:2px solid #333}
+#canvas .ttl{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 0 22px}
+#canvas .ttl img{height:58px;max-width:240px;object-fit:contain}
+#canvas .ttl h3{margin:0}
+#canvas .fxnote{font-size:19px;color:#555;margin-top:12px;text-align:right}
+#canvas .note{font-size:20px;color:#555;margin-top:12px;text-align:right}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-600.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"ETNum";src:url(fonts/montserrat-latin-800.woff2) format("woff2");font-weight:800}
+:root{--num:"ETNum","Avenir Next","Hiragino Sans","Noto Sans CJK JP","Noto Sans JP",sans-serif;
+  --ja:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans CJK JP","Noto Sans JP","Yu Gothic","Meiryo",sans-serif}
+#canvas{color:#000;padding:34px 26px 34px}
+#canvas h3{font-weight:800;font-size:56px;letter-spacing:0;margin:0 0 30px}
+.et{border:3px solid #111}
+.et th{background:#3D5A80;font-weight:700;font-size:31px;line-height:1.22;padding:20px 16px}
+.et th small{font-size:26px}
+.et td{border-top:2px dotted #444}
+.et td.comp{border-right:2px dotted #444}
+.et td.comp .lt{font-weight:800;font-size:30px}
+.et td.comp .nm{font-weight:700}
+.et .pc,.et .pd{font-weight:700;font-size:28px}
+.et .pb{font-weight:800;font-size:32px}
+.et td.amt b{font-family:var(--num);font-weight:700;font-size:54px;letter-spacing:0}
+.et td.amt small,.et td.cap small{font-family:var(--ja);font-weight:800;font-size:28px;margin-left:2px}
+.et td.yoy{font-weight:600;font-size:36px;color:#000}
+.et td.mg{font-weight:600;font-size:48px;color:#E8604C}
+.et td.cap b{font-family:var(--num);font-weight:700;font-size:48px}
+.et td.sep{border-left:2px solid #777}
+#canvas .fxnote,#canvas .note{font-size:21px;font-weight:600;color:#444}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <h1>決算比較表メーカー</h1>
+    <p class="lead">企業マスターの最新四半期から、ロゴ入りの比較表とセグメント表を作ります。</p>
+
+    <section class="step">
+      <h2><span class="n">1</span>企業を選ぶ</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-src="master" aria-selected="true">企業マスター</button>
+        <button class="tab" role="tab" data-src="digest" aria-selected="false">毎朝の自動まとめ</button>
+      </div>
+      <div class="filters">
+        <input type="text" class="search" id="q" placeholder="社名・ティッカーで検索" aria-label="社名・ティッカーで検索">
+        <select id="fCountry" aria-label="本拠地"></select>
+        <select id="fCat" aria-label="業種"></select>
+        <select id="fWhen" aria-label="期間">
+          <option value="">すべての期間</option>
+          <option value="run">まとめの回ごと（従来版）</option>
+          <option value="run24">まとめの回から過去24時間</option>
+          <option value="at24">指定した時刻から過去24時間</option>
+          <option value="24h">今から過去24時間</option>
+          <option value="7d">過去7日</option>
+        </select>
+        <select id="fRun" aria-label="まとめの回" hidden></select>
+        <input type="datetime-local" id="fAt" aria-label="基準の時刻" hidden>
+        <select id="fSort" aria-label="並び順">
+          <option value="date">決算日が新しい順</option><option value="no">ウォッチリスト順</option><option value="name">社名順</option>
+        </select>
+      </div>
+      <div class="row" style="margin-bottom:8px;gap:6px">
+        <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
+        <button class="btn ghost small" id="selNone">選択を外す</button>
+        <button class="btn ghost small" id="selNoTweet" title="ウォッチリストのF列（暫定Tier）が「ツイート」の企業を表から外します">「ツイート」の企業を外す</button>
+      </div>
+      <div class="list" id="list"><div class="empty">読み込み中…</div></div>
+      <p class="hint" id="dataInfo"></p>
+    </section>
+
+    <section class="step">
+      <h2><span class="n">2</span>数字を確認・入力する</h2>
+      <div class="edit" id="edit"></div>
+      <div class="row" style="margin-top:10px">
+        <input type="text" id="newName" placeholder="企業名" aria-label="手入力で追加する企業名">
+        <button class="btn ghost" id="addBtn">手入力で追加</button>
+      </div>
+      <p class="hint">期を切り替えると、その四半期の数字に入れ替わります。ここでの修正は画像にだけ反映され、マスターは変わりません。営業利益率は空欄なら自動で計算します。</p>
+      <datalist id="units"><option value="億円"><option value="億ドル"><option value="兆ウォン"><option value="億ウォン"><option value="億台湾ドル"><option value="億元"><option value="億香港ドル"><option value="億ユーロ"><option value="百万円"><option value="百万ドル"></datalist>
+    </section>
+
+    <section class="step">
+      <h2><span class="n">3</span>表の種類と見た目</h2>
+      <div class="settings">
+        <label for="mode">表の種類</label>
+        <select id="mode"><option value="table">決算比較表</option><option value="seg">セグメント表（1社）</option></select>
+        <label for="segCo" class="segonly">セグメント表の企業</label>
+        <select id="segCo" class="segonly"></select>
+        <label class="segonly">セグメント利益</label>
+        <label class="segonly" style="flex-direction:row;display:flex;align-items:center;gap:6px;color:var(--ink)"><input type="checkbox" id="segProfit">セグメント利益も入れる</label>
+        <label for="title">タイトル</label><input type="text" id="title">
+        <label for="unit">単位（手入力の初期値）</label>
+        <select id="unit"><option>億円</option><option>億ドル</option><option>兆ウォン</option><option>億ウォン</option><option>億台湾ドル</option><option>億元</option><option>億香港ドル</option><option>億ユーロ</option><option>百万円</option><option>百万ドル</option></select>
+        <label for="palette">配色</label>
+        <select id="palette">
+          <option value="teal">ティール × オレンジ</option>
+          <option value="green">グリーン × ラズベリー</option>
+          <option value="wine">ワイン × ブルー</option>
+          <option value="charcoal">チャコール × ゴールド</option>
+          <option value="purple">パープル × ターコイズ</option>
+          <option value="ocean">オーシャン × アンバー</option>
+          <option value="custom">自分で選ぶ</option>
+        </select>
+        <label>色</label>
+        <div class="row" style="gap:14px">
+          <label class="clr">見出し <input type="color" id="cHead"></label>
+          <label class="clr">営業利益率 <input type="color" id="cAccent"></label>
+        </div>
+        <label for="sortKey">並び順</label>
+        <div class="row" style="gap:6px">
+          <select id="sortKey" style="flex:1"><option value="">選んだ順</option><option value="rev">売上高</option><option value="ry">売上高の前年同期比</option><option value="op">営業利益</option><option value="oy">営業利益の前年同期比</option><option value="mg">営業利益率</option><option value="cap">時価総額</option></select>
+          <select id="sortDir"><option value="desc">大きい順</option><option value="asc">小さい順</option></select>
+        </div>
+        <label for="period">期の表示</label>
+        <select id="period"><option value="corner">ロゴの右上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
+        <label for="cur">金額の通貨</label>
+        <select id="cur"><option value="local">現地通貨のまま</option><option value="jpy">日本円に換算</option></select>
+        <label class="fxonly">為替レート</label>
+        <div class="fxonly" id="fxBox" style="display:grid;grid-template-columns:auto 1fr;gap:4px 8px;font-size:12px"></div>
+        <label for="align">金額の揃え</label>
+        <select id="align"><option value="auto">自動（通貨がそろえば右、混在なら左）</option><option value="left">左揃え</option><option value="right">右揃え</option></select>
+        <label for="dateShow">決算日の表示</label>
+        <select id="dateShow"><option value="auto">自動（日付が混在するときだけ）</option><option value="on">常に表示</option><option value="off">表示しない</option></select>
+        <label for="minus">マイナス記号</label>
+        <select id="minus"><option value="△">△</option><option value="-">-</option></select>
+      </div>
+    </section>
+  </aside>
+
+  <main class="main">
+    <div class="bar">
+      <span class="t" id="count">企業が選ばれていません</span>
+      <button class="btn" id="dlBtn" disabled>PNGをダウンロード</button>
+    </div>
+    <div class="stage" id="stage"><div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div></div>
+  </main>
+</div>
+<script type="module">
+/* 表を PNG にする（外部ライブラリなし: スタイルをインライン化して SVG foreignObject 経由で canvas に描く） */
+async function toDataURL(src){
+  if(src.startsWith("data:")) return src;
+  const b = await (await fetch(src)).blob();
+  return await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(b); });
+}
+function inlineStyles(src, dst){
+  if(src.nodeType!==1) return;
+  const cs = getComputedStyle(src);
+  let css = ""; for(const p of cs) css += `${p}:${cs.getPropertyValue(p)};`;
+  dst.setAttribute("style", css);
+  for(let i=0;i<src.childNodes.length;i++) inlineStyles(src.childNodes[i], dst.childNodes[i]);
+}
+async function toPng(node, { pixelRatio=2, backgroundColor="#fff" }={}){
+  const w = node.offsetWidth, h = node.offsetHeight;
+  const clone = node.cloneNode(true);
+  inlineStyles(node, clone);
+  clone.style.margin = "0";
+  await Promise.all([...clone.querySelectorAll("img")].map(async im=>{ im.setAttribute("src", await toDataURL(im.getAttribute("src"))); }));
+  const xml = new XMLSerializer().serializeToString(clone);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><foreignObject x="0" y="0" width="100%" height="100%">${xml}</foreignObject></svg>`;
+  const img = new Image();
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  await img.decode();
+  const c = document.createElement("canvas");
+  c.width = Math.ceil(w*pixelRatio); c.height = Math.ceil(h*pixelRatio);
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = backgroundColor; ctx.fillRect(0,0,c.width,c.height);
+  ctx.scale(pixelRatio, pixelRatio); ctx.drawImage(img, 0, 0);
+  return c.toDataURL("image/png");
+}
+
+
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try{ return JSON.parse(localStorage.getItem("et:"+k)); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem("et:"+k, JSON.stringify(v)); }catch{} },
+};
+const state = { mcap: {}, mcapUpdated: "", masters: [], digest: [], logos: {}, rows: [], uploaded: {}, src: "master", cfg: {} };
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const truthy = v => v===true || /^(○|〇|◯|1|true|yes|はい|y|on|表示)$/i.test(String(v??"").trim());
+const num = v => { if(v==null) return null; if(typeof v==="number") return v; const t=String(v).replace(/[,%％\s]/g,"").replace(/[△▲−]/g,"-"); if(t===""||t==="-") return null; const x=+t; return isNaN(x)?null:x; };
+const safe = n => String(n).replace(/[\\/:*?"<>|\s]+/g,"_").replace(/^_+|_+$/g,"");
+
+/* ---------- データ読み込み ---------- */
+function parseCSV(text){
+  const rows=[]; let row=[], cur="", q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c=='"'){ if(text[i+1]=='"'){cur+='"';i++;} else q=false; } else cur+=c; }
+    else if(c=='"') q=true; else if(c==','){ row.push(cur); cur=""; }
+    else if(c=='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(c!='\r') cur+=c;
+  }
+  if(cur!=="" || row.length){ row.push(cur); rows.push(row); }
+  const head = (rows.shift()||[]).map(h=>h.trim());
+  return rows.filter(r=>r.some(v=>v.trim())).map(r=>Object.fromEntries(head.map((h,i)=>[h,(r[i]??"").trim()])));
+}
+/* 小さな読み込みキャッシュ（前回の内容をすぐ出し、裏で取り直す） */
+const lcache = {
+  get(k, ttl){ try{ const v = JSON.parse(localStorage.getItem("etc:"+k)); if(v && (!ttl || Date.now()-v.t < ttl)) return v; }catch{} return null; },
+  set(k, d){ try{ localStorage.setItem("etc:"+k, JSON.stringify({t:Date.now(), d})); }catch{} }
+};
+function digestFromCSV(t){ return parseCSV(t).map(d=>({...d, 発表日:(d["発表日"]||"").replace(/\//g,"-")})); }
+async function loadDigest(sid){
+  const c = lcache.get("digest:"+sid);
+  if(c?.d){ state.digest = digestFromCSV(c.d); }
+  try{
+    const r = await fetch(`https://docs.google.com/spreadsheets/d/${sid}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent("決算データ")}`);
+    if(r.ok){ const t = await r.text(); if(!/^\s*</.test(t)){ if(t!==c?.d){ state.digest = digestFromCSV(t); lcache.set("digest:"+sid, t); return true; } } }
+  }catch{}
+  return !!c?.d;
+}
+async function loadAll(){
+  const j = (u) => fetch(u,{cache:"no-cache"}).then(r=>r.ok ? r.json() : null).catch(()=>null);
+  const pc = j("config.json"), pl = j("logos/index.json"), pm = j("data/masters.json"), pk = j("data/mcap.json");
+  state.cfg = (await pc) || {};
+  const sid = state.cfg.sheetId;
+  const pd = sid ? loadDigest(sid) : Promise.resolve(false);   // 決算データのシートは他と並行して読む
+  if(sid && state.digest.length && state.src==="digest"){ fillFilters(); renderList(); }   // キャッシュがあれば先に出す
+  const [m, lg, mk] = await Promise.all([pm, pl, pk]);
+  if(lg) state.logos = lg;
+  if(m){ state.masters = m.companies||[];
+    $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。表に入れた会社は、元の企業マスターのシートから最新の期をその場で読み直します。`;
+  } else $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。";
+  if(mk){ state.mcap = mk.companies||{}; state.mcapUpdated = mk.updated||""; }
+  if(state.mcapUpdated) $("#dataInfo").textContent += ` 時価総額は ${state.mcapUpdated} 時点（1日2回更新）。`;
+  fillFilters(); renderList();
+  pd.then(ch => { if(ch){ fillFilters(); renderList(); renderPreview(); } });
+  return { digest: pd };
+}
+
+/* ---------- 期の扱い ---------- */
+function parsePeriod(p){
+  const t = String(p||"").trim(); let m;
+  if((m = t.match(/FYE?\s*'?(\d{4}|\d{2})\s*\/\s*\d{1,2}\s*[-_ ]?\s*(?:Q\s*([1-4])|([1-4])\s*Q)/i))) return [fy4(m[1]), +(m[2]||m[3])];
+  if((m = t.match(/^([1-4])\s*Q\s*'?(\d{4}|\d{2})$/i))) return [fy4(m[2]), +m[1]];
+  if(!/^(Q|第)/i.test(t) && (m = t.match(/(?:FYE?|CY)?\s*'?(\d{4}|\d{2})\s*[-_/. ]?\s*(?:年度?)?\s*(?:Q|第)\s*([1-4])/i))) return [fy4(m[1]), +m[2]];
+  if((m = t.match(/(?:Q|第)\s*([1-4])(?:四半期)?\s*[-_/. ]?\s*(?:FYE?|CY)?\s*'?(\d{4}|\d{2})/i))) return [fy4(m[2]), +m[1]];
+  if((m = t.match(/(\d{4}|\d{2})\s*[-_/. ]?\s*([1-4])\s*Q/i))) return [fy4(m[1]), +m[2]];
+  return [null,null];
+}
+const fy4 = y => { y=+y; return y<100 ? y+2000 : y; };
+/* 期の表記を「Q1〜Q4」にそろえる（第3四半期 / 3Q / FY27 1Q / 3Q（速報） → Q3 / Q3（速報）） */
+const ZEN = {"１":"1","２":"2","３":"3","４":"4","一":"1","二":"2","三":"3","四":"4"};
+function qLabel(p){
+  const t = String(p??"").trim(); if(!t) return t;
+  const n = t.replace(/[１-４]/g, c=>ZEN[c]);
+  const k = n.match(/第\s*([1-4一二三四])\s*四半期/);
+  const m = (k && [k[0], ZEN[k[1]]||k[1]]) || n.match(/(?:^|[^0-9])([1-4])\s*Q(?![0-9])/i) || n.match(/Q\s*([1-4])/i);
+  if(!m) return t;
+  const extra = (n.match(/[（(][^）)]*[）)]/)||[""])[0];
+  return "Q"+m[1]+extra;
+}
+const yoyOf = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000)/10;
+
+/* ---------- 一覧 ---------- */
+const masterOf = r => state.masters.find(c => (r.ticker && c.ticker===r.ticker) || c.ja===r.企業 || c.name===r.企業);
+/* 利益の欄が税引前利益の会社（総合商社など。企業マスターに営業利益がなく profit_before_tax を使っている） */
+const isPbt = r => masterOf(r)?.profit_kind==="pbt";
+function fillFilters(){
+  const opt = (arr, all) => `<option value="">${all}</option>` + [...new Set(arr.filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
+  $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
+  $("#fCat").innerHTML = opt(state.masters.map(c=>c.cat1), "すべての業種");
+}
+/* ---------- 期間の判定 ----------
+   発表日時: 決算データの「発表日時(JST)」（無ければ「記録日時」）。どちらも無ければ発表日と市場から目安を置く。
+   まとめの回: 朝（4〜10月 6:00 / 11〜3月 7:00、月〜土。2026/11/3までの冬は6:30）と 17:00（月〜金）。 */
+const jst = (y,m,d,hh,mm) => new Date(Date.UTC(y,m-1,d,hh-9,mm));
+function fmtJ(d, withTime=true){ const t = new Date(d.getTime()+9*3600e3);
+  return `${t.getUTCMonth()+1}月${t.getUTCDate()}日` + (withTime ? ` ${t.getUTCHours()}:${String(t.getUTCMinutes()).padStart(2,"0")}` : ""); }
+function whenOf(x){
+  const t = String(x["発表日時(JST)"]||x["記録日時"]||"").trim();
+  if(t){ const d = new Date(t.replace(/\//g,"-").replace(" ","T") + (/[+Z]/.test(t)?"":"+09:00")); if(!isNaN(d)) return d; }
+  const a = String(x["発表日"]||x.date||"").replace(/\//g,"-").slice(0,10), m = a.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if(!m) return null;
+  const [Y,M,D] = [+m[1],+m[2],+m[3]], mk = String(x["市場"]||x.country||"");
+  if(/US|米国/.test(mk)) return (M>=11||M<=3) ? jst(Y,M,D+1,6,30) : jst(Y,M,D+1,5,30);     // 米国は引け後 → 日本時間の翌朝（冬時間は1時間遅い）
+  if(/EU|欧州/.test(mk)) return jst(Y,M,D,15,0);
+  if(/AU|豪州/.test(mk)) return jst(Y,M,D,8,0);
+  if(/KR|韓国/.test(mk)) return jst(Y,M,D,9,0);
+  if(/TW|台湾/.test(mk)) return jst(Y,M,D,14,30);
+  if(/CN|中国|香港/.test(mk)) return jst(Y,M,D,18,0);
+  return jst(Y,M,D,15,30);
+}
+/* マスターの国 → 発表時刻の目安に使う市場区分（米国上場の海外企業は米国扱い） */
+function mkOfCountry(co){
+  co = String(co||"");
+  if(/日本/.test(co)) return "JP"; if(/韓国/.test(co)) return "KR"; if(/台湾/.test(co)) return "TW"; if(/中国|香港/.test(co)) return "CN";
+  if(/英国|オランダ|スウェーデン|フランス|イタリア|デンマーク|ドイツ|スイス/.test(co)) return "EU";
+  if(/豪州/.test(co)) return "AU";
+  return "US";
+}
+/* 直近 n 日分のまとめの回（新しい順） */
+function runsList(days=21){
+  const out = [], now = Date.now();
+  for(let k=0;k<days;k++){
+    const t = new Date(now + 9*3600e3 - k*86400e3);
+    const Y=t.getUTCFullYear(), M=t.getUTCMonth()+1, D=t.getUTCDate(), wd=t.getUTCDay();
+    const ymd = `${Y}-${String(M).padStart(2,"0")}-${String(D).padStart(2,"0")}`;
+    if(wd>=1 && wd<=5) out.push({ key:`${ymd} 17時`, at:jst(Y,M,D,17,0), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 17時の回` });
+    if(wd>=1 && wd<=6){ const win = (M>=11||M<=3), [hh,mm] = !win ? [6,0] : (ymd <= "2026-11-03" ? [6,30] : [7,0]); out.push({ key:`${ymd} 朝`, at:jst(Y,M,D,hh,mm), label:`${M}月${D}日（${"日月火水木金土"[wd]}） 朝の回` }); }
+  }
+  return out.filter(r=>r.at.getTime()<=now).sort((a,b)=>b.at-a.at);
+}
+function fillRuns(){
+  const cur = $("#fRun").value, rs = runsList();
+  $("#fRun").innerHTML = rs.map(r=>`<option value="${r.key}">${r.label}</option>`).join("");
+  if(rs.some(r=>r.key===cur)) $("#fRun").value = cur;
+}
+function windowNow(){
+  const w = $("#fWhen").value; if(!w) return null;
+  const H = 3600e3, now = new Date();
+  if(w==="24h") return { from:new Date(now-24*H), to:now, kind:"24", end:now };
+  if(w==="7d") return { from:new Date(now-168*H), to:now, kind:"7d", end:now };
+  if(w==="at24"){
+    const v = $("#fAt").value; if(!v) return null;
+    const end = new Date(v+":00+09:00"); return { from:new Date(end-24*H), to:end, kind:"24", end };
+  }
+  const rs = runsList(), i = rs.findIndex(r=>r.key===$("#fRun").value); if(i<0) return null;
+  const r = rs[i];
+  if(w==="run24") return { from:new Date(r.at-24*H), to:r.at, kind:"24", end:r.at, run:r };
+  const prev = rs[i+1]; return { from: prev ? prev.at : new Date(r.at-72*H), to:r.at, kind:"run", run:r };
+}
+function inWindow(x){
+  const win = windowNow(); if(!$("#fWhen").value) return true; if(!win) return false;
+  const rk = String(x["回"]||"").replace(/[（(]補完[)）]/,"").trim();
+  if(win.kind==="run" && /^\d{4}-\d{2}-\d{2} /.test(rk)) return rk===win.run.key;   // 自動まとめが記録した回（補完分も含む）があればそれを優先
+  const d = whenOf(x); if(!d) return false;
+  return d > win.from && d <= win.to;
+}
+function syncWhenUI(){
+  const w = $("#fWhen").value;
+  $("#fRun").hidden = !(w==="run" || w==="run24");
+  $("#fAt").hidden = w!=="at24";
+  if(!$("#fRun").hidden) fillRuns();
+  if(w==="at24" && !$("#fAt").value){ const t = new Date(Date.now()+9*3600e3); $("#fAt").value = t.toISOString().slice(0,16); }
+}
+function listItems(){
+  const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
+  let items;
+  if(state.src==="master"){
+    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow({date:(c.periods?.length && rowFromMaster(c).決算日) || latestEarn(c) || c.date, 市場:mkOfCountry(c.country)}) &&
+      (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
+      .map(c => { const r = c.periods?.length ? rowFromMaster(c) : null;
+        return { key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:r ? r.期 + (r.stale ? " ⚠" : "") : "", date:r?.決算日 || latestEarn(c) || "", has:!!c.periods?.length || digestFor(c).length>0, stale:r?.stale }; });
+  } else {
+    items = state.digest.filter(d => inWindow(d) && (!q || String(d["企業"]).toLowerCase().includes(q)))
+      .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:qLabel(d["期"]), date:d["発表日"], has:true }));
+  }
+  if(sort==="date") items.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  if(sort==="name") items.sort((a,b)=>String(a.name).localeCompare(String(b.name),"ja"));
+  return items;
+}
+function renderList(){
+  const items = listItems(), on = new Set(state.rows.map(r=>r.key).filter(Boolean));
+  if(!items.length){ $("#list").innerHTML = `<div class="empty">${state.src==="digest"?"毎朝の自動まとめのデータはまだありません。":"該当する企業がありません。"}</div>`; return; }
+  $("#list").innerHTML = `<table><thead><tr><th></th><th>企業</th><th>最新期</th><th>決算日</th></tr></thead><tbody>${
+    items.slice(0,400).map(it=>`<tr data-k="${esc(it.key)}" class="${on.has(it.key)?"on":""} ${it.has?"":"nomaster"}">
+      <td><input type="checkbox" ${on.has(it.key)?"checked":""} aria-label="${esc(it.name)}を表に入れる"></td>
+      <td>${esc(it.name)} <span class="sub">${esc(it.sub||"")}</span></td>
+      <td>${esc(it.has?it.per:"マスターなし")}</td><td>${esc(String(it.date).slice(0,10))}</td></tr>`).join("")
+  }</tbody></table>`;
+}
+/* 表示している四半期（Q1〜Q4）に合う決算発表日を、過去の発表日の中から選ぶ。
+   決算期（例「3月」）から四半期末の月を決め、発表日の15日前の時点で直近に終わった四半期が一致するものを採用。 */
+function mcapEarn(c, label, period){
+  const m = c && (state.mcap[c.ticker] || state.mcap[c.name]); const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  const ds = [...new Set([...(m?.earn_dates||[]), ...(m?.sched||[]).filter(d=>d<=today)])].sort().reverse();
+  let E = parseInt(String(c?.fy_end||"").replace(/[^0-9]/g,"")); const q = +(String(label||"").match(/Q([1-4])/)||[])[1];
+  if(!(E>=1 && E<=12) && /^\s*(CY)?\s*\d{4}\s*[-_ ]?Q[1-4]\s*$/i.test(String(period||""))) E = 12;   // 「2026Q3」形式は暦年（12月決算）とみなす
+  if(!ds.length || !(E>=1 && E<=12) || !q) return "";
+  for(const d of ds){
+    const t = new Date(d+"T00:00:00Z"); t.setUTCDate(t.getUTCDate()-15);
+    let mo = t.getUTCMonth()+1;
+    for(let k=0;k<3;k++){ const mm = ((mo-1-k)%12+12)%12+1; if(((mm-E)%3+3)%3===0){ mo = mm; break; } }
+    const qq = ((mo-E)%12+12)%12/3 || 4;
+    if(qq===q) return d;
+  }
+  return "";
+}
+const mcapOf = c => (c && (state.mcap[c.ticker] || state.mcap[c.name])?.text) || "";
+/* その会社の「決算データ」（自動まとめ・手入力）の行。新しい順 */
+const digestFor = c => state.digest.filter(d => d["企業"]===c.ja || d["企業"]===c.name).sort((a,b)=>String(b["発表日"]).localeCompare(String(a["発表日"])));
+/* 株価データ上の最新の決算発表日 */
+const latestEarn = c => { const e = state.mcap[c?.ticker] || state.mcap[c?.name] || {}, today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  return [...(e.earn_dates||[]), ...(e.sched||[]).filter(d=>d<=today)].sort().reverse()[0] || ""; };
+function rowFromMaster(c, period){
+  const ps = c.periods||[];
+  const dgs = digestFor(c);
+  /* 期の指定がない（最新を出す）とき: 決算データにマスターより新しい期があればそちらを使う */
+  if(!period || period==="dg"){
+    const p = ps.at(-1) || {}, mDate = mcapEarn(c, p.label, p.period), d0 = dgs[0];
+    if(d0 && (period==="dg" || (qLabel(d0["期"]) !== p.label && (!mDate || String(d0["発表日"]) > mDate)))){
+      return { ...rowFromDigest(d0), key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, period:"dg", src:"自動まとめ（マスター未反映）" };
+    }
+  }
+  const p = ps.find(x=>x.period===period) || ps.at(-1) || {};
+  const dg = dgs.find(d => p.label && qLabel(d["期"])===p.label);
+  const date = dg?.["発表日"] || mcapEarn(c, p.label, p.period) || "";
+  const le = latestEarn(c);
+  return { key:"m|"+(c.ticker||c.name), ticker:c.ticker, logoKeys:[c.name,c.ja,c.ticker], 企業:c.ja||c.name, 社名表示:false,
+    決算日: date, src:"マスター",
+    /* マスターの最新期より新しい決算が出ているのに、まだどこにも数字がない */
+    stale: (!period && le && (!date || le > date)) ? le : "",
+    period:p.period||"", 期:p.label||"", 単位:c.unit||$("#unit").value,
+    売上高:p.revenue??"", 売上高前年比:p.revenue_yoy??"", 営業利益:p.operating_profit??"", 営業利益前年比:p.op_yoy??"", 営業利益率:"",
+    時価総額: dg?.["時価総額"] || mcapOf(c) };
+}
+/* ---------- 企業マスターを元のシートから直接読む（同期を待たずに最新の期を出す） ---------- */
+const DIV = u => /^兆/.test(u) ? 1e6 : /^(10|十)億/.test(u) ? 1e3 : /^億/.test(u) ? 100 : /^百万/.test(u) ? 1 : 100;
+const liveDone = {};
+let liveActive = 0; const liveQueue = [];
+function liveSlot(){ return new Promise(res => { if(liveActive < 8){ liveActive++; res(); } else liveQueue.push(res); }); }
+function liveFree(){ const n = liveQueue.shift(); if(n) n(); else liveActive--; }
+async function liveCSV(id){
+  const k = "m:"+id; let hit = null;
+  try{ hit = JSON.parse(sessionStorage.getItem(k)); }catch{}
+  if(hit && Date.now()-hit.t < 10*60e3) return hit.d;         // 10分以内に読んだシートは読み直さない
+  await liveSlot();                                           // 同時に読むのは8社まで（一斉に投げると全部が遅くなる）
+  try{
+    const r = await fetch(`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&headers=0&sheet=${encodeURIComponent("会社全体_四半期")}`);
+    if(!r.ok) return null; const t = await r.text(); if(/^\s*</.test(t)) return null;
+    try{ sessionStorage.setItem(k, JSON.stringify({t:Date.now(), d:t})); }catch{}
+    return t;
+  }catch{ return null; } finally{ liveFree(); }
+}
+async function liveMaster(c){
+  if(!c?.master_id || liveDone[c.master_id]) return false;
+  liveDone[c.master_id] = true;
+  try{
+    const t = await liveCSV(c.master_id); if(!t) return false;
+    const rows = []; let row = [], cur = "", q = false;      // CSV（見出しなし）
+    for(let i=0;i<t.length;i++){ const ch=t[i];
+      if(q){ if(ch==='"'){ if(t[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=ch; }
+      else if(ch==='"') q=true; else if(ch===','){ row.push(cur); cur=""; } else if(ch==='\n'){ row.push(cur); rows.push(row); row=[]; cur=""; } else if(ch!=='\r') cur+=ch; }
+    if(cur||row.length){ row.push(cur); rows.push(row); }
+    const hi = rows.findIndex(x => String(x[0]||"").trim().toLowerCase()==="period"); if(hi<0) return false;
+    const head = rows[hi].map(h=>String(h||"").trim()), ir = head.indexOf("revenue"), io0 = head.indexOf("operating_profit"), ipb = head.indexOf("profit_before_tax"), io = io0>=0 ? io0 : ipb;
+    if(io0<0 && ipb>=0) c.profit_kind = "pbt";
+    const val = x => { const v = String(x??"").replace(/,/g,"").trim(); return v===""||isNaN(+v) ? null : +v; };
+    const qs = rows.slice(hi+1).filter(x=>String(x[0]||"").trim()).map(x=>({period:String(x[0]).trim(), r: ir>=0?val(x[ir]):null, o: io>=0?val(x[io]):null}));
+    if(!qs.length) return false;
+    const div = DIV(c.unit||""), byp = {}; for(const d of qs){ const [fy,qn] = parsePeriod(d.period); if(fy) byp[fy+"|"+qn] = d; }
+    const yoy = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000)/10;
+    const ps = qs.map(d=>{ const [fy,qn] = parsePeriod(d.period), pv = fy ? byp[(fy-1)+"|"+qn] : null;
+      return { period:d.period, label: qn ? "Q"+qn : d.period, revenue: d.r==null?null:Math.round(d.r/div*100)/100, operating_profit: d.o==null?null:Math.round(d.o/div*100)/100,
+        revenue_yoy: yoy(d.r, pv?.r), op_yoy: yoy(d.o, pv?.o), margin: (d.r && d.o!=null) ? Math.round(d.o/d.r*1000)/10 : null }; })
+      .filter(p=>p.revenue!=null || p.operating_profit!=null);
+    const old = c.periods||[];
+    if(!ps.length || (old.at(-1)?.period===ps.at(-1).period && old.at(-1)?.revenue===ps.at(-1).revenue && old.at(-1)?.operating_profit===ps.at(-1).operating_profit)) return false;
+    c.periods = ps.slice(-24); c.live = true;
+    return true;
+  }catch{ return false; }
+}
+window.__live = { liveMaster, get state(){ return state; } };
+/* 表に入っているマスターの行を、最新の期で作り直す（期を指定していない行だけ） */
+function applyLive(c){
+  let upd = false;
+  state.rows = state.rows.map(r=>{
+    if(!r.key?.startsWith("m|") || (r.period && r.period!=="dg" && r.period !== r._latest)) return r;
+    const m = masterOf(r); if(m!==c || !m?.periods?.length) return r;
+    const n = rowFromMaster(m); if(n.period===r.period && !m.live) return r;
+    n.社名表示 = r.社名表示; n._latest = n.period; upd = true; return n;
+  });
+  return upd;
+}
+let liveRT = 0;
+function liveRender(){ clearTimeout(liveRT); liveRT = setTimeout(()=>{ renderList(); renderEdit(); renderPreview(); }, 150); }
+/* 表に入っているマスターの行を、最新の期で作り直す（期を指定していない行だけ）。読めた会社から順に反映 */
+async function refreshLive(cs){
+  // まず masters.json の最新期に合わせる（シートを待たない）
+  let any = false; for(const c of new Set(cs)) if(applyLive(c)) any = true;
+  if(any) liveRender();
+  await Promise.all([...new Set(cs)].map(c => liveMaster(c).then(ch => { if(ch && applyLive(c)) liveRender(); })));
+}
+function normUnit(v, u){
+  const m = String(u||"").match(/^百万(.+)$/), x = num(v);
+  return (m && x!=null) ? [String(Math.round(x/100*10)/10), "億"+m[1]] : [v, u];
+}
+function rowFromDigest(d){
+  const c = masterOf({企業:d["企業"]});
+  d = { ...d }; [d["売上高"]] = normUnit(d["売上高"], d["単位"]); [d["営業利益"], d["単位"]] = normUnit(d["営業利益"], d["単位"]);
+  return { key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), ticker:c?.ticker, logoKeys:[d["企業"],c?.name,c?.ja,c?.ticker], 企業:d["企業"], 社名表示:false,
+    決算日: d["発表日"] || "",
+    period:"", 期:qLabel(d["期"]), 単位:d["単位"]||$("#unit").value, 売上高:d["売上高"], 売上高前年比:d["売上高前年比"], 営業利益:d["営業利益"],
+    営業利益前年比:d["営業利益前年比"], 営業利益率:d["営業利益率"], 時価総額:d["時価総額"] || mcapOf(c) };
+}
+$("#list").addEventListener("click", e=>{
+  const tr = e.target.closest("tr[data-k]"); if(!tr) return;
+  const k = tr.dataset.k, i = state.rows.findIndex(r=>r.key===k);
+  if(i>=0) state.rows.splice(i,1);
+  else {
+    const it = listItems().find(x=>x.key===k); if(!it) return;
+    const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr);
+    if(it.c) refreshLive([it.c]);
+  }
+  autoTitle(); renderList(); renderEdit(); renderPreview();
+});
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  state.src = t.dataset.src; document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x===t));
+  if(state.src==="digest" && !$("#fWhen").value){ $("#fWhen").value = "run"; }
+  syncWhenUI(); renderList();
+});
+["#q","#fCountry","#fCat","#fSort"].forEach(s=>$(s).addEventListener("input", renderList));
+["#fWhen","#fRun","#fAt"].forEach(s=>$(s).addEventListener("input", ()=>{ syncWhenUI(); $("#title").dataset.touched=""; autoTitle(); renderList(); renderPreview(); }));
+$("#selAll").onclick = ()=>{
+  const on = new Set(state.rows.map(r=>r.key));
+  const cs = [];
+  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has){ const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr); if(it.c) cs.push(it.c); }
+  autoTitle(); renderList(); renderEdit(); renderPreview();
+  if(cs.length) refreshLive(cs);
+};
+$("#selNoTweet").onclick = ()=>{
+  const n = state.rows.length;
+  state.rows = state.rows.filter(r => String(masterOf(r)?.tier||"").trim()!=="ツイート");
+  if(state.rows.length!==n){ autoTitle(); renderList(); renderEdit(); renderPreview(); }
+};
+$("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
+
+/* ---------- 編集 ---------- */
+const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"]];
+function renderEdit(){
+  $("#edit").innerHTML = state.rows.map((r,i)=>{
+    const c = r.key?.startsWith("m|") ? masterOf(r) : null;
+    const d0 = c ? digestFor(c)[0] : null;
+    const perSel = c?.periods?.length || d0
+      ? `<label>期<select class="per" data-per>${d0 ? `<option value="dg" ${r.period==="dg"?"selected":""}>${esc(qLabel(d0["期"]))}（自動まとめ ${esc(String(d0["発表日"]).slice(5))}）</option>` : ""}${(c.periods||[]).slice().reverse().map(p=>`<option value="${esc(p.period)}" ${p.period===r.period?"selected":""}>${esc(p.label)}（${esc(p.period)}）</option>`).join("")}</select></label>`
+      : `<label>期<input type="text" data-f="期" value="${esc(r.期??"")}"></label>`;
+    return `<div class="card" data-i="${i}">
+      <div class="top">
+        <input type="text" class="name" data-f="企業" value="${esc(r.企業)}" aria-label="企業名">
+        <button class="icon" data-act="up" title="上へ" aria-label="上へ">↑</button>
+        <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
+        <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
+      </div>
+      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${f==="営業利益" && isPbt(r) ? "税引前当期純利益（営業利益の欄）" : l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
+        <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
+        <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
+        <span class="src">${r.src || (c?"マスター":r.key?"自動まとめ":"手入力")}</span></div>
+      ${r.stale ? `<div class="warn">⚠ ${esc(mdOf(r.stale))} に新しい決算が出ていますが、まだ数字がありません（表示は前の期）。次のまとめの回で補います。</div>` : ""}
+    </div>`; }).join("");
+  fillSegCo();
+}
+$("#edit").addEventListener("input", e=>{
+  const f = e.target.dataset.f; if(!f) return;
+  state.rows[+e.target.closest(".card").dataset.i][f] = e.target.value; renderPreview();
+});
+$("#edit").addEventListener("change", e=>{
+  const card = e.target.closest(".card"); if(!card) return; const i = +card.dataset.i;
+  if(e.target.matches("[data-per]")){
+    const r = state.rows[i], c = masterOf(r), keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 };
+    Object.assign(r, rowFromMaster(c, e.target.value), keep, { stale:"" }); renderEdit(); renderPreview(); return;
+  }
+  if(e.target.matches("[data-name]")){ state.rows[i].社名表示 = e.target.checked; renderPreview(); return; }
+  if(e.target.matches("[data-f=企業]")) renderEdit();
+  if(!e.target.matches("[data-logo]")) return;
+  const file = e.target.files[0]; if(!file) return;
+  const fr = new FileReader(); fr.onload = ()=>{ state.uploaded[state.rows[i].企業] = fr.result; renderEdit(); renderPreview(); }; fr.readAsDataURL(file);
+});
+$("#edit").addEventListener("click", e=>{
+  const act = e.target.dataset.act; if(!act) return;
+  const i = +e.target.closest(".card").dataset.i, R = state.rows;
+  if(act==="del") R.splice(i,1);
+  if(act==="up" && i>0) [R[i-1],R[i]]=[R[i],R[i-1]];
+  if(act==="down" && i<R.length-1) [R[i+1],R[i]]=[R[i],R[i+1]];
+  renderList(); renderEdit(); renderPreview();
+});
+$("#addBtn").onclick = ()=>{
+  const n = $("#newName").value.trim(); if(!n){ $("#newName").focus(); return; }
+  state.rows.push({ key:null, 企業:n, 社名表示:false, 単位:$("#unit").value, 期:"", 売上高:"", 売上高前年比:"", 営業利益:"", 営業利益前年比:"", 営業利益率:"", 時価総額:"" });
+  $("#newName").value=""; renderEdit(); renderPreview();
+};
+
+/* ---------- 表 ---------- */
+function logoSrc(r){
+  if(state.uploaded[r.企業]) return state.uploaded[r.企業];
+  for(const k of [r.企業, ...(r.logoKeys||[])].filter(Boolean)){
+    const f = state.logos[k] || state.logos[safe(k)]; if(f) return "logos/"+f;
+  }
+  return null;
+}
+const CUR_CODE = { "ドル":"USD","米ドル":"USD","円":"JPY","ウォン":"KRW","台湾ドル":"TWD","元":"CNY","人民元":"CNY","香港ドル":"HKD","ユーロ":"EUR","ポンド":"GBP" };
+const CUR_NAME = { USD:"ドル", KRW:"ウォン", TWD:"台湾ドル", CNY:"元", HKD:"香港ドル", EUR:"ユーロ", GBP:"ポンド" };
+const PREFIX = { "百万":1e6, "億":1e8, "10億":1e9, "十億":1e9, "兆":1e12 };
+function splitUnit(u){ const m = String(u||"").match(/^(百万|10億|十億|億|兆)(.+)$/); return m ? { mult:PREFIX[m[1]], code:CUR_CODE[m[2]] || null, name:m[2] } : null; }
+function fxRate(code){ if(code==="JPY") return 1; const el = document.querySelector(`#fxBox input[data-cur="${code}"]`); const v = el ? +el.value : state.cfg.fx?.[code]; return v>0 ? v : null; }
+/* 金額（数値＋単位）を円に換算 → [数値, 単位] */
+function toYen(v, unit){
+  const u = splitUnit(unit); if(v==null || !u || !u.code) return [v, unit];
+  const r = fxRate(u.code); if(!r) return [v, unit];
+  const yen = v * u.mult * r;
+  if(Math.abs(yen) >= 1e12){ const t = yen/1e12; return [t, "兆円", Math.abs(t) >= 100 ? 0 : 1]; }
+  return [yen/1e8, "億円", 0];
+}
+function usedCurrencies(){
+  const set = new Set();
+  for(const r of state.rows){ const u = splitUnit(r.単位); if(u?.code && u.code!=="JPY") set.add(u.code);
+    const c = String(r.時価総額||"").match(/[\d.,]+\s*(百万|10億|十億|億|兆)(.+)$/); if(c && CUR_CODE[c[2]] && CUR_CODE[c[2]]!=="JPY") set.add(CUR_CODE[c[2]]); }
+  return [...set];
+}
+function renderFx(){
+  const box = $("#fxBox"); const used = usedCurrencies(); const prev = {};
+  box.querySelectorAll("input").forEach(i=>prev[i.dataset.cur]=i.value);
+  box.innerHTML = used.length ? used.map(c=>`<span>1${CUR_NAME[c]||c} =</span><span><input type="number" step="0.001" data-cur="${c}" value="${esc(prev[c] ?? state.cfg.fx?.[c] ?? "")}" style="width:90px"> 円</span>`).join("")
+    + `<span></span><span style="color:var(--muted)">初期値は ${esc(state.cfg.fx?.date||"")} 頃の目安</span>` : `<span style="grid-column:1/-1;color:var(--muted)">換算が必要な通貨はありません</span>`;
+}
+$("#fxBox").addEventListener("input", renderPreview);
+function fmtAmt(v,m,dig){ if(v==null) return "-"; const a=Math.abs(v);
+  if(dig!=null) return (v<0?m:"") + a.toLocaleString("en-US",{minimumFractionDigits:dig, maximumFractionDigits:dig}); const s = a>=100||Number.isInteger(a) ? Math.round(a).toLocaleString("en-US") : a.toLocaleString("en-US",{maximumFractionDigits: a<10?2:1}); return (v<0?m:"")+s; }
+function fmtPct(v,m,plus=true){ if(v==null) return "-"; return (v<0?m:(plus&&v>0?"+":""))+Math.abs(v).toFixed(1)+"%"; }
+const PALETTES = { teal:["#1F6E75","#EE7E1A"], green:["#2F6B4F","#C73E5A"], wine:["#6B2B3E","#2B78B8"], charcoal:["#33383D","#D49A00"], purple:["#4B3C8E","#14988A"], ocean:["#0D6CA0","#E59A0C"] };
+function applyPalette(){ const p = PALETTES[$("#palette").value]; if(p){ $("#cHead").value=p[0]; $("#cAccent").value=p[1]; } }
+$("#palette").addEventListener("change", ()=>{ applyPalette(); renderPreview(); });
+["#cHead","#cAccent"].forEach(s=>$(s).addEventListener("input", ()=>{ $("#palette").value="custom"; renderPreview(); }));
+
+/* 決算日 → 「10/29」 */
+function mdOf(v){ const t = String(v||"").trim(); let m = t.match(/(\d{4})[-\/年.](\d{1,2})[-\/月.](\d{1,2})/) || t.match(/^()(\d{1,2})[\/月-](\d{1,2})/);
+  return m ? `${+m[2]}/${+m[3]}` : t; }
+function showDates(){
+  const v = $("#dateShow").value; if(v==="on") return true; if(v==="off") return false;
+  return new Set(state.rows.map(r=>mdOf(r.決算日)).filter(Boolean)).size > 1;
+}
+function compCell(r, pmode){
+  const src = logoSrc(r), per = esc(qLabel(r.期)), dt = showDates() ? esc(mdOf(r.決算日)) : "";
+  const pd = dt ? `<span class="pd">${dt}</span>` : "";
+  const logo = src ? `<img src="${src}" alt="${esc(r.企業)}">${r.社名表示?`<div class="nm">${esc(r.企業)}</div>`:""}` : `<div class="lt">${esc(r.企業)}</div>`;
+  const cls = (pmode==="corner" && per) || dt ? "comp corner" : "comp";
+  return pmode==="corner" ? `<td class="${cls}">${pd}${per?`<span class="pc">${per}</span>`:""}${logo}</td>`
+       : pmode==="below" ? `<td class="${cls}">${pd}${logo}${per?`<div class="pb">${per}</div>`:""}</td>` : `<td class="${cls}">${pd}${logo}</td>`;
+}
+/* 表示される通貨（億・兆などの桁は無視）が1種類なら右揃え */
+function shownCurrency(u){ const m = String(u||"").match(/^(?:百万|10億|十億|億|兆)?(.+)$/); return m ? m[1] : u; }
+function alignLeft(){
+  const a = $("#align").value; if(a!=="auto") return a==="left";
+  const yen = $("#cur").value==="jpy";
+  const curs = new Set(state.rows.map(r=>{
+    const u = r.単位 || $("#unit").value;
+    if(yen){ const su = splitUnit(u); if(su?.code && fxRate(su.code)) return "円"; }
+    return shownCurrency(u);
+  }));
+  return curs.size > 1;
+}
+/* 並び替え: 金額は通貨が違っても比べられるよう円に直して比べる（為替がない通貨はそのまま） */
+function yenValue(v, unit){
+  if(v==null) return null; const u = splitUnit(unit); if(!u) return v;
+  const r = u.code ? fxRate(u.code) : null; return r ? v*u.mult*r : v*u.mult;
+}
+function sortValue(r, key){
+  const unit = r.単位 || $("#unit").value, rev = num(r.売上高), op = num(r.営業利益);
+  switch(key){
+    case "rev": return yenValue(rev, unit);
+    case "op":  return yenValue(op, unit);
+    case "ry":  return num(r.売上高前年比);
+    case "oy":  return num(r.営業利益前年比);
+    case "mg":  return num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
+    case "cap": { const c = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/); return c ? yenValue(num(c[1]), c[2]) : null; }
+  }
+  return null;
+}
+function sortedRows(){
+  const key = $("#sortKey").value; if(!key) return state.rows;
+  const dir = $("#sortDir").value==="asc" ? 1 : -1;
+  return state.rows.map((r,i)=>({r,i,v:sortValue(r,key)}))
+    .sort((a,b)=> (a.v==null)-(b.v==null) || (a.v==null ? 0 : (a.v-b.v)*dir) || a.i-b.i).map(x=>x.r);
+}
+const SORT_COL = ["", "rev", "ry", "op", "oy", "mg", "cap"];   // 表の見出しの並び
+function tableHTML(){
+  const m = $("#minus").value, pmode = $("#period").value;
+  const yen = $("#cur").value==="jpy";
+  const body = sortedRows().map(r=>{
+    let unit = r.単位 || $("#unit").value, unitOp = unit;
+    let rev=num(r.売上高), op=num(r.営業利益), dRev, dOp; const ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
+    const mg = num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
+    let cap = String(r.時価総額||"").match(/^\s*([△▲\-+]?[\d,.]+)\s*(.*)$/);
+    if(yen){
+      [rev, unit, dRev] = toYen(rev, r.単位); [op, unitOp, dOp] = toYen(op, r.単位);
+      if(cap){ const [cv, cu, cd] = toYen(num(cap[1]), cap[2]); if(cu!==cap[2]) cap = [null, fmtAmt(cv,"-",cd), cu]; }
+    }
+    unit = esc(unit); unitOp = esc(unitOp);
+    return `<tr>${compCell(r,pmode)}
+      <td class="amt"><b>${fmtAmt(rev,m,dRev)}</b><small>${rev==null?"":unit}</small></td>
+      <td class="yoy">${fmtPct(ry,m)}</td>
+      <td class="amt sep"><b>${fmtAmt(op,m,dOp)}</b><small>${op==null?"":unitOp}</small></td>
+      <td class="yoy">${fmtPct(oy,m)}</td>
+      <td class="mg">${fmtPct(mg,m,false)}</td>
+      <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
+  }).join("");
+  // 総合商社は営業利益の代わりに税引前当期純利益。全社がそうなら見出しごと替え、混在なら営業利益のまま注記
+  const pb = state.rows.filter(isPbt), allPb = pb.length && pb.length===state.rows.length;
+  const opH = allPb ? "税引前<br>利益" : "営業利益", mgH = allPb ? "利益率" : "営業<br>利益率";
+  const notes = [];
+  if(allPb) notes.push("※ 税引前当期純利益");
+  else if(pb.length) notes.push(`※ ${pb.map(r=>esc(r.企業)).join("、")}は営業利益ではなく税引前当期純利益`);
+  if(yen && usedCurrencies().length) notes.push(`※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・${allPb?"利益率":"営業利益率"}は現地通貨ベース`);
+  return `<h3>${esc($("#title").value)}</h3>
+    <table class="et ${alignLeft()?"alignL":""}"><thead><tr><th>企業</th><th>売上高</th><th>前年<br>同期比</th><th>${opH}</th><th>前年<br>同期比</th><th>${mgH}</th><th>時価総額</th></tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
+}
+
+/* ---------- セグメント表 ---------- */
+function segRowsFor(c){ return state.rows.filter(r=>r.key?.startsWith("m|") && masterOf(r)?.seg_revenue); }
+function fillSegCo(){
+  const cand = segRowsFor(), cur = $("#segCo").value;
+  $("#segCo").innerHTML = cand.length ? cand.map(r=>`<option value="${esc(r.key)}">${esc(r.企業)}（${esc(qLabel(r.期))}）</option>`).join("") : `<option value="">セグメントのある企業が選ばれていません</option>`;
+  if(cand.some(r=>r.key===cur)) $("#segCo").value = cur;
+}
+function segData(r){
+  const c = masterOf(r); if(!c?.seg_revenue) return null;
+  const find = (blk, per) => blk?.rows.find(x=>x.period===per);
+  const [fy,q] = parsePeriod(r.period);
+  const prevOf = blk => blk?.rows.find(x=>{ const [f2,q2]=parsePeriod(x.period); return f2===fy-1 && q2===q; });
+  const R = find(c.seg_revenue, r.period), Rp = prevOf(c.seg_revenue);
+  const P = find(c.seg_profit, r.period), Pp = prevOf(c.seg_profit);
+  if(!R) return { c, rows:[] };
+  const cols = c.seg_revenue.columns.filter(k => R[k]!=null);
+  const total = cols.reduce((s,k)=>s+(R[k]||0),0);
+  const rows = cols.map(k=>({
+    name: c.segments?.[k]?.label || k, color: c.segments?.[k]?.color || null,
+    rev: R[k], revYoy: yoyOf(R[k], Rp?.[k]), share: total ? R[k]/total*100 : null,
+    op: P?.[k] ?? null, opYoy: yoyOf(P?.[k], Pp?.[k]), mg: (P?.[k]!=null && R[k]) ? P[k]/R[k]*100 : null,
+  }));
+  return { c, rows, total, hasProfit: !!P && cols.some(k=>P[k]!=null) };
+}
+function segHTML(){
+  const r = state.rows.find(x=>x.key===$("#segCo").value); if(!r) return null;
+  const d = segData(r); if(!d) return null;
+  const m = $("#minus").value, unit = esc(r.単位), withP = $("#segProfit").checked && d.hasProfit;
+  const src = logoSrc(r);
+  const body = d.rows.map(s=>`<tr>
+      <td class="sname">${s.color?`<i style="background:${esc(s.color)}"></i>`:""}${esc(s.name)}</td>
+      <td class="amt"><b>${fmtAmt(s.rev,m)}</b><small>${unit}</small></td>
+      <td class="yoy">${fmtPct(s.revYoy,m)}</td>
+      <td class="share">${s.share==null?"-":s.share.toFixed(1)+"%"}</td>
+      ${withP?`<td class="amt sep"><b>${fmtAmt(s.op,m)}</b><small>${s.op==null?"":unit}</small></td><td class="yoy">${fmtPct(s.opYoy,m)}</td><td class="mg">${fmtPct(s.mg,m,false)}</td>`:""}
+    </tr>`).join("");
+  const head = `<th>セグメント</th><th>売上高</th><th>前年<br>同期比</th><th>構成比</th>${withP?"<th>セグメント<br>利益</th><th>前年<br>同期比</th><th>利益率</th>":""}`;
+  return `<div class="ttl">${src?`<img src="${src}" alt="">`:""}<h3>${esc($("#title").value)}</h3></div>
+    <table class="et seg"><thead><tr>${head}</tr></thead><tbody>${body || `<tr><td class="sname">この期のセグメントデータがありません</td></tr>`}</tbody></table>
+    <div class="note">${esc(qLabel(r.期))}（${esc(r.period)}）　単位: ${unit}${d.c.note?`　${esc(d.c.note)}`:""}</div>`;
+}
+
+/* ---------- プレビュー ---------- */
+function renderPreview(){
+  saveState();
+  const mode = $("#mode").value;
+  renderFxIfNeeded();
+  document.querySelectorAll(".fxonly").forEach(e=>e.style.display = $("#cur").value==="jpy" ? "" : "none");
+  document.querySelectorAll(".segonly").forEach(e=>e.style.display = mode==="seg" ? "" : "none");
+  $("#count").textContent = state.rows.length ? `${state.rows.length}社を選んでいます` : "企業が選ばれていません";
+  const inner = mode==="seg" ? segHTML() : (state.rows.length ? tableHTML() : null);
+  $("#dlBtn").disabled = !inner;
+  if(!inner){ $("#stage").innerHTML = `<div class="placeholder">${mode==="seg"?"セグメント表は、企業マスターから選んだ企業（セグメントのデータがある会社）で作れます。":"左で企業を選ぶか、手入力で追加すると、ここに表ができます。"}</div>`; return; }
+  $("#stage").innerHTML = `<div class="fit"><div id="canvas" style="--head:${$("#cHead").value};--accent:${$("#cAccent").value}">${inner}</div></div>`;
+  if(mode!=="seg") document.querySelectorAll("#canvas table.et thead th").forEach((th,i)=>{   // 見出しクリックで並び替え
+    if(!SORT_COL[i]) return; th.style.cursor = "pointer"; th.title = "クリックで並び替え（もう一度で逆順）";
+    th.onclick = ()=>{ const k = SORT_COL[i];
+      if($("#sortKey").value===k) $("#sortDir").value = $("#sortDir").value==="desc" ? "asc" : "desc";
+      else { $("#sortKey").value = k; $("#sortDir").value = "desc"; }
+      renderPreview(); };
+  });
+  fit();
+}
+function renderFxIfNeeded(){
+  const want = usedCurrencies().join(","), have = [...$("#fxBox").querySelectorAll("input")].map(i=>i.dataset.cur).join(",");
+  if(want!==have || !$("#fxBox").innerHTML) renderFx();
+}
+function fit(){
+  const f = document.querySelector(".fit"), c = $("#canvas"); if(!f||!c) return;
+  const k = Math.min(1, ($("#stage").clientWidth - 36) / c.offsetWidth);
+  f.style.transform = `scale(${k})`; f.style.height = (c.offsetHeight*k)+"px";
+}
+addEventListener("resize", fit);
+function autoTitle(){
+  if($("#title").dataset.touched) return;
+  if($("#mode").value==="seg"){
+    const r = state.rows.find(x=>x.key===$("#segCo").value);
+    $("#title").value = r ? `${logoSrc(r) ? "" : r.企業+" "}セグメント別業績（${qLabel(r.期)}）` : "セグメント別業績"; return;
+  }
+  const win = windowNow();
+  if(win?.kind==="24") $("#title").value = `過去24時間の決算（${fmtJ(win.end)}まで）`;
+  else if(win?.kind==="run") $("#title").value = `注目企業の決算（${win.run.label.replace(/（.） /," ")}）`;
+  else if(win?.kind==="7d") $("#title").value = "過去7日間の決算";
+  else $("#title").value = "注目企業の決算";
+}
+$("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
+$("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); autoTitle(); renderPreview(); });
+$("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
+["#unit","#period","#minus","#segProfit","#align","#cur","#dateShow","#sortKey","#sortDir"].forEach(s=>$(s).addEventListener("change", renderPreview));
+
+/* ---------- PNG ---------- */
+$("#dlBtn").onclick = async ()=>{
+  const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
+  try{
+    const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: "#fff" });
+    const a = document.createElement("a"); a.href = url;
+    a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
+    btn.textContent = "ダウンロードしました";
+  }catch(e){ btn.textContent = "画像にできませんでした。もう一度押してください"; console.error(e); }
+  setTimeout(()=>{ btn.textContent = "PNGをダウンロード"; btn.disabled = false; }, 1800);
+};
+
+/* ---------- 保存・起動 ---------- */
+function saveState(){
+  store.set("rows2", state.rows);
+  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked });
+}
+/* 自動まとめ（render.py）から呼ぶ入口 */
+window.__render = (rows, opts={}) => {
+  state.rows = rows.map(r=>({ ...r, logoKeys:[r.企業] }));
+  if(opts.title!=null){ $("#title").value = opts.title; $("#title").dataset.touched="1"; }
+  if(opts.period) $("#period").value = opts.period;
+  if(opts.minus) $("#minus").value = opts.minus;
+  if(opts.align) $("#align").value = opts.align;
+  if(opts.cur) $("#cur").value = opts.cur;
+  if(opts.dateShow) $("#dateShow").value = opts.dateShow;
+  $("#sortKey").value = opts.sort || ""; $("#sortDir").value = opts.sortDir || "desc";
+  if(opts.fx){ state.cfg.fx = { ...(state.cfg.fx||{}), ...opts.fx }; $("#fxBox").innerHTML = ""; }
+  if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
+  if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
+  if(opts.accent){ $("#palette").value="custom"; $("#cAccent").value = opts.accent; }
+  $("#mode").value = "table";
+  renderPreview();
+  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+};
+/* セグメント表を render.py から作る入口 */
+window.__renderSeg = async (key, opts={}) => {
+  if(!state.masters.length){ const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json(); state.masters = m.companies||[]; }
+  const c = state.masters.find(x => [x.ticker, x.name, x.ja].includes(key)); if(!c) throw new Error("マスターに見つかりません: "+key);
+  const r = rowFromMaster(c, opts.period); r.社名表示 = false; state.rows = [r];
+  $("#mode").value = "seg"; fillSegCo(); $("#segCo").value = r.key; $("#segProfit").checked = !!opts.profit;
+  if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
+  $("#title").dataset.touched = opts.title ? "1" : ""; if(opts.title) $("#title").value = opts.title; else autoTitle();
+  renderPreview();
+  return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
+};
+(async function init(){
+  $("#palette").value="teal"; applyPalette();
+  if(new URLSearchParams(location.search).has("headless")){
+    try{ const r = await fetch("logos/index.json",{cache:"no-cache"}); if(r.ok) state.logos = await r.json(); }catch{}
+    try{ state.cfg = await (await fetch("config.json",{cache:"no-cache"})).json(); }catch{}
+    window.__ready = true; return;
+  }
+  const o = store.get("opts");
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; }
+  if(!$("#title").value) $("#title").value = "注目企業の決算";
+  state.rows = store.get("rows2") || [];
+  await loadAll();
+  renderEdit(); renderPreview();
+  for(const r of state.rows) if(r.key?.startsWith("m|") && !r._latest) r._latest = r.period;   // 期を手で切り替えた記録のない行は「最新の期に追従」扱い
+  refreshLive(state.rows.filter(r=>r.key?.startsWith("m|")).map(masterOf).filter(Boolean));   // 前回選んだ会社も最新の期に
+})();
+</script>
+</body>
+</html>
