@@ -1187,21 +1187,22 @@ function oneHTML(){
     const fyNext = fyG.filter(usable);
     const guided = [...new Set([...nextQ, ...cmp].filter(usable).map(g=>g.metric))];
     let SLOTS = (guided.length ? guided : fyNext.map(g=>g.metric)).sort((x,y)=>pr(x)-pr(y)).slice(0,3);
-    if(!SLOTS.includes("revenue") && SLOTS.length<3) SLOTS.unshift("revenue");   // 売上高は必ず入れる
-    if(!SLOTS.length) SLOTS = ["revenue","operating_profit","eps"];
+    if(!SLOTS.length) SLOTS = ["revenue","operating_profit","operating_margin"];   // ガイダンスがない会社は 売上高・営業利益・営業利益率
+    else if(!SLOTS.includes("revenue") && SLOTS.length<3) SLOTS.unshift("revenue");   // 売上高は必ず入れる
     const mp = (c.periods||[]).find(p=>p.period===per) || {};
     const actOf = mt => cmp.find(g=>g.metric===mt) || (() => {   // ガイダンス比がない項目は企業マスターの実績だけ出す
       let v = mt==="revenue" ? mp.revenue : mt==="operating_profit" ? mp.operating_profit : mt==="eps" ? mp.eps : null, amount = mt!=="eps";
-      if(mt==="operating_margin" && mp.revenue && mp.operating_profit!=null){ v = Math.round(mp.operating_profit/mp.revenue*1000)/10; amount = false; }
+      if(mt==="operating_margin" && mp.revenue && mp.operating_profit!=null){ v = mp.operating_profit/mp.revenue*100; amount = false; }
       if(v==null) return null;
       // 前年同期比（企業マスターの1年前の同じ四半期と比べる。利益率は pt 差）
       const [yf, yq] = parsePeriod(per), py = yf && (c.periods||[]).find(p=>{ const [f2,q2] = parsePeriod(p.period); return f2===yf-1 && q2===yq; });
-      let pv = py ? (mt==="operating_margin" ? (py.revenue && py.operating_profit!=null ? Math.round(py.operating_profit/py.revenue*1000)/10 : null) : py[mt]) : null;
+      let pv = py ? (mt==="operating_margin" ? (py.revenue && py.operating_profit!=null ? py.operating_profit/py.revenue*100 : null) : py[mt]) : null;
       if(pv==null) pv = null;
-      return { metric:mt, actual:v, amount, unit: amount ? "" : (mt==="eps" ? (c.currency||"") : "%"), basis:"", nog:true, prev_year: pv }; })();
+      const given = mt==="revenue" ? mp.revenue_yoy : mt==="operating_profit" ? mp.op_yoy : null;   // 横の表と同じ前年同期比（丸める前の値から計算済み）
+      return { metric:mt, actual:v, amount, unit: amount ? "" : (mt==="eps" ? (c.currency||"") : "%"), basis:"", nog:true, prev_year: pv, yoy_given: given }; })();
     const nogBadge = g => { const a = g.actual, b = g.prev_year; if(a==null || b==null) return "";
       if(g.metric==="operating_margin"){ const d = a-b; return badge(`前年同期比 ${d>=0?"+":""}${d.toFixed(1)}pt`, d>0?"up":d<0?"dn":""); }
-      if(b<=0) return ""; const y = (a/b-1)*100; return badge(`前年同期比 ${fmtPct(y,m)}`, y>0?"up":y<0?"dn":""); };
+      if(g.yoy_given==null && b<=0) return ""; const y = g.yoy_given!=null ? g.yoy_given : (a/b-1)*100; return badge(`前年同期比 ${fmtPct(y,m)}`, y>0?"up":y<0?"dn":""); };
     const card = (g, kind, mt) => {
       const head = kind==="act" ? perJa(c, per, true)+"実績" : kind==="fy" ? `${perJa(c, (g||{}).period||"", true).replace(/ Q\d+$/,"")} 通期ガイダンス` : (nextQp?perJa(c, nextQp, true):"次の四半期")+"ガイダンス";
       if(!g) return `<div class="o-card o-none"><div class="o-ct"><span>${head}</span><b>${M_JA[mt]||mt}</b></div><div class="o-big">-</div><div class="o-ref">${kind==="act"?"データなし":"ガイダンスの開示なし"}</div></div>`;
