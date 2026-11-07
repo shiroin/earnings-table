@@ -1254,7 +1254,7 @@ function oneHTML(){
     body += `<div class="o-grid jpg ${cards.length===3?"g3":cards.length===1?"g1 one1":""}">${cards.map(card).join("")}</div>`;
     if($("#oneChart").checked) body += perfChartHTML(d, m);
     const rows = (fyAll.length ? fyAll : prog).filter(g=>g.low!=null||g.high!=null);
-    if(rows.length) body += `<div class="o-sec wide"><h4>通期の会社予想（${esc(String(rows[0].period||rows[0].target))}）</h4><table class="o-t"><tr><th>項目</th><th>通期予想</th><th>前期比</th><th>前回予想から</th><th>進捗率</th><th>5年平均</th></tr>${rows.map(g=>{
+    if(rows.length) body += `<div class="o-sec wide"><h4>通期の会社予想（${(()=>{ const t = String(rows[0].period||rows[0].target||""), y = (t.match(/(\d{4})/)||[])[1]; return y ? perJa(c, `FY${y} Q4`, false).replace(/ 通期$/,"") : esc(t); })()}）</h4><table class="o-t"><tr><th>項目</th><th>通期予想</th><th>前期比</th><th>前回予想から</th><th>進捗率</th><th>5年平均</th></tr>${rows.map(g=>{
       const pg = prog.find(x=>x.metric===g.metric && x.basis===g.basis) || prog.find(x=>x.metric===g.metric);
       const showP = pg && g.metric!=="dividend" && !isPctG(g);
       return `<tr><td>${mName(g)}</td><td>${fcHTML(g,unit,m)}</td><td class="${g.type==="次期ガイダンス"?signCls(prevDiff(g)):""}">${g.type==="次期ガイダンス"?(vsPrev(g,m)||"-"):"-"}</td><td class="${revCls(g)}">${revLabel(g)}</td><td class="${showP?JUDGE_CLS[pg.judge]||"":""}">${showP&&pg.ratio!=null?pg.ratio.toFixed(1)+"%":"-"}</td><td>${showP&&pg.avg5!=null?pg.avg5.toFixed(1)+"%":"-"}</td></tr>`; }).join("")}</table></div>`;
