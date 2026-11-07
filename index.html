@@ -1231,6 +1231,12 @@ function oneHTML(){
       const head = kind==="act" ? perJa(c, per, true)+"実績" : kind==="fy" ? `${perJa(c, (g||{}).period||"", true).replace(/ Q\d+$/,"")} 通期ガイダンス` : (nextQp?perJa(c, nextQp, true):"次の四半期")+"ガイダンス";
       if(!g) return `<div class="o-card o-none"><div class="o-ct"><span>${head}</span><b>${M_JA[mt]||mt}</b></div><div class="o-big">-</div><div class="o-ref">${kind==="act"?"データなし":"ガイダンスの開示なし"}</div></div>`;
       const cls = JUDGE_CLS[g.judge]||"";
+      if(kind==="act" && g.progCard){   // 四半期の実績がなく、通期ガイダンスに対する累計の進捗だけある項目（設備投資など）
+        const p = Math.max(0, Math.min(100, g.ratio||0));
+        return `<div class="o-card"><div class="o-ct"><span>${perJa(c, per, true)}累計（Q1〜Q${q}）</span><b>${mName(g)}</b></div>
+          ${bigDiv(valHTML(g.actual, g, unit, m))}<div class="o-prog"><div class="o-bar"><i style="width:${p}%"></i></div>
+          <div class="o-pv"><span class="l">通期ガイダンスに対する進捗率</span><b>${g.ratio.toFixed(1)}%</b></div></div></div>`;
+      }
       if(kind==="act")
         return `<div class="o-card"><div class="o-ct"><span>${head}</span><b>${mName(g)}</b></div>${g.nog?nogBadge(g):badge(vsGuide(g,m)?`ガイダンス比 ${vsGuide(g,m)}`:"", signCls(guideDiff(g)))}
           ${bigDiv(valHTML(g.actual, g, unit, m))}<div class="o-ref">${g.nog ? (noGuide ? "" : "ガイダンスなし") : `ガイダンス ${rangeHTML(g, unit, m)}${/株式分割（[^）]*）を調整/.test(g.note||"") ? `<br><span class="o-sm">${esc(g.note.match(/株式分割（[^）]*）/)[0])}を調整</span>` : ""}`}</div></div>`;
@@ -1240,7 +1246,12 @@ function oneHTML(){
         ${bigDiv(rangeHTML(g, unit, m))}<div class="o-ref">${g.actual!=null?`前年${kind==="fy"?"度":"同期"} ${valHTML(g.actual, g, unit, m)}`:""}${g.consensus!=null?`　市場予想 ${valHTML(g.consensus, g, unit, m)}`:""}</div></div>`;
     };
     const gcls = n => n===3 ? "g3" : n===2 ? "" : "g1";
-    const acts = SLOTS.map(actOf);
+    // 実績が取れない項目は、通期ガイダンスの累計進捗があればそれを、なければ外して 売上高・営業利益・営業利益率で埋める
+    const actOrProg = mt => actOf(mt) || (() => { const g = prog.find(x=>x.metric===mt && x.ratio!=null && x.actual!=null); return g ? { ...g, progCard:true } : null; })();
+    SLOTS = SLOTS.filter(mt => actOrProg(mt));
+    for(const mt of ["revenue","operating_profit","operating_margin"]) if(SLOTS.length < 3 && !SLOTS.includes(mt) && actOf(mt)) SLOTS.push(mt);
+    SLOTS.sort((x,y)=>pr(x)-pr(y));
+    const acts = SLOTS.map(actOrProg);
     body += `<div class="o-grid usg ${gcls(SLOTS.length)}">${SLOTS.map((mt,i)=>card(acts[i],"act",mt)).join("")}</div>`;
     const nexts = SLOTS.map(mt => nextQ.find(g=>g.metric===mt && usable(g)));
     let fyUsedInCards = false;
@@ -1347,7 +1358,7 @@ function perfChartHTML(d, m){
     if(op_!=null) g += `<rect x="${x+2}" y="${Math.min(y(op_),y(0))}" width="${bw}" height="${Math.max(1,Math.abs(y(0)-y(op_)))}" rx="4" fill="${cOp}" opacity="${a}"/>`;
     const [fy, q] = parsePeriod(p.period);
     g += `<text x="${x}" y="${H-B+30}" text-anchor="middle" font-size="${n>14?18:22}" font-weight="800" fill="${fg}">Q${q||""}</text>`;
-    if(q===1 || i===0) g += `<text x="${x}" y="${H-B+56}" text-anchor="middle" font-size="18" font-weight="700" fill="${mu}">FY${String(fy).slice(-2)}</text>`;
+    if(q===1 || (i===0 && q!==4)) g += `<text x="${x}" y="${H-B+56}" text-anchor="middle" font-size="18" font-weight="700" fill="${mu}">FY${String(fy).slice(-2)}</text>`;
     if(last){
       g += `<text x="${x-bw/2-2}" y="${y(rev[i])-10}" text-anchor="middle" font-size="22" font-weight="800" fill="${fg}">${short(rev[i])}</text>`;
       if(op_!=null) g += `<text x="${x+bw/2+2}" y="${Math.min(y(op_),y(0))-10}" text-anchor="middle" font-size="22" font-weight="800" fill="${cOp}" stroke="${dark?"#111":"#fff"}" stroke-width="6" paint-order="stroke">${short(op_)}</text>`;
