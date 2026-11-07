@@ -1151,16 +1151,19 @@ function oneData(){
   const fyG = pick(fut.filter(g=>!isQ(g.period) && !/H1$/i.test(g.period) && ordP(g.period) === (fy*10+5)));
   const hist = G.filter(g => g.type==="ガイダンス比較" && isQ(g.period) && ordP(g.period) <= fy*10+(q||0));
   // ガイダンスがない会社（通期進捗もない会社）も、実績カード＋グラフの形でまとめる
-  const us = cmp.some(g=>isQ(g.period)) || nextQ.length > 0 || !prog.length;
+  // 日本企業の通期決算（Q4）: 来期の会社予想（期初予想）があれば「通期実績＋来期予想」でまとめる
+  const nextFY = fy ? pick(fut.filter(g=>!isQ(g.period) && !/H1$/i.test(g.period) && ordP(g.period) === ((fy+1)*10+5))) : [];
+  const jpQ4 = c.country==="日本" && q===4 && nextFY.length > 0;
+  const us = !jpQ4 && (cmp.some(g=>isQ(g.period)) || nextQ.length > 0 || !prog.length);
   // 金額は企業マスターの単位で持っているので、自動まとめから選んだ行（単位が億などに変わっている）でもマスターの単位を使う
   let unit = (r.key?.startsWith("m|") ? r.単位 || c.unit : c.unit || r.単位) || "";
   const mu = unit.match(/^百万(.+)$/); oneScale = 1;
   if(mu){ oneScale = 0.01; unit = "億"+mu[1]; }
-  return { r, c, per, fy, q, cmp, prog, nextQ, nextQp, fyG, hist, us, unit, ordP };
+  return { r, c, per, fy, q, cmp, prog, nextQ, nextQp, fyG, hist, us, unit, ordP, nextFY, jpQ4 };
 }
 function oneHTML(){
   const d = oneData(); if(!d) return null;
-  const { r, c, per, cmp, prog, nextQ, nextQp, fyG, hist, us, unit } = d, m = $("#minus").value;
+  const { r, c, per, cmp, prog, nextQ, nextQp, fyG, hist, us, unit, nextFY, jpQ4 } = d, m = $("#minus").value;
   const src = logoSrc(r), title = $("#title").value || c.ja || c.name;
   const head = `<div class="o-head">${src?`<img src="${src}" alt="">`:""}<div><h3>${esc(title)}${c.ticker && !/^\d+$/.test(c.ticker) ? `<span class="tk">${esc(c.ticker)}</span>` : ""}</h3><div class="o-sub">${perJa(c, per, us || c.country!=="日本")}決算</div></div></div>`;
   const noGuide = !(c.guide||[]).length;
@@ -1219,7 +1222,9 @@ function oneHTML(){
     const fyRows = fyUsedInCards ? [] : fyNext.sort((a,b)=>pr(a.metric)-pr(b.metric)).slice(0,6);
     if(fyRows.length) body += `<div class="o-sec wide"><h4>${perJa(c, fyG[0].period.replace(/Q\d$/,""), true).replace(/ Q\d+$/,"")} 通期ガイダンス</h4><table class="o-t"><tr><th>項目</th><th>ガイダンス</th><th>前回から</th><th>前年比</th></tr>${fyRows.map(g=>`<tr><td>${mName(g)}</td><td>${fcHTML(g,unit,m)}</td><td class="${revCls(g)}">${revLabel(g)}</td><td class="${signCls(prevDiff(g))}">${vsPrev(g,m)||"-"}</td></tr>`).join("")}</table></div>`;
   } else {
-    // 日本企業: 累計実績・通期予想・進捗率
+    // 日本企業: 累計実績・通期予想・進捗率（通期決算は 通期実績＋来期予想）
+    if(jpQ4){ body += jpQ4HTML(d, m); }
+    else {
     const cards = prog.filter(g=>!["dividend","eps"].includes(g.metric) && !isPctG(g) && g.metric!=="other").slice(0,3);
     const fyAll = fyG.length ? fyG : [];
     const [, q] = parsePeriod(per);
@@ -1242,10 +1247,40 @@ function oneHTML(){
       const pg = prog.find(x=>x.metric===g.metric && x.basis===g.basis) || prog.find(x=>x.metric===g.metric);
       const showP = pg && g.metric!=="dividend" && !isPctG(g);
       return `<tr><td>${mName(g)}</td><td>${fcHTML(g,unit,m)}</td><td class="${g.type==="次期ガイダンス"?signCls(prevDiff(g)):""}">${g.type==="次期ガイダンス"?(vsPrev(g,m)||"-"):"-"}</td><td class="${revCls(g)}">${revLabel(g)}</td><td class="${showP?JUDGE_CLS[pg.judge]||"":""}">${showP&&pg.ratio!=null?pg.ratio.toFixed(1)+"%":"-"}</td><td>${showP&&pg.avg5!=null?pg.avg5.toFixed(1)+"%":"-"}</td></tr>`; }).join("")}</table></div>`;
+    }
   }
-  const note = noGuide ? `<div class="o-note">出典: 企業マスター（実績）。この会社のガイダンス（会社予想）はまだ登録されていません。</div>`
+  const note = jpQ4 ? `<div class="o-note">出典: 会社の決算資料（決算短信の来期業績予想）と企業マスター（実績）。前期比は今期実績に対する来期予想の伸び。</div>` : noGuide ? `<div class="o-note">出典: 企業マスター（実績）。この会社のガイダンス（会社予想）はまだ登録されていません。</div>`
     : `<div class="o-note">出典: 会社の決算資料（ガイダンス・会社予想）。${us?"ガイダンス比は決算前に出ていたガイダンスの中央値に対する実績。":"進捗率は通期予想に対する累計実績、5年平均は過去5年の同じ時点の実績ベース。"}</div>`;
   return head + body + note;
+}
+/* 日本企業の通期決算: 上に通期実績カード（前期比・来期予想つき）、真ん中にグラフ、下に来期の会社予想の表 */
+function jpQ4HTML(d, m){
+  const { c, per, fy, unit, nextFY } = d;
+  const pbtCo = c.profit_kind==="pbt";
+  const sumFY = (y, key) => { let t = 0; for(let k=1;k<=4;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===y && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
+  const mkey = mt => mt==="revenue" ? "revenue" : ((mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo)) ? "operating_profit" : null;
+  const order = ["revenue", pbtCo ? "profit_before_tax" : "operating_profit", "ordinary_profit", "net_income"];
+  const slots = order.map(mt => {
+    const g = nextFY.find(x=>x.metric===mt), k = mkey(mt);
+    // 通期の実績は決算短信の数字（来期予想の「今期実績」）を使う。四半期の合計は、非継続事業の組み替えなどで
+    // 基準がずれることがあるので、短信の数字と1%以内で一致するときだけ前期比の計算に使う
+    const sum = k ? sumFY(fy, k) : null, prev = k ? sumFY(fy-1, k) : null;
+    const act = g?.actual != null ? g.actual : sum;
+    if(act==null) return null;
+    const same = sum!=null && Math.abs(sum - act) <= Math.abs(act)*0.01;
+    return { mt, g, act, yoy: same && prev ? (sum/prev-1)*100 : null };
+  }).filter(Boolean).slice(0,3);
+  const fyNextLbl = perJa(c, `FY${fy+1} Q4`, false).replace(/ 通期$/,"");
+  const amtG = { amount:true };
+  const card = s => `<div class="o-card"><div class="o-ct"><span>通期実績</span><b>${s.g ? mName(s.g) : esc(M_JA[s.mt]||s.mt)}</b></div>${s.yoy!=null ? badge(`前期比 ${fmtPct(s.yoy,m)}`, s.yoy>0?"up":s.yoy<0?"dn":"") : ""}
+      ${bigDiv(valHTML(s.act, amtG, unit, m))}
+      <div class="o-ref">${s.g ? `来期予想 ${rangeHTML(s.g, unit, m)}${vsPrev(s.g,m) ? `（<span class="${signCls(prevDiff(s.g))}">${vsPrev(s.g,m)}</span>）` : ""}` : "来期予想なし"}</div></div>`;
+  let h = `<div class="o-grid jpg ${slots.length===3?"g3":slots.length===1?"g1 one1":""}">${slots.map(card).join("")}</div>`;
+  if($("#oneChart").checked) h += perfChartHTML(d, m);
+  const rows = nextFY.filter(g=>(g.low!=null||g.high!=null) && g.metric!=="other" || (g.low!=null && g.label));
+  h += `<div class="o-sec wide"><h4>来期の会社予想（${esc(fyNextLbl)}）</h4><table class="o-t"><tr><th>項目</th><th>今期実績</th><th>来期予想</th><th>前期比</th></tr>${rows.map(g=>
+    `<tr><td>${mName(g)}</td><td>${g.actual!=null ? valHTML(g.actual, g, unit, m) : "-"}</td><td>${fcHTML(g,unit,m)}</td><td class="${signCls(prevDiff(g))}">${vsPrev(g,m)||"-"}</td></tr>`).join("")}</table></div>`;
+  return h;
 }
 /* 1社まとめの業績グラフ: 四半期の売上高・営業利益（棒）と営業利益率（折れ線）。直近の期を濃く */
 function perfChartHTML(d, m){
