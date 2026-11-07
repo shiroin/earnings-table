@@ -190,7 +190,7 @@ input[type=url]{flex:1}
 #canvas.one.light .o-t th{color:#fff}
 #canvas.one .o-t td{border:2px solid #444;padding:6px 12px;text-align:right;font-weight:700;white-space:nowrap}
 #canvas.one.light .o-t td{border-color:#ccc}
-#canvas.one .o-t td:first-child{text-align:left;font-family:var(--ja);font-weight:800}
+#canvas.one .o-t td:first-child{text-align:left;font-family:var(--ja);font-weight:800;white-space:normal;max-width:420px}
 #canvas.one .o-t td small{font-family:var(--ja);font-size:.75em;margin-left:2px}
 #canvas.one .o-t td.up,#canvas.one .o-t span.up{color:#1E9E5A} #canvas.one .o-t td.dn,#canvas.one .o-t span.dn{color:#E0453A}
 #canvas.one .o-t .o-prev{color:var(--o-mut);font-weight:600;font-size:.85em}
@@ -1117,7 +1117,13 @@ function fcHTML(g, unit, m){
   return `<span class="o-prev">${rangeHTML(pv, unit, m)}</span> → <span class="${revCls(g)}">${now}</span>`;
 }
 const badge = (txt, cls) => txt ? `<span class="bd ${cls||""}">${txt}</span>` : "";
-const mName = g => (M_JA[g.metric] || g.label || g.metric) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
+/* 会社独自の長い項目名は短くする: 「…（調整後営業利益）」のように括弧の中が名前ならそれを使い、それでも長ければ省略 */
+function shortLabel(t){
+  t = String(t||"").trim(); if(t.length <= 12) return t;
+  const p = t.match(/[（(]([^（）()]{2,14})[）)]\s*$/); if(p) return p[1];
+  return t.slice(0, 12) + "…";
+}
+const mName = g => esc(M_JA[g.metric] || shortLabel(g.label || g.metric)) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
 function oneData(){
   const r = state.rows.find(x=>x.key===$("#oneCo").value) || oneRows()[0]; if(!r) return null;
   const c = masterOf(r); if(!c) return null;
