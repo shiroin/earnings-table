@@ -1242,7 +1242,8 @@ function oneHTML(){
     const [cfy, cq] = parsePeriod(per);
     const cumOf = (fy, key) => { let t = 0; for(let k=1;k<=cq;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===fy && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
     const pbtCo = c.profit_kind==="pbt";   // 企業マスターの利益欄が税引前利益の会社（総合商社など）
-    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : (mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) ? "operating_profit" : null;
+    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : (mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) ? "operating_profit"
+        : ["ordinary_profit","profit_before_tax","net_income","eps"].includes(mt) ? mt : null;
       if(!key || !cfy) return null; const a = cumOf(cfy, key), b = cumOf(cfy-1, key); return (a==null || b==null || b<=0) ? null : (a/b-1)*100; };
     const card = g => {
       const p = Math.max(0, Math.min(100, g.ratio||0)), a5 = g.avg5, yy = cumYoY(g.metric);
@@ -1268,7 +1269,8 @@ function jpQ4HTML(d, m){
   const { c, per, fy, unit, nextFY } = d;
   const pbtCo = c.profit_kind==="pbt";
   const sumFY = (y, key) => { let t = 0; for(let k=1;k<=4;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===y && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
-  const mkey = mt => mt==="revenue" ? "revenue" : ((mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo)) ? "operating_profit" : null;
+  const mkey = mt => mt==="revenue" ? "revenue" : ((mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo)) ? "operating_profit"
+    : ["ordinary_profit","profit_before_tax","net_income"].includes(mt) ? mt : null;
   const order = ["revenue", pbtCo ? "profit_before_tax" : "operating_profit", "ordinary_profit", "net_income"];
   const slots = order.map(mt => {
     const g = nextFY.find(x=>x.metric===mt), k = mkey(mt);

@@ -209,8 +209,13 @@ def read_master(path_or_bytes):
         kind = "pbt" if pk else None
     out["profit_kind"] = kind
     ek = low.get("eps")
+    # 経常利益・税引前利益・純利益も持っておく（1社まとめの前年同期比に使う）。利益の欄に税引前利益を使った会社は pbt を重ねない
+    ok_ = low.get("ordinary_profit")
+    bk = None if kind == "pbt" else next((low[k] for k in PBT_COLS if k in low), None)
+    nk = next((low[k] for k in ("net_income", "net_profit", "profit_attributable_to_owners") if k in low), None)
     out["quarters"] = [{"period": d["period"], "revenue": d.get(rk), "operating_profit": d.get(pk) if pk else None,
-                        "eps": d.get(ek) if ek else None} for d in q]
+                        "eps": d.get(ek) if ek else None, "ordinary_profit": d.get(ok_) if ok_ else None,
+                        "profit_before_tax": d.get(bk) if bk else None, "net_income": d.get(nk) if nk else None} for d in q]
     seg_meta = items.get("セグメント", {})
     for key, name in (("seg_revenue", "セグメント売上高_四半期"), ("seg_profit", "セグメント利益_四半期")):
         c, d = sheet(name)
@@ -247,6 +252,7 @@ def enrich(w, m):
             "revenue": None if r is None else round(r / div, 2), "operating_profit": None if o is None else round(o / div, 2),
             "revenue_yoy": yoy(r, prev and prev.get("revenue")), "op_yoy": yoy(o, prev and prev.get("operating_profit")),
             **({"eps": d["eps"]} if d.get("eps") is not None else {}),
+            **{k: round(d[k] / div, 2) for k in ("ordinary_profit", "profit_before_tax", "net_income") if d.get(k) is not None},
             "margin": None if (r in (None, 0) or o is None) else round(o / r * 100, 1),
         })
     periods = [p for p in periods if p["revenue"] is not None or p["operating_profit"] is not None]
