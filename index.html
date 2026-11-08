@@ -1063,7 +1063,7 @@ function fillOnePer(){
   $("#onePer").innerHTML = `<option value="">最新の期</option>` + ps.map(p=>`<option>${esc(p)}</option>`).join("");
   if(ps.includes(cur)) $("#onePer").value = cur;
 }
-const unitOfG = (g, amtUnit) => g.amount ? amtUnit : ({USD:"ドル", "$":"ドル", EUR:"ユーロ", KRW:"ウォン", TWD:"台湾ドル", CNY:"元", HKD:"香港ドル", "％":"%"}[g.unit] || g.unit || "");
+const unitOfG = (g, amtUnit) => g.amount ? amtUnit : ({USD:"ドル", "$":"ドル", JPY:"円", EUR:"ユーロ", KRW:"ウォン", TWD:"台湾ドル", CNY:"元", HKD:"香港ドル", "％":"%"}[g.unit] || g.unit || "");
 /* 億 → 兆 の繰り上げ（1万億以上） */
 function bigAmt(v, unit, m){
   if(v==null) return ["-", ""];
@@ -1209,7 +1209,7 @@ function oneHTML(){
   if(us){
     // 米国企業: その会社がガイダンスを出している項目でカードを作る（重要度順に最大3つ）
     //   実績（ガイダンス比つき）→ 次の四半期ガイダンス（なければ通期ガイダンス）→ グラフ → 通期ガイダンス
-    const PRI = ["revenue","eps","operating_profit","operating_margin","gross_margin","ebitda","arr","free_cash_flow","net_income","gross_profit","capex"];
+    const PRI = ["revenue","operating_profit","eps","operating_margin","gross_margin","ebitda","arr","free_cash_flow","net_income","gross_profit","capex"];
     const pr = mt => { const i = PRI.indexOf(mt); return i<0 ? 99 : i; };
     const usable = g => g && g.metric!=="other" && g.metric!=="dividend" && pr(g.metric)<99 && (g.low!=null || g.high!=null);
     const fyNext = fyG.filter(usable);
