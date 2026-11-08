@@ -952,6 +952,7 @@ function fmtRange(g, m, unit){
   if(!g) return "-";
   const f = v => g.amount ? fmtAmt(v, m) : (Math.abs(v) < 100 ? v.toFixed(2) : fmtAmt(v, m));
   if(g.low==null && g.high==null) return "-";
+  if(g.amount && g.disp_unit) unit = g.disp_unit;   // 会社全体と違う通貨の予想
   return (g.low===g.high || g.high==null ? f(g.low ?? g.high) : `${f(g.low)}〜${f(g.high)}`) + (unit ? `<small>${unit}</small>` : "");
 }
 let SORT_COL = ["", "rev", "ry", "op", "oy", "mg", "cap"];   // 表の見出しの並び（列を足したときは tableHTML が作り直す）
@@ -1073,7 +1074,8 @@ function bigAmt(v, unit, m){
 let oneScale = 1;   // 1社まとめでは 百万ドル → 億ドル のように桁を上げて短く見せる
 function valHTML(v, g, amtUnit, m){
   if(v==null) return "-";
-  if(!g || g.amount) v = v * oneScale;
+  if(g && g.amount && g.disp_unit) amtUnit = g.disp_unit;   // 会社全体と違う通貨の予想は、その通貨の億単位のまま
+  else if(!g || g.amount) v = v * oneScale;
   if(g && !g.amount){ const u = unitOfG(g, amtUnit); const d = u==="%" ? 1 : (Math.abs(v)>=1000 || Number.isInteger(v) ? 0 : 2);
     return `${v<0?m:""}${Math.abs(v).toLocaleString("ja-JP",{minimumFractionDigits:d, maximumFractionDigits:d})}<small>${esc(u)}</small>`; }
   const [t,u] = /^億/.test(amtUnit) && Math.abs(v) < 100 && !Number.isInteger(v) ? [fmtAmt(v, m, 2), amtUnit] : bigAmt(v, amtUnit, m);   // 11.97億ドル
@@ -1085,8 +1087,8 @@ function rangeHTML(g, amtUnit, m){
   const strip = h => h.replace(/<small>.*<\/small>/,"");
   const u = (valHTML(g.high, g, amtUnit, m).match(/<small>(.*)<\/small>/)||[])[1]||"";
   if(g.amount && !/^兆/.test(u)){   // レンジの両端は桁をそろえる（11.9–12.0）
-    const a = Math.abs(g.high*oneScale), dig = a<100 ? 2 : 0;
-    return `${fmtAmt(g.low*oneScale, m, dig)}–${fmtAmt(g.high*oneScale, m, dig)}<small>${u}</small>`;
+    const k = g.disp_unit ? 1 : oneScale, a = Math.abs(g.high*k), dig = a<100 ? 2 : 0;
+    return `${fmtAmt(g.low*k, m, dig)}–${fmtAmt(g.high*k, m, dig)}<small>${u}</small>`;
   }
   return `${strip(valHTML(g.low, g, amtUnit, m))}–${strip(valHTML(g.high, g, amtUnit, m))}<small>${u}</small>`;
 }

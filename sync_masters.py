@@ -275,24 +275,32 @@ def enrich(w, m):
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
         "segments": m.get("segments") or {},
-        "guide": guide_rows(m.get("guide_view") or [], div),
+        "guide": guide_rows(m.get("guide_view") or [], div, cur),
     }
 
 
 PER_SHARE = re.compile(r"^(円|USD|ドル|\$|EUR|ユーロ|KRW|ウォン|TWD|CNY|元|HKD|%|％)$", re.I)
 
 
-def guide_rows(rows, div):
-    """進捗・比較タブ → Webアプリ用（金額は表示単位に、EPS・配当・利益率はそのまま）"""
+GUIDE_CUR = (("USD", r"USD|US\$|米ドル"), ("TWD", r"TWD|NTD|NT\$|台湾ドル"), ("JPY", r"JPY|円"), ("KRW", r"KRW|ウォン"),
+             ("EUR", r"EUR|ユーロ"), ("CNY", r"CNY|RMB|人民元"), ("HKD", r"HKD|HK\$|香港ドル"), ("GBP", r"GBP|ポンド"))
+
+
+def guide_rows(rows, div, cur=""):
+    """進捗・比較タブ → Webアプリ用（金額は表示単位に、EPS・配当・利益率はそのまま）。
+    会社全体と違う通貨の予想（TSMCの米ドル建てなど）は、その通貨の億単位にして disp_unit を付ける"""
     out = []
     for r in rows:
         unit = str(r.get("unit") or "")
         metric = str(r.get("metric") or "")
         amount = not (PER_SHARE.match(unit) or metric in ("eps", "dividend") or metric.endswith("margin"))
+        rc = next((c for c, pat in GUIDE_CUR if re.search(pat, unit, re.I)), "") if amount else ""
+        other = bool(cur and rc and rc != cur.upper())
+        d = 100 if other else div
         def sc(v):
             if not isinstance(v, (int, float)):
                 return None
-            return round(v / div, 2) if amount else v
+            return round(v / d, 2) if amount else v
         def pc(v):
             return v if isinstance(v, (int, float)) else None
         out.append({"period": str(r.get("period") or ""), "type": str(r.get("type") or ""), "metric": metric,
@@ -302,7 +310,8 @@ def guide_rows(rows, div):
                     "prev_year": pc(r.get("prev_year")), "consensus": sc(r.get("consensus")), "vs_consensus": pc(r.get("vs_consensus")),
                     "prev_mid": sc(r.get("prev_mid")), "revision": str(r.get("revision") or ""), "kind": str(r.get("kind") or ""),
                     "amount": amount, "unit": "" if amount else unit, "basis": str(r.get("basis") or ""),
-                    "announced": str(r.get("announced") or ""), "note": str(r.get("note") or "")[:120]})
+                    "announced": str(r.get("announced") or ""), "note": str(r.get("note") or "")[:120],
+                    **({"disp_unit": "億" + CUR.get(rc, rc)} if other else {})})
     return out
 
 
