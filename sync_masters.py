@@ -37,6 +37,9 @@ def fy_end(v):
     m = re.fullmatch(r"\s*(\d{1,2})\s*月?(\D.*)?", v or "")
     return f"{int(m.group(1))}月" if m and 1 <= int(m.group(1)) <= 12 else ""
 
+TAG_ORDER = []
+
+
 def read_watchlist(text):
     rows = list(csv.reader(io.StringIO(text)))
     hi = next(i for i, r in enumerate(rows) if any(c.strip() == "Ticker" for c in r))
@@ -60,6 +63,12 @@ def read_watchlist(text):
             idx["Financials"] = max(counts, key=counts.get)
             print(f"注意: 「Financials」の見出しが見つからないため、{idx['Financials'] + 1}列目（スプレッドシートのURLが{counts[idx['Financials']]}件）を使います")
     get = lambda r, k: (r[idx[k]].strip() if idx[k] is not None and idx[k] < len(r) else "")
+    # カテゴリーの列（AI・メモリ・海運…）: 「通貨」の次の列から右端まで。1 が付いている会社がそのカテゴリー
+    t0 = (idx["通貨"] + 1) if idx["通貨"] is not None else len(head)
+    tag_cols = [(i, head[i]) for i in range(t0, len(head)) if head[i]]
+    FLAG = {"1", "１", "true", "○", "◯", "y", "yes"}
+    global TAG_ORDER
+    TAG_ORDER = list(dict.fromkeys(h for _, h in tag_cols))
     out = []
     for r in rows[hi + 1:]:
         if not get(r, "企業名") and not get(r, "Ticker"):
@@ -73,6 +82,7 @@ def read_watchlist(text):
             "country": get(r, "本拠地"), "listed": get(r, "上場(307)"), "ir": get(r, "決算資料"),
             "folder": get(r, "フォルダ"), "master_id": file_id(get(r, "Financials")),
             "fy_end": fy_end(get(r, "決算期")), "date": get(r, "決算日").replace("/", "-"),
+            "tags": list(dict.fromkeys(h for i, h in tag_cols if i < len(r) and r[i].strip().lower() in FLAG)),
             "currency_ja": get(r, "通貨"), "unit_in": get(r, "単位"), "logo_spec": get(r, "指定ロゴ"),
         })
     return out
@@ -269,7 +279,7 @@ def enrich(w, m):
         return {"columns": cols, "rows": rows[-24:]}
 
     return {
-        "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
+        "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"], "tags": w["tags"],
         "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"],
         "currency": cur, "unit": unit, "note": m.get("note"), "profit_kind": m.get("profit_kind"),
         "periods": periods[-24:],
@@ -369,12 +379,12 @@ def main():
     companies, errors = [], []
     for i, w in enumerate(watch, 1):
         key = w["ticker"] or w["name"]
-        base = {"ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"],
+        base = {"ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"], "tags": w["tags"],
                 "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"], "periods": []}
         if not w["master_id"]:
             companies.append(base); continue
         if only and (w["ticker"] or "").upper() not in only and key in old:
-            prev = dict(old[key]); prev.update({k: base[k] for k in ("name", "ja", "tier", "cat1", "cat2", "country", "date", "fy_end", "master_id", "ir", "logo_spec")})
+            prev = dict(old[key]); prev.update({k: base[k] for k in ("name", "ja", "tier", "cat1", "cat2", "tags", "country", "date", "fy_end", "master_id", "ir", "logo_spec")})
             companies.append(prev); continue
         try:
             if a.master_dir:
@@ -394,7 +404,7 @@ def main():
 
     outp.parent.mkdir(parents=True, exist_ok=True)
     data = {"updated": datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d %H:%M"),
-            "companies": companies, "errors": errors}
+            "companies": companies, "errors": errors, "tag_order": TAG_ORDER}
     outp.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     ok = sum(1 for c in companies if c.get("periods"))
     print(f"完了: 業績あり {ok}社 / エラー {len(errors)}件 → {outp}")

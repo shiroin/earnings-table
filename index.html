@@ -32,6 +32,7 @@ input[type=url]{flex:1}
 .btn{border:1px solid var(--head);background:var(--head);color:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-weight:600;white-space:nowrap}
 .btn.ghost{background:#fff;color:var(--head)}
 .btn.small{padding:3px 9px;font-size:12px;font-weight:500}
+select.small{font-size:12px;padding:3px 6px;max-width:190px}
 .btn:disabled{opacity:.45;cursor:default}
 .msg{font-size:12px;margin-top:8px}
 .msg.err{color:#B3261E}.msg.ok{color:#2E7D4F}
@@ -255,6 +256,7 @@ input[type=url]{flex:1}
         </select>
       </div>
       <div class="row" style="margin-bottom:8px;gap:6px">
+        <select id="selTag" class="small" aria-label="カテゴリーで一括選択" title="ウォッチリストのカテゴリー列（AI・メモリ・海運…）で 1 が付いている企業をまとめて表に入れます"><option value="">カテゴリーで一括選択…</option></select>
         <button class="btn ghost small" id="selAll">表示中をすべて選ぶ</button>
         <button class="btn ghost small" id="selNone">選択を外す</button>
         <button class="btn ghost small" id="selNoTweet" title="ウォッチリストのF列（暫定Tier）が「ツイート」の企業を表から外します">「ツイート」の企業を外す</button>
@@ -439,7 +441,7 @@ async function loadAll(){
   if(sid && state.digest.length && state.src==="digest"){ fillFilters(); renderList(); }   // キャッシュがあれば先に出す
   const [m, lg, mk] = await Promise.all([pm, pl, pk]);
   if(lg) state.logos = lg;
-  if(m){ state.masters = m.companies||[];
+  if(m){ state.masters = m.companies||[]; state.tagOrder = m.tag_order||[]; fillTags();
     $("#dataInfo").textContent = `企業マスター: ${state.masters.filter(c=>c.periods?.length).length}社の業績（${m.updated} 時点）。表に入れた会社は、元の企業マスターのシートから最新の期をその場で読み直します。`;
   } else $("#dataInfo").textContent = "企業マスターのデータを読めませんでした。";
   if(mk){ state.mcap = mk.companies||{}; state.mcapUpdated = mk.updated||""; }
@@ -755,6 +757,26 @@ $("#selNoTweet").onclick = ()=>{
   state.rows = state.rows.filter(r => String(masterOf(r)?.tier||"").trim()!=="ツイート");
   if(state.rows.length!==n){ autoTitle(); renderList(); renderEdit(); renderPreview(); }
 };
+/* カテゴリー（ウォッチリストのAV列〜の 1 の付いた列）で一括選択 */
+function fillTags(){
+  const cnt = {}; for(const c of state.masters) for(const t of (c.tags||[])) cnt[t] = (cnt[t]||0) + 1;
+  const order = (state.tagOrder||[]).length ? state.tagOrder : Object.keys(cnt);
+  $("#selTag").innerHTML = `<option value="">カテゴリーで一括選択…</option>` + order.filter(t=>cnt[t]).map(t=>`<option value="${esc(t)}">${esc(t)}（${cnt[t]}社）</option>`).join("");
+}
+$("#selTag").addEventListener("change", e=>{
+  const tag = e.target.value; if(!tag) return;
+  const on = new Set(state.rows.map(r=>r.key)), cs = [];
+  for(const c of state.masters){
+    if(!(c.tags||[]).includes(tag)) continue;
+    const key = "m|"+(c.ticker||c.name);
+    if(on.has(key) || !(c.periods?.length || digestFor(c).length)) continue;
+    const nr = rowFromMaster(c); nr._latest = nr.period; state.rows.push(nr); cs.push(c);
+  }
+  e.target.value = "";
+  if(!$("#title").dataset.touched || $("#title").dataset.tag){ $("#title").value = tag + "の決算"; $("#title").dataset.touched = "1"; $("#title").dataset.tag = tag; }
+  renderList(); renderEdit(); renderPreview();
+  if(cs.length) refreshLive(cs);
+});
 $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); renderPreview(); };
 
 /* ---------- 編集 ---------- */
