@@ -1175,8 +1175,11 @@ function oneData(){
   const at = (type, p) => G.filter(g => g.type===type && gKey(g.period)===gKey(p));
   // 同じ項目に GAAP と Non-GAAP があるとき: 売上高は GAAP、利益・利益率・EPS は市場が見る Non-GAAP を優先
   const wantNon = mt => mt!=="revenue";
+  // 比べられる数字（前年比・ガイダンス比）がある方を優先。どちらも同じなら、売上高は GAAP、利益・EPS は Non-GAAP
+  const hasCmp = g => g.ratio!=null || (isPctG(g) && g.actual!=null);
   const pick = gs => { const by = {}; for(const g of gs){ const k = g.metric, cur = by[k];
-      if(!cur || (wantNon(k) ? (GAAPISH(cur.basis) && !GAAPISH(g.basis)) : (!GAAPISH(cur.basis) && GAAPISH(g.basis)))) by[k] = g; }
+      const better = !cur ? true : hasCmp(g)!==hasCmp(cur) ? hasCmp(g) : (wantNon(k) ? (GAAPISH(cur.basis) && !GAAPISH(g.basis)) : (!GAAPISH(cur.basis) && GAAPISH(g.basis)));
+      if(better) by[k] = g; }
     return Object.values(by).sort((a,b)=>mRank(a.metric)-mRank(b.metric)); };
   const cmp = pick(at("ガイダンス比較", per));
   const prog = pick(at("通期進捗", per));
