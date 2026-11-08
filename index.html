@@ -33,6 +33,7 @@ input[type=url]{flex:1}
 .btn.ghost{background:#fff;color:var(--head)}
 .btn.small{padding:3px 9px;font-size:12px;font-weight:500}
 select.small{font-size:12px;padding:3px 6px;max-width:190px}
+.taginfo{font-size:12px;line-height:1.6;background:#EEF5FB;border:1px solid #CFE0F0;border-radius:8px;padding:6px 10px;margin-bottom:8px;color:#1F3B57}
 .btn:disabled{opacity:.45;cursor:default}
 .msg{font-size:12px;margin-top:8px}
 .msg.err{color:#B3261E}.msg.ok{color:#2E7D4F}
@@ -261,6 +262,7 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
         <button class="btn ghost small" id="selNone">選択を外す</button>
         <button class="btn ghost small" id="selNoTweet" title="ウォッチリストのF列（暫定Tier）が「ツイート」の企業を表から外します">「ツイート」の企業を外す</button>
       </div>
+      <div id="tagInfo" class="taginfo" hidden></div>
       <div class="list" id="list"><div class="empty">読み込み中…</div></div>
       <p class="hint" id="dataInfo"></p>
     </section>
@@ -758,10 +760,41 @@ $("#selNoTweet").onclick = ()=>{
   if(state.rows.length!==n){ autoTitle(); renderList(); renderEdit(); renderPreview(); }
 };
 /* カテゴリー（ウォッチリストのAV列〜の 1 の付いた列）で一括選択 */
+/* 決算の発表状況: ウォッチリストの決算日が今日以降なら「未発表（予定日）」、過去100日以内なら「発表済み」、それ以外は「日程未定」 */
+function tagStatus(tag){
+  const today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
+  const ago = d => (Date.parse(today) - Date.parse(d)) / 864e5;
+  const cs = state.masters.filter(c => (c.tags||[]).includes(tag));
+  const st = { n: cs.length, done: [], pending: [], unknown: [] };
+  for(const c of cs){
+    const d = /^\d{4}-\d{2}-\d{2}$/.test(c.date||"") ? c.date : "";
+    const name = c.ja || c.name;
+    if(d && d >= today) st.pending.push({ name, date: d });
+    else if(d && ago(d) <= 100) st.done.push({ name, date: d });
+    else st.unknown.push({ name });
+  }
+  st.pending.sort((a,b)=>a.date.localeCompare(b.date));
+  st.allBy = st.pending.length && !st.unknown.length ? st.pending.at(-1).date : "";
+  return st;
+}
+const md = d => d ? `${+d.slice(5,7)}/${+d.slice(8,10)}` : "";
+function tagLabel(t){
+  const s = tagStatus(t);
+  const tail = !s.pending.length && !s.unknown.length ? "全社発表済み" : s.allBy ? `${md(s.allBy)}にそろう` : "日程未定あり";
+  return `${t}（${s.done.length}/${s.n}社 発表済み・${tail}）`;
+}
+function tagInfoHTML(t){
+  const s = tagStatus(t);
+  if(!s.pending.length && !s.unknown.length) return `<b>${esc(t)}</b>：${s.n}社すべて最新の決算を発表済みです（最後は ${md(s.done.map(x=>x.date).sort().at(-1))}）。`;
+  return `<b>${esc(t)}</b>：${s.done.length}/${s.n}社 発表済み。` +
+    (s.pending.length ? ` 未発表：${s.pending.map(x=>`${esc(x.name)}（${md(x.date)}予定）`).join("、")}。` : "") +
+    (s.unknown.length ? ` 日程未定：${s.unknown.map(x=>esc(x.name)).join("、")}。` : "") +
+    (s.allBy ? ` <b>${md(s.allBy)}</b>に全社そろう見込み。` : "");
+}
 function fillTags(){
   const cnt = {}; for(const c of state.masters) for(const t of (c.tags||[])) cnt[t] = (cnt[t]||0) + 1;
   const order = (state.tagOrder||[]).length ? state.tagOrder : Object.keys(cnt);
-  $("#selTag").innerHTML = `<option value="">カテゴリーで一括選択…</option>` + order.filter(t=>cnt[t]).map(t=>`<option value="${esc(t)}">${esc(t)}（${cnt[t]}社）</option>`).join("");
+  $("#selTag").innerHTML = `<option value="">カテゴリーで一括選択…</option>` + order.filter(t=>cnt[t]).map(t=>`<option value="${esc(t)}">${esc(tagLabel(t))}</option>`).join("");
 }
 $("#selTag").addEventListener("change", e=>{
   const tag = e.target.value; if(!tag) return;
@@ -773,6 +806,7 @@ $("#selTag").addEventListener("change", e=>{
     const nr = rowFromMaster(c); nr._latest = nr.period; state.rows.push(nr); cs.push(c);
   }
   e.target.value = "";
+  $("#tagInfo").innerHTML = tagInfoHTML(tag); $("#tagInfo").hidden = false;
   if(!$("#title").dataset.touched || $("#title").dataset.tag){ $("#title").value = tag + "の決算"; $("#title").dataset.touched = "1"; $("#title").dataset.tag = tag; }
   renderList(); renderEdit(); renderPreview();
   if(cs.length) refreshLive(cs);
