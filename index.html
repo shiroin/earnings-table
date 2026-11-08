@@ -176,7 +176,7 @@ input[type=url]{flex:1}
 #canvas.one .o-ct span{font-size:24px;font-weight:700;color:var(--o-mut)}
 #canvas.one .o-ct em,#canvas.one .o-t em{font-style:normal;font-size:.7em;font-weight:700;margin-left:8px;color:var(--o-mut)}
 #canvas.one .bd{position:absolute;top:18px;right:18px;background:var(--o-ac);color:#000;font-size:26px;font-weight:800;padding:6px 14px;border-radius:10px}
-#canvas.one .bd.up{background:#2FBF71;color:#fff} #canvas.one .bd.dn{background:#E5484D;color:#fff}
+#canvas.one .bd.up{background:#2FBF71;color:#fff} #canvas.one .bd.dn{background:#E5484D;color:#fff} #canvas.one .bd.flat{background:#D6E8F7;color:#1F5F8B}
 #canvas.one .o-big{font-size:96px;font-weight:800;line-height:1.05;text-align:center;margin:14px 0 6px;white-space:nowrap;letter-spacing:-1px}
 #canvas.one .o-grid.g3 .o-big{font-size:68px}
 #canvas.one .o-big small{font-family:var(--ja);font-size:.46em;font-weight:900;margin-left:8px;letter-spacing:0}
@@ -1129,7 +1129,7 @@ const vsPrev = (g, m) => isPctG(g) ? (g.actual!=null && g.mid!=null ? ptTxt(g.mi
 /* ガイダンス比の色: プラスは緑、マイナスは赤（0 は色なし） */
 const guideDiff = g => isPctG(g) ? (g.actual!=null && g.mid!=null ? g.actual - g.mid : null) : g.ratio;
 const prevDiff = g => isPctG(g) ? (g.actual!=null && g.mid!=null ? g.mid - g.actual : null) : g.ratio;
-const signCls = v => v==null || Math.abs(v) < 0.05 ? "" : v > 0 ? "up" : "dn";
+const signCls = v => v==null ? "" : Math.abs(v) < 0.05 ? "flat" : v > 0 ? "up" : "dn";   // flat = ぴったり（淡い青）
 /* 予想の修正: 上方修正は緑・下方修正は赤。修正前の数字が分かれば「修正前 → 修正後」 */
 const revLabel = g => g.revision && g.revision!=="" ? g.revision : (g.kind || "-");
 const revCls = g => g.revision==="上方修正" ? "up" : g.revision==="下方修正" ? "dn" : "";
@@ -1157,7 +1157,7 @@ function chg(a, b, given){
     if(b < 0 && a === 0) return { t:"赤字解消", cls:"up" };
   }
   const v = given!=null ? given : (a!=null && b!=null && b>0 ? (a/b-1)*100 : null);
-  return v==null ? null : { pct:v, cls: v>0 ? "up" : v<0 ? "dn" : "" };
+  return v==null ? null : { pct:v, cls: Math.abs(v) < 0.05 ? "flat" : v>0 ? "up" : "dn" };
 }
 const chgTxt = (r, m, pre) => !r ? "" : r.pct!=null ? `${pre||""}${fmtPct(r.pct, m)}` : r.t;
 const chgBadge = (r, m, pre) => r ? badge(chgTxt(r, m, pre), r.cls) : "";
