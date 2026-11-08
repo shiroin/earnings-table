@@ -1118,7 +1118,9 @@ function perJa(c, period, us){
   if(us) return `FY${String(fy).slice(-2)} Q${q}`;
   const fe = fyEndM(c); return fe ? `${fy}年${fe}月期 ${q===4?"通期":`第${q}四半期`}` : `FY${fy} Q${q}`;
 }
-const bigDiv = h => { const n = h.replace(/<small>.*?<\/small>/g,"").replace(/<[^>]+>/g,"").length; return `<div class="o-big ${n>10?"xl":n>8?"lg":""}">${h}</div>`; };
+const bigDiv = h => { const t = h.replace(/<small>.*?<\/small>/g,"").replace(/<[^>]+>/g,""), u = (h.match(/<small>(.*?)<\/small>/)||[])[1]||"";
+  const n = t.length + Math.max(0, u.length - 2) * 0.6;   // 単位が長い（億ドル・兆台湾ドル）ときも小さめに
+  return `<div class="o-big ${n>10?"xl":n>7.5?"lg":""}">${h}</div>`; };
 /* 利益率など % の項目は「比」を相対%ではなくポイント差で */
 const isPctG = g => g && !g.amount && /%|％/.test(g.unit||"");
 const ptTxt = (d, m) => d==null ? "" : (d<0?m:(d>0?"+":"")) + Math.abs(d).toFixed(1) + "pt";
