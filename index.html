@@ -484,7 +484,15 @@ const isPbt = r => masterOf(r)?.profit_kind==="pbt";
 function fillFilters(){
   const opt = (arr, all) => `<option value="">${all}</option>` + [...new Set(arr.filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
   $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
-  $("#fCat").innerHTML = opt(state.masters.map(c=>c.cat1), "すべての業種");
+  // 業種: マスターシートのカテゴリー列（AV〜EE列、1 の付いた会社）を先に、従来の業種カテゴリー1 を後ろに
+  const cur = $("#fCat").value, tcnt = {};
+  for(const c of state.masters) for(const t of (c.tags||[])) tcnt[t] = (tcnt[t]||0) + 1;
+  const torder = ((state.tagOrder||[]).length ? state.tagOrder : Object.keys(tcnt)).filter(t=>tcnt[t]);
+  const c1 = [...new Set(state.masters.map(c=>c.cat1).filter(Boolean))].sort();
+  $("#fCat").innerHTML = `<option value="">すべての業種</option>`
+    + (torder.length ? `<optgroup label="カテゴリー（マスターシートAV〜EE列）">${torder.map(t=>`<option value="t:${esc(t)}">${esc(t)}（${tcnt[t]}社）</option>`).join("")}</optgroup>` : "")
+    + `<optgroup label="業種カテゴリー1">${c1.map(v=>`<option value="c:${esc(v)}">${esc(v)}</option>`).join("")}</optgroup>`;
+  if([...$("#fCat").options].some(o=>o.value===cur)) $("#fCat").value = cur;
 }
 /* ---------- 期間の判定 ----------
    発表日時: 決算データの「発表日時(JST)」（無ければ「記録日時」）。どちらも無ければ発表日と市場から目安を置く。
@@ -569,13 +577,14 @@ function syncWhenUI(){
 function listItems(){
   const q = $("#q").value.trim().toLowerCase(), co = $("#fCountry").value, cat = $("#fCat").value, sort = $("#fSort").value;
   let items;
+  const catOk = c => !cat || (cat.startsWith("t:") ? (c?.tags||[]).includes(cat.slice(2)) : cat.startsWith("c:") ? c?.cat1===cat.slice(2) : c?.cat1===cat);
   if(state.src==="master"){
-    items = state.masters.filter(c => (!co||c.country===co) && (!cat||c.cat1===cat) && inWindow(masterWhen(c)) &&
+    items = state.masters.filter(c => (!co||c.country===co) && catOk(c) && inWindow(masterWhen(c)) &&
       (!q || [c.ja,c.name,c.ticker].some(v=>String(v||"").toLowerCase().includes(q))))
       .map(c => { const r = c.periods?.length ? rowFromMaster(c) : null;
         return { key:"m|"+(c.ticker||c.name), c, name:c.ja||c.name, sub:c.ticker, per:r ? r.期 + (r.stale ? " ⚠" : "") : "", date:r?.決算日 || latestEarn(c) || "", has:!!c.periods?.length || digestFor(c).length>0, stale:r?.stale }; });
   } else {
-    items = state.digest.filter(d => inWindow(d) && (!q || String(d["企業"]).toLowerCase().includes(q)))
+    items = state.digest.filter(d => inWindow(d) && (!cat || catOk(masterOf({企業:d["企業"]}))) && (!q || String(d["企業"]).toLowerCase().includes(q)))
       .map(d => ({ key:"d|"+[d["発表日"],d["企業"],d["期"]].join("|"), d, name:d["企業"], sub:d["市場"], per:qLabel(d["期"]), date:d["発表日"], has:true }));
   }
   if(sort==="date") items.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
