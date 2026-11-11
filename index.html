@@ -518,7 +518,7 @@ function whenOf(x){
 function mkOfCountry(co, ticker){
   co = String(co||"");
   const usListed = ticker && !/:/.test(ticker) && !/^\d/.test(ticker);   // 取引所の接頭辞がない英字ティッカー＝米国上場
-  if(/日本/.test(co)) return "JP"; if(/韓国/.test(co)) return "KR"; if(/台湾/.test(co)) return "TW"; if(/中国|香港/.test(co)) return "CN";
+  if(/日本/.test(co) || /^\d{3}[0-9A-Z]$/.test(ticker||"")) return "JP"; if(/韓国/.test(co)) return "KR"; if(/台湾/.test(co)) return "TW"; if(/中国|香港/.test(co)) return "CN";
   if(/英国|オランダ|スウェーデン|フランス|イタリア|デンマーク|ドイツ|スイス/.test(co)) return "EU";
   if(/豪州/.test(co)) return usListed ? "US" : "AU";   // IREN など米国上場の豪州企業は米国の引け後
   return "US";

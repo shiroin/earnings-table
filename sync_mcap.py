@@ -31,7 +31,8 @@ def yahoo_symbol(ticker, country):
         if ex == "HKG":
             code = code.lstrip("0").zfill(4)
         return code + SUFFIX.get(ex, "")
-    if re.fullmatch(r"\d{4}|\d{3}[A-Z]", t) and country in ("日本", ""):
+    # 4桁（または数字3桁＋英字）は東証のコード。本社が海外でも東証上場（ネクソンなど）なので .T を付ける
+    if re.fullmatch(r"\d{4}|\d{3}[A-Z]", t):
         return t + ".T"
     return t
 
