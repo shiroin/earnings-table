@@ -62,6 +62,7 @@ def read_watchlist(text):
         if counts:
             idx["Financials"] = max(counts, key=counts.get)
             print(f"注意: 「Financials」の見出しが見つからないため、{idx['Financials'] + 1}列目（スプレッドシートのURLが{counts[idx['Financials']]}件）を使います")
+    idx["fin_updated"] = next((i for i, h in enumerate(head) if "更新日" in h and h.lower().startswith("financial")), None)
     get = lambda r, k: (r[idx[k]].strip() if idx[k] is not None and idx[k] < len(r) else "")
     # カテゴリーの列（AI・メモリ・海運…）: 「通貨」の次の列から右端まで。1 が付いている会社がそのカテゴリー
     t0 = (idx["通貨"] + 1) if idx["通貨"] is not None else len(head)
@@ -82,6 +83,7 @@ def read_watchlist(text):
             "country": get(r, "本拠地"), "listed": get(r, "上場(307)"), "ir": get(r, "決算資料"),
             "folder": get(r, "フォルダ"), "master_id": file_id(get(r, "Financials")),
             "fy_end": fy_end(get(r, "決算期")), "date": get(r, "決算日").replace("/", "-"),
+            "fin_updated": get(r, "fin_updated"),
             "tags": list(dict.fromkeys(h for i, h in tag_cols if i < len(r) and r[i].strip().lower() in FLAG)),
             "currency_ja": get(r, "通貨"), "unit_in": get(r, "単位"), "logo_spec": get(r, "指定ロゴ"),
         })
@@ -348,6 +350,8 @@ def main():
     ap.add_argument("--master-dir", help="マスターのファイルを置いたフォルダ（試験用。ファイル名に Drive ID か Ticker を含める）")
     ap.add_argument("-o", "--out", default=str(ROOT / "data" / "masters.json"))
     ap.add_argument("--only", help="この会社だけ取り直す（ティッカー、カンマ区切り）。他は前回の内容を使う")
+    ap.add_argument("--auto", action="store_true",
+                    help="決算日が直近3日以内か、Financials更新日が今日・昨日の会社だけ取り直す（15分ごとの自動同期用）")
     a = ap.parse_args()
     cfg = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
     s = requests.Session()
@@ -360,6 +364,17 @@ def main():
         r.raise_for_status()
         text = r.content.decode("utf-8")
     watch = read_watchlist(text)
+    if a.auto:
+        jst = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).date()
+        def d(v):
+            m = re.match(r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})", str(v or ""))
+            return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))) if m else None
+        pick = [w["ticker"] for w in watch if w["ticker"] and w["master_id"] and (
+            (d(w["date"]) and 0 <= (jst - d(w["date"])).days <= 3) or (d(w.get("fin_updated")) and (jst - d(w["fin_updated"])).days <= 1))]
+        if not pick:
+            print("直近に決算・更新のあった会社なし"); return
+        a.only = ",".join(pick)
+        print(f"自動同期: {len(pick)}社 {a.only}")
     n_master = sum(1 for x in watch if x['master_id'])
     print(f"ウォッチリスト: {len(watch)}社（マスターあり {n_master}社）")
     try:   # ウォッチリストの読み違いで全社が消えないように: マスターありの会社が前回の半分未満なら書き込まずに止める

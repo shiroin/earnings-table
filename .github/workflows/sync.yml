@@ -1,7 +1,8 @@
 name: 企業マスター同期
 on:
   schedule:
-    - cron: "15 */2 * * *"   # 2時間ごと
+    - cron: "15 */2 * * *"   # 2時間ごと（全社）
+    - cron: "*/15 * * * *"   # 15分ごと: 決算日が直近の会社・Financialsが今日更新された会社だけ
   workflow_dispatch:
     inputs:
       only: { description: "この会社だけ取り直す（ティッカー、カンマ区切り。空なら全社）", default: "" }
@@ -21,6 +22,7 @@ jobs:
       - name: 同期してコミット（他の同期と重なったら取り直す）
         env:
           ONLY: ${{ github.event.inputs.only || github.event.client_payload.tickers }}
+          AUTO: ${{ github.event.schedule == '*/15 * * * *' && '1' || '' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
@@ -28,7 +30,9 @@ jobs:
           # 最新の main に載せ直して push し直す（同期そのものはやり直さない）。一部の会社だけの同期はすぐ終わるのでやり直す
           for attempt in 1 2 3 4 5; do
             git fetch -q origin main && git reset -q --hard origin/main
-            if [ -n "$ONLY" ] || [ ! -f /tmp/masters.json ]; then
+            if [ -n "$AUTO" ]; then
+              python sync_masters.py --auto
+            elif [ -n "$ONLY" ] || [ ! -f /tmp/masters.json ]; then
               python sync_masters.py ${ONLY:+--only "$ONLY"}
               [ -z "$ONLY" ] && cp data/masters.json /tmp/masters.json
             else
