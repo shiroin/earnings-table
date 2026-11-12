@@ -269,6 +269,11 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
 
     <section class="step">
       <h2><span class="n">2</span>数字を確認・入力する</h2>
+      <div class="row" id="nameBulk" style="margin-bottom:8px;gap:6px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:12px;color:var(--muted)">ロゴの下に社名：</span>
+        <button class="btn ghost small" id="nameAllOn">すべてつける</button>
+        <button class="btn ghost small" id="nameAllOff">すべて外す</button>
+      </div>
       <div class="edit" id="edit"></div>
       <div class="row" style="margin-top:10px">
         <input type="text" id="newName" placeholder="企業名" aria-label="手入力で追加する企業名">
@@ -877,6 +882,9 @@ $("#edit").addEventListener("click", e=>{
   if(act==="down" && i<R.length-1) [R[i+1],R[i]]=[R[i],R[i+1]];
   renderList(); renderEdit(); renderPreview();
 });
+const setAllNames = on => { state.rows.forEach(r=>r.社名表示 = on); renderEdit(); renderPreview(); };
+$("#nameAllOn").onclick = ()=>setAllNames(true);
+$("#nameAllOff").onclick = ()=>setAllNames(false);
 $("#addBtn").onclick = ()=>{
   const n = $("#newName").value.trim(); if(!n){ $("#newName").focus(); return; }
   state.rows.push({ key:null, 企業:n, 社名表示:false, 単位:$("#unit").value, 期:"", 売上高:"", 売上高前年比:"", 営業利益:"", 営業利益前年比:"", 営業利益率:"", 時価総額:"" });
