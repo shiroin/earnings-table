@@ -825,7 +825,9 @@ $("#selNone").onclick = ()=>{ state.rows = []; renderList(); renderEdit(); rende
 /* ---------- 編集 ---------- */
 const FIELDS = [["決算日","決算日"],["単位","単位"],["売上高","売上高"],["売上高前年比","前年同期比 %"],["営業利益","営業利益"],["営業利益前年比","前年同期比 %"],["営業利益率","営業利益率 %（空欄=自動）"],["時価総額","時価総額"],["売上高予想比","売上高のガイダンス比 %（空欄=自動）"],["営業利益予想比","営業利益のガイダンス比 %（空欄=自動）"],["売上高進捗率","売上高の進捗率 %（空欄=自動）"],["営業利益進捗率","営業利益の進捗率 %（空欄=自動）"]];
 function renderEdit(){
-  $("#edit").innerHTML = state.rows.map((r,i)=>{
+  // 表の「並び順」と同じ順にカードを並べる（data-i は state.rows の中の位置のまま）
+  $("#edit").innerHTML = sortedRows().map(r=>{
+    const i = state.rows.indexOf(r);
     const c = r.key?.startsWith("m|") ? masterOf(r) : null;
     const d0 = c ? digestFor(c)[0] : null;
     const perSel = c?.periods?.length || d0
@@ -865,7 +867,11 @@ $("#edit").addEventListener("change", e=>{
 });
 $("#edit").addEventListener("click", e=>{
   const act = e.target.dataset.act; if(!act) return;
-  const i = +e.target.closest(".card").dataset.i, R = state.rows;
+  let i = +e.target.closest(".card").dataset.i, R = state.rows;
+  if((act==="up" || act==="down") && $("#sortKey").value){
+    // 並び替え中に↑↓を押したら、今の見た目の順をそのまま「選んだ順」にしてから動かす
+    const r0 = R[i]; state.rows = R = sortedRows(); i = R.indexOf(r0); $("#sortKey").value = "";
+  }
   if(act==="del") R.splice(i,1);
   if(act==="up" && i>0) [R[i-1],R[i]]=[R[i],R[i-1]];
   if(act==="down" && i<R.length-1) [R[i+1],R[i]]=[R[i],R[i+1]];
@@ -1493,7 +1499,7 @@ function renderPreview(){
     th.onclick = ()=>{ const k = SORT_COL[i];
       if($("#sortKey").value===k) $("#sortDir").value = $("#sortDir").value==="desc" ? "asc" : "desc";
       else { $("#sortKey").value = k; $("#sortDir").value = "desc"; }
-      renderPreview(); };
+      renderPreview(); renderEdit(); };
   });
   fit();
 }
@@ -1529,6 +1535,7 @@ $("#oneCo").addEventListener("change", ()=>{ fillOnePer(); $("#title").dataset.t
 ["#onePer","#oneTheme","#oneChart"].forEach(s=>$(s).addEventListener("change", renderPreview));
 $("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#title").dataset.touched=""; autoTitle(); } renderPreview(); });
 ["#unit","#period","#minus","#segProfit","#align","#cur","#dateShow","#sortKey","#sortDir","#colProg","#colGuide","#colNext"].forEach(s=>$(s).addEventListener("change", renderPreview));
+["#sortKey","#sortDir"].forEach(s=>$(s).addEventListener("change", renderEdit));
 
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
