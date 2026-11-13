@@ -254,6 +254,12 @@ def enrich(w, m):
             return None
         return round((a / b - 1) * 100, 1)
 
+    # 銀行は「売上高」の欄が経常収益、「営業利益」の欄が経常利益。営業利益の列が空で経常利益の列があれば、そちらを使う
+    bank = "銀行" in (w.get("tags") or []) and m.get("profit_kind") != "pbt"
+    if bank:
+        for d in qs:
+            if d.get("operating_profit") is None and d.get("ordinary_profit") is not None:
+                d["operating_profit"] = d["ordinary_profit"]
     periods = []
     for d in qs:
         fy, qn = parse_period(d["period"])
@@ -283,7 +289,7 @@ def enrich(w, m):
     return {
         "ticker": w["ticker"], "name": w["name"], "ja": w["ja"], "tier": w["tier"], "cat1": w["cat1"], "cat2": w["cat2"], "tags": w["tags"],
         "country": w["country"], "date": w["date"], "fy_end": w["fy_end"], "master_id": w["master_id"], "ir": w["ir"], "logo_spec": w["logo_spec"],
-        "currency": cur, "unit": unit, "note": m.get("note"), "profit_kind": m.get("profit_kind"),
+        "currency": cur, "unit": unit, "note": m.get("note"), "profit_kind": "bank" if bank else m.get("profit_kind"),
         "periods": periods[-24:],
         "seg_revenue": seg(m.get("seg_revenue")), "seg_profit": seg(m.get("seg_profit")),
         "segments": m.get("segments") or {},

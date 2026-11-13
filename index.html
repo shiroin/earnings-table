@@ -529,6 +529,12 @@ const yoyOf = (a,b) => (a==null||b==null||b<=0) ? null : Math.round((a/b-1)*1000
 const masterOf = r => state.masters.find(c => (r.ticker && c.ticker===r.ticker) || c.ja===r.企業 || c.name===r.企業);
 /* 利益の欄が税引前利益の会社（総合商社など。企業マスターに営業利益がなく profit_before_tax を使っている） */
 const isPbt = r => masterOf(r)?.profit_kind==="pbt";
+/* 銀行は 売上高 → 経常収益、営業利益 → 経常利益（企業マスターの欄もそれぞれ経常収益・経常利益） */
+const bankCo = c => !!c && c.profit_kind!=="pbt" && (c.profit_kind==="bank" || (c.tags||[]).includes("銀行"));
+const isBank = r => bankCo(masterOf(r));
+const revNameOf = c => bankCo(c) ? "経常収益" : "売上高";
+const opNameOf = c => c?.profit_kind==="pbt" ? "税引前利益" : bankCo(c) ? "経常利益" : "営業利益";
+let oneBank = false;   // 1社まとめで、いま描いている会社が銀行か（項目名の置き換えに使う）
 function fillFilters(){
   const opt = (arr, all) => `<option value="">${all}</option>` + [...new Set(arr.filter(Boolean))].sort().map(v=>`<option>${esc(v)}</option>`).join("");
   $("#fCountry").innerHTML = opt(state.masters.map(c=>c.country), "すべての本拠地");
@@ -888,7 +894,7 @@ function renderEdit(){
         <button class="icon" data-act="down" title="下へ" aria-label="下へ">↓</button>
         <button class="icon" data-act="del" title="表から外す" aria-label="表から外す">×</button>
       </div>
-      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${f==="営業利益" && isPbt(r) ? "税引前当期純利益（営業利益の欄）" : l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
+      <div class="grid">${perSel}${FIELDS.map(([f,l])=>`<label>${f==="営業利益" && isPbt(r) ? "税引前当期純利益（営業利益の欄）" : f==="営業利益" && isBank(r) ? "経常利益（営業利益の欄）" : f==="売上高" && isBank(r) ? "経常収益（売上高の欄）" : l}<input type="text" ${f==="単位"?'list="units"':""} inputmode="${["時価総額","単位","決算日"].includes(f)?"text":"decimal"}" ${f==="決算日"?'placeholder="10/29"':""} data-f="${f}" value="${esc(r[f]??"")}"></label>`).join("")}</div>
       <div class="logo-row">${logoSrc(r)?`<img src="${logoSrc(r)}" alt="">`:"ロゴなし"}
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
         <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
@@ -1109,14 +1115,16 @@ function tableHTML(){
   }).join("");
   // 総合商社は営業利益の代わりに税引前当期純利益。全社がそうなら見出しごと替え、混在なら営業利益のまま注記
   const pb = state.rows.filter(isPbt), allPb = pb.length && pb.length===state.rows.length;
-  const opH = allPb ? "税引前<br>利益" : "営業利益", mgH = allPb ? "利益率" : "営業<br>利益率";
+  const bk = state.rows.filter(isBank), allBk = bk.length && bk.length===state.rows.length;
+  const opH = allPb ? "税引前<br>利益" : allBk ? "経常利益" : "営業利益", mgH = allPb ? "利益率" : allBk ? "経常<br>利益率" : "営業<br>利益率";
   const ex = w => [...(gOn ? [["ガイダンス<br>比", w==="rev"?"rg":"og"]] : []), ...(pOn ? [["通期予想<br>進捗率", w==="rev"?"rp":"op_p"]] : []), ...(nOn && w==="rev" ? [["次の四半期<br>ガイダンス", ""]] : [])];
-  const heads = [["企業",""],["売上高","rev"],["前年<br>同期比","ry"],...ex("rev"),[opH,"op"],["前年<br>同期比","oy"],...ex("op"),[mgH,"mg"],["時価総額","cap"]];
+  const heads = [["企業",""],[allBk ? "経常収益" : "売上高","rev"],["前年<br>同期比","ry"],...ex("rev"),[opH,"op"],["前年<br>同期比","oy"],...ex("op"),[mgH,"mg"],["時価総額","cap"]];
   SORT_COL = heads.map(h=>h[1]);
   const notes = [];
   if(gOn || pOn || nOn) notes.push(`※ ${[gOn?"ガイダンス比は決算発表前に出ていた会社ガイダンス（レンジは中央値）に対する実績":"", pOn?"進捗率は通期の会社予想に対する累計実績（5年平均は過去5年の同じ時点の実績ベース）":"", nOn?"次の四半期ガイダンスの前年比は中央値ベース":""].filter(Boolean).join("、")}`);
   if(allPb) notes.push("※ 税引前当期純利益");
   else if(pb.length) notes.push(`※ ${pb.map(r=>esc(r.企業)).join("、")}は営業利益ではなく税引前当期純利益`);
+  if(bk.length && !allBk) notes.push(`※ ${bk.map(r=>esc(r.企業)).join("、")}は売上高ではなく経常収益、営業利益ではなく経常利益`);
   if(yen && usedCurrencies().length) notes.push(`※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・${allPb?"利益率":"営業利益率"}は現地通貨ベース`);
   return `<h3>${esc($("#title").value)}</h3>
     <table class="et ${alignLeft()?"alignL":""}"><thead><tr>${heads.map(h=>`<th>${h[0]}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
@@ -1283,7 +1291,7 @@ function chg(a, b, given){
 }
 const chgTxt = (r, m, pre) => !r ? "" : r.pct!=null ? `${pre||""}${fmtPct(r.pct, m)}` : r.t;
 const chgBadge = (r, m, pre) => r ? badge(chgTxt(r, m, pre), r.cls) : "";
-const mName = g => esc(M_JA[g.metric] || shortLabel(g.label || g.metric)) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
+const mName = g => esc((oneBank && g.metric==="revenue" ? "経常収益" : oneBank && g.metric==="operating_profit" ? "経常利益" : null) || M_JA[g.metric] || shortLabel(g.label || g.metric)) + (g.basis && !GAAPISH(g.basis) ? `<em>Non-GAAP</em>` : "");
 function oneData(){
   const r = state.rows.find(x=>x.key===$("#oneCo").value) || oneRows()[0]; if(!r) return null;
   const c = masterOf(r); if(!c) return null;
@@ -1327,6 +1335,7 @@ function oneData(){
 }
 function oneHTML(){
   const d = oneData(); if(!d) return null;
+  oneBank = bankCo(d.c);
   if($("#oneLayout").value==="seg") return oneSegHTML(d);
   const { r, c, per, q, cmp, prog, nextQ, nextQp, fyG, hist, us, unit, nextFY, jpQ4 } = d, m = $("#minus").value;
   const src = logoSrc(r), title = $("#title").value || c.ja || c.name;
@@ -1411,7 +1420,7 @@ function oneHTML(){
     const [cfy, cq] = parsePeriod(per);
     const cumOf = (fy, key) => { let t = 0; for(let k=1;k<=cq;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===fy && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
     const pbtCo = c.profit_kind==="pbt";   // 企業マスターの利益欄が税引前利益の会社（総合商社など）
-    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : (mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) ? "operating_profit"
+    const cumYoY = mt => { const key = mt==="revenue" ? "revenue" : (mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) || (mt==="ordinary_profit" && oneBank) ? "operating_profit"
         : ["ordinary_profit","profit_before_tax","net_income","eps"].includes(mt) ? mt : null;
       if(!key || !cfy) return null; return chg(cumOf(cfy, key), cumOf(cfy-1, key)); };
     const card = g => {
@@ -1438,9 +1447,9 @@ function jpQ4HTML(d, m){
   const { c, per, fy, unit, nextFY } = d;
   const pbtCo = c.profit_kind==="pbt";
   const sumFY = (y, key) => { let t = 0; for(let k=1;k<=4;k++){ const p = (c.periods||[]).find(x=>{ const [f2,q2] = parsePeriod(x.period); return f2===y && q2===k; }); if(!p || p[key]==null) return null; t += p[key]; } return t; };
-  const mkey = mt => mt==="revenue" ? "revenue" : ((mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo)) ? "operating_profit"
+  const mkey = mt => mt==="revenue" ? "revenue" : ((mt==="operating_profit" && !pbtCo) || (mt==="profit_before_tax" && pbtCo) || (mt==="ordinary_profit" && oneBank)) ? "operating_profit"
     : ["ordinary_profit","profit_before_tax","net_income"].includes(mt) ? mt : null;
-  const order = ["revenue", pbtCo ? "profit_before_tax" : "operating_profit", "ordinary_profit", "net_income"];
+  const order = oneBank ? ["revenue", "ordinary_profit", "net_income"] : ["revenue", pbtCo ? "profit_before_tax" : "operating_profit", "ordinary_profit", "net_income"];
   const slots = order.map(mt => {
     const g = nextFY.find(x=>x.metric===mt), k = mkey(mt);
     // 通期の実績は決算短信の数字（来期予想の「今期実績」）を使う。四半期の合計は、非継続事業の組み替えなどで
@@ -1471,7 +1480,7 @@ function perfChartHTML(d, m){
   const data = upto.slice(-20); if(data.length < 3) return "";   // 直近20四半期（5年）
   const k = oneScale, rev = data.map(p=>p.revenue*k), op = data.map(p=>p.operating_profit==null?null:p.operating_profit*k);
   const mg = data.map(p => p.revenue && p.operating_profit!=null ? p.operating_profit/p.revenue*100 : null);
-  const opName = isPbt({ticker:c.ticker, 企業:c.ja}) ? "税引前利益" : "営業利益";
+  const opName = opNameOf(c), revName = revNameOf(c);
   const side = data.length >= 1;   // グラフの横に直近四半期の表を付ける
   const W = side ? 760 : 1110, H = 520, L = 14, R = side ? 34 : 14, T = 40, B = 70, BAND = 120, n = data.length, gw = (W-L-R)/n;   // 上の帯に利益率、下に棒
   const mx = Math.max(...rev, ...op.filter(v=>v!=null), 0), mn = Math.min(0, ...op.filter(v=>v!=null));
@@ -1514,10 +1523,10 @@ function perfChartHTML(d, m){
   const amt = v => v==null ? "-" : `${short(v*k)}<small>${esc(u)}</small>`;
   const qName = c.country==="日本" ? `第${lq}四半期` : `${perJa(c, lp.period, true)}`;
   const tbl = `<div class="o-qt"><div class="o-qh">${esc(qName)}（3か月）</div>
-    <div class="o-qr"><span>売上高</span><b>${amt(lp.revenue)}</b><em class="${rY?.cls||""}">${rY ? chgTxt(rY, m, "前年同期比 ") : "前年同期比 -"}</em></div>
+    <div class="o-qr"><span>${revName}</span><b>${amt(lp.revenue)}</b><em class="${rY?.cls||""}">${rY ? chgTxt(rY, m, "前年同期比 ") : "前年同期比 -"}</em></div>
     <div class="o-qr"><span>${opName}</span><b>${amt(lp.operating_profit)}</b><em class="${oY?.cls||""}">${oY ? chgTxt(oY, m, "前年同期比 ") : "前年同期比 -"}</em></div>
     <div class="o-qr"><span>${opName}率</span><b>${lm!=null?lm.toFixed(1):"-"}<small>%</small></b><em class="${yc(pt)}">前年同期 ${pm!=null?pm.toFixed(1)+"%":"-"}（${yt(pt,"pt")}）</em></div></div>`;
-  return `<div class="o-sec wide o-chart"><div class="o-ch"><h4>四半期業績の推移</h4><div class="o-lg">${lg(cRev,"売上高")}${lg(cOp, opName)}${lg(cMg, opName+"率")}<em>単位: ${esc(u)}</em></div></div>
+  return `<div class="o-sec wide o-chart"><div class="o-ch"><h4>四半期業績の推移</h4><div class="o-lg">${lg(cRev,revName)}${lg(cOp, opName)}${lg(cMg, opName+"率")}<em>単位: ${esc(u)}</em></div></div>
     <div class="o-cw"><svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;font-family:ETNum,var(--num)">${g}</svg>${side?tbl:""}</div></div>`;
 }
 /* ---------- 1社まとめ：全社＋セグメントを1枚に ----------
@@ -1541,7 +1550,7 @@ function oneSegHTML(d){
   if(!cur) return `<div class="o-empty">企業マスターにこの期の実績がありません</div>`;
   const yAgo = (rows, p) => { const [f, q] = parsePeriod(p); return rows.find(x => { const [f2, q2] = parsePeriod(x.period); return f2===f-1 && q2===q; }); };
   const prev = yAgo(P, cur.period);
-  const pbt = c.profit_kind==="pbt", opName = pbt ? "税引前利益" : "営業利益", opMt = pbt ? "profit_before_tax" : "operating_profit";
+  const pbt = c.profit_kind==="pbt", bank = bankCo(c), opName = opNameOf(c), revName = revNameOf(c), opMt = pbt ? "profit_before_tax" : bank ? "ordinary_profit" : "operating_profit";
   const amt = v => valHTML(v, null, unit, m);
   const [, qn] = parsePeriod(cur.period);
   // --- 見出し
@@ -1559,7 +1568,7 @@ function oneSegHTML(d){
   const mg = cur.operating_profit!=null && cur.revenue ? cur.operating_profit/cur.revenue*100 : null;
   const mgp = prev && prev.operating_profit!=null && prev.revenue ? prev.operating_profit/prev.revenue*100 : null;
   const dpt = mg!=null && mgp!=null ? mg - mgp : null;
-  let cards = kc("売上高", amt(cur.revenue), osBadge(chg(cur.revenue, prev?.revenue, cur.revenue_yoy), m, "前年同期比 "), gsub("revenue"))
+  let cards = kc(revName, amt(cur.revenue), osBadge(chg(cur.revenue, prev?.revenue, cur.revenue_yoy), m, "前年同期比 "), gsub("revenue"))
     + kc(opName, amt(cur.operating_profit), osBadge(chg(cur.operating_profit, prev?.operating_profit, cur.op_yoy), m, "前年同期比 "), gsub(opMt))
     + kc(`${opName}率`, mg==null ? "-" : `${mg.toFixed(1)}<small>%</small>`, dpt==null ? osBadge(null) : `<span class="os-bd ${signCls(dpt)}">前年同期比 ${dpt>=0?"+":m}${Math.abs(dpt).toFixed(1)}pt</span>`, mgp!=null ? `前年同期 ${mgp.toFixed(1)}%` : "");
   const pOp = prog.find(x => x.metric===opMt && (x.low!=null || x.high!=null));
@@ -1630,7 +1639,7 @@ function oneSegHTML(d){
     sv += `<circle cx="${p[0]}" cy="${p[1]}" r="${last?6:4}" fill="${cMg}"/>`;
     if(last || i===0 || (n-1-i) % 3 === 0) sv += `<text x="${p[0]}" y="${p[1]-10}" text-anchor="middle" font-size="${last?15:13}" font-weight="800" fill="${cMg}">${p[2].toFixed(1)}%</text>`; });
   const [, bu] = bigAmt(mx*k, unit, m);
-  const lg = `<span style="color:${cRev}">■売上高</span> <span style="color:${cOp}">■${opName}</span> <span style="color:${cMg}">●${opName}率</span> <em>単位: ${esc(bu)}</em>`;
+  const lg = `<span style="color:${cRev}">■${revName}</span> <span style="color:${cOp}">■${opName}</span> <span style="color:${cMg}">●${opName}率</span> <em>単位: ${esc(bu)}</em>`;
   const chart = `<div class="os-box"><h4>四半期業績の推移（${n}四半期） <span class="os-lg">${lg}</span></h4><svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block;font-family:ETNum,var(--num)">${sv}</svg></div>`;
   // --- 営業利益の増減をセグメント別に分解
   let bridge = "";
@@ -1680,8 +1689,8 @@ function oneSegHTML(d){
     h += `<div class="os-sec">セグメント業績 <span>${jp ? `第${qn}四半期（3か月）` : "直近の四半期（3か月）"}・前年同期比・${segs.length}セグメント</span></div><div class="os-comp">${comp}</div>
       <table class="os-t ${many ? "dense" : segs.length <= 3 ? "roomy" : ""}"><tr><th>セグメント</th><th>売上</th><th>前年比</th>${hasP ? `<th>利益</th><th>前年比</th><th>利益率</th><th>利益の推移（${nh}四半期）</th>` : ""}</tr>${rows}</table>`;
   } else {
-    const key = [["revenue","売上高"],["operating_profit",opName],["ordinary_profit","経常利益"],["profit_before_tax","税引前利益"],["net_income","純利益"],["eps","EPS"]]
-      .filter(([kk], i, a) => !(pbt && kk==="profit_before_tax") && cur[kk]!=null);
+    const key = [["revenue",revName],["operating_profit",opName],["ordinary_profit","経常利益"],["profit_before_tax","税引前利益"],["net_income","純利益"],["eps","EPS"]]
+      .filter(([kk], i, a) => !(pbt && kk==="profit_before_tax") && !(bank && kk==="ordinary_profit") && cur[kk]!=null);
     const rows = key.map(([kk, lab]) => {
       const mt = kk==="operating_profit" ? opMt : kk, gf = fyG.find(g => g.metric===mt) || prog.find(g => g.metric===mt), pg = prog.find(g => g.metric===mt && g.ratio!=null);
       const gq = cmp.find(g => g.metric===mt);
