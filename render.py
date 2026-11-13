@@ -40,6 +40,7 @@ def main():
     ap.add_argument("--next", action="store_true", help="次の四半期の売上高ガイダンスの列を足す（米国企業向け）")
     ap.add_argument("--one", metavar="TICKER", help="1社まとめの画像を作る（企業マスターのティッカー）")
     ap.add_argument("--one-period", help="1社まとめの期（例 FY2027Q2。省略で最新）")
+    ap.add_argument("--one-seg", action="store_true", help="1社まとめを「全社＋セグメント（1枚）」の形で作る")
     ap.add_argument("--theme", choices=["light", "dark"], default="light", help="1社まとめの配色（既定は白×見出しの色）")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
@@ -64,7 +65,7 @@ def main():
             page.goto(f"http://127.0.0.1:{srv.server_port}/index.html?headless=1")
             page.wait_for_function("window.__ready === true")
             if a.one:
-                page.evaluate("([k,o]) => window.__renderOne(k,o)", [a.one, {"period": a.one_period, "theme": a.theme, "title": a.title}])
+                page.evaluate("([k,o]) => window.__renderOne(k,o)", [a.one, {"period": a.one_period, "theme": a.theme, "title": a.title, "layout": "seg" if a.one_seg else ""}])
             elif a.seg:
                 page.evaluate("([k,o]) => window.__renderSeg(k,o)", [a.seg, {"period": a.seg_period, "profit": a.seg_profit, "palette": a.palette, "title": a.title}])
             else:
