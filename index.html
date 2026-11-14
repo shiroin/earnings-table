@@ -224,6 +224,7 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
 #canvas.one .o-lg em{font-style:normal;color:var(--o-mut);font-size:20px}
 #canvas.one .o-none .o-big{color:var(--o-mut)} #canvas.one .o-none .o-ref{color:var(--o-mut)}
 #canvas.one .o-empty{font-size:30px;padding:40px;text-align:center}
+#canvas h3 .pg-no{font-size:.6em;font-weight:700;margin-left:.4em;opacity:.75}
 /* 1社まとめ：全社＋セグメント */
 #canvas.one .os-sec{display:flex;align-items:center;gap:12px;font-size:30px;font-weight:900;margin:22px 0 12px}
 #canvas.one .os-sec:before{content:"";width:9px;height:32px;background:var(--o-ac);border-radius:3px}
@@ -371,6 +372,8 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
           <select id="sortKey" style="flex:1"><option value="">選んだ順</option><option value="rev">売上高</option><option value="ry">売上高の前年同期比</option><option value="op">営業利益</option><option value="oy">営業利益の前年同期比</option><option value="mg">営業利益率</option><option value="cap">時価総額</option><option value="rp">売上高の進捗率</option><option value="op_p">営業利益の進捗率</option><option value="rg">売上高のガイダンス比</option><option value="og">営業利益のガイダンス比</option></select>
           <select id="sortDir"><option value="desc">大きい順</option><option value="asc">小さい順</option></select>
         </div>
+        <label for="splitN">社数が多いとき</label>
+        <select id="splitN"><option value="">分けない（1枚にまとめる）</option><option value="10">10社ずつに分ける</option><option value="15">15社ずつに分ける</option><option value="20">20社ずつに分ける</option><option value="25">25社ずつに分ける</option><option value="30">30社ずつに分ける</option></select>
         <label for="period">期の表示</label>
         <select id="period"><option value="corner">ロゴの右上</option><option value="below">ロゴの下</option><option value="none">表示しない</option></select>
         <label for="cur">金額の通貨</label>
@@ -390,6 +393,7 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
   <main class="main">
     <div class="bar">
       <span class="t" id="count">企業が選ばれていません</span>
+      <span id="pager" style="display:flex;gap:4px;flex-wrap:wrap"></span>
       <button class="btn" id="dlBtn" disabled>PNGをダウンロード</button>
     </div>
     <div class="stage" id="stage"><div class="placeholder">左で企業を選ぶか、手入力で追加すると、ここに表ができます。</div></div>
@@ -1084,6 +1088,15 @@ function fmtRange(g, m, unit){
   return (g.low===g.high || g.high==null ? f(g.low ?? g.high) : `${f(g.low)}〜${f(g.high)}`) + (unit ? `<small>${unit}</small>` : "");
 }
 let SORT_COL = ["", "rev", "ry", "op", "oy", "mg", "cap"];   // 表の見出しの並び（列を足したときは tableHTML が作り直す）
+/* 社数が多いとき N 社ずつに分ける（並び替えのあとで分ける）。プレビューは1枚ずつ、ダウンロードは全部 */
+let tablePage = 0;
+function tablePages(){
+  const rows = sortedRows(), n = +$("#splitN").value || 0;
+  if(!n || rows.length <= n) return [rows];
+  const out = []; for(let i=0;i<rows.length;i+=n) out.push(rows.slice(i, i+n));
+  return out;
+}
+function pageRows(){ const ps = tablePages(); tablePage = Math.min(tablePage, ps.length-1); return ps[Math.max(0, tablePage)]; }
 function tableHTML(){
   const m = $("#minus").value, pmode = $("#period").value;
   const yen = $("#cur").value==="jpy";
@@ -1095,7 +1108,8 @@ function tableHTML(){
       return `<td class="pg ${JUDGE_CLS[p?.judge]||""}">${p ? `<b>${p.pct.toFixed(1)}%</b>` + (p.avg5!=null ? `<small>5年平均 ${p.avg5.toFixed(1)}%</small>` : "") : "<b>-</b>"}</td>`; })() : "")
     + (nOn && w==="rev" ? (()=>{ const g = nextGuide(r); const u = esc(r.単位 || $("#unit").value);
       return `<td class="nx">${g ? `<b>${fmtRange(g, m, u)}</b><small>${esc(qLabel(g.period)||g.period)}${g.ratio!=null?`　前年比 ${fmtPct(g.ratio,m)}`:""}</small>` : "<b>-</b>"}</td>`; })() : "");
-  const body = sortedRows().map(r=>{
+  const pages = tablePages(), PR = pageRows();
+  const body = PR.map(r=>{
     let unit = r.単位 || $("#unit").value, unitOp = unit;
     let rev=num(r.売上高), op=num(r.営業利益), dRev, dOp; const ry=num(r.売上高前年比), oy=num(r.営業利益前年比);
     const mg = num(r.営業利益率) ?? (rev && op!=null ? op/rev*100 : null);
@@ -1114,8 +1128,8 @@ function tableHTML(){
       <td class="cap">${cap?`<b>${esc(cap[1])}</b><small>${esc(cap[2])}</small>`:esc(r.時価総額||"-")}</td></tr>`;
   }).join("");
   // 総合商社は営業利益の代わりに税引前当期純利益。全社がそうなら見出しごと替え、混在なら営業利益のまま注記
-  const pb = state.rows.filter(isPbt), allPb = pb.length && pb.length===state.rows.length;
-  const bk = state.rows.filter(isBank), allBk = bk.length && bk.length===state.rows.length;
+  const pb = PR.filter(isPbt), allPb = pb.length && pb.length===PR.length;
+  const bk = PR.filter(isBank), allBk = bk.length && bk.length===PR.length;
   const opH = allPb ? "税引前<br>利益" : allBk ? "経常利益" : "営業利益", mgH = allPb ? "利益率" : allBk ? "経常<br>利益率" : "営業<br>利益率";
   const ex = w => [...(gOn ? [["ガイダンス<br>比", w==="rev"?"rg":"og"]] : []), ...(pOn ? [["通期予想<br>進捗率", w==="rev"?"rp":"op_p"]] : []), ...(nOn && w==="rev" ? [["次の四半期<br>ガイダンス", ""]] : [])];
   const heads = [["企業",""],[allBk ? "経常収益" : "売上高","rev"],["前年<br>同期比","ry"],...ex("rev"),[opH,"op"],["前年<br>同期比","oy"],...ex("op"),[mgH,"mg"],["時価総額","cap"]];
@@ -1126,7 +1140,7 @@ function tableHTML(){
   else if(pb.length) notes.push(`※ ${pb.map(r=>esc(r.企業)).join("、")}は営業利益ではなく税引前当期純利益`);
   if(bk.length && !allBk) notes.push(`※ ${bk.map(r=>esc(r.企業)).join("、")}は売上高ではなく経常収益、営業利益ではなく経常利益`);
   if(yen && usedCurrencies().length) notes.push(`※ 円換算（${usedCurrencies().map(c=>`1${CUR_NAME[c]||c}＝${fxRate(c)}円`).join("、")}）。前年同期比・${allPb?"利益率":"営業利益率"}は現地通貨ベース`);
-  return `<h3>${esc($("#title").value)}</h3>
+  return `<h3>${esc($("#title").value)}${pages.length>1 ? `<span class="pg-no">（${tablePage+1}/${pages.length}）</span>` : ""}</h3>
     <table class="et ${alignLeft()?"alignL":""}"><thead><tr>${heads.map(h=>`<th>${h[0]}</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>${notes.map(t=>`<div class="fxnote">${t}</div>`).join("")}`;
 }
 
@@ -1728,6 +1742,10 @@ function renderPreview(){
   document.querySelectorAll(".oneonly").forEach(e=>e.style.display = mode==="one" ? "" : "none");
   if(mode==="one") fillOneCo();
   $("#count").textContent = state.rows.length ? `${state.rows.length}社を選んでいます` : "企業が選ばれていません";
+  const pgs = mode==="table" && state.rows.length ? tablePages() : [[]];
+  if(tablePage >= pgs.length) tablePage = pgs.length-1;
+  $("#pager").innerHTML = pgs.length>1 ? pgs.map((p,i)=>`<button class="btn ghost small${i===tablePage?" on":""}" data-pg="${i}" style="${i===tablePage?"background:var(--head,#1F6E75);color:#fff":""}">${i+1}枚目（${i*(+$("#splitN").value)+1}〜${i*(+$("#splitN").value)+p.length}社）</button>`).join("") : "";
+  $("#dlBtn").textContent = pgs.length>1 ? `PNGをダウンロード（${pgs.length}枚）` : "PNGをダウンロード";
   const inner = mode==="seg" ? segHTML() : mode==="one" ? oneHTML() : (state.rows.length ? tableHTML() : null);
   $("#dlBtn").disabled = !inner;
   if(!inner){ $("#stage").innerHTML = `<div class="placeholder">${mode==="seg"?"セグメント表は、企業マスターから選んだ企業（セグメントのデータがある会社）で作れます。":mode==="one"?"1社まとめは、企業マスターにある企業で作れます（ガイダンスがない会社は実績とグラフだけでまとめます）。":"左で企業を選ぶか、手入力で追加すると、ここに表ができます。"}</div>`; return; }
@@ -1751,6 +1769,8 @@ function fit(){
   f.style.transform = `scale(${k})`; f.style.height = (c.offsetHeight*k)+"px";
 }
 addEventListener("resize", fit);
+$("#pager").addEventListener("click", e=>{ const b = e.target.closest("[data-pg]"); if(!b) return; tablePage = +b.dataset.pg; renderPreview(); });
+$("#splitN").addEventListener("change", ()=>{ tablePage = 0; renderPreview(); });
 function autoTitle(){
   if($("#title").dataset.touched) return;
   if($("#mode").value==="one"){
@@ -1778,19 +1798,27 @@ $("#segCo").addEventListener("change", ()=>{ if($("#mode").value==="seg"){ $("#t
 /* ---------- PNG ---------- */
 $("#dlBtn").onclick = async ()=>{
   const btn = $("#dlBtn"); btn.disabled = true; btn.textContent = "画像を作っています…";
+  const name = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"");
+  const n = $("#mode").value==="table" ? tablePages().length : 1, keep = tablePage;
   try{
-    const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: getComputedStyle($("#canvas")).backgroundColor || "#fff" });
-    const a = document.createElement("a"); a.href = url;
-    a.download = ($("#title").value || "決算比較表").replace(/[\\/:*?"<>|]/g,"") + ".png"; a.click();
+    for(let i=0;i<n;i++){
+      if(n>1){ tablePage = i; renderPreview(); btn.textContent = `画像を作っています…（${i+1}/${n}）`;
+        await Promise.all([...document.querySelectorAll("#canvas img")].map(im=>im.complete?1:new Promise(r=>{im.onload=im.onerror=r;}))); }
+      const url = await toPng($("#canvas"), { pixelRatio: 2, backgroundColor: getComputedStyle($("#canvas")).backgroundColor || "#fff" });
+      const a = document.createElement("a"); a.href = url;
+      a.download = name + (n>1 ? `_${i+1}` : "") + ".png"; a.click();
+      if(n>1) await new Promise(r=>setTimeout(r, 400));   // 続けてダウンロードするとブラウザに止められることがあるので少し待つ
+    }
     btn.textContent = "ダウンロードしました";
   }catch(e){ btn.textContent = "画像にできませんでした。もう一度押してください"; console.error(e); }
-  setTimeout(()=>{ btn.textContent = "PNGをダウンロード"; btn.disabled = false; }, 1800);
+  if(n>1){ tablePage = keep; renderPreview(); }
+  setTimeout(()=>{ btn.textContent = n>1 ? `PNGをダウンロード（${n}枚）` : "PNGをダウンロード"; btn.disabled = false; }, 1800);
 };
 
 /* ---------- 保存・起動 ---------- */
 function saveState(){
   store.set("rows2", state.rows);
-  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked, colProg:$("#colProg").checked, colGuide:$("#colGuide").checked, colNext:$("#colNext").checked });
+  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked, colProg:$("#colProg").checked, colGuide:$("#colGuide").checked, colNext:$("#colNext").checked, splitN:$("#splitN").value });
 }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
@@ -1807,10 +1835,14 @@ window.__render = (rows, opts={}) => {
   if(opts.palette && PALETTES[opts.palette]){ $("#palette").value = opts.palette; applyPalette(); }
   if(opts.head){ $("#palette").value="custom"; $("#cHead").value = opts.head; }
   if(opts.accent){ $("#palette").value="custom"; $("#cAccent").value = opts.accent; }
+  $("#splitN").value = opts.split ? String(opts.split) : ""; tablePage = 0;
   $("#mode").value = "table";
   renderPreview();
   return Promise.all([...document.querySelectorAll("#canvas img")].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r;})));
 };
+/* render.py から: 分けたときの枚数と、何枚目を描くか */
+window.__pages = () => tablePages().length;
+window.__page = i => { tablePage = i; renderPreview(); return Promise.all([...document.querySelectorAll("#canvas img")].map(im=>im.complete?1:new Promise(r=>{im.onload=im.onerror=r;}))); };
 /* セグメント表を render.py から作る入口 */
 window.__renderSeg = async (key, opts={}) => {
   if(!state.masters.length){ const m = await (await fetch("data/masters.json",{cache:"no-cache"})).json(); state.masters = m.companies||[]; }
@@ -1832,7 +1864,7 @@ window.__renderSeg = async (key, opts={}) => {
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; $("#colProg").checked=!!o.colProg; $("#colGuide").checked=!!o.colGuide; $("#colNext").checked=!!o.colNext; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; $("#colProg").checked=!!o.colProg; $("#colGuide").checked=!!o.colGuide; $("#colNext").checked=!!o.colNext; $("#splitN").value=o.splitN||""; }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();

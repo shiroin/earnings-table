@@ -8,7 +8,7 @@ Webアプリと同じ見た目の決算比較表PNGを、コマンドライン�
 CSVの列（スプレッドシート「決算データ」と同じ名前）:
   企業, 期, 単位, 売上高, 売上高前年比, 営業利益, 営業利益前年比, 営業利益率(空欄=自動), 時価総額
 """
-import argparse, csv, re, functools, http.server, threading
+import argparse, csv, os, re, functools, http.server, threading
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -42,6 +42,7 @@ def main():
     ap.add_argument("--one-period", help="1社まとめの期（例 FY2027Q2。省略で最新）")
     ap.add_argument("--one-seg", action="store_true", help="1社まとめを「全社＋セグメント（1枚）」の形で作る")
     ap.add_argument("--theme", choices=["light", "dark"], default="light", help="1社まとめの配色（既定は白×見出しの色）")
+    ap.add_argument("--split", type=int, metavar="N", help="N社ずつ別の画像に分ける（-o 決算.png → 決算_1.png, 決算_2.png …）。N社以下なら1枚")
     ap.add_argument("--scale", type=float, default=2)
     a = ap.parse_args()
     rows = []
@@ -71,7 +72,19 @@ def main():
             else:
                 page.evaluate("([r,o]) => window.__render(r,o)", [rows, {"title": a.title or "注目企業の決算", "period": a.period, "minus": a.minus, "align": a.align, "dateShow": a.date_show, "sort": a.sort, "sortDir": "asc" if a.asc else "desc", "cur": "jpy" if a.yen else "local",
                     "fx": {k: float(v) for k, v in (x.split("=") for x in a.fx.split(","))} if a.fx else None, "palette": a.palette, "head": a.head, "accent": a.accent,
-                    "progress": a.progress, "guide": a.guide, "next": a.next}])
+                    "progress": a.progress, "guide": a.guide, "next": a.next, "split": a.split}])
+            n = page.evaluate("window.__pages()") if not (a.one or a.seg) else 1
+            if n > 1:
+                stem, ext = os.path.splitext(a.out)
+                outs = []
+                for i in range(n):
+                    page.evaluate("i => window.__page(i)", i)
+                    page.wait_for_timeout(400)
+                    out = f"{stem}_{i + 1}{ext or '.png'}"
+                    page.locator("#canvas").screenshot(path=out); outs.append(out)
+                b.close()
+                print("画像を作りました:", " ".join(outs))
+                return
             page.wait_for_timeout(400)
             page.locator("#canvas").screenshot(path=a.out)
             b.close()
