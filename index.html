@@ -311,6 +311,10 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
 
     <section class="step">
       <h2><span class="n">2</span>数字を確認・入力する</h2>
+      <div class="row" style="margin-bottom:8px;gap:6px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:12px;color:var(--muted)">期をそろえる：</span>
+        <select id="backN" style="flex:0 1 auto"><option value="0">各社の最新の期</option><option value="1">1期前</option><option value="2">2期前</option><option value="3">3期前</option><option value="4">4期前（1年前の同じ四半期）</option><option value="5">5期前</option><option value="6">6期前</option><option value="7">7期前</option><option value="8">8期前（2年前の同じ四半期）</option></select>
+      </div>
       <div class="row" id="nameBulk" style="margin-bottom:8px;gap:6px;align-items:center;flex-wrap:wrap">
         <span style="font-size:12px;color:var(--muted)">ロゴの下に社名：</span>
         <button class="btn ghost small" id="nameAllOn">すべてつける</button>
@@ -684,6 +688,19 @@ const digestFor = c => state.digest.filter(d => d["企業"]===c.ja || d["企業"
 /* 株価データ上の最新の決算発表日 */
 const latestEarn = c => { const e = state.mcap[c?.ticker] || state.mcap[c?.name] || {}, today = new Date(Date.now()+9*3600e3).toISOString().slice(0,10);
   return [...(e.earn_dates||[]), ...(e.sched||[]).filter(d=>d<=today)].sort().reverse()[0] || ""; };
+/* 「期をそろえる」: 各社の最新の期から n 期さかのぼった期で行を作る（企業マスターにその期がなければ一番古い期） */
+let backN = 0;
+const periodBack = (c, n) => {
+  const ps = c.periods||[], last = ps.at(-1); if(!last) return null;
+  const [fy, q] = parsePeriod(last.period);
+  if(fy && q){   // 期の名前から数える（シートに抜けている四半期があっても、ちゃんと n 四半期前を指す）
+    const t = fy*4 + (q-1) - n, ty = Math.floor(t/4), tq = t%4 + 1;
+    const hit = ps.find(p => { const [f2, q2] = parsePeriod(p.period); return f2===ty && q2===tq; });
+    if(hit) return hit.period;
+  }
+  return ps[Math.max(0, ps.length-1-n)]?.period;
+};
+const rowAt = c => backN>0 && c.periods?.length ? rowFromMaster(c, periodBack(c, backN)) : rowFromMaster(c);
 function rowFromMaster(c, period){
   const ps = c.periods||[];
   const dgs = digestFor(c);
@@ -770,7 +787,7 @@ function applyLive(c){
   state.rows = state.rows.map(r=>{
     if(!r.key?.startsWith("m|") || (r.period && r.period!=="dg" && r.period !== r._latest)) return r;
     const m = masterOf(r); if(m!==c || !m?.periods?.length) return r;
-    const n = rowFromMaster(m); if(n.period===r.period && !m.live) return r;
+    const n = rowAt(m); if(n.period===r.period && !m.live) return r;
     n.社名表示 = r.社名表示; n._latest = n.period; upd = true; return n;
   });
   return upd;
@@ -802,7 +819,7 @@ $("#list").addEventListener("click", e=>{
   if(i>=0) state.rows.splice(i,1);
   else {
     const it = listItems().find(x=>x.key===k); if(!it) return;
-    const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr);
+    const nr = it.c ? rowAt(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr);
     if(it.c) refreshLive([it.c]);
   }
   autoTitle(); renderList(); renderEdit(); renderPreview();
@@ -817,7 +834,7 @@ document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
 $("#selAll").onclick = ()=>{
   const on = new Set(state.rows.map(r=>r.key));
   const cs = [];
-  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has){ const nr = it.c ? rowFromMaster(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr); if(it.c) cs.push(it.c); }
+  for(const it of listItems().slice(0,400)) if(!on.has(it.key) && it.has){ const nr = it.c ? rowAt(it.c) : rowFromDigest(it.d); nr._latest = nr.period; state.rows.push(nr); if(it.c) cs.push(it.c); }
   autoTitle(); renderList(); renderEdit(); renderPreview();
   if(cs.length) refreshLive(cs);
 };
@@ -870,7 +887,7 @@ $("#selTag").addEventListener("change", e=>{
     if(!(c.tags||[]).includes(tag)) continue;
     const key = "m|"+(c.ticker||c.name);
     if(on.has(key) || !(c.periods?.length || digestFor(c).length)) continue;
-    const nr = rowFromMaster(c); nr._latest = nr.period; state.rows.push(nr); cs.push(c);
+    const nr = rowAt(c); nr._latest = nr.period; state.rows.push(nr); cs.push(c);
   }
   e.target.value = "";
   $("#tagInfo").innerHTML = tagInfoHTML(tag); $("#tagInfo").hidden = false;
@@ -934,6 +951,17 @@ $("#edit").addEventListener("click", e=>{
   if(act==="up" && i>0) [R[i-1],R[i]]=[R[i],R[i-1]];
   if(act==="down" && i<R.length-1) [R[i+1],R[i]]=[R[i],R[i+1]];
   renderList(); renderEdit(); renderPreview();
+});
+$("#backN").addEventListener("change", e=>{
+  backN = +e.target.value || 0;
+  for(const r of state.rows){
+    const c = masterOf(r); if(!c?.periods?.length) continue;   // 手入力・マスターにない会社はそのまま
+    const keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 }, nr = rowAt(c);
+    for(const k of Object.keys(r)) if(!(k in nr) && !["logoKeys"].includes(k)) delete r[k];
+    Object.assign(r, nr, keep, { stale:"", _latest: nr.period });
+  }
+  if(!$("#title").dataset.touched) autoTitle();
+  renderEdit(); renderPreview();
 });
 const setAllNames = on => { state.rows.forEach(r=>r.社名表示 = on); renderEdit(); renderPreview(); };
 $("#nameAllOn").onclick = ()=>setAllNames(true);
@@ -1786,6 +1814,7 @@ function autoTitle(){
   else if(win?.kind==="run") $("#title").value = `注目企業の決算（${win.run.label.replace(/（.） /," ")}）`;
   else if(win?.kind==="7d") $("#title").value = "過去7日間の決算";
   else $("#title").value = "注目企業の決算";
+  if(backN>0) $("#title").value += backN===4 ? "（1年前の同じ四半期）" : backN===8 ? "（2年前の同じ四半期）" : `（${backN}期前）`;
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); fillOneCo(); autoTitle(); renderPreview(); });
@@ -1818,7 +1847,7 @@ $("#dlBtn").onclick = async ()=>{
 /* ---------- 保存・起動 ---------- */
 function saveState(){
   store.set("rows2", state.rows);
-  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked, colProg:$("#colProg").checked, colGuide:$("#colGuide").checked, colNext:$("#colNext").checked, splitN:$("#splitN").value });
+  store.set("opts", { sortKey:$("#sortKey").value, sortDir:$("#sortDir").value, dateShow:$("#dateShow").value, cur:$("#cur").value, align:$("#align").value, mode:$("#mode").value, palette:$("#palette").value, head:$("#cHead").value, accent:$("#cAccent").value, title:$("#title").value, touched:!!$("#title").dataset.touched, unit:$("#unit").value, period:$("#period").value, minus:$("#minus").value, segProfit:$("#segProfit").checked, colProg:$("#colProg").checked, colGuide:$("#colGuide").checked, colNext:$("#colNext").checked, splitN:$("#splitN").value, backN });
 }
 /* 自動まとめ（render.py）から呼ぶ入口 */
 window.__render = (rows, opts={}) => {
@@ -1864,7 +1893,7 @@ window.__renderSeg = async (key, opts={}) => {
     window.__ready = true; return;
   }
   const o = store.get("opts");
-  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; $("#colProg").checked=!!o.colProg; $("#colGuide").checked=!!o.colGuide; $("#colNext").checked=!!o.colNext; $("#splitN").value=o.splitN||""; }
+  if(o){ $("#mode").value=o.mode||"table"; $("#title").value=o.title||""; if(o.touched) $("#title").dataset.touched="1"; $("#unit").value=o.unit||"億円"; $("#period").value=o.period||"corner"; $("#minus").value=o.minus||"△"; $("#palette").value=o.palette||"teal"; if(o.head) $("#cHead").value=o.head; if(o.accent) $("#cAccent").value=o.accent; $("#segProfit").checked=!!o.segProfit; $("#align").value=o.align||"auto"; $("#cur").value=o.cur||"local"; $("#dateShow").value=o.dateShow||"auto"; $("#sortKey").value=o.sortKey||""; $("#sortDir").value=o.sortDir||"desc"; $("#colProg").checked=!!o.colProg; $("#colGuide").checked=!!o.colGuide; $("#colNext").checked=!!o.colNext; $("#splitN").value=o.splitN||""; backN = +o.backN||0; $("#backN").value = String(backN); }
   if(!$("#title").value) $("#title").value = "注目企業の決算";
   state.rows = store.get("rows2") || [];
   await loadAll();
