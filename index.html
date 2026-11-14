@@ -313,7 +313,7 @@ select.small{font-size:12px;padding:3px 6px;max-width:190px}
       <h2><span class="n">2</span>数字を確認・入力する</h2>
       <div class="row" style="margin-bottom:8px;gap:6px;align-items:center;flex-wrap:wrap">
         <span style="font-size:12px;color:var(--muted)">期をそろえる：</span>
-        <select id="backN" style="flex:0 1 auto"><option value="0">各社の最新の期</option><option value="1">1期前</option><option value="2">2期前</option><option value="3">3期前</option><option value="4">4期前（1年前の同じ四半期）</option><option value="5">5期前</option><option value="6">6期前</option><option value="7">7期前</option><option value="8">8期前（2年前の同じ四半期）</option></select>
+        <select id="backN" style="flex:0 1 auto"><option value="0">各社の最新の期</option><option value="1">1期前</option><option value="2">2期前</option><option value="3">3期前</option><option value="4">4期前（1年前の同じ四半期）</option><option value="5">5期前</option><option value="6">6期前</option><option value="7">7期前</option><option value="8">8期前（2年前の同じ四半期）</option><option value="9">9期前</option><option value="10">10期前</option><option value="11">11期前</option><option value="12">12期前（3年前の同じ四半期）</option><option value="13">13期前</option><option value="14">14期前</option><option value="15">15期前</option><option value="16">16期前（4年前の同じ四半期）</option><option value="17">17期前</option><option value="18">18期前</option><option value="19">19期前</option><option value="20">20期前（5年前の同じ四半期）</option></select>
       </div>
       <div class="row" id="nameBulk" style="margin-bottom:8px;gap:6px;align-items:center;flex-wrap:wrap">
         <span style="font-size:12px;color:var(--muted)">ロゴの下に社名：</span>
@@ -697,10 +697,16 @@ const periodBack = (c, n) => {
     const t = fy*4 + (q-1) - n, ty = Math.floor(t/4), tq = t%4 + 1;
     const hit = ps.find(p => { const [f2, q2] = parsePeriod(p.period); return f2===ty && q2===tq; });
     if(hit) return hit.period;
+    if(ty*4+tq < (parsePeriod(ps[0].period)[0]||0)*4 + (parsePeriod(ps[0].period)[1]||0)) return null;   // マスターの一番古い期より前
   }
   return ps[Math.max(0, ps.length-1-n)]?.period;
 };
-const rowAt = c => backN>0 && c.periods?.length ? rowFromMaster(c, periodBack(c, backN)) : rowFromMaster(c);
+const rowAt = c => {
+  if(!(backN>0 && c.periods?.length)) return rowFromMaster(c);
+  const p = periodBack(c, backN);
+  if(p) return rowFromMaster(c, p);
+  const r = rowFromMaster(c, c.periods[0].period); r.backMiss = c.periods[0].period; return r;   // その期がない会社は一番古い期を出して注意書き
+};
 function rowFromMaster(c, period){
   const ps = c.periods||[];
   const dgs = digestFor(c);
@@ -920,6 +926,7 @@ function renderEdit(){
         <label style="flex-direction:row;align-items:center;gap:4px;font-size:12px;color:var(--ink);white-space:nowrap;flex-shrink:0"><input type="checkbox" data-name ${r.社名表示?"checked":""}>ロゴの下に社名</label>
         <label class="btn ghost small" style="cursor:pointer">ロゴ画像を選ぶ<input type="file" accept="image/*" data-logo hidden></label>
         <span class="src">${r.src || (c?"マスター":r.key?"自動まとめ":"手入力")}</span></div>
+      ${r.backMiss ? `<div class="warn">⚠ ${backN}期前のデータが企業マスターにないため、いちばん古い期（${esc(r.backMiss)}）を表示しています。</div>` : ""}
       ${r.stale ? `<div class="warn">⚠ ${esc(mdOf(r.stale))} に新しい決算が出ていますが、まだ数字がありません（表示は前の期）。次のまとめの回で補います。</div>` : ""}
     </div>`; }).join("");
   fillSegCo();
@@ -958,7 +965,7 @@ $("#backN").addEventListener("change", e=>{
     const c = masterOf(r); if(!c?.periods?.length) continue;   // 手入力・マスターにない会社はそのまま
     const keep = { 社名表示:r.社名表示, 企業:r.企業, 時価総額:r.時価総額 }, nr = rowAt(c);
     for(const k of Object.keys(r)) if(!(k in nr) && !["logoKeys"].includes(k)) delete r[k];
-    Object.assign(r, nr, keep, { stale:"", _latest: nr.period });
+    Object.assign(r, nr, keep, { stale:"", backMiss: nr.backMiss||"", _latest: nr.period });
   }
   if(!$("#title").dataset.touched) autoTitle();
   renderEdit(); renderPreview();
@@ -1814,7 +1821,7 @@ function autoTitle(){
   else if(win?.kind==="run") $("#title").value = `注目企業の決算（${win.run.label.replace(/（.） /," ")}）`;
   else if(win?.kind==="7d") $("#title").value = "過去7日間の決算";
   else $("#title").value = "注目企業の決算";
-  if(backN>0) $("#title").value += backN===4 ? "（1年前の同じ四半期）" : backN===8 ? "（2年前の同じ四半期）" : `（${backN}期前）`;
+  if(backN>0) $("#title").value += backN%4===0 ? `（${backN/4}年前の同じ四半期）` : `（${backN}期前）`;
 }
 $("#title").addEventListener("input", e=>{ e.target.dataset.touched="1"; renderPreview(); });
 $("#mode").addEventListener("change", ()=>{ $("#title").dataset.touched=""; fillSegCo(); fillOneCo(); autoTitle(); renderPreview(); });
