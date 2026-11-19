@@ -578,7 +578,10 @@ SGホールディングス,,ok,existing,,
 セイノーホールディングス,,ok,existing,,
 山九,,ok,existing,,
 SBSホールディングス,,ok,existing,,
-,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-,,failed,,,Wikidataで見つからず、ドメイン指定もありません
-,,failed,,,Wikidataで見つからず、ドメイン指定もありません
+東芝,https://www.toshiba.com/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/0/01/Toshiba_logo.svg,東芝.svg
+アコム,https://www.acom.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/4/41/Acom_company_logos.svg,アコム.svg
+ムニノバ,https://www.muninova.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/8/85/Aifulnewlogo.png,ムニノバ.png
+ジャックス,http://www.jaccs.co.jp/,ok,favicon,https://www.google.com/s2/favicons?sz=256&domain=www.jaccs.co.jp,ジャックス.png
+クレディセゾン,http://www.saisoncard.co.jp/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/9/9b/Credit_Saison_logo.svg,クレディセゾン.svg
+楽天証券,https://www.atfxau.com/en-au/,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/e/ec/ATFX_Global.png,楽天証券.png
+Take Two,http://www.take2games.com,ok,wikidata,https://upload.wikimedia.org/wikipedia/commons/d/d6/Take-Two_Interactive_Logo.svg,Take_Two.svg
