@@ -423,7 +423,7 @@
  "2702": "日本マクドナルドホールディングス.jpg",
  "ギフトホールディングス": "ギフトホールディングス.svg",
  "ギフト": "company.svg",
- "9279": "company.svg",
+ "9279": "ギフトホールディングス.svg",
  "Visa": "Visa.svg",
  "V": "Visa.svg",
  "Mastercard": "Mastercard.svg",
@@ -1322,5 +1322,7 @@
  "タツモ": "company.svg",
  "6266": "company.svg",
  "ハピネット": "company.svg",
- "7552": "company.svg"
+ "7552": "company.svg",
+ "ギフト(町田商店)": "ギフトホールディングス.svg",
+ "壱角家(ガーデン)": "company.svg"
 }
