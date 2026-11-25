@@ -103,7 +103,7 @@
  "santec": "santec_Holdings.png",
  "6777": "santec_Holdings.png",
  "OpenAI": "OpenAI.svg",
- "Anthropic": "Anthropic.svg",
+ "Anthropic": "company.svg",
  "DeepSeek": "DeepSeek.svg",
  "Mistral AI": "Mistral_AI.svg",
  "Moonshot AI": "Moonshot_AI.svg",
@@ -1324,5 +1324,6 @@
  "ハピネット": "company.svg",
  "7552": "company.svg",
  "ギフト(町田商店)": "ギフトホールディングス.svg",
- "壱角家(ガーデン)": "company.svg"
+ "壱角家(ガーデン)": "company.svg",
+ "ANT": "company.svg"
 }
